@@ -13,3 +13,176 @@
  *= require_tree .
  *= require_self
  */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+ * {
+     font-family: 'Montserrat', sans-serif; 
+     color: white;
+     /* background: black; */
+     font-size: 24px;
+ }
+
+ input:not([type="submit"]) {
+     color: black;
+ }
+
+ @keyframes flicker {
+    0%, 100%{color: white}
+    50%{color: rgb(240, 162, 60)}
+ }
+
+ html {
+    height: 100%;
+    width: 100%;
+    background: url('firefy_splash.png') no-repeat center center fixed;
+    background-size: cover;
+ }
+
+ img {
+     float: left;
+     height: 25px;
+     width: 25px;
+ }
+ 
+  a {
+      text-decoration: none;
+      color: white;
+  }
+
+  form > * {
+      margin: 5px;
+      font-size: 14px;
+  }
+
+ .strong {
+    font-weight: 800;
+  }
+ .small {
+    font-size: 12px;
+    padding: 10px 20px 10px 20px;
+    font-weight: bold;
+ }
+
+ .full-background {
+    position: absolute;
+    top:40px;
+    left:0;
+    bottom:0;
+    right:0;
+ }
+ .black-background {
+    background: black;
+ }
+ .white-background {
+    background: white;
+ }
+
+ .font-black {
+     color: black;
+ }
+ .long-padding {
+    padding: 10px 50px 10px 50px;
+ }
+ .padding {
+    padding: 5px;
+ }
+
+ .margin {
+     margin: 5px;
+ }
+ .center {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .flicker {
+     animation-name: flicker;
+     animation-duration: 5s;
+     animation-iteration-count: infinite;
+     animation-timing-function: ease-out;
+ }
+
+
+.welcome-banner {
+    margin: auto;
+    width: 50%;
+    margin-top: 25%;
+    text-align: center;
+}
+
+ .greeting-link {
+     margin: 5px;
+ }
+
+ .greeting-bar {
+     background: black;
+     opacity: .7;
+     position: absolute;
+     top: 0;
+     width: 100%
+ }
+
+ .greeting-separator {
+     width: 75%;
+ }
+
+ .greeting-buttons {
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+ }
+
+ .session-button:hover {
+     cursor: pointer;
+ }
+
+ .session-form {
+     margin: auto;
+     display: flex;
+     flex-direction: column;
+     justify-items: center;
+     align-items: center;
+     width: 50%;
+     margin-top: 15%;
+ }
+ 
+  .session-button {
+     background: rgb(0, 196, 90);
+     border-radius: 50px;
+     border: none;
+  }
+
+ .slogan {
+     font-size: 50px;
+     font-weight: 800;
+     margin: 10px;
+ }
