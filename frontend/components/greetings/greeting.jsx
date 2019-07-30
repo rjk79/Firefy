@@ -1,0 +1,37 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+class Greeting extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick() {
+        this.props.logout()
+    }
+
+    render() {
+        const name = this.props.currentUser ? this.props.currentUser.username : ""
+        return this.props.currentUser ?
+            (
+                <>
+                    <h1>Welcome, {name}</h1>
+                    <Link to="/" className="session-button" onClick={this.handleClick}>Log Out</Link>
+                </>
+            ) : (
+                <>
+                    <div className = "greeting-bar">  
+                        <div className ="greeting-buttons"> 
+                            <img src="/assets/bw_logo.png" />   
+                            <Link to="/"> Firefy </Link>
+                            <i className="greeting-separator"></i>
+                            <Link className="greeting-link small" to="/signup">Sign Up</Link>
+                            <Link className="greeting-link small" to="/login">Log In</Link>
+                        </div>
+                    </div>
+                </>
+            )
+    }
+}
+export default Greeting
