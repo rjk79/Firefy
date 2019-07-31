@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Greeting from './greeting'
 
 
+
 const msp = (state) => {
 
     return {
@@ -12,7 +13,7 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
     return {
-        logout: () => dispatch(logout())
+        logout: () => dispatch(logout()),
     }
 }
 

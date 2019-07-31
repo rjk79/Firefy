@@ -16,8 +16,12 @@ class Greeting extends React.Component {
         return this.props.currentUser ?
             (
                 <>
+                <div className="greeting-logout">
                     <h1>Welcome, {name}</h1>
-                    <Link to="/" className="session-button" onClick={this.handleClick}>Log Out</Link>
+                    <Link to="/" className="session-button small" onClick={this.handleClick}>
+                        Log Out
+                    </Link>
+                </div>
                 </>
             ) : (
                 <>
