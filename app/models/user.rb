@@ -6,6 +6,18 @@ class User < ApplicationRecord
 
   #FG PER 3 1 2 1 3
 
+  has_many :playlists
+
+  has_many :friendships1,
+    foreign_key: :user1_id,
+    class_name: :Friendship
+
+  has_many :friendships2,
+    foreign_key: :user2_id,
+    class_name: :Friendship
+
+  has_many :follows
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return user if user && BCrypt::Password.new(user.password_digest).is_password?(password)

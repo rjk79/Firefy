@@ -1,3 +1,18 @@
+Bugs:
+  
+Dead Bugs:
+  importing image
+
+npm install
+bundle install
+db:setup
+
+
+
+
+
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,7 +37,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-npm install
-bundle install
-db:setup

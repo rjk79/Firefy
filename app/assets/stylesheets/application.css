@@ -56,10 +56,16 @@ time, mark, audio, video {
 
  @keyframes flicker {
     0%, 100%{color: white}
-    50%{color: rgb(240, 162, 60)}
+    50%{opacity: 0}
  }
 
- html {
+ /* html, body {
+    height: 100%;
+    margin: 0;
+
+ } */
+
+ body {
     height: 100%;
     width: 100%;
     background: url('firefy_splash.png') no-repeat center center fixed;
@@ -82,6 +88,16 @@ time, mark, audio, video {
       font-size: 14px;
   }
 
+  input:focus {
+      outline: none;
+      border: 1px solid rgb(81, 203, 238, 1);
+  }
+
+ .errors {
+     color: black;
+     text-align: center;
+ }
+ 
  .strong {
     font-weight: 800;
   }
@@ -144,15 +160,15 @@ time, mark, audio, video {
  }
 
  .greeting-bar {
-     background: black;
-     opacity: .7;
+     background: rgba(0, 0, 0, .7);
+     
      position: absolute;
      top: 0;
      width: 100%
  }
 
  .greeting-separator {
-     width: 75%;
+     width: 70%;
  }
 
  .greeting-buttons {
@@ -161,8 +177,20 @@ time, mark, audio, video {
      align-items: center;
  }
 
+ .greeting-link:hover {
+     color: rgb(0, 196, 90);
+ }
+
+ .greeting-logout {
+     position: absolute;
+     top: 75%;
+     z-index: 1;
+ }
+
  .session-button:hover {
-     cursor: pointer;
+    cursor: pointer;
+    filter: brightness(115%);
+
  }
 
  .session-form {
@@ -179,10 +207,49 @@ time, mark, audio, video {
      background: rgb(0, 196, 90);
      border-radius: 50px;
      border: none;
+     letter-spacing: 2px;
+     transition: filter .3s;
+     text-transform: uppercase;
+  }
+  .session-button:hover {
+      filter: brightness(115%);
   }
 
  .slogan {
      font-size: 50px;
      font-weight: 800;
      margin: 10px;
+ }
+
+ .template {
+    height: 100vh;
+    width: 100vw;
+    display: inline-block;
+    text-align: center;  /* TESTING */ 
+ 
+ }
+ .template-navbar {
+     width: 20%;
+     height: 85%;
+     background: red;
+     display: inherit;
+     opacity: .5;
+
+ }
+
+ .template-display {
+    width: 80%;
+    height: 85%;
+    background: blue;
+    display: inherit;
+    opacity: .5;
+ }
+
+ .template-player {
+    width: 100%;
+    height: 15%;
+    background: green;
+    display: inherit;
+    opacity: .5;
+
  }

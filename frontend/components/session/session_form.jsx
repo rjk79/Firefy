@@ -23,6 +23,10 @@ class SessionForm extends React.Component {
         })
     }
 
+    componentDidMount(){
+        this.props.resetErrors()
+    }
+
     handleDemoClick(e) {
         e.preventDefault()
         this.props.processForm({username: "user", password: "starwars"})
@@ -35,7 +39,7 @@ class SessionForm extends React.Component {
         let errors;
         if (this.props.errors.length) {
             errors = this.props.errors.map((error, idx) => {
-                return <li key={idx}>{error}</li>
+                return <li className="errors" key={idx}>{error}</li>
             })
         }
         return (
@@ -44,8 +48,8 @@ class SessionForm extends React.Component {
                 <form className="session-form" onSubmit={this.handleSubmit}>
                     <p className="slogan font-black">{this.props.formType}!</p>
 
-                    <input type="text" onChange={this.handleChange("username")} placeholder="Username"/>
-                    <input type="text" onChange={this.handleChange("password")} placeholder="Password"/>
+                    <input type="text" onChange={this.handleChange("username")} placeholder="Username" required/>
+                    <input type="text" onChange={this.handleChange("password")} placeholder="Password" required/>
                     <input className="session-button small long-padding" type="submit" value={this.props.formType} />
                 </form>
                 <ul>

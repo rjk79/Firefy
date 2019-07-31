@@ -11,7 +11,9 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
             )
     )} />
 );
-//go to "/" if you are logged in
+//go to "/home" if you are logged in
+//wont let you stay on form if you are logged in
+//it is a component or a redirect
 
 const mapStateToProps = state => {
     return { loggedIn: Boolean(state.session.id) };
