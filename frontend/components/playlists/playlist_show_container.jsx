@@ -1,4 +1,4 @@
-import {fetchPlaylist} from '../../actions/playlist_actions'
+import {fetchPlaylist, deletePlaylist} from '../../actions/playlist_actions'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import PlaylistShow from './playlist_show'
@@ -21,7 +21,8 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
     return {
-        fetchPlaylist: id => dispatch(fetchPlaylist(id))
+        fetchPlaylist: id => dispatch(fetchPlaylist(id)),
+        deletePlaylist: id => dispatch(deletePlaylist(id))
     }
 }
 

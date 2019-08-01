@@ -1,0 +1,11 @@
+
+.index-playlist-item {
+    opacity: .7;
+    font-size: 14px;
+}
+.index-playlist-item-link {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    font-weight: 400;
+}

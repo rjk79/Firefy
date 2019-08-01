@@ -11,7 +11,11 @@ class PlaylistIndex extends React.Component {
     let playlists = Object.values(this.props.playlists)
     let playlistLinks = playlists.map(playlist => {
         return (
-            <li key={playlist.id} className="index-playlist-item lightup"><NavLink className="list-padding index-playlist-item-link " to={`/playlist/${playlist.id}`}>{playlist.name}</NavLink></li>
+            <li key={playlist.id} className="index-playlist-item lightup">
+                <NavLink className="list-padding index-playlist-item-link " to={`/playlist/${playlist.id}`}>
+                    {playlist.name}
+                </NavLink>
+            </li>
         )
     })
     return (
