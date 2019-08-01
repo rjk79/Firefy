@@ -71,7 +71,7 @@ class SessionForm extends React.Component {
                         {/* <p className="slogan font-black">{this.props.formType}</p> */}
 
                         <input type="text" onChange={this.handleChange("username")} placeholder="Username" required/>
-                        <input type="text" onChange={this.handleChange("password")} placeholder="Password" required/>
+                        <input type="password" onChange={this.handleChange("password")} placeholder="Password" required pattern=".{6,}"/>
                         <input className="session-button small long-padding" type="submit" value={this.props.formType} />
                     </form>
                     <ul>

@@ -75,6 +75,10 @@ time, mark, audio, video {
       text-decoration: none;
       color: white;
   }
+  button:focus {
+    outline: none;
+  }
+
 
   form > * {
       margin: 5px;
@@ -85,13 +89,20 @@ time, mark, audio, video {
       outline: none;
       border: 1px solid rgba(81, 203, 238, 1);
   }
+  input:not(:placeholder-shown) :invalid {
+      border: 5px solid red;
+  }
 /* Reusable classes */
  .errors {
      color: black;
      text-align: center;
  }
  
+/* HOVERS  HOVERS  HOVERS  HOVERS   */
 
+.underlining:hover {
+    text-decoration: underline;
+}
  .lightup {
      opacity: .7;
  }
@@ -105,25 +116,6 @@ time, mark, audio, video {
      border-left: 4px solid rgb(0, 196, 90);
  } */
 
-/* TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT  */
- .centertext {
-     text-align: center;
- }
- .faded {
-     opacity: .7;
- }
-
- .strong {
-    font-weight: 800;
-  }
- .small {
-    font-size: 12px;
-    padding: 10px 20px 10px 20px;
-    font-weight: bold;
- }
- .font-black {
-     color: black;
- }
 
  /* Backgrounds */
  .full-background {
@@ -141,6 +133,9 @@ time, mark, audio, video {
  }
 
  /* Spacing */
+ .list-padding {
+     padding: 10px 20px 10px 20px;
+ }
  .long-padding {
     padding: 10px 50px 10px 50px;
  }
@@ -181,7 +176,7 @@ time, mark, audio, video {
  }
 
  .greeting-bar {
-     background: rgba(0, 0, 0, .7);
+     background: rgba(0, 0, 0, .6);
      
      position: absolute;
      top: 0;
@@ -250,7 +245,7 @@ time, mark, audio, video {
      background-color: black;
      color: white;
      margin: 5px;
-
+     border: 2px solid black;
      box-sizing: border-box;
      height: 35px;
 
@@ -283,6 +278,9 @@ time, mark, audio, video {
     /* text-align: center;  TESTING  */
     flex-direction: column;
  }
+ .top-left-link {
+     position: relative;
+ }
 
  .template-nav-display {
     display: flex;
@@ -294,7 +292,6 @@ time, mark, audio, video {
  .template-player {
     width: 100%;
     height: 15%;
-    background: green;
     display: inherit;
     background: rgb(40, 40, 40);
 
@@ -306,23 +303,28 @@ time, mark, audio, video {
      width: 20%;
      height: 100%;
      background: rgb(7, 15, 15);
+     overflow: hidden;
  }
 
  .template-display {
-    display: inline-block;
-
     width: 80%;
     height: 100%;
     background: url('spotlight_background.png') no-repeat center center fixed;
     background-size: cover;
-    display: inherit;
-   
+    display: flex;
+   flex-direction: column;
  }
-
- .index-playlist {
+ .index-playlist-item {
     opacity: .7;
     font-size: 14px;
+    
+    
  }
+.index-playlist-item-link {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
  
 
  /* Nav bar items */
@@ -334,11 +336,12 @@ time, mark, audio, video {
 .active:before {
     content: "";
     width: 4px;
-    height: 26px;
+    height: 29px;
     background: rgb(0, 196, 90);
     display: block;
     position: absolute;
     left: 5px;
+    top: 3px;
 }
 
 .app-name {
@@ -348,6 +351,28 @@ time, mark, audio, video {
 .nav-link > * {
     display: block;
     width: 100%;
+}
+
+.songli {
+    border-bottom: 1px solid rgb(40, 40, 40);
+    background: none;
+    display: inline-block;
+    width: 100%;
+    /* padding: 5px; */
+}
+.songli-artist-album {
+    font-size: 12px;
+    font-weight: 400;
+    position: relative;
+    top: -7px;
+}
+.playlist-show {
+    display: flex;
+    flex-direction: row;
+}
+.songlist {
+    display: flex;
+    flex-direction: column;
 }
 
 
