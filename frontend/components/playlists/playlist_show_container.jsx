@@ -7,11 +7,11 @@ import PlaylistShow from './playlist_show'
 const msp = (state, ownProps) => {
     let playlistId = ownProps.match.params.playlistId //grab the ID
 
-    fetchPlaylist(playlistId) //populate the state with the playlist and songs
+    // fetchPlaylist(playlistId) //populate the state with the playlist and songs
     
     let playlist = state.entities.playlists[playlistId] //get the playlist within the state
 
-    
+    debugger
     let songs = playlist.song_ids.map(id => 
         state.entities.songs[id]
         
@@ -30,6 +30,7 @@ const mdp = dispatch => {
 
 class PlaylistShowContainer extends React.Component {
     constructor(props){
+        super(props)
         this.state = {playlist: {}}
     }
     componentDidMount(){ 
