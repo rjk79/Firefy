@@ -83,7 +83,7 @@ time, mark, audio, video {
 
   input:focus {
       outline: none;
-      border: 1px solid rgb(81, 203, 238, 1);
+      border: 1px solid rgba(81, 203, 238, 1);
   }
 /* Reusable classes */
  .errors {
