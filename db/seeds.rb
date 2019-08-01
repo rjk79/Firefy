@@ -59,7 +59,7 @@ ed = Playlist.create(user_id: ab.id, name: "Nature Tunes")
 
 fa = Playlisting.create!(song_id: ba.id, playlist_id: ea.id)
 fb = Playlisting.create!(song_id: bb.id, playlist_id: ea.id)
-fc = Playlisting.create!(song_id: ca.id, playlist_id: eb.id)
+fc = Playlisting.create!(song_id: ba.id, playlist_id: eb.id)
 
 ga = Follow.create!(user_id: aa.id, playlist_id: ec.id)
 gb = Follow.create!(user_id: aa.id, playlist_id: ed.id)

@@ -12,6 +12,7 @@ const receiveAllPlaylists = playlists => {
 }
 
 const receivePlaylist = playlist => {
+    debugger
     return {
         type: RECEIVE_PLAYLIST,
         playlist
@@ -47,5 +48,5 @@ export const updatePlaylist = playlist => dispatch => {
 
 export const deletePlaylist = playlist => dispatch => {
     return PlaylistAPIUtil.deletePlaylist(id)
-        .then(playlist => removePlaylist(playlist))
+        .then(playlist => dispatch(removePlaylist(playlist)))
 }

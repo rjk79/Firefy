@@ -1,5 +1,6 @@
 Bugs:
-  
+  get rid of circle background (hidden at all times)
+
 Dead Bugs:
   importing image
 

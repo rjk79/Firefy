@@ -40,11 +40,12 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+    vertical-align: baseline;
+    list-style: none;
 }
-
+/* Generics */
  * {
-     font-family: 'Montserrat', sans-serif; 
+     font-family: Helvetica, sans-serif; 
      color: white;
      /* background: black; */
      font-size: 24px;
@@ -54,17 +55,9 @@ time, mark, audio, video {
      color: black;
  }
 
- @keyframes flicker {
-    0%, 100%{color: white}
-    50%{opacity: 0}
- }
 
- /* html, body {
-    height: 100%;
-    margin: 0;
 
- } */
-
+ /* Tag selectors */
  body {
     height: 100%;
     width: 100%;
@@ -92,12 +85,34 @@ time, mark, audio, video {
       outline: none;
       border: 1px solid rgb(81, 203, 238, 1);
   }
-
+/* Reusable classes */
  .errors {
      color: black;
      text-align: center;
  }
  
+
+ .lightup {
+     opacity: .7;
+ }
+
+ .lightup:hover {
+     opacity: 1.0;
+ }
+/* 
+ li > .active {
+     box-sizing: border-box;
+     border-left: 4px solid rgb(0, 196, 90);
+ } */
+
+/* TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT  */
+ .centertext {
+     text-align: center;
+ }
+ .faded {
+     opacity: .7;
+ }
+
  .strong {
     font-weight: 800;
   }
@@ -106,7 +121,11 @@ time, mark, audio, video {
     padding: 10px 20px 10px 20px;
     font-weight: bold;
  }
+ .font-black {
+     color: black;
+ }
 
+ /* Backgrounds */
  .full-background {
     position: absolute;
     top:40px;
@@ -121,9 +140,7 @@ time, mark, audio, video {
     background: white;
  }
 
- .font-black {
-     color: black;
- }
+ /* Spacing */
  .long-padding {
     padding: 10px 50px 10px 50px;
  }
@@ -140,6 +157,10 @@ time, mark, audio, video {
      align-items: center;
  }
 
+ @keyframes flicker {
+    0%, 100%{color: white}
+    50%{opacity: .3}
+ }
  .flicker {
      animation-name: flicker;
      animation-duration: 5s;
@@ -147,7 +168,7 @@ time, mark, audio, video {
      animation-timing-function: ease-out;
  }
 
-
+/* Splash Page */
 .welcome-banner {
     margin: auto;
     width: 50%;
@@ -187,12 +208,15 @@ time, mark, audio, video {
      z-index: 1;
  }
 
- .session-button:hover {
-    cursor: pointer;
-    filter: brightness(115%);
-
+ .full-form {
+     width: 50%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     margin: auto;
  }
-
+ 
  .session-form {
      margin: auto;
      display: flex;
@@ -201,19 +225,49 @@ time, mark, audio, video {
      align-items: center;
      width: 50%;
      margin-top: 15%;
- }
- 
-  .session-button {
-     background: rgb(0, 196, 90);
+    }
+
+.session-button {
+    background: rgb(0, 196, 90);
+    border-radius: 50px;
+    border: none;
+    letter-spacing: 2px;
+    transition: filter .3s;
+    text-transform: uppercase;
+}
+.session-button:hover {
+    cursor: pointer;
+    filter: brightness(115%);
+
+}
+
+  .bw-button {
      border-radius: 50px;
-     border: none;
      letter-spacing: 2px;
-     transition: filter .3s;
      text-transform: uppercase;
+     transition: border .3s, background-color .3s, color .3s;
+     border: none;
+     background-color: black;
+     color: white;
+     margin: 5px;
+
+     box-sizing: border-box;
+     height: 35px;
+
   }
-  .session-button:hover {
-      filter: brightness(115%);
-  }
+ .bw-button:hover {
+     border: 2px solid black;
+     background-color: white;
+     color: black;
+
+     box-sizing: border-box;
+     height: 35px;
+
+ }
+
+.demo-button {
+    background: rgb(0, 169, 218);
+}
 
  .slogan {
      font-size: 50px;
@@ -221,28 +275,20 @@ time, mark, audio, video {
      margin: 10px;
  }
 
+ /* Home Page */
  .template {
     height: 100vh;
     width: 100vw;
-    display: inline-block;
-    text-align: center;  /* TESTING */ 
- 
- }
- .template-navbar {
-     width: 20%;
-     height: 85%;
-     background: red;
-     display: inherit;
-     opacity: .5;
-
+    display: flex;
+    /* text-align: center;  TESTING  */
+    flex-direction: column;
  }
 
- .template-display {
-    width: 80%;
+ .template-nav-display {
+    display: flex;
     height: 85%;
-    background: blue;
-    display: inherit;
-    opacity: .5;
+    width: 100%;
+    flex-direction: row;
  }
 
  .template-player {
@@ -250,6 +296,58 @@ time, mark, audio, video {
     height: 15%;
     background: green;
     display: inherit;
-    opacity: .5;
+    background: rgb(40, 40, 40);
 
  }
+
+ .template-navbar {
+    display: inline-block;
+
+     width: 20%;
+     height: 100%;
+     background: rgb(7, 15, 15);
+ }
+
+ .template-display {
+    display: inline-block;
+
+    width: 80%;
+    height: 100%;
+    background: url('spotlight_background.png') no-repeat center center fixed;
+    background-size: cover;
+    display: inherit;
+   
+ }
+
+ .index-playlist {
+    opacity: .7;
+    font-size: 14px;
+ }
+ 
+
+ /* Nav bar items */
+ .invisbutton {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.active:before {
+    content: "";
+    width: 4px;
+    height: 26px;
+    background: rgb(0, 196, 90);
+    display: block;
+    position: absolute;
+    left: 5px;
+}
+
+.app-name {
+    font-size: 28px;
+}
+
+.nav-link > * {
+    display: block;
+    width: 100%;
+}
+
+

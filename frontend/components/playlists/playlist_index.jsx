@@ -1,20 +1,25 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class PlaylistIndex extends React.Component {
-
+//add conditional using history.push
     componentDidMount(){
         this.props.fetchAllPlaylists()
     }
     render() {
-    let playlists = this.props.playlists.map(playlist => (
-        <li>{playlist.name}</li>
-    ))
+        
+    let playlists = Object.values(this.props.playlists)
+    let playlistLinks = playlists.map(playlist => {
+        return (
+            <li key={playlist.id} className="index-playlist lightup"><Link to={`playlist/${playlist.id}`}>{playlist.name}</Link></li>
+        )
+    })
     return (
         <ul>
-            {playlists}
+            {playlistLinks}
         </ul>
     )
+            }
     }
-}
 
 export default PlaylistIndex

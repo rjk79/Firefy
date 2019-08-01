@@ -1,5 +1,6 @@
 json.playlist do
-    json.extract! @playlist, :name
+    json.extract! @playlist, :id, :name
+    json.song_ids @playlist.songs.pluck(:id)
 end
 
 
@@ -10,3 +11,5 @@ json.songs do
         end
     end
 end
+
+# pluck is opposite of set in terms of interpol
