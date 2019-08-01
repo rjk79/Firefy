@@ -11,7 +11,7 @@ const msp = (state, ownProps) => {
     
     let playlist = state.entities.playlists[playlistId] //get the playlist within the state
 
-    debugger
+    
     let songs = playlist.song_ids.map(id => 
         state.entities.songs[id]
         
