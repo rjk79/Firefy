@@ -1,0 +1,27 @@
+.playlist-delete-button {
+    font-size: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    margin: auto;
+    text-align: center;
+}
+.deleting:hover span{
+   display: none;
+}
+.deleting:hover:before {
+    font-size: 14px;
+    content: "Delete"
+}
+
+.playlist-show-name {
+    text-align: center;
+    font-size: 28px;
+}
+
+.playlist-title-delete {
+    margin-left: 10%;
+    margin-right: 10%;
+}

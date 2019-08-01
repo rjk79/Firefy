@@ -6,6 +6,12 @@ Dead Bugs:
   CSS - nav bar "before" elems, BW button changes
   playlist show- compdidUpdate, Mount, and Msp, remove class from container
 
+  green bar
+
+Re-render:
+  its state changes
+  its props change
+  parent changes
 
 npm install
 bundle install
