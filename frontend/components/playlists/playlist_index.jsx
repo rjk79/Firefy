@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 class PlaylistIndex extends React.Component {
 //add conditional using history.push
@@ -11,11 +11,11 @@ class PlaylistIndex extends React.Component {
     let playlists = Object.values(this.props.playlists)
     let playlistLinks = playlists.map(playlist => {
         return (
-            <li key={playlist.id} className="index-playlist lightup"><Link to={`playlist/${playlist.id}`}>{playlist.name}</Link></li>
+            <li key={playlist.id} className="index-playlist-item lightup"><NavLink className="list-padding index-playlist-item-link " to={`/playlist/${playlist.id}`}>{playlist.name}</NavLink></li>
         )
     })
     return (
-        <ul>
+        <ul className="songlist">
             {playlistLinks}
         </ul>
     )

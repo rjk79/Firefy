@@ -17,7 +17,7 @@ class Greeting extends React.Component {
             (
                 <>
                 <div className="greeting-logout">
-                    <h1>Welcome, {name}</h1>
+                    <h1 className="medium">Welcome, {name}</h1>
                     <Link to="/" className="session-button small" onClick={this.handleClick}>
                         Log Out
                     </Link>

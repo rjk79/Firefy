@@ -1,0 +1,28 @@
+
+/* TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT  */
+ .centertext {
+     text-align: center;
+ }
+ .faded {
+     opacity: .7;
+ }
+
+ .strong {
+    font-weight: 800;
+  }
+ .small {
+    font-size: 12px;
+    padding: 10px 20px 10px 20px;
+    font-weight: bold;
+ }
+ .medium {
+     font-size: 14px;
+ }
+ .font-black {
+     color: black;
+     font-weight: bold;
+ }
+
+ .bold {
+     font-weight: bold;
+ }

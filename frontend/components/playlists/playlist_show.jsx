@@ -3,23 +3,31 @@ import React from 'react'
 
 class PlaylistShow extends React.Component {
     componentDidMount() {
-        let playlistId = this.props.match.params.playlistId
+        let playlistId = this.props.match.params.playlistId        
         this.props.fetchPlaylist(playlistId)
+    }
+    componentDidUpdate(prevProps){
+        if (this.props.match.params.playlistId != prevProps.match.params.playlistId) {
+            let playlistId = this.props.match.params.playlistId
+            this.props.fetchPlaylist(playlistId)
+        }
     }
 
     render() {
-        let songs = this.props.songs || []
-        let playlist = this.props.playlist || { name: "" }
-        let songLis = songs.map(song =>
-            <li>{song.title}</li>
-        )
+        let songLis;
+        if (this.props.songs){         
+            songLis = this.props.songs.map((song, idx) =>
+            <li key={idx} className="black-background songli medium">
+                {song.title}<br/><div className="songli-artist-album faded underlining">{song.artist}-{song.album}</div>
+            </li>
+        )}
         return (
-            <>
-                <h1>{playlist.name}</h1>
+            <div className="playlist-show">
+                <h2 className="slogan">{this.props.playlist.name}</h2>
                 <ul>
                     {songLis}
                 </ul>
-            </>
+            </div>
         )
     }
 }

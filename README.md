@@ -3,6 +3,9 @@ Bugs:
 
 Dead Bugs:
   importing image
+  CSS - nav bar "before" elems, BW button changes
+  playlist show- compdidUpdate, Mount, and Msp, remove class from container
+
 
 npm install
 bundle install

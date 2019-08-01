@@ -11,16 +11,12 @@ const Template = props => {
                     <div className="nav-links">
                         <ul>
                             <li className="app-name flicker">Firefy</li>
-                            <li className="nav-link lightup small"><NavLink to="/home">Home</NavLink></li>
-                            <li className="nav-link lightup small"><NavLink to="/search">Search</NavLink></li>
-                            <li className="nav-link lightup small"><NavLink to="/library">Library</NavLink></li>
+                            <li className="nav-link lightup small top-left-link bold"><NavLink to="/home">Home</NavLink></li>
+                            <li className="nav-link lightup small top-left-link bold"><NavLink to="/search">Search</NavLink></li>
+                            <li className="nav-link lightup small top-left-link bold"><NavLink to="/library">Library</NavLink></li>
                             <li className="faded small centertext">Playlists</li>
                             <li className="lightup small"><button className="invisbutton small">+ Create Playlist</button></li>
                         </ul>
-                        
-                        
-                        
-                        
                         
                         {/* <PlaylistForm/> */}
                     </div>
@@ -28,7 +24,7 @@ const Template = props => {
                 </div>
 
 
-                <div className="template-display">All the Songs
+                <div className="template-display">Dashboard
                     <Switch>
                         <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
                     </Switch>
@@ -36,7 +32,7 @@ const Template = props => {
             </div>
            
                 <div className="template-player">The audio player</div>
-           
+                
         </div>
     )
 }
