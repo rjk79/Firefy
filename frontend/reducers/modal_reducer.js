@@ -1,13 +1,15 @@
 import {merge} from 'lodash'
-const modalReducer = (state = {}, action) => {
+import { CLOSE_MODAL, OPEN_MODAL } from '../actions/modal_actions';
+
+const modalReducer = (state = null, action) => {
     Object.freeze(state)
-    switch (action.) {
-        case value:
-            
-            break;
-    
+    switch (action.type) {
+        case CLOSE_MODAL:
+            return null;
+        case OPEN_MODAL:
+            return action.modal
         default:
-            break;
+            return state;
     }
 }
 

@@ -179,38 +179,6 @@ time, mark, audio, video {
     text-align: center;
 }
 
- .greeting-link {
-     margin: 5px;
- }
-
- .greeting-bar {
-     background: rgba(0, 0, 0, .6);
-     
-     position: absolute;
-     top: 0;
-     width: 100%
- }
-
- .greeting-separator {
-     width: 70%;
- }
-
- .greeting-buttons {
-     display: flex;
-     justify-content: flex-end;
-     align-items: center;
- }
-
- .greeting-link:hover {
-     color: rgb(0, 196, 90);
- }
-
- .greeting-logout {
-     position: absolute;
-     top: 75%;
-     z-index: 1;
- }
-
  .full-form {
      width: 50%;
      display: flex;
@@ -314,6 +282,8 @@ time, mark, audio, video {
 
 .app-name {
     font-size: 28px;
+    margin-left: 5%;
+    margin-top: 5%;
 }
 
 .nav-link > * {

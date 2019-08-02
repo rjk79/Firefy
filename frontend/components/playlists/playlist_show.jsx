@@ -28,7 +28,7 @@ class PlaylistShow extends React.Component {
             <li key={idx} className="songli medium">
                 {song.title}
                 <br/>
-                <div className="songli-artist-album faded underlining">{song.artist}-{song.album}</div>
+                <div className="songli-artist-album faded underlining">{song.artist} - {song.album}</div>
                 <button className="songli-ell lightup">...</button>
             </li>
         )}
