@@ -30,7 +30,9 @@ class PlaylistForm extends React.Component {
                             className="playlist-name-input" 
                             type="text" value={this.state.name} 
                             onChange={this.handleChange("name")}
-                            placeholder="New Playlist"/>
+                            placeholder="New Playlist"
+                            autofocus=""
+                            />
                     <br/>
                     </div>
                     <input className="session-button playlist-form-button long-padding" 

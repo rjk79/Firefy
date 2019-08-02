@@ -311,6 +311,8 @@ time, mark, audio, video {
 .songlist {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+    height: 45%;
 }
 
 
