@@ -6,7 +6,8 @@
     cursor: pointer;
     width: 40px;
     margin: auto;
-    text-align: center;
+    vertical-align: default;
+
 }
 .deleting:hover span{
    display: none;
@@ -19,9 +20,48 @@
 .playlist-show-name {
     text-align: center;
     font-size: 28px;
+    padding: 10px;
 }
 
 .playlist-title-delete {
     margin-left: 10%;
     margin-right: 10%;
+}
+.songli {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+.songli:hover {
+    background: rgba(0, 0, 0, .3)
+}
+.songli-artist-album {
+  display: inline-block;
+}
+.songli-ell {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 1px;
+  top: 0;
+}
+
+.playlist-artwork {
+    height: 350px;
+    width: 350px;
+    margin: auto;
+    padding: 10px;
+}
+
+.playlist-songlist {
+    padding: 10px;
+}
+
+.song-quantity {
+    font-size: 14px;
+    text-align: center;
+    font-weight: 300;
 }

@@ -17,7 +17,7 @@ class Greeting extends React.Component {
             (
                 <>
                 <div className="greeting-logout">
-                    <h1 className="medium">Welcome, {name}</h1>
+                    <h1 className="medium">{name}</h1>
                     <Link to="/" className="session-button small" onClick={this.handleClick}>
                         Log Out
                     </Link>
@@ -27,8 +27,9 @@ class Greeting extends React.Component {
                 <>
                     <div className = "greeting-bar">  
                         <div className ="greeting-buttons"> 
-                            <img src="/assets/bw_logo.png" />   
-                            <Link to="/"> Firefy </Link>
+                            {/* <img src="/assets/bw_logo.png" />    */}
+                            <img src="assets/firefly_logo.png" alt="Logo Img" />
+                            <Link to="/">Firefy</Link>
                             <i className="greeting-separator"></i>
                             <Link className="greeting-link small" to="/signup">Sign Up</Link>
                             <Link className="greeting-link small" to="/login">Log In</Link>

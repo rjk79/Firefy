@@ -9,6 +9,11 @@
     
     <%= stylesheet_link_tag    'application', media: 'all' %>
 
+    <script type="text/javascript">
+      window.playlist_artworkURL = "<%= image_url('playlist_artwork.jpg') %>"
+      window.firefly_logoURL = "<%= image_url('firefly_logo.png') %>"
+    </script> 
+
     <%= javascript_include_tag 'application' %>
     <% if logged_in? %>
       <script type="text/javascript">
