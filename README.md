@@ -1,13 +1,18 @@
 Bugs:
   get rid of circle background (hidden at all times)
   vertical aligns
+  green bar
+
 
 Dead Bugs:
   importing image
   CSS - nav bar "before" elems, BW button changes
   playlist show- compdidUpdate, Mount, and Msp, remove class from container
 
-  green bar
+  
+  alternate fonts:
+
+  Montserrat bold and 800
 
 Re-render:
   its state changes
