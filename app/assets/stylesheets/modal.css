@@ -65,6 +65,9 @@
   color: rgb(86, 86, 86);
   font-weight: 700;
 }
+.playlist-name-input:focus {
+  outline: 5px solid rgb(45, 45, 45);
+}
 
 .playlist-name-input-label {
   position: relative;
