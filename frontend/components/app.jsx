@@ -6,8 +6,11 @@ import { AuthRoute } from '../util/route_util'
 import { Route, Switch } from 'react-router-dom'
 import WelcomeContainer from './welcome/welcome_container'
 import Template from './template'
+import Modal from './modal'
+
 const App = () => (
   <div>
+    <Modal/>
     <GreetingContainer /> 
     <Switch>
 

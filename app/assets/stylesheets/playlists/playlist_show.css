@@ -27,6 +27,7 @@
     margin-left: 10%;
     margin-right: 10%;
 }
+
 .songli {
     display: inline-block;
     width: 100%;
@@ -58,6 +59,7 @@
 
 .playlist-songlist {
     padding: 10px;
+    width: 100%;
 }
 
 .song-quantity {

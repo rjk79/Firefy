@@ -5,6 +5,15 @@ class Greeting extends React.Component {
     constructor(props) {
         super(props)
         this.handleClick = this.handleClick.bind(this)
+        this.handleClickOnName = this.handleClickOnName.bind(this)
+        this.state = {
+            popupShowing: false
+        }
+    }
+    handleClickOnName() {
+        return this.setState({
+            popupShowing: !this.state.popupShowing
+        })
     }
 
     handleClick() {
@@ -12,15 +21,24 @@ class Greeting extends React.Component {
     }
 
     render() {
+        
+        let popup = this.state.popupShowing ? 
+            <div className="greeting-popup">
+                <Link to="/" className="small faded lightup" onClick={this.handleClick}> 
+                    Log Out
+                </Link> 
+            </div>
+                : null
+            
+
         const name = this.props.currentUser ? this.props.currentUser.username : ""
         return this.props.currentUser ?
             (
                 <>
                 <div className="greeting-logout">
-                    <h1 className="medium">{name}</h1>
-                    <Link to="/" className="session-button small" onClick={this.handleClick}>
-                        Log Out
-                    </Link>
+                    <hr className="greeting-hr"/>
+                    <button className="medium greeting-name" onClick={this.handleClickOnName}>{name}</button>
+                    {popup}
                 </div>
                 </>
             ) : (

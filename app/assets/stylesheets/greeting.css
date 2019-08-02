@@ -1,0 +1,55 @@
+
+ .greeting-link {
+     margin: 5px;
+ }
+
+ .greeting-bar {
+     background: rgba(0, 0, 0, .6);
+     
+     position: absolute;
+     top: 0;
+     width: 100%
+ }
+
+ .greeting-separator {
+     width: 70%;
+ }
+
+ .greeting-buttons {
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+ }
+
+ .greeting-link:hover {
+     color: rgb(0, 196, 90);
+ }
+
+ .greeting-logout {
+     position: absolute;
+     top: 75%;
+     z-index: 1;
+     width: 20%;
+ }
+
+.greeting-name {
+    position: relative;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.greeting-popup {
+    position: absolute;
+    bottom: 40%;
+    left: 0;
+    height: 36px;
+    width: 200px;
+    background: rgb(0, 0, 0, .9);
+}
+.greeting-hr {
+    width: 80%;
+    opacity: 0.5;
+}

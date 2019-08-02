@@ -1,0 +1,73 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.playlist-form-div {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.playlist-form-div > form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playlist-form {
+    background: rgb(45, 45, 45);
+    height: 20vh;
+}
+.playlist-form-button {
+  font-size: 11px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  width: 15%;
+}
+
+.cancel-button {
+  background: rgb(45, 45, 45);
+  border: 2px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  font-size: 11px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  width: 15%;
+}
+
+.playlist-name-input {
+  width: 100vw;
+  height: 7vh;
+  background: rgb(45, 45, 45);
+  border: none;
+  color: white !important;
+  font-size: 48px;
+  margin: 5vh 0 5vh 0;
+  font-weight: 500;
+}
+.playlist-name-input::placeholder {
+  color: rgb(86, 86, 86);
+  font-weight: 700;
+}
+
+.playlist-name-input-label {
+  position: relative;
+  letter-spacing: 2px;
+}
+

@@ -2,6 +2,8 @@ Bugs:
   get rid of circle background (hidden at all times)
   vertical aligns
   green bar
+  log out doesnt work on hard refresh
+  list items in playlist... https://medium.com/@codenode/10-tips-for-eager-loading-to-avoid-n-1-queries-in-rails-2bad54456a3f
 
 
 Dead Bugs:
@@ -22,6 +24,31 @@ Re-render:
 npm install
 bundle install
 db:setup
+
+2 DAYS DOWN
+8
+
+X HEROKU
+
+X AUTH
+
+PLAYLIST AND SONGS CRUD 2
+  AWS
+  MODAL
+  DRAG AND DROP
+  n + 1 clean up
+
+SEARCH 1
+
+CONTINUOUS PLAY 1
+
+FOLLOW 1
+
+FRIENDS
+
+bonuses
+  radio play
+  inline errors
 
 
 

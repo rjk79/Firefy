@@ -3,6 +3,7 @@ import PlaylistIndexContainer from './playlists/playlist_index_container'
 import {Switch, Route, NavLink} from 'react-router-dom'
 import PlaylistShowContainer from './playlists/playlist_show_container'
 import MusicplayerComponent from './musicplayer'
+import CreatePlaylistComponent from './create_playlist_component';
 
 const Template = props => {
     return (
@@ -17,12 +18,7 @@ const Template = props => {
                             <li className="nav-link lightup small top-left-item bold"><NavLink to="/library">Library</NavLink></li>
                             <li className="faded playlists-label">Playlists</li>
                             <li className="lightup small">
-                                <button className="invisbutton create-playlist-button">
-                                    <div className="plusbutton faded">
-                                        +
-                                    </div>
-                                    Create Playlist
-                                </button>
+                                <CreatePlaylistComponent />
                             </li>
                         </ul>
                         
@@ -32,7 +28,8 @@ const Template = props => {
                 </div>
 
 
-                <div className="template-display">Dashboard
+                <div className="template-display">
+                <div className="template-display-spacer"></div>
                     <Switch>
                         <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
                     </Switch>
