@@ -50,10 +50,10 @@ bh = Song.create!(title: "Static", album_id: cg.id)
 
 
 
-ea = Playlist.create(user_id: aa.id, name: "Summer Sounds")
-eb = Playlist.create(user_id: aa.id, name: "Winter Whimsies")
+ea = Playlist.create(user_id: aa.id, name: "Sounds of Summer")
+eb = Playlist.create(user_id: aa.id, name: "Popular Jams")
 ec = Playlist.create(user_id: ab.id, name: "Beach Blues")
-ed = Playlist.create(user_id: ab.id, name: "Nature Tunes")
+ed = Playlist.create(user_id: ab.id, name: "Throwback Twists")
 
 #########################################################################
 

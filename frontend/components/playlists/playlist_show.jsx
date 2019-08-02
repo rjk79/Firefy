@@ -25,21 +25,24 @@ class PlaylistShow extends React.Component {
         let songLis;
         if (this.props.songs){         
             songLis = this.props.songs.map((song, idx) =>
-            <li key={idx} className="black-background songli medium">
+            <li key={idx} className="songli medium">
                 {song.title}
                 <br/>
                 <div className="songli-artist-album faded underlining">{song.artist}-{song.album}</div>
+                <button className="songli-ell lightup">...</button>
             </li>
         )}
         return (
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
+                <img className="playlist-artwork" src="assets/playlist_artwork.jpg" alt="Playlist Artwork"/>
                 <h2 className="playlist-show-name">{this.props.playlist.name}</h2>
+                <p className="song-quantity faded">{this.props.songs.length} songs</p>
                 <button className="playlist-delete-button deleting" onClick={this.deletePlaylist}>
                     <span>...</span>
                 </button>
               </div>
-                <ul>
+                <ul className="playlist-songlist">
                     {songLis}
                 </ul>
             </div>

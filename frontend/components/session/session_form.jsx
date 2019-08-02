@@ -30,7 +30,7 @@ class SessionForm extends React.Component {
 
     handleDemoClick(e) {
         e.preventDefault()
-        this.props.processForm({username: "user", password: "starwars"})
+        this.props.processForm({username: "Guest", password: "password"})
     }
 
     render() {
