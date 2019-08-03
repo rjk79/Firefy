@@ -8,4 +8,6 @@ class Song < ApplicationRecord
     has_one :artist,
         through: :album,
         source: :artist
+
+    has_one_attached :audio
 end

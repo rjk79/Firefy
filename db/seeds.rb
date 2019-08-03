@@ -17,6 +17,16 @@ Follow.destroy_all
 Friendship.destroy_all
 
 
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.reset_pk_sequence!('songs')
+ActiveRecord::Base.connection.reset_pk_sequence!('albums')
+ActiveRecord::Base.connection.reset_pk_sequence!('artists')
+ActiveRecord::Base.connection.reset_pk_sequence!('playlists')
+ActiveRecord::Base.connection.reset_pk_sequence!('playlistings')
+ActiveRecord::Base.connection.reset_pk_sequence!('follows')
+ActiveRecord::Base.connection.reset_pk_sequence!('friendships')
+
+
 aa = User.create!(username: "Guest", password: "password")
 ab = User.create!(username: "user", password: "starwars")
 ac = User.create!(username: "Bob", password: "orange")
@@ -65,6 +75,8 @@ fe = Playlisting.create!(song_id: bd.id, playlist_id: ea.id)
 ff = Playlisting.create!(song_id: be.id, playlist_id: ea.id)
 fg = Playlisting.create!(song_id: bh.id, playlist_id: ec.id)
 fh = Playlisting.create!(song_id: bf.id, playlist_id: ec.id)
+fi = Playlisting.create!(song_id: bg.id, playlist_id: eb.id)
+fj = Playlisting.create!(song_id: bh.id, playlist_id: eb.id)
 
 ga = Follow.create!(user_id: aa.id, playlist_id: ec.id)
 gb = Follow.create!(user_id: aa.id, playlist_id: ed.id)

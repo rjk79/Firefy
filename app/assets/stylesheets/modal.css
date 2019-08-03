@@ -60,6 +60,11 @@
   width: 15%;
   text-align: center;
 }
+.cancel-button:hover {
+  background: rgb(255, 255, 255);
+  border: 2px solid black;
+  color: black;
+}
 
 .playlist-name-input {
   width: 100%;
