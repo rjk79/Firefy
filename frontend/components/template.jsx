@@ -12,7 +12,7 @@ const Template = props => {
                 <div className="template-navbar">
                     <div className="nav-links">
                         <ul>
-                            <li className="app-name flicker"><Link to="/home"><img src="assets/firefly_logo.png" alt="Logo Img" />Firefy</Link></li>
+                            <li className="app-name flicker"><Link to="/home"><img className="navbar-firefy-logo" src={window.firefly_logoURL} alt="Logo Img" />Firefy</Link></li>
                             <li className="nav-link lightup small top-left-item bold"><NavLink to="/home">Home</NavLink></li>
                             <li className="nav-link lightup small top-left-item bold"><NavLink to="/search">Search</NavLink></li>
                             <li className="nav-link lightup small top-left-item bold"><NavLink to="/library">Library</NavLink></li>

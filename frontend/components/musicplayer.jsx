@@ -9,13 +9,13 @@ class Musicplayer extends React.Component {
                 <div className="audio-controls faded">
                     <div className="audio-control-buttons">
                         <div className="back-button">
-                            <img className="audio-button-img" src="assets/controls_sprite.png" alt="Controls Img" />
+                                <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                         </div>
                         <div className="play-button">   
-                            <img className="audio-button-img" src="assets/controls_sprite.png" alt="Controls Img" /> 
+                                <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" /> 
                         </div>
                         <div className="forward-button">
-                            <img className="audio-button-img" src="assets/controls_sprite.png" alt="Controls Img" />
+                                <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                         </div>
                     </div>
                 </div>

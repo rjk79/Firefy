@@ -165,7 +165,7 @@ html {
 
  @keyframes flicker {
     0%, 100%{color: white}
-    50%{opacity: .3}
+    50%{opacity: .1}
  }
  .flicker {
      animation-name: flicker;
@@ -182,6 +182,12 @@ html {
     text-align: center;
 }
 
+/* .get-firefy-button {
+    margin-top: 10px;
+} */
+.splash-logo {
+    margin: 10px;
+}
  .full-form {
      width: 50%;
      display: flex;
@@ -189,6 +195,8 @@ html {
      justify-content: center;
      align-items: center;
      margin: auto;
+     margin-top: 10%;
+     height: 56%;
  }
  
  .session-form {
@@ -198,7 +206,8 @@ html {
      justify-items: center;
      align-items: center;
      width: 50%;
-     margin-top: 15%;
+     height: 50%;
+
     }
 
 .session-button {
@@ -208,6 +217,7 @@ html {
     letter-spacing: 2px;
     transition: filter .3s;
     text-transform: uppercase;
+    padding: 15px;
 }
 .session-button:hover {
     cursor: pointer;
@@ -215,28 +225,28 @@ html {
 
 }
 
-  .bw-button {
+.bw-button {
      border-radius: 50px;
      letter-spacing: 2px;
      text-transform: uppercase;
      transition: border .3s, background-color .3s, color .3s;
-     border: none;
-     background-color: black;
-     color: white;
      margin: 5px;
-     border: 2px solid black;
-     box-sizing: border-box;
-     height: 35px;
 
-  }
- .bw-button:hover {
      border: 2px solid black;
      background-color: white;
      color: black;
-
      box-sizing: border-box;
      height: 35px;
 
+
+  }
+ .bw-button:hover {
+
+     background-color: black;
+     color: white;
+     border: 2px solid black;
+     box-sizing: border-box;
+     height: 35px;
  }
 
 .demo-button {
@@ -319,3 +329,6 @@ html {
 }
 
 
+.plusbutton {
+    vertical-align: middle;
+}

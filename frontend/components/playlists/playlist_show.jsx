@@ -39,7 +39,7 @@ class PlaylistShow extends React.Component {
         return (
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
-                <img className="playlist-artwork" src="assets/playlist_artwork.jpg" alt="Playlist Artwork"/>
+                    <img className="playlist-artwork" src={window.playlist_artworkURL} alt="Playlist Artwork"/>
                 <h2 className="playlist-show-name">{this.props.playlist.name}</h2>
                 <p className="song-quantity faded">{this.props.songs.length} songs</p>
                 <button className="playlist-delete-button deleting" onClick={this.deletePlaylist}>

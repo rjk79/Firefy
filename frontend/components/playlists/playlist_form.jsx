@@ -22,6 +22,10 @@ class PlaylistForm extends React.Component {
     }
     render(){
         return(
+            <>
+            <div className="modal-big-x" onClick={this.handleClickforCancel}>x</div>
+            <div className="modal-title-create">Create new playlist</div>
+            
             <div className="playlist-form-div">
                 <form onSubmit={this.handleSubmit}>
                     <div className="playlist-form">
@@ -42,6 +46,7 @@ class PlaylistForm extends React.Component {
                 </form>
                 <button className="cancel-button long-padding" onClick={this.handleClickforCancel}>Cancel</button>
             </div>
+            </>
         )
     }
 }

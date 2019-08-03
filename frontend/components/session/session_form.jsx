@@ -36,9 +36,10 @@ class SessionForm extends React.Component {
     render() {
         let demoButton = this.props.formType === "Log In" ? 
             <>
-            <button className="session-button small long-padding bw-button" onClick={this.handleDemoClick}>
+                <button className="session-button small long-padding facebook-button" onClick={this.handleDemoClick}>
                 Demo Log In
-            </button>
+                </button>
+                <div className="session-form-or">OR</div>
             </>
             : null;
 
@@ -51,13 +52,13 @@ class SessionForm extends React.Component {
         let signupButton = this.props.formType === "Log In" ? 
         <> 
             <br/>
-            <p className="font-black small">Not already a member?</p>
+            <p className="font-black small">Don't have an account?</p>
             <Link to="/signup" className="bw-button small long-padding" >
             Sign Up
             </Link> 
         </>:<>
             <br/>
-            <p className="font-black small">Already a member?</p>
+            <p className="font-black small">Already have an account?</p>
             <Link to="/login" className="bw-button small long-padding" >
                 Log In
             </Link> 
@@ -67,20 +68,23 @@ class SessionForm extends React.Component {
             <>
               <div className="full-background white-background">
                 <div className="full-form">
+                        <div className="session-form-firefy"><div className="session-form-logo"><img src={window.firefly_logoURL} alt="Logo Img" /></div>
+                            Firefy
+                        </div>
+                        <hr className="black-line"/>
+                        {demoButton}
+                        
                     <form className="session-form" onSubmit={this.handleSubmit}>
                         {/* <p className="slogan font-black">{this.props.formType}</p> */}
 
                         <input className="username-input" type="text" onChange={this.handleChange("username")} placeholder="Username" required/>
                             <input className="password-input" type="password" onChange={this.handleChange("password")} placeholder="Password" required/>
-                        <input className="session-button small long-padding" type="submit" value={this.props.formType} />
+                        <input className="session-button small long-padding signup-login-button" type="submit" value={this.props.formType} />
                     </form>
                     <ul>
                         {errors}
                     </ul>
                     {signupButton}
-                    <div className="center">
-                    {demoButton}
-                    </div>
                 </div>
               </div>
             </>

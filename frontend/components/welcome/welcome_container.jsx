@@ -8,7 +8,7 @@ const welcomeContainer = (props) => {
             <div className="welcome-banner">
                 <p className="slogan flicker">Music for everyone.</p>
                 <p className="small">Millions of songs. No credit card needed.</p>  
-                <Link to="/signup" className="session-button small">   GET FIREFY FREE   </Link> 
+            <Link to="/signup" className="session-button small">   GET FIREFY FREE   </Link> 
             </div>
           </div>
         </>

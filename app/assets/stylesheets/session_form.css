@@ -1,10 +1,53 @@
-.username-input {
-    width: 130%;
-    height: 70%;
+.username-input, .password-input {
+    width: 385px;
+    height: 45px;
+    padding: 5px;
+}
+.username-input, .password-input ::placeholder {
+    color: rgb(119,119, 119);
+    padding: 5px;
 }
 
-.password-input {
-    width: 130%;
-    height: 70%;
 
+
+.password-input:focus::placeholder, .username-input:focus::placeholder {
+    color: rgb(193, 195, 198);
+}
+
+.signup-login-button {
+    width: 290px;
+    height: 45px;
+}
+
+.session-form-firefy {
+    font-size: 48px;
+    color: black;
+    font-weight: bolder;
+    
+}
+.session-form-logo {
+    background: black;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 5px;
+    vertical-align: bottom;
+}
+.facebook-button {
+    background: rgb(59 ,87 ,149) !important;
+    width: 290px;
+}
+.session-form-logo img {
+    margin: 24%;
+    position: relative;
+}
+.black-line {
+    
+}
+
+.session-form-or {
+    color: black;
+    font-size: 10px;
+    padding: 10px 0px;
 }

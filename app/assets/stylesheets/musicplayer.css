@@ -44,7 +44,7 @@
     position: relative;
     /* background: blue; */
 
-    height: 50px;
+    height: 45px;
     width: 50px;
 
    
@@ -68,9 +68,6 @@
     min-height: 140px;
 }
 
-.audio-control-buttons img:hover {
-    top: -48px;
-}
 
 .back-button img {
     position: absolute;
@@ -81,12 +78,33 @@
 .play-button img {
     position: absolute;
 
-     top: -45px;
+    top: -49px;
     right: -52px;
 }
 
 .forward-button img {
     position: absolute;
+
     top: -59px;
+    right: -12px;
+}
+/* button hovers */
+.back-button img:hover {
+    position: absolute;
+
+    top: -106px;
+    right: -118px;
+}
+
+.play-button img:hover {
+    position: absolute;
+
+    top: -94px;
+    right: -52px;
+}
+
+.forward-button img:hover {
+    position: absolute;
+    top: -105px;
     right: -12px;
 }
