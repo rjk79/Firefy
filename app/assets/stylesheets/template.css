@@ -1,6 +1,6 @@
  .template {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: flex;
     /* text-align: center;  TESTING  */
     flex-direction: column;
@@ -38,10 +38,16 @@
  .template-display {
     width: 80%;
     height: 100%;
-    background: url('spotlight_background.png') no-repeat center center fixed;
-    background-size: cover;
+    /* background: url('spotlight_background.png') no-repeat center center fixed; */
+    /* background-size: cover; */
     display: flex;
     flex-direction: column;
+ }
+ .spotlight-background {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
  }
 
  .playlists-label {

@@ -43,11 +43,13 @@ class Greeting extends React.Component {
                 </>
             ) : (
                 <>
-                    <div className = "greeting-bar">  
-                        <div className ="greeting-buttons"> 
+                    <div className = "greeting-bar"> 
+                        <div className="greeting-logoname">
                             <img src={window.firefly_logoURL} alt="Img" />
                             <Link className="splash-logo" to="/">Firefy</Link>
-                            <i className="greeting-separator"></i>
+                        </div> 
+                        <div className="greeting-buttons"> 
+                            {/* <i className="greeting-separator"></i> */}
                             <Link className="greeting-link small" to="/signup">Sign Up</Link>
                             <Link className="greeting-link small" to="/login">Log In</Link>
                         </div>

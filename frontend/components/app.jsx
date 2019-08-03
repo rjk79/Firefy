@@ -9,7 +9,8 @@ import Template from './template'
 import Modal from './modal'
 
 const App = () => (
-  <div>
+  <div className="primary-app-div">
+    <img className="splash-background" src={window.splash_backgroundURL} alt="splash"/>
     <Modal/>
     <GreetingContainer /> 
     <Switch>

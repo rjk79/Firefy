@@ -5,17 +5,19 @@
 
  .greeting-bar {
      background: rgba(0, 0, 0, .6);
-     
-     position: absolute;
-     top: 0;
+     display: flex;
+     align-items: center;
      width: 100%
  }
 
  .greeting-separator {
      width: 70%;
  }
-
+.greeting-logoname {
+    width: 50%; 
+}
  .greeting-buttons {
+     width: 50%;
      display: flex;
      justify-content: flex-end;
      align-items: center;

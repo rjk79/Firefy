@@ -29,7 +29,9 @@ const Template = props => {
 
 
                 <div className="template-display">
-                <div className="template-display-spacer"></div>
+                    <img className="spotlight-background" src={window.spotlight_backgroundURL} alt="splash-img"/>
+                    
+                {/* <div className="template-display-spacer"></div> */}
                     <Switch>
                         <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
                     </Switch>

@@ -56,16 +56,21 @@ time, mark, audio, video {
  }
 
 
-html {
-    height: 100vh;
-    width: 100vw;
-}
- /* Tag selectors */
- body {
+html, body, #root, .primary-app-div {
+    min-height: 100%;
     height: 100%;
     width: 100%;
-    background: url('firefy_splash.png') no-repeat center center fixed;
-    background-size: cover;
+    margin: 0;
+}
+
+ /* Tag selectors */
+ .splash-background {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+    /* background: url('firefy_splash.png') no-repeat center center fixed; */
+    /* background-size: cover; */
  }
 
  img {
@@ -165,26 +170,34 @@ html {
 
  @keyframes flicker {
     0%, 100%{color: white}
-    50%{opacity: .1}
+    50%{opacity: .0}
  }
  .flicker {
      animation-name: flicker;
-     animation-duration: 5s;
+     animation-duration: 4s;
      animation-iteration-count: infinite;
      animation-timing-function: ease-out;
  }
 
 /* Splash Page */
+.primary-app-div {
+    height: 100%;
+    width: 100%;
+}
+
 .welcome-banner {
     margin: auto;
     width: 50%;
-    margin-top: 25%;
+    margin-top: 20%;
     text-align: center;
 }
 
 /* .get-firefy-button {
     margin-top: 10px;
 } */
+.splash-motto {
+    padding-bottom: 23px;
+}
 .splash-logo {
     margin: 10px;
 }
@@ -320,6 +333,7 @@ html {
 .playlist-show {
     display: flex;
     flex-direction: row;
+    margin: 3%;
 }
 .songlist {
     display: flex;
@@ -331,4 +345,9 @@ html {
 
 .plusbutton {
     vertical-align: middle;
+}
+
+.getfirefyfree-button {
+    position: relative;
+    top: 15%;
 }
