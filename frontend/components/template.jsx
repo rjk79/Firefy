@@ -1,6 +1,6 @@
 import React from 'react'
 import PlaylistIndexContainer from './playlists/playlist_index_container'
-import {Switch, Route, NavLink} from 'react-router-dom'
+import {Switch, Route, NavLink, Link} from 'react-router-dom'
 import PlaylistShowContainer from './playlists/playlist_show_container'
 import MusicplayerComponent from './musicplayer'
 import CreatePlaylistComponent from './create_playlist_component';
@@ -12,12 +12,12 @@ const Template = props => {
                 <div className="template-navbar">
                     <div className="nav-links">
                         <ul>
-                            <li className="app-name flicker"><img src="assets/firefly_logo.png" alt="Logo Img" />Firefy</li>
+                            <li className="app-name flicker"><Link to="/home"><img src="assets/firefly_logo.png" alt="Logo Img" />Firefy</Link></li>
                             <li className="nav-link lightup small top-left-item bold"><NavLink to="/home">Home</NavLink></li>
                             <li className="nav-link lightup small top-left-item bold"><NavLink to="/search">Search</NavLink></li>
                             <li className="nav-link lightup small top-left-item bold"><NavLink to="/library">Library</NavLink></li>
                             <li className="faded playlists-label">Playlists</li>
-                            <li className="lightup small">
+                            <li className="lightup small create-playlist-holder">
                                 <CreatePlaylistComponent />
                             </li>
                         </ul>

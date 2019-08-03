@@ -55,10 +55,13 @@
  
 .create-playlist-button {
    cursor: pointer;
-   padding: none;
    font-size: 14px;
    padding: 5%;
 }
+/* 
+.create-playlist-holder {
+   display: inline-block;
+} */
 
 .plusbutton {
    display: inline-block;

@@ -30,6 +30,8 @@
      top: 75%;
      z-index: 1;
      width: 20%;
+     height: 10%;
+     background: rgb(4, 14, 13)
  }
 
 .greeting-name {
@@ -43,7 +45,7 @@
 
 .greeting-popup {
     position: absolute;
-    bottom: 40%;
+    bottom: 60%;
     left: 0;
     height: 36px;
     width: 200px;

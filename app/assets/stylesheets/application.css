@@ -56,7 +56,10 @@ time, mark, audio, video {
  }
 
 
-
+html {
+    height: 100vh;
+    width: 100vw;
+}
  /* Tag selectors */
  body {
     height: 100%;

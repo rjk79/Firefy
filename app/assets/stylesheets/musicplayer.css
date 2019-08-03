@@ -25,51 +25,68 @@
     width: 33%;
     margin: auto;
     align-items: center;
+
 }
 
 .back-button {
     overflow: hidden;
-    background: (80, 80, 80, .5);
-    background: red;
-    opacity: 0.5;
+    position: relative;
 
     height: 24px;
     width: 20px;
-
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 
-.play-plause-button {
+
+
+.play-button {
     overflow: hidden;
-    background: blue;
-    opacity: 0.5;
+    position: relative;
+    /* background: blue; */
 
     height: 50px;
     width: 50px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   
+   
 }
 
 .forward-button {
     overflow: hidden;
-    background: green;
-    opacity: 0.5;
+    position: relative;
+
+    /* background: green; */
+    
     height: 24px;
     width: 20px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   
 }
+
 
 .audio-control-buttons img {
-    width: 700px !important;
-    height: 150px !important;
+    min-width: 140px;
+    min-height: 140px;
 }
 
+.audio-control-buttons img:hover {
+    top: -48px;
+}
 
+.back-button img {
+    position: absolute;
+    top: -60px;
+    right: -118px;
+}
+
+.play-button img {
+    position: absolute;
+
+     top: -45px;
+    right: -52px;
+}
+
+.forward-button img {
+    position: absolute;
+    top: -59px;
+    right: -12px;
+}

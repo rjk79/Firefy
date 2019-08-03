@@ -70,8 +70,8 @@ class SessionForm extends React.Component {
                     <form className="session-form" onSubmit={this.handleSubmit}>
                         {/* <p className="slogan font-black">{this.props.formType}</p> */}
 
-                        <input type="text" onChange={this.handleChange("username")} placeholder="Username" required/>
-                        <input type="password" onChange={this.handleChange("password")} placeholder="Password" required pattern=".{6,}"/>
+                        <input className="username-input" type="text" onChange={this.handleChange("username")} placeholder="Username" required/>
+                            <input className="password-input" type="password" onChange={this.handleChange("password")} placeholder="Password" required/>
                         <input className="session-button small long-padding" type="submit" value={this.props.formType} />
                     </form>
                     <ul>

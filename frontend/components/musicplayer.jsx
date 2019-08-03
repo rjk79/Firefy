@@ -11,7 +11,7 @@ class Musicplayer extends React.Component {
                         <div className="back-button">
                             <img className="audio-button-img" src="assets/controls_sprite.png" alt="Controls Img" />
                         </div>
-                        <div className="play-plause-button">   
+                        <div className="play-button">   
                             <img className="audio-button-img" src="assets/controls_sprite.png" alt="Controls Img" /> 
                         </div>
                         <div className="forward-button">
