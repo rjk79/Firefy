@@ -14,7 +14,9 @@ end
 # pluck is opposite of set in terms of interpol
 
 json.artist do
-    album.artist do
-        json.partial! 'api/artists/artist', artist: artist
+    json.set! album.artist.id do
+        album.artist do
+            json.partial! 'api/artists/artist', artist: artist
+        end
     end
 end
