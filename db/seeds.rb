@@ -39,6 +39,7 @@ dc = Artist.create!(name: "Bingo Players")
 dd = Artist.create!(name: "Ed Sheeran")
 de = Artist.create!(name: "CHVRCHES")
 df = Artist.create!(name: "CAZZETTE")
+dg = Artist.create!(name: "Vacation Manor")
 
 
 ca = Album.create!(name: "I Love You.", artist_id: da.id)
@@ -48,6 +49,7 @@ cd = Album.create!(name: "x(Deluxe Edition)", artist_id: dd.id)
 ce = Album.create!(name: "Love Is Dead", artist_id: de.id)
 cf = Album.create!(name: "Eject", artist_id: df.id)
 cg = Album.create!(name: "Static", artist_id: df.id)
+ch = Album.create!(name: "Say We'll Make It", artist_id: dg.id)
 
 ba = Song.create!(title: "Sweater Weather", album_id: ca.id)
 bb = Song.create!(title: "Death of a Bachelor", album_id: cb.id)
@@ -57,6 +59,7 @@ be = Song.create!(title: "Graffiti", album_id: ce.id)
 bf = Song.create!(title: "Weapon", album_id: cf.id)
 bg = Song.create!(title: "Beam Me Up", album_id: cf.id)
 bh = Song.create!(title: "Static", album_id: cg.id)
+bi = Song.create!(title: "Say We'll Make It", album_id: ch.id)
 
 
 
@@ -77,6 +80,7 @@ fg = Playlisting.create!(song_id: bh.id, playlist_id: ec.id)
 fh = Playlisting.create!(song_id: bf.id, playlist_id: ec.id)
 fi = Playlisting.create!(song_id: bg.id, playlist_id: eb.id)
 fj = Playlisting.create!(song_id: bh.id, playlist_id: eb.id)
+fg = Playlisting.create!(song_id: bi.id, playlist_id: ea.id)
 
 ga = Follow.create!(user_id: aa.id, playlist_id: ec.id)
 gb = Follow.create!(user_id: aa.id, playlist_id: ed.id)

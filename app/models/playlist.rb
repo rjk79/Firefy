@@ -10,5 +10,13 @@ class Playlist < ApplicationRecord
     has_many :songs,
         through: :playlistings,
         source: :song
+    
+    has_many :albums,
+      through: :songs,
+      source: :album
+
+    has_many :artists,
+        through: :songs,
+        source: :artist
 
 end
