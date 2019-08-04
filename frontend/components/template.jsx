@@ -4,6 +4,7 @@ import {Switch, Route, NavLink, Link} from 'react-router-dom'
 import PlaylistShowContainer from './playlists/playlist_show_container'
 import MusicplayerComponent from './musicplayer'
 import CreatePlaylistComponent from './create_playlist_component';
+import ArtistShowComponent from './artists/artist_show_container';
 
 const Template = props => {
     return (
@@ -24,6 +25,7 @@ const Template = props => {
                         
                         {/* <PlaylistForm/> */}
                     </div>
+                    
                     <PlaylistIndexContainer className="playlist-index-container"/>
                 </div>
 
@@ -34,6 +36,7 @@ const Template = props => {
                 {/* <div className="template-display-spacer"></div> */}
                     <Switch>
                         <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
+                        <Route path="/artist/:artistId" component={ArtistShowComponent} />
                     </Switch>
                 </div>
             </div>

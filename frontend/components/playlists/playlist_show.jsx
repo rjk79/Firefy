@@ -1,13 +1,16 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-import { Draggable } from 'react-beautiful-dnd';
+// import { Draggable } from 'react-beautiful-dnd';
 
 
 class PlaylistShow extends React.Component {
+    constructor(props){
+        super(props)
+        this.deletePlaylist = this.deletePlaylist.bind(this)
+    }
     componentDidMount() {
         let playlistId = this.props.match.params.playlistId        
         this.props.fetchPlaylist(playlistId)
-        this.deletePlaylist = this.deletePlaylist.bind(this)
     }
     componentDidUpdate(prevProps){
         if (this.props.match.params.playlistId != prevProps.match.params.playlistId) {

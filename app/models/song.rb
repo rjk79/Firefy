@@ -10,5 +10,5 @@ class Song < ApplicationRecord
     
     has_many :playlistings
     
-    has_one_attached :audio
+    has_one_attached :audio_file
 end

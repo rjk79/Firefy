@@ -1,20 +1,5 @@
 json.artist do
     json.extract! artist, :id, :name
     json.album_ids artist.albums.pluck(:id)
-end
-
-json.songs do
-    artist.songs.each do |song|
-        json.set! song.id do
-            json.partial! 'api/songs/song', song: song
-        end
-    end
-end
-
-json.albums do
-    artist.albums.each do |album|
-        json.set! album.id do
-            json.partial! 'api/albums/album', album: album
-        end
-    end
+    json.photo_url url_for(artist.photo) 
 end

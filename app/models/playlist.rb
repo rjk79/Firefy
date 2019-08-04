@@ -19,4 +19,6 @@ class Playlist < ApplicationRecord
         through: :songs,
         source: :artist
 
+    has_one_attached :photo
+
 end

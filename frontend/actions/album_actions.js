@@ -1,3 +1,5 @@
+import * as AlbumAPIUtil from '../util/album_api_util'
+
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM'
 export const RECEIVE_ALL_ALBUMS = 'RECEIVE_ALL_ALBUMS'
 
@@ -17,7 +19,7 @@ const receiveAlbum = album => {
 }
 
 
-export const fetchallAlbums = () => dispatch => {
+export const fetchAllAlbums = () => dispatch => {
     return AlbumAPIUtil.fetchAllAlbums()
         .then(albums => dispatch(receiveAllAlbums(albums)))
 }

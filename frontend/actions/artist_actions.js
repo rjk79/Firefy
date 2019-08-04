@@ -1,3 +1,4 @@
+import * as ArtistAPIUtil from '../util/artist_api_util'
 export const RECEIVE_ARTIST = 'RECEIVE_ARTIST'
 export const RECEIVE_ALL_ARTISTS = 'RECEIVE_ALL_ARTISTS'
 
