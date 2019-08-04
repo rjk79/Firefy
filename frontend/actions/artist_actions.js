@@ -18,7 +18,7 @@ const receiveArtist = artist => {
 }
 
 
-export const fetchallArtists = () => dispatch => {
+export const fetchAllArtists = () => dispatch => {
     return ArtistAPIUtil.fetchAllArtists()
         .then(artists => dispatch(receiveAllArtists(artists)))
 }

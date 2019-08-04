@@ -1,13 +1,14 @@
 import React from 'react'
 import PlaylistIndexContainer from './playlists/playlist_index_container'
-import {Switch, NavLink, Link} from 'react-router-dom'
+import {Switch, NavLink, Link, Route} from 'react-router-dom'
 import PlaylistShowContainer from './playlists/playlist_show_container'
 import MusicplayerComponent from './musicplayer'
 import CreatePlaylistComponent from './create_playlist_component';
 import ArtistShowComponent from './artists/artist_show_container';
 import {ProtectedRoute} from '../util/route_util'
 import AlbumShowComponent from './albums/album_show_container';
-
+import ArtistIndex from './artists/artist_index'
+import AlbumIndex from './albums/album_index'
 
 const Template = props => {
     return (
@@ -40,7 +41,9 @@ const Template = props => {
                     <Switch>
                         <ProtectedRoute exact path="/playlist/:playlistId" component={PlaylistShowContainer} />
                         <ProtectedRoute exact path="/artist/:artistId" component={ArtistShowComponent} />
-                        <ProtectedRoute path="/album/:albumId" component={AlbumShowComponent} />
+                        <ProtectedRoute exact path="/album/:albumId" component={AlbumShowComponent} />
+                        <Route exact path="/artists" component={ArtistIndex} />
+                        <Route exact path="/albums" component={AlbumIndex} />
                     </Switch>
                 </div>
             </div>
