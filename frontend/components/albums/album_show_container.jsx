@@ -14,12 +14,12 @@ const msp = (state, ownProps) => {
 
     album.song_ids.forEach(song_id => {
         let song = state.entities.songs[song_id]
-        debugger
+        
         songs.push(song)
         }
         )
         
-        debugger
+        
 
     return {
         album,
