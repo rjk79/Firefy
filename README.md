@@ -1,6 +1,6 @@
 Bugs:
-  get rid of circle background (hidden at all times)
-  vertical aligns
+  artist show page (cant be navigated to/from) and playlist show page (cant be navigated to/from) 
+
   green bar
   log out doesnt work on hard refresh
   list items in playlist... https://medium.com/@codenode/10-tips-for-eager-loading-to-avoid-n-1-queries-in-rails-2bad54456a3f

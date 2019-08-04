@@ -1,23 +1,45 @@
-// import {connect} from 'react-redux'
+import React from 'react'
 
-// const msp = state => {
-//     let album = state.albums[1]
-//     return {
-//         album
-//     }
-// }
+class AlbumShow extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    componentDidMount() {
+        let albumId = this.props.match.params.albumId
+        this.props.fetchAlbum(albumId)
+    }
 
-// const mdp = dispatch => {
-//     return {
-//         fetchAlbum
-//     }
-// }
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.albumId != prevProps.match.params.albumId) {
+            let albumId = this.props.match.params.albumId
+            this.props.fetchAlbum(albumId)
+        }
+    }
 
-// const AlbumShow = props => {
-//     return (
-//         <>
-//             <img src="" alt=""/>
-//         </>
-//     )
-// }
-// export default connect(msp, mdp)(AlbumShow)
+    render() {
+        // if (!albums) return <> </>
+        let songs = this.props.songs.map(song => {
+            return (
+
+                <li key={song.id}>
+                    <div className="">{song.title}</div>
+                </li>
+            )
+        }
+
+        )
+
+        return (
+            <>
+                <div className="album-show">
+                    <h1 className="album-show-name center">{this.props.album.name}</h1>
+                    <img className="album-photo" src={this.props.album.photoUrl} alt="album_img" />
+                    <div className="album-show-list-songs">Songs</div>
+                    <ul>{songs}</ul>
+                </div>
+            </>
+        )
+    }
+}
+
+export default AlbumShow;

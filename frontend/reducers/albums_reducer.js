@@ -1,6 +1,7 @@
 import { merge } from 'lodash'
 import { RECEIVE_ALL_ALBUMS, RECEIVE_ALBUM } from '../actions/album_actions';
 import { RECEIVE_ARTIST } from '../actions/artist_actions';
+import { RECEIVE_PLAYLIST } from '../actions/playlist_actions';
 
 const albumsReducer = (state = {}, action) => {
     Object.freeze(state)

@@ -1,6 +1,7 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
 // import { Draggable } from 'react-beautiful-dnd';
+import {Link} from 'react-router-dom'
 
 
 class PlaylistShow extends React.Component {
@@ -26,16 +27,21 @@ class PlaylistShow extends React.Component {
     }
 
     render() {
+        const {songs, albums, artists} = this.props
         let songLis;
         if (this.props.songs){         
             // MAP 
                 // 
 
-            songLis = this.props.songs.map((song, idx) =>
+            songLis = songs.map((song, idx) =>
             <li key={idx} className="songli medium">
                     {song.title}
                 <br/>
-                <div className="songli-artist-album faded underlining">{song.artist} - {song.album}</div>
+                <div className="songli-artist-album faded">
+                    <Link to={`/artist/${artists[idx].id}`} className="underlining">{artists[idx].name}</Link>
+                     - 
+                    <Link to={`/album/${albums[idx].id}`} className="underlining">{albums[idx].name}</Link>
+                </div>
                 <button className="songli-ell lightup">...</button>
             </li>
         )}

@@ -35,7 +35,7 @@ class PlaylistForm extends React.Component {
                             type="text" value={this.state.name} 
                             onChange={this.handleChange("name")}
                             placeholder="New Playlist"
-                            autofocus=""
+                            autofocus
                             />
                     <br/>
                     </div>

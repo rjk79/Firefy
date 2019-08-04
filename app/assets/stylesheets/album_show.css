@@ -1,5 +1,5 @@
 
-.artist-show {
+.album-show {
     padding: 10px;
     background: rgb(25, 25, 25);
     display: flex;
@@ -10,34 +10,34 @@
     /* text-align: center; */
 }
 
-.artist-show > * {
-    padding: 10px;
+.album-show > * {
+    padding: 5px;
 }
 
-.artist-show-name {
+.album-show-name {
     font-size: 72px;
 }
 
-.artist-photo {
+.album-photo {
     width: 250px;
     height: 250px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     padding: 10px;
     margin: auto;
     min-height: 250px;
     min-width: 250px;
 }
 
-.artist-show-list-titles {
+.album-show-list-titles {
     font-size: 36px;
 }
 
-.artist-show-song-list {
+.album-show-song-list {
     width: 80%;
     font-size: 16px;
 }
 
-.artist-show-album-photo {
+.album-show-album-photo {
     height: 144px;
     width: 144px;
     margin-bottom: 10px;

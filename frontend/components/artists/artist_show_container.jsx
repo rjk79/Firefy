@@ -12,11 +12,13 @@ const msp = (state, ownProps) => {
     artist.album_ids.forEach(album_id => {
             let album = state.entities.albums[album_id].album
             albums.push(album)
-            album.song_ids.forEach(song_id => {
-                let song = state.entities.songs[song_id]
-                songs.push(song)
-                }
-            )
+            if (album) {
+                album.song_ids.forEach(song_id => {
+                    let song = state.entities.songs[song_id]
+                    songs.push(song)
+                    }
+                )
+            }
         }
     )
     

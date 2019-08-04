@@ -120,6 +120,9 @@ html, body, #root, .primary-app-div {
 }
  .lightup {
      opacity: .7;
+     transition-duration: .2s;
+     transition-property: opacity;
+     transition-timing-function: linear;
  }
 
  .lightup:hover {

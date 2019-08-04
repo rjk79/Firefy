@@ -1,10 +1,13 @@
 import React from 'react'
 import PlaylistIndexContainer from './playlists/playlist_index_container'
-import {Switch, Route, NavLink, Link} from 'react-router-dom'
+import {Switch, NavLink, Link} from 'react-router-dom'
 import PlaylistShowContainer from './playlists/playlist_show_container'
 import MusicplayerComponent from './musicplayer'
 import CreatePlaylistComponent from './create_playlist_component';
 import ArtistShowComponent from './artists/artist_show_container';
+import {ProtectedRoute} from '../util/route_util'
+import AlbumShowComponent from './albums/album_show_container';
+
 
 const Template = props => {
     return (
@@ -35,8 +38,9 @@ const Template = props => {
                     
                 {/* <div className="template-display-spacer"></div> */}
                     <Switch>
-                        <Route path="/playlist/:playlistId" component={PlaylistShowContainer} />
-                        <Route path="/artist/:artistId" component={ArtistShowComponent} />
+                        <ProtectedRoute exact path="/playlist/:playlistId" component={PlaylistShowContainer} />
+                        <ProtectedRoute exact path="/artist/:artistId" component={ArtistShowComponent} />
+                        <ProtectedRoute path="/album/:albumId" component={AlbumShowComponent} />
                     </Switch>
                 </div>
             </div>
