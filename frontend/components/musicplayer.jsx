@@ -27,6 +27,10 @@ class Musicplayer extends React.Component {
                         <div className="forward-button">
                                 <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                         </div>
+                        {/* <div className="prog-bar-holder">
+                            <div className="prog-bar"></div>
+                        </div> */}
+
                     </div>
                 </div>
                 </div>
@@ -35,3 +39,4 @@ class Musicplayer extends React.Component {
     }
 }
 export default Musicplayer
+// ref = { ref => this.player = ref }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {fetchAllAlbums} from '../../actions/album_actions'
+import {Link} from 'react-router-dom'
 
 const msp = state => {
     let albums = Object.values(state.entities.albums)
@@ -30,16 +31,18 @@ class AlbumsIndex extends React.Component {
         let albums = Object.values(this.props.albums).map(album => {
             let unpackedAlbum = album.album
             return (
-                <li key={unpackedAlbum.id}>
-                    <img className="album-index-img" src={unpackedAlbum.photoUrl} alt="album_img" />
-                    {unpackedAlbum.name}
-                </li>
+                <Link to={`/album/${unpackedAlbum.id}`}>
+                    <div className="album-index-item" key={unpackedAlbum.id}>
+                        <img className="album-index-img" src={unpackedAlbum.photoUrl} alt="album_img" />
+                        {unpackedAlbum.name}
+                    </div>
+                </Link>
             )
         })
         return (
             <>
-                <h1>Albums</h1>
                 <div className="album-index">
+                    <h1 className="album-index-title">Albums</h1>
                     {albums}
                 </div>
             </>

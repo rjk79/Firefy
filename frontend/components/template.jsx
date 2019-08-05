@@ -7,8 +7,21 @@ import CreatePlaylistComponent from './create_playlist_component';
 import ArtistShowComponent from './artists/artist_show_container';
 import {ProtectedRoute} from '../util/route_util'
 import AlbumShowComponent from './albums/album_show_container';
-import ArtistIndex from './artists/artist_index'
-import AlbumIndex from './albums/album_index'
+import HomeComponent from './home'
+// class Template extends React.Component{
+//     constructor(props){
+//         super(props)
+//         this.state = {
+//             currentSong: null
+//         }
+//     }
+//     handleClicktoSetSong(songTitle){
+//         this.setState({currentSong: songTitle})
+//     }
+//     render(){
+
+//     }
+// }
 
 const Template = props => {
     return (
@@ -27,7 +40,6 @@ const Template = props => {
                             </li>
                         </ul>
                         
-                        {/* <PlaylistForm/> */}
                     </div>
                     
                     <PlaylistIndexContainer className="playlist-index-container"/>
@@ -37,18 +49,16 @@ const Template = props => {
                 <div className="template-display">
                     <img className="spotlight-background" src={window.spotlight_backgroundURL} alt="splash-img"/>
                     
-                {/* <div className="template-display-spacer"></div> */}
                     <Switch>
                         <ProtectedRoute exact path="/playlist/:playlistId" component={PlaylistShowContainer} />
                         <ProtectedRoute exact path="/artist/:artistId" component={ArtistShowComponent} />
                         <ProtectedRoute exact path="/album/:albumId" component={AlbumShowComponent} />
-                        <Route exact path="/artists" component={ArtistIndex} />
-                        <Route exact path="/albums" component={AlbumIndex} />
+                        <Route path="/" component={HomeComponent} />
                     </Switch>
                 </div>
             </div>
            
-                <div className="template-player"><MusicplayerComponent/></div>
+            <div className="template-player"><MusicplayerComponent/></div>
                 
         </div>
     )
@@ -56,4 +66,3 @@ const Template = props => {
 
 export default Template
 
-    // < DisplayComponent /> 

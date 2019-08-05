@@ -108,3 +108,7 @@
     top: -105px;
     right: -12px;
 }
+
+audio {
+    position: absolute;
+}

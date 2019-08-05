@@ -2,18 +2,32 @@
 
 .album-index {
     overflow-y: scroll;
-}
-
-.album-index {
     padding: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: linear-gradient(135deg, rgb(37, 40, 44), rgb(0, 0, 0));
 }
 
-.album-index li {
-    width: 50%;
-    overflow: auto;
+
+
+.album-index-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    text-align: center;
+    margin: 10px;
+    font-weight: bold;
 }
 
 .album-index-img {
     height: 200px;
     width: 200px;
+    margin-bottom: 10px;
+}
+.album-index-img:hover {
+    opacity: .5;
+}
+.album-index-title {
+    width: 100%;
+    text-align: center;
 }

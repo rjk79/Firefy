@@ -1,0 +1,22 @@
+/* .home-artists-button {
+
+}
+
+.home-albums-button {
+
+} */
+.home-options {
+    display: flex;
+    justify-content: center;
+    background: rgb(27, 29, 32);
+}
+
+.home-button {
+    background: none;
+    border: none;  
+    cursor: pointer;    
+}
+
+/* .home-selected:before {
+
+} */
