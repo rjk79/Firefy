@@ -6,14 +6,15 @@ export const RECEIVE_ALL_ARTISTS = 'RECEIVE_ALL_ARTISTS'
 const receiveAllArtists = artists => {
     return {
         type: RECEIVE_ALL_ARTISTS,
-        artists
+        artists,
     }
 }
 
 const receiveArtist = artist => {
     return {
         type: RECEIVE_ARTIST,
-        artist
+        artist,
+      
     }
 }
 

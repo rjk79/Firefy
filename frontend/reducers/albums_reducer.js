@@ -9,7 +9,7 @@ const albumsReducer = (state = {}, action) => {
         case RECEIVE_ALL_ALBUMS:
             return action.albums
         case RECEIVE_ALBUM:
-            return merge({}, state, { [action.album.album.id]: action.album.album })
+            return merge({}, state, { [action.album.id]: action.album })
         // for artists, DONE
         case RECEIVE_ARTIST:
             return merge({}, state, action.artist.albums)

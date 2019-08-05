@@ -18,10 +18,11 @@ class AlbumShow extends React.Component {
 
     render() {
         // if (!albums) return <> </>
+        const {handleClickPickSong} = this.props
         let songs = this.props.songs.map(song => {
             return (
 
-                <li key={song.id}>
+                <li key={song.id} onClick={handleClickPickSong(song.id)}>
                     <div className="">{song.title}</div>
                 </li>
             )

@@ -10,7 +10,9 @@ const msp = (state, ownProps) => {
     let songs = []
     
     artist.album_ids.forEach(album_id => {
-            let album = state.entities.albums[album_id].album
+            
+        
+            let album = state.entities.albums[album_id]
             albums.push(album)
             if (album) {
                 album.song_ids.forEach(song_id => {

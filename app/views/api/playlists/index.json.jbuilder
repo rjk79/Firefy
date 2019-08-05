@@ -5,3 +5,5 @@
         json.song_ids playlist.songs.pluck(:id)
     end
 end
+
+# add users

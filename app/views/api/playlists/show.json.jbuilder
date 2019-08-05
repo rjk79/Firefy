@@ -1,9 +1,8 @@
 # done
-json.playlist do
     json.extract! @playlist, :id, :user_id, :name
     json.song_ids @playlist.songs.pluck(:id)
-end
 
+# add users -- owners of playlists
 
 json.songs do
     @playlist.songs.each do |song|
@@ -20,8 +19,7 @@ end
 json.albums do
     @playlist.albums.each do |album|
       json.set! album.id do
-        json.extract! album, :id, :name, :artist_id
-        json.song_ids album.songs.pluck(:id)
+        json.partial! 'api/albums/album', album: album
       end
     end
 end
@@ -30,9 +28,10 @@ end
 json.artists do
     @playlist.artists.each do |artist|
         json.set! artist.id do
-            json.extract! artist, :id, :name
-            json.album_ids artist.albums.pluck(:id)
+            json.partial! 'api/artists/artist', artist: artist
         end
     end
 end
+
+
 

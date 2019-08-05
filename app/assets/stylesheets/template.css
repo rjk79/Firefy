@@ -86,4 +86,14 @@
    vertical-align: middle;
 }
 
+.navbar-icon {
+   height: 24px;
+   width: 24px;
+   margin-right: 10px;
+}
+
+.navbar-top-item {
+   display: flex !important;
+   align-items: center;
+}
  

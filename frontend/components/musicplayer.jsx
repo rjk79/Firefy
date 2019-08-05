@@ -1,10 +1,32 @@
 import React from 'react'
+import {connect} from 'react-redux'
+
+
 
 class Musicplayer extends React.Component {
-
-    handleClickPlay(){
-
+    constructor(props){
+        super(props)
+        this.state = {
+            currentSongId: this.props.currentSongId,
+            playStatus: false
+        }
     }
+
+    // handleClickPlayPause(){
+    //     this.state.playing = !this.state.playing
+    //     if (this.state.playing) {
+    //         this.player.play()
+    //     } else {
+    //         this.player.pause()
+    //     }
+    // }
+    // handleClickForward(){
+
+    // }
+    // handleClickBack(){
+
+    // }
+
     render(){
         return (
             <>                    
@@ -13,8 +35,8 @@ class Musicplayer extends React.Component {
                 <div className="audio-controls faded">
                     <div className="audio-control-buttons">
                         
-                            <audio controls>
-                                <source src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBQQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9f7931618c68e706bc505344e66131be79865f4/sweater_weather.mp3" 
+                            <audio controls ref={ref => this.player = ref}>
+                                {/* <source src={this.state.currentSongId  */}
                                 />
                             </audio>
 
@@ -39,4 +61,3 @@ class Musicplayer extends React.Component {
     }
 }
 export default Musicplayer
-// ref = { ref => this.player = ref }

@@ -4,10 +4,11 @@ export const RECEIVE_ALBUM = 'RECEIVE_ALBUM'
 export const RECEIVE_ALL_ALBUMS = 'RECEIVE_ALL_ALBUMS'
 
 
-const receiveAllAlbums = albums => {
+const receiveAllAlbums = ({albums, artists}) => {
     return {
         type: RECEIVE_ALL_ALBUMS,
-        albums
+        albums,
+        artists
     }
 }
 

@@ -23,12 +23,12 @@ class ArtistsIndex extends React.Component {
     render(){
         
         let artists = Object.values(this.props.artists).map(artist => {
-            let unpackedArtist = artist.artist
+            
             return (
-                <Link to={`/artist/${unpackedArtist.id}`}>
-                    <div className="artist-index-item" key={unpackedArtist.id}>
-                        <img className="artist-index-img" src={unpackedArtist.photoUrl} alt="artist_img"/>
-                        {unpackedArtist.name}
+                <Link to={`/artist/${artist.id}`} key={artist.id}>
+                    <div className="artist-index-item" >
+                        <img className="artist-index-img" src={artist.photoUrl} alt="artist_img"/>
+                        {artist.name}
                     </div>
                 </Link>
             )

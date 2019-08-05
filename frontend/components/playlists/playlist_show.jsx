@@ -27,14 +27,14 @@ class PlaylistShow extends React.Component {
     }
 
     render() {
-        const {songs, albums, artists} = this.props
+        const { songs, albums, artists, handleClickPickSong} = this.props
         let songLis;
         if (this.props.songs){         
             // MAP 
                 // 
 
             songLis = songs.map((song, idx) =>
-            <li key={idx} className="songli medium">
+                <li key={idx} className="songli medium" onClick={handleClickPickSong(song.id)}>
                     {song.title}
                 <br/>
                 <div className="songli-artist-album faded">

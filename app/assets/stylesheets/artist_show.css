@@ -16,8 +16,25 @@
 
 .artist-show-name {
     font-size: 72px;
+    position: relative;
+    top: 200px;
+    z-index: 2;
+    font-weight: 800;
+    background: rgba(25, 25, 25, .5);
 }
-
+.artist-show-shader {
+    width: 100%;
+    position: relative;
+    /* display: inline-block; */
+    /* background: linear-gradient(0deg, rgb(25, 25, 25), transparent); */
+    z-index: 1;
+}
+.artist-jumbo {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: -19%;
+}
 .artist-photo {
     width: 250px;
     height: 250px;
@@ -42,4 +59,8 @@
     width: 144px;
     margin-bottom: 10px;
     margin-right: 10px;
+}
+
+.artist-show-album-photo:hover {
+    opacity: .5
 }
