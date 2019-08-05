@@ -8,6 +8,10 @@ class PlaylistShow extends React.Component {
     constructor(props){
         super(props)
         this.deletePlaylist = this.deletePlaylist.bind(this)
+        this.state = {
+            popupShowing: false
+        }
+        // WORK IN PROGRESS ^
     }
     componentDidMount() {
         let playlistId = this.props.match.params.playlistId        
@@ -25,13 +29,18 @@ class PlaylistShow extends React.Component {
         this.props.deletePlaylist(this.props.playlist.id)
         this.props.history.push("/home")
     }
+    handleClickOnEllipses() {
+        return this.setState({
+            popupShowing: !this.state.popupShowing
+        })
+    }
+    // WORK IN PROGRESS ^
+
 
     render() {
         const { songs, albums, artists, handleClickPickSong} = this.props
         let songLis;
         if (this.props.songs){         
-            // MAP 
-                // 
 
             songLis = songs.map((song, idx) =>
                 <li key={idx} className="songli medium" onClick={handleClickPickSong(song.id)}>

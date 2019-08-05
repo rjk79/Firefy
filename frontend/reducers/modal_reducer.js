@@ -1,4 +1,3 @@
-import {merge} from 'lodash'
 import { CLOSE_MODAL, OPEN_MODAL } from '../actions/modal_actions';
 
 const modalReducer = (state = null, action) => {

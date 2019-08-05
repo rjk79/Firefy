@@ -31,7 +31,9 @@ class Musicplayer extends React.Component {
 
 
     componentDidUpdate(prevProps){
+        debugger
         if (this.props.song != prevProps.song) {
+            this.player.load()
             this.player.play()
         }
     }
@@ -49,9 +51,11 @@ class Musicplayer extends React.Component {
     // handleClickBack(){
 
     // }
-
+// type="audio/mpeg"
+    // src = { song.audioUrl }
     render(){
         const {song} = this.props
+        debugger
         return (
             <>                    
             <br/>
@@ -61,8 +65,7 @@ class Musicplayer extends React.Component {
                     <div className="audio-control-buttons">
                         
                             <audio controls ref={ref => this.player = ref}>  
-                                <source src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2…e6223bff378231a5b00de3677/death_of_a_bachelor.mp3"
-                                        type="audio/mpeg"
+                                <source src={song.audioUrl}
                                 />
                                 Your browser does not support this file.
                             </audio>
