@@ -34,12 +34,21 @@ class ArtistShow extends React.Component {
             }
            
             )
-            
+        
+        // for(let i = 0; i < i++){
+        //     this.props.songs
+        // }
         const { handleClickPickSong} = this.props
-        debugger
-        let songs = this.props.songs.map(song =>
-            <li key={song.id} onClick={handleClickPickSong(song.id)}>{song.title}</li>
+        let songs = this.props.songs.map(song => {
+            // debugger
+            // let album = this.props.albums[song.id]
+            return (
+            <li key={song.id} onClick={handleClickPickSong(song.id)}>
+                {song.title}
+                {/* <img src={album.photoUrl} alt="album_art"/> */}
+            </li>
             )
+        })
         
         return (
             <>
@@ -47,7 +56,6 @@ class ArtistShow extends React.Component {
                     <h1 className="artist-show-name center">{this.props.artist.name}</h1>
                     <div className="artist-show-shader">
                         <img className="artist-jumbo" src={this.props.artist.jumboUrl} alt="artist_jumbo" />
-                    {/* <img className="artist-photo" src={this.props.artist.photoUrl} alt="artist_img" /> */}
                     </div>
                     <div className="artist-show-list-titles">Popular</div>
                     <ul className="artist-show-song-list">{songs}</ul>

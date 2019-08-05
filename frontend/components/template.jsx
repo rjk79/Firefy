@@ -2,12 +2,12 @@ import React from 'react'
 import PlaylistIndexContainer from './playlists/playlist_index_container'
 import {Switch, NavLink, Link, Route} from 'react-router-dom'
 import PlaylistShowContainer from './playlists/playlist_show_container'
-import MusicplayerComponent from './musicplayer'
 import CreatePlaylistComponent from './create_playlist_component';
 import ArtistShowComponent from './artists/artist_show_container';
 import {ProtectedRoute} from '../util/route_util'
 import AlbumShowComponent from './albums/album_show_container';
 import HomeComponent from './home'
+import MusicplayerComponent from './musicplayer/musicplayer'
 class Template extends React.Component{
     constructor(props){
         super(props)
@@ -17,7 +17,7 @@ class Template extends React.Component{
         this.handleClickPickSong = this.handleClickPickSong.bind(this)
     }
     handleClickPickSong(songId){
-        // debugger
+        
         return () => this.setState({currentSongId: songId})
     }
 
