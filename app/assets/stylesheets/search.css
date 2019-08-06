@@ -1,0 +1,28 @@
+.search-area {
+    background-image: linear-gradient(135deg, rgb(37, 40, 44), rgb(0, 0, 0));
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    padding: 10px 0px;
+    flex-wrap: wrap;
+}
+
+
+.search-input {
+  caret-color: #00C45A;
+  background: rgb(45, 45, 45);
+  color: white !important;
+  height: 12%;
+  width: 100%;
+  border: none;
+  font-size: 33px;
+  font-weight: 800;
+}
+.search-input:focus {
+    border: none;
+}
+
+.search-input::placeholder {
+  color: rgb(86, 86, 86);
+  font-weight: 700;
+}

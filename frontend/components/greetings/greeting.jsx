@@ -13,6 +13,13 @@ class Greeting extends React.Component {
     componentDidMount(){
         return this.setState({popupShowing: false})
     }
+    componentDidUpdate(){
+        if (this.state.popupShowing){
+        return this.setState({ popupShowing: false })
+        }
+    }
+    
+
     handleClickOnName() {
         return this.setState({
             popupShowing: !this.state.popupShowing

@@ -10,8 +10,6 @@ const msp = (state, ownProps) => {
     let songs = []
     
     artist.album_ids.forEach(album_id => {
-            
-        
             let album = state.entities.albums[album_id]
             if (typeof album !== 'undefined') {albums.push(album)}
             // safety first
@@ -35,7 +33,9 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
     return {
-        fetchArtist: id => dispatch(fetchArtist(id))
+        fetchArtist: id => dispatch(fetchArtist(id)),
+        
+
     }
 }
 

@@ -1,0 +1,37 @@
+/* 
+
+.musicplayer-1 {
+    display: flex;
+}
+
+.musicplayer-2 {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.musicplayer-3 {
+    display: flex;
+    margin-right: 1%;
+}
+
+.player-song-artist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.musicplayer-2-top {
+    display: flex;
+    justify-content: space-between;
+    width: 33%;
+    margin: auto;
+    align-items: center;
+}
+.musicplayer-2-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+} */

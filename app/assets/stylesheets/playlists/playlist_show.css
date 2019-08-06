@@ -1,4 +1,4 @@
-.playlist-delete-button {
+ .playlist-delete-button {
     font-size: 30px;
     text-align: center;
     background: rgba(0, 0, 0, 0);
@@ -76,4 +76,8 @@
     font-size: 14px;
     text-align: center;
     font-weight: 300;
+}
+
+.artist-album-li {
+    padding: 0px 5px;
 }

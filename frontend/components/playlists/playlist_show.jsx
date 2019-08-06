@@ -29,7 +29,7 @@ class PlaylistShow extends React.Component {
         this.props.deletePlaylist(this.props.playlist.id)
         this.props.history.push("/home")
     }
-    handleClickOnEllipses() {
+    handleClickforSong() {
         return this.setState({
             popupShowing: !this.state.popupShowing
         })
@@ -38,6 +38,15 @@ class PlaylistShow extends React.Component {
 
 
     render() {
+
+        let popup = this.state.popupShowing ?
+            <div className="playlist-show-popup">
+                <button>Add to Playlist</button>
+            </div>
+            : null
+
+
+
         const { songs, albums, artists, handleClickPickSong} = this.props
         let songLis;
         if (this.props.songs){         
@@ -48,14 +57,16 @@ class PlaylistShow extends React.Component {
                     <div className="playlist-show-song-text">
                         {song.title}
                         <div className="songli-artist-album faded">
-                            <Link to={`/artist/${artists[idx].id}`} className="underlining">{artists[idx].name}</Link>
-                            - 
-                            <Link to={`/album/${albums[idx].id}`} className="underlining">{albums[idx].name}</Link>
+                            <Link to={`/artist/${artists[idx].id}`} className="artist-album-li underlining">{artists[idx].name}</Link>
+                             &#8226;  
+                            <Link to={`/album/${albums[idx].id}`} className="artist-album-li underlining">{albums[idx].name}</Link>
                         </div>
                         <button className="songli-ell lightup">...</button>
+                        {popup}
                     </div>
                 </li>
         )}
+        // onClick={this.handleClickforSong(song.id)}
         return (
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">

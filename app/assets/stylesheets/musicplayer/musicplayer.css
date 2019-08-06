@@ -13,9 +13,15 @@
 
 .musicplayer-3 {
     display: flex;
+    margin-right: 1%;
+    width: 10%;
 }
 
-
+.player-song-artist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
 
 .musicplayer-2-top {
     display: flex;
@@ -28,6 +34,12 @@
     display: flex;
     justify-content: space-between;
     margin: auto;
+}
+
+.player-album-art {
+    height: 70px;
+    width: auto;
+    margin: 0px 10px;
 }
 
 .back-button {
@@ -117,7 +129,7 @@ audio {
 
 .time-slider {
     height: 20px;
-    width: 200px;
+    width: 60vh !important;
 }
 
 input[type='range'] {
@@ -129,6 +141,11 @@ input[type='range'] {
 .player-song-title {
     font-size: 14px;
 }
+.player-artist-name {
+    font-size: 12px;
+    opacity: .5;
+}
+
 
 
 /* .template-player {

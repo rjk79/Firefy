@@ -316,8 +316,7 @@ html, body, #root, .primary-app-div {
 
 .app-name {
     font-size: 28px;
-    margin-left: 5%;
-    margin-top: 5%;
+    margin: 12% 5%;
 }
 
 .nav-link > * {

@@ -11,7 +11,7 @@ class Api::PlaylistsController < ApplicationController
         if @playlist.save
             render :show
         else
-          render json: @user.errors.full_messages, status: 422 #unprocesssable entity
+          render json: @playlist.errors.full_messages, status: 422 #unprocesssable entity
         end
     end
 

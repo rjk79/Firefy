@@ -17,6 +17,8 @@ class ArtistShow extends React.Component {
         }
     }
 
+    
+
     render() {        
         
         let albums = this.props.albums.map(album => {

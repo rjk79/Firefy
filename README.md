@@ -1,5 +1,6 @@
 Bugs:
   artist show page (cant be navigated to/from) and playlist show page (cant be navigated to/from) 
+  
 
   green bar
   log out doesnt work on hard refresh
@@ -10,6 +11,9 @@ Dead Bugs:
   importing image
   CSS - nav bar "before" elems, BW button changes
   playlist show- compdidUpdate, Mount, and Msp, remove class from container
+  pushing undefined values into arrays
+
+  maximum callstack => need conditional in didupdate
 
   
   alternate fonts:

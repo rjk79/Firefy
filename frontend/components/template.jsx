@@ -8,6 +8,8 @@ import {ProtectedRoute} from '../util/route_util'
 import AlbumShowComponent from './albums/album_show_container';
 import HomeComponent from './home'
 import MusicplayerComponent from './musicplayer/musicplayer'
+import SearchComponent from './search'
+
 class Template extends React.Component{
     constructor(props){
         super(props)
@@ -60,6 +62,9 @@ class Template extends React.Component{
                             <ProtectedRoute handleClickPickSong={this.handleClickPickSong} 
                                             exact path="/album/:albumId" 
                                             component={AlbumShowComponent} />
+                            <ProtectedRoute handleClickPickSong={this.handleClickPickSong} 
+                                            exact path="/search" 
+                                            component={SearchComponent} />
                             <Route path="/" component={HomeComponent} />
                         </Switch>
                     </div>
