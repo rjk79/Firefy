@@ -37,13 +37,14 @@
     width: 100%;
     position: relative;
     cursor: pointer;
+    align-items: center;
 }
 .playlist-show-songli:hover {
     background: rgba(0, 0, 0, .3)
 }
 .songli-artist-album {
   display: inline-block;
-  padding-top: 12px;
+  padding-top: 14px;
 }
 .songli-ell {
   display: inline-block;
@@ -79,5 +80,5 @@
 }
 
 .artist-album-li {
-    padding: 0px 5px;
+    padding: 5px, 5px 5px, 0px;
 }

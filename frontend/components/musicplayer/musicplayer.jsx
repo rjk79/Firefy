@@ -6,8 +6,8 @@ const msp = (state, ownProps) => {
     
     let song = state.entities.songs[ownProps.currentSongId] || {id: null, audioUrl: ""}
     debugger
-    let album = state.entities.albums[song.id] || {id: null}
-    let artist = state.entities.artists[album.id] || {}
+    let album = state.entities.albums[song.album_id] || {id: null}
+    let artist = state.entities.artists[album.artist_id] || {}
     return {
         song,
         album,
@@ -106,7 +106,10 @@ class Musicplayer extends React.Component {
                         
                     <div className="musicplayer-2-top faded">
                             
-                                <audio controls ref={el => this.player = el}>  
+                                <audio  controls 
+                                        ref={el => this.player = el}
+                                        volume={this.state.volume}
+                                        >  
                                     <source src={song.audioUrl}
                                     />
                                     Your browser does not support this file.
