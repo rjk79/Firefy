@@ -5,6 +5,7 @@ import { fetchSong } from '../../actions/song.actions';
 const msp = (state, ownProps) => {
     
     let song = state.entities.songs[ownProps.currentSongId] || {id: null, audioUrl: ""}
+    debugger
     let album = state.entities.albums[song.id] || {id: null}
     let artist = state.entities.artists[album.id] || {}
     return {
@@ -70,6 +71,7 @@ class Musicplayer extends React.Component {
 
     handleTimeChange(e){
         return this.setState({currTime: e.target.value})
+        // debugger
     }
     handleForward(){
         return 
@@ -87,7 +89,7 @@ class Musicplayer extends React.Component {
         // }
         const {song, album, artist} = this.props
         
-        // debugger
+        debugger
         
         return (
             <>                    
@@ -97,7 +99,7 @@ class Musicplayer extends React.Component {
                     <div className="player-song-artist">
                         <p className="player-song-title">{song.title}</p>
                         <p className="player-artist-name">{artist.name}</p>
-                    </div>
+                    </div> 
                 </div>
 
                 <div className="musicplayer-2">
