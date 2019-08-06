@@ -28,41 +28,54 @@ class Musicplayer extends React.Component {
         super(props)
         this.state = {
             isPlaying: false,
-            currTime: 0
+            currTime: 0,
+            volume: "50",
         }
         this.handleClickPlayPause = this.handleClickPlayPause.bind(this)
+        this.handleTimeChange = this.handleTimeChange.bind(this)
+        this.handleVolumeChange = this.handleVolumeChange.bind(this)
     }
-
     componentDidMount(){
         this.props.fetchSong(this.props.song.id)
     }
 
+    resetTimer(){
+        this.setState({currTime: 0})
+        setInterval(
+            () => this.setState({ currTime: this.state.currTime + .5 })
+            , 500)
+    }
 
     componentDidUpdate(prevProps){
         // debugger
         if (this.props.song != prevProps.song) {
             this.player.load()
             this.player.play()
-        }
-    }
-    handleClickPlayPause(){
-        this.state.isPlaying = !this.state.isPlaying
-        if (this.state.isPlaying) {
-            this.player.pause()
-            this.setState({isPlaying: false})
-        } else {
-            this.player.play()
             this.setState({isPlaying: true})
         }
     }
-    handleChange(){
-        return
-    }
-    handleClickForward(){
 
+    handleClickPlayPause(){
+        this.setState({isPlaying: !this.state.isPlaying})
+        if (this.state.isPlaying) {
+            this.player.pause()
+        } else {
+            this.player.play()
+            
+        }
     }
-    handleClickBack(){
+    handleVolumeChange(e){
+        return this.setState({volume: e.target.value})
+    }
 
+    handleTimeChange(e){
+        return this.setState({currTime: e.target.value})
+    }
+    handleForward(){
+        return 
+    }
+    handleBack(){
+        return 
     }
 // type="audio/mpeg"
     render(){
@@ -73,7 +86,7 @@ class Musicplayer extends React.Component {
         //         <div></div>
         // }
         const {song, album, artist} = this.props
-        debugger
+        
         // debugger
         
         return (
@@ -96,24 +109,26 @@ class Musicplayer extends React.Component {
                                     />
                                     Your browser does not support this file.
                                 </audio>
-                            <div className="back-button" onClick={this.handleHandleBack("back")}>
+                            <div className="back-button" onClick={this.handleBack()}>
                                     <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
                             <div className="play-button" onClick={this.handleClickPlayPause}>   
                                     <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" /> 
                             </div>
                             <div className="forward-button">
-                            <img className="audio-button-img" onClick={this.handleClickForward("forward")} src={window.controls_spriteURL} alt="Controls Img" />
+                            <img className="audio-button-img" onClick={this.handleForward()} src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
                             {/* <div className="prog-bar-holder">
                                 <div className="prog-bar"></div>
                             </div> */}
                         </div>
                     <div className="musicplayer-2-bottom">
+                        <p className="current-time-label">{this.state.currTime}</p>
                         {/* <p>current_play_time {this.player.currentTime}</p> */}
                         <input className="time-slider" 
                                type="range"
                                value={this.state.currTime}
+                               onChange={this.handleTimeChange}
                         />
                         {/* <p>total_play_time{this.player.duration}</p> */}
                     </div>
@@ -124,7 +139,9 @@ class Musicplayer extends React.Component {
                             type="range"
                             min="0"
                             max="100"
-                            value="50"
+                            step="10"
+                            value={this.state.volume}
+                            onChange = {this.handleVolumeChange}
                     />
                 </div>
             </>
@@ -132,7 +149,3 @@ class Musicplayer extends React.Component {
     }
 }
 export default connect(msp, mdp)(Musicplayer)
-
-{/* <div className="all-buttons">
-
-</div> */}

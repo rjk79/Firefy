@@ -14,9 +14,9 @@ class Greeting extends React.Component {
         return this.setState({popupShowing: false})
     }
     componentDidUpdate(){
-        if (this.state.popupShowing){
-        return this.setState({ popupShowing: false })
-        }
+        // if (this.state.popupShowing){
+        // return this.setState({ popupShowing: false })
+        // }
     }
     
 

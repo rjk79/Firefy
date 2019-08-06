@@ -27,8 +27,9 @@ class AlbumsIndex extends React.Component {
         this.props.fetchAllAlbums()
     }
     render() {
-        
-        let albums = Object.values(this.props.albums).map(album => {
+        // debugger
+        //Object.values
+        let albums = this.props.albums.map(album => {
             return (
                 <Link to={`/album/${album.id}`} key={album.id}>
                     <div className="album-index-item">

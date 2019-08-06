@@ -50,8 +50,8 @@ class Template extends React.Component{
 
 
                     <div className="template-display">
-                        <img className="spotlight-background" src={window.spotlight_backgroundURL} alt="splash-img"/>
-                        
+                        {/* <img className="spotlight-background" src={window.spotlight_backgroundURL} alt="splash-img"/> */}
+                        <div className="spotlight-background"></div>
                         <Switch>
                             <ProtectedRoute handleClickPickSong={this.handleClickPickSong} 
                                             exact path="/playlist/:playlistId" 
