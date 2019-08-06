@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 import { fetchAllPlaylists, fetchPlaylist } from './actions/playlist_actions';
+import { fetchAlbum } from './actions/album_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.dispatch = store.dispatch
     window.fetchAllPlaylists = fetchAllPlaylists
     window.fetchPlaylist = fetchPlaylist
+    window.fetchAlbum = fetchAlbum
     
     let root = document.getElementById("root")
     ReactDOM.render(<Root store={store}/>, root)

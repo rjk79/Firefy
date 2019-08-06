@@ -13,7 +13,8 @@ const msp = (state, ownProps) => {
             
         
             let album = state.entities.albums[album_id]
-            albums.push(album)
+            if (typeof album !== 'undefined') {albums.push(album)}
+            // safety first
             if (album) {
                 album.song_ids.forEach(song_id => {
                     let song = state.entities.songs[song_id]

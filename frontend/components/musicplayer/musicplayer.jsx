@@ -21,8 +21,9 @@ class Musicplayer extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            playStatus: false
+            isPlaying: false
         }
+        this.handleClickPlayPause = this.handleClickPlayPause.bind(this)
     }
 
     componentDidMount(){
@@ -31,20 +32,22 @@ class Musicplayer extends React.Component {
 
 
     componentDidUpdate(prevProps){
-        debugger
+        // debugger
         if (this.props.song != prevProps.song) {
             this.player.load()
             this.player.play()
         }
     }
-    // handleClickPlayPause(){
-    //     this.state.playing = !this.state.playing
-    //     if (this.state.playing) {
-    //         this.player.play()
-    //     } else {
-    //         this.player.pause()
-    //     }
-    // }
+    handleClickPlayPause(){
+        this.state.isPlaying = !this.state.isPlaying
+        if (this.state.isPlaying) {
+            this.player.pause()
+            this.setState({isPlaying: false})
+        } else {
+            this.player.play()
+            this.setState({isPlaying: true})
+        }
+    }
     // handleClickForward(){
 
     // }
@@ -55,44 +58,50 @@ class Musicplayer extends React.Component {
     // src = { song.audioUrl }
     render(){
         const {song} = this.props
-        debugger
+        // debugger
         return (
             <>                    
-            <br/>
-                <div className="all-controls">
-                    <p className="player-song-title">{song.title}</p>
-                <div className="audio-controls faded">
-                    <div className="audio-control-buttons">
+                <div className="musicplayer-1"><p className="player-song-title">{song.title}</p></div>
+
+                <div className="musicplayer-2">
                         
-                            <audio controls ref={ref => this.player = ref}>  
-                                <source src={song.audioUrl}
-                                />
-                                Your browser does not support this file.
-                            </audio>
-                        <div className="back-button">
-                                <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
+                    <div className="musicplayer-2-top faded">
+                            
+                                <audio controls ref={el => this.player = el}>  
+                                    {/* <source src={song.audioUrl} */}
+                                    />
+                                    Your browser does not support this file.
+                                </audio>
+                            <div className="back-button">
+                                    <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
+                            </div>
+                            <div className="play-button" onClick={this.handleClickPlayPause}>   
+                                    <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" /> 
+                            </div>
+                            <div className="forward-button">
+                                    <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
+                            </div>
+                            {/* <div className="prog-bar-holder">
+                                <div className="prog-bar"></div>
+                            </div> */}
                         </div>
-                        <div className="play-button">   
-                                <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" /> 
-                        </div>
-                        <div className="forward-button">
-                                <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
-                        </div>
-                        {/* <div className="prog-bar-holder">
-                            <div className="prog-bar"></div>
-                        </div> */}
-
+                    <div className="musicplayer-2-bottom">
+                        {/* <p>current_play_time {this.player.currentTime}</p> */}
+                        <input className="time-slider" type="range"></input>
+                        {/* <p>total_play_time{this.player.duration}</p> */}
                     </div>
-                    <p>current_play_time</p>
-                    <input className="time-slider" type="slider"></input>
-                    <p>total_play_time</p>
-
-                    <input className="time-slider" type="slider"></input>
-
                 </div>
+
+                <div className="musicplayer-3">
+                    Volume
+                    <input className="time-slider" type="range"></input>
                 </div>
             </>
         ) 
     }
 }
 export default connect(msp, mdp)(Musicplayer)
+
+{/* <div className="all-buttons">
+
+</div> */}

@@ -8,19 +8,17 @@ const msp = (state, ownProps) => {
     
     let albumId = ownProps.match.params.albumId
     let album = state.entities.albums[albumId] || { name: "", artist_id: 0, photoUrl: "", song_ids: [] }
-
-    let artist = state.entities.artists[album.artist_id]
+    // debugger
+    let artist = state.entities.artists[album.artist_id] || {name: ""}
     let songs = []
 
     album.song_ids.forEach(song_id => {
         let song = state.entities.songs[song_id]
         
-        songs.push(song)
-        }
-        )
+        if (typeof song !== 'undefined') {songs.push(song)}
+        })
         
         
-
     return {
         album,
         artist,

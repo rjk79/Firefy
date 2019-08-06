@@ -1,31 +1,33 @@
-.audio-controls {
-    font-size: 30px;
+
+.musicplayer-1 {
     display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    width: 40%;
 }
-/* 
-.fa-play-circle{
-    font-size: 12px;
-    height: 50px;
-    width: 50px;
-    color: black;
 
-} */
-
-.all-controls {
-    width: 100vw;
+.musicplayer-2 {
+    width: 80%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+
 }
-.audio-control-buttons {
+
+.musicplayer-3 {
+    display: flex;
+}
+
+
+
+.musicplayer-2-top {
     display: flex;
     justify-content: space-between;
     width: 33%;
     margin: auto;
     align-items: center;
-
+}
+.musicplayer-2-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
 }
 
 .back-button {
@@ -118,6 +120,29 @@ audio {
     width: 200px;
 }
 
+input[type='range'] {
+      overflow: hidden;
+      width: 80px;
+      background-color: #9a905d;
+}
+
 .player-song-title {
     font-size: 14px;
 }
+
+
+/* .template-player {
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    width: 40%;
+}  */
+/* 
+.fa-play-circle{
+    font-size: 12px;
+    height: 50px;
+    width: 50px;
+    color: black;
+
+} */

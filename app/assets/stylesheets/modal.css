@@ -75,6 +75,7 @@
   font-size: 48px;
   margin: 5vh 0 5vh 0;
   font-weight: 500;
+  caret-color: #00C45A;
 }
 .playlist-name-input::placeholder {
   color: rgb(86, 86, 86);

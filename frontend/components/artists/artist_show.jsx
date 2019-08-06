@@ -17,10 +17,8 @@ class ArtistShow extends React.Component {
         }
     }
 
-    render() {
-        // if (!albums) return <> </>
+    render() {        
         
-
         let albums = this.props.albums.map(album => {
             return (
                 
@@ -39,11 +37,13 @@ class ArtistShow extends React.Component {
         //     this.props.songs
         // }
         const { handleClickPickSong} = this.props
+        
         let songs = this.props.songs.map(song => {
             // debugger
             // let album = this.props.albums[song.id]
             return (
-            <li key={song.id} onClick={handleClickPickSong(song.id)}>
+            <li key={song.id} onClick={handleClickPickSong(song.id)} className="darkening artist-show-song">
+                <img src={window.noteURL} />
                 {song.title}
                 {/* <img src={album.photoUrl} alt="album_art"/> */}
             </li>
@@ -55,12 +55,12 @@ class ArtistShow extends React.Component {
                 <div className="artist-show">
                     <h1 className="artist-show-name center">{this.props.artist.name}</h1>
                     <div className="artist-show-shader">
-                        <img className="artist-jumbo" src={this.props.artist.jumboUrl} alt="artist_jumbo" />
                     </div>
+                        <img className="artist-jumbo" src={this.props.artist.jumboUrl} alt="artist_jumbo" />
                     <div className="artist-show-list-titles">Popular</div>
                     <ul className="artist-show-song-list">{songs}</ul>
                     <div className="artist-show-list-titles">Albums</div>
-                    <ul>{albums}</ul>
+                    <ul className="artist-show-album_list">{albums}</ul>
                 </div>
             </>
         )

@@ -35,6 +35,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails'
 gem 'aws-sdk-s3'
+gem 'guard'
+gem 'guard-livereload', '~> 2.5', require: false
+gem "rack-livereload"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

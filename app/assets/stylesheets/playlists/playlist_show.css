@@ -22,22 +22,28 @@
     font-size: 28px;
     padding: 10px;
 }
+.playlist-show-song-text {
+    display: flex;
+    flex-direction: column;
+}
 
 .playlist-title-delete {
     margin-left: 10%;
     margin-right: 10%;
 }
 
-.songli {
-    display: inline-block;
+.playlist-show-songli {
+    display: flex;
     width: 100%;
     position: relative;
+    cursor: pointer;
 }
-.songli:hover {
+.playlist-show-songli:hover {
     background: rgba(0, 0, 0, .3)
 }
 .songli-artist-album {
   display: inline-block;
+  padding-top: 12px;
 }
 .songli-ell {
   display: inline-block;
@@ -55,6 +61,10 @@
     width: 350px;
     margin: auto;
     padding: 10px;
+}
+
+.playlist-artwork:hover {
+    opacity: .7;
 }
 
 .playlist-songlist {

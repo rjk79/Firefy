@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class AlbumShow extends React.Component {
     constructor(props) {
@@ -17,13 +18,17 @@ class AlbumShow extends React.Component {
     }
 
     render() {
+        // debugger
         // if (!albums) return <> </>
-        const {handleClickPickSong} = this.props
+        const {handleClickPickSong, artist} = this.props
         let songs = this.props.songs.map(song => {
             return (
 
                 <li key={song.id} onClick={handleClickPickSong(song.id)}>
-                    <div className="">{song.title}</div>
+                    <div className="darkening album-show-song-item">
+                        <img src={window.noteURL}/>
+                        {song.title}
+                    </div>
                 </li>
             )
         }
@@ -34,8 +39,11 @@ class AlbumShow extends React.Component {
             <>
                 <div className="album-show">
                     <h1 className="album-show-name center">{this.props.album.name}</h1>
+                    <Link to={`/artist/${artist.id}`} className="center underlining"><h2>By: {artist.name}</h2></Link>
+                    {/* <p className="center album-show-artist">{artist.name}</p> */}
                     <img className="album-photo" src={this.props.album.photoUrl} alt="album_img" />
-                    <div className="album-show-list-songs">Songs</div>
+                    <p className="center album-show-song-count">Songs: {this.props.songs.length}</p>
+                    <div className="album-show-list-titles">Songs</div>
                     <ul>{songs}</ul>
                 </div>
             </>

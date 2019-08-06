@@ -30,8 +30,8 @@ class AlbumsIndex extends React.Component {
         
         let albums = Object.values(this.props.albums).map(album => {
             return (
-                <Link to={`/album/${album.id}`}>
-                    <div className="album-index-item" key={album.id}>
+                <Link to={`/album/${album.id}`} key={album.id}>
+                    <div className="album-index-item">
                         <img className="album-index-img" src={album.photoUrl} alt="album_img" />
                         {album.name}
                     </div>

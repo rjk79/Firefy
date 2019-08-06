@@ -43,16 +43,18 @@ class PlaylistShow extends React.Component {
         if (this.props.songs){         
 
             songLis = songs.map((song, idx) =>
-                <li key={idx} className="songli medium" onClick={handleClickPickSong(song.id)}>
-                    {song.title}
-                <br/>
-                <div className="songli-artist-album faded">
-                    <Link to={`/artist/${artists[idx].id}`} className="underlining">{artists[idx].name}</Link>
-                     - 
-                    <Link to={`/album/${albums[idx].id}`} className="underlining">{albums[idx].name}</Link>
-                </div>
-                <button className="songli-ell lightup">...</button>
-            </li>
+                <li key={idx} className="playlist-show-songli medium" onClick={handleClickPickSong(song.id)}>
+                    <img src={window.noteURL}/>
+                    <div className="playlist-show-song-text">
+                        {song.title}
+                        <div className="songli-artist-album faded">
+                            <Link to={`/artist/${artists[idx].id}`} className="underlining">{artists[idx].name}</Link>
+                            - 
+                            <Link to={`/album/${albums[idx].id}`} className="underlining">{albums[idx].name}</Link>
+                        </div>
+                        <button className="songli-ell lightup">...</button>
+                    </div>
+                </li>
         )}
         return (
             <div className="playlist-show">

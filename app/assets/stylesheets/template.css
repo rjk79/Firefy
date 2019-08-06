@@ -18,9 +18,9 @@
     height: 15%;
     display: inherit;
     background: rgb(40, 40, 40);
-   display: flex;
-   justify-content: center;
-   align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
 
  .template-navbar {
