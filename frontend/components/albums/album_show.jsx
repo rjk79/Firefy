@@ -18,7 +18,6 @@ class AlbumShow extends React.Component {
     }
 
     render() {
-        // debugger
         // if (!albums) return <> </>
         const {handleClickPickSong, artist} = this.props
         let songs = this.props.songs.map(song => {
@@ -34,7 +33,7 @@ class AlbumShow extends React.Component {
         }
 
         )
-
+ 
         return (
             <>
                 <div className="album-show">

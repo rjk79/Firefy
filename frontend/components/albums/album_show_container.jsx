@@ -8,7 +8,6 @@ const msp = (state, ownProps) => {
     
     let albumId = ownProps.match.params.albumId
     let album = state.entities.albums[albumId] || { name: "", artist_id: 0, photoUrl: "", song_ids: [] }
-    // debugger
     let artist = state.entities.artists[album.artist_id] || {name: ""}
     let songs = []
 

@@ -16,6 +16,7 @@
     display: flex;
     margin-right: 1%;
     width: 10%;
+    align-items: center;
 }
 
 .player-song-artist {
@@ -26,7 +27,7 @@
 
 .musicplayer-2-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 33%;
     margin: auto;
     align-items: center;
@@ -35,6 +36,7 @@
     display: flex;
     justify-content: space-between;
     margin: auto;
+    align-items: center;
 }
 
 .player-album-art {
@@ -53,18 +55,6 @@
 }
 
 
-
-.play-button {
-    overflow: hidden;
-    position: relative;
-    /* background: blue; */
-
-    height: 45px;
-    width: 50px;
-
-   
-   
-}
 
 .forward-button {
     overflow: hidden;
@@ -90,10 +80,35 @@
     right: -118px;
 }
 
-.play-button img {
+.pause-button-img {
+    position: absolute;
+    top: -3px;
+    right: -52px;  
+}
+/* =========================================== */
+.play-button-img {
+    position: absolute;
+    top: -49px;
+    right: -52px;
+}
+/* =========================================== */
+.play-button-img:hover {
     position: absolute;
 
-    top: -49px;
+    top: -94px;
+    right: -52px;
+}
+/* =========================================== */
+.play-button {
+    overflow: hidden;
+    position: relative;
+    /* background: blue; */
+    height: 45px;
+    width: 50px; 
+}
+.pause-button img {
+    position: absolute;
+    top: -3px;
     right: -52px;
 }
 
@@ -111,12 +126,6 @@
     right: -118px;
 }
 
-.play-button img:hover {
-    position: absolute;
-
-    top: -94px;
-    right: -52px;
-}
 
 .forward-button img:hover {
     position: absolute;
@@ -126,19 +135,36 @@
 
 audio {
     position: absolute;
+    display: none;
 }
 
 .time-slider {
-    height: 20px;
+    height: 4px;
     width: 60vh !important;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+.volume-slider {
+    height: 4px;
+    -webkit-appearance: none;
+
+}
+.volume-slider:focus {
+    border: none;
+}
+
+.time-slider:focus {
+    border: none;
 }
 
 input[type='range'] {
       overflow: hidden;
       width: 80px;
-      background-color: #9a905d;
+      background-color: rgba(64, 64, 64, .5);
 }
-
+input[type='range']:hover {
+    overflow: default;
+}
 .player-song-title {
     font-size: 14px;
 }
@@ -146,8 +172,9 @@ input[type='range'] {
     font-size: 12px;
     opacity: .5;
 }
-.current-time-label {
-    max-width: 15px;
+.time-label {
+    min-width: 35px;
+    font-size: 11px;
 }
 
 
@@ -166,3 +193,23 @@ input[type='range'] {
     color: black;
 
 } */
+
+input[type='range']::-webkit-slider-thumb {
+      width: 1px;
+      -webkit-appearance: none;
+      height: 10px;
+      background: #434343;
+      box-shadow: -500px 0 0 500px rgb(3, 187, 92);
+    }
+/* 
+input[type='range']::-webkit-slider-thumb:hover {
+      overflow: inherit;
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      cursor: ew-resize;
+      background: #434343;
+      box-shadow: -80px 0 0 80px #43e5f7;
+    } */
+
+   

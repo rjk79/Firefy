@@ -41,7 +41,6 @@ class ArtistShow extends React.Component {
         const { handleClickPickSong} = this.props
         
         let songs = this.props.songs.map(song => {
-            // debugger
             // let album = this.props.albums[song.id]
             return (
             <li key={song.id} onClick={handleClickPickSong(song.id)} className="darkening artist-show-song">

@@ -5,7 +5,6 @@ import { fetchSong } from '../../actions/song.actions';
 const msp = (state, ownProps) => {
     
     let song = state.entities.songs[ownProps.currentSongId] || {id: null, audioUrl: ""}
-    debugger
     let album = state.entities.albums[song.album_id] || {id: null}
     let artist = state.entities.artists[album.artist_id] || {}
     return {
@@ -18,61 +17,99 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
     return {
         fetchSong: id => dispatch(fetchSong(id)),
-        // fetchAlbum: id => dispatch(fetchAlbum(id)),
-        // fetchArtist: id => dispatch(fetchArtist(id)),
     }
 }
 
 
 class Musicplayer extends React.Component {
     constructor(props){
+        // debugger
         super(props)
         this.state = {
             isPlaying: false,
             currTime: 0,
-            volume: "50",
+            volume: .5,
+            duration: 0
         }
         this.handleClickPlayPause = this.handleClickPlayPause.bind(this)
         this.handleTimeChange = this.handleTimeChange.bind(this)
         this.handleVolumeChange = this.handleVolumeChange.bind(this)
     }
     componentDidMount(){
-        this.props.fetchSong(this.props.song.id)
-    }
-
-    resetTimer(){
-        this.setState({currTime: 0})
-        setInterval(
-            () => this.setState({ currTime: this.state.currTime + .5 })
-            , 500)
-    }
-
-    componentDidUpdate(prevProps){
         // debugger
-        if (this.props.song != prevProps.song) {
+    }
+    componentDidUpdate(prevProps, prevState){
+        // debugger
+        if ((this.props.song != prevProps.song) && (this.props.song.audioUrl)) {
             this.player.load()
             this.player.play()
             this.setState({isPlaying: true})
+            this.resetTimer()
+        }
+        if (!isNaN(this.player.duration) && prevState.duration != this.state.duration) this.setState({duration: this.player.duration})
+    }
+     formatTime (secs) {
+        // debugger
+        let seconds = parseInt(secs)
+        let minutes = Math.floor(seconds / 60)
+        let netSeconds = seconds % 60
+        if (netSeconds < 10) {
+            return `${minutes}:0${netSeconds}`
+        }
+        else {
+            return `${minutes}:${netSeconds}`
         }
     }
 
+    resetTimer() {
+        // debugger
+        this.setState({ currTime: 0,
+                        duration: this.player.duration })
+
+        if (this.timer) clearTimeout(this.timer)
+        this.timer = setInterval(
+            () => {
+                
+                return this.setState({ currTime: parseFloat(this.state.currTime) + .5 })
+            }
+            , 500)
+    }
+    //DONE??
     handleClickPlayPause(){
         this.setState({isPlaying: !this.state.isPlaying})
         if (this.state.isPlaying) {
             this.player.pause()
+            clearTimeout(this.timer)
+
         } else {
-            this.player.play()
-            
+            this.player.play()  
+
+            clearTimeout(this.timer)
+            this.timer = setInterval(
+                () => {
+                    return this.setState({ currTime: parseFloat(this.state.currTime) + .5 })
+                }
+                , 500)  
         }
-    }
+       
+    } 
+    // SLIDERS
     handleVolumeChange(e){
-        return this.setState({volume: e.target.value})
+        
+        return this.setState({ volume: e.target.value }, () => {
+            this.player.volume = this.state.volume
+            if (this.state.volume === 0) this.player.muted = true
+        })
+    }
+  
+    handleTimeChange(e){
+            
+        return this.setState({ currTime: e.target.value }, ()=> {
+            this.player.currentTime = this.state.currTime    
+            // if (this.player.currentTime = this.player.duration) clearTimeout(this.timer)
+        })  
     }
 
-    handleTimeChange(e){
-        return this.setState({currTime: e.target.value})
-        // debugger
-    }
     handleForward(){
         return 
     }
@@ -80,16 +117,17 @@ class Musicplayer extends React.Component {
         return 
     }
 // type="audio/mpeg"
+
+
+
+
+
     render(){
-        // let albumArt;
-        // if (album.photoUrl) {
-        //     albumArt = typeof album.photoUrl !== 'undefined' ?
-        //         <img className="player-album-art" src={album.photoUrl} alt="_" />:
-        //         <div></div>
-        // }
+        // debugger
         const {song, album, artist} = this.props
         
-        debugger
+        const playpause = (this.state.isPlaying || (typeof this.props.song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
+
         
         return (
             <>                    
@@ -108,7 +146,6 @@ class Musicplayer extends React.Component {
                             
                                 <audio  controls 
                                         ref={el => this.player = el}
-                                        volume={this.state.volume}
                                         >  
                                     <source src={song.audioUrl}
                                     />
@@ -118,7 +155,7 @@ class Musicplayer extends React.Component {
                                     <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
                             <div className="play-button" onClick={this.handleClickPlayPause}>   
-                                    <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" /> 
+                                <img className={playpause} src={window.controls_spriteURL} alt="playImg" />                             
                             </div>
                             <div className="forward-button">
                             <img className="audio-button-img" onClick={this.handleForward()} src={window.controls_spriteURL} alt="Controls Img" />
@@ -128,25 +165,29 @@ class Musicplayer extends React.Component {
                             </div> */}
                         </div>
                     <div className="musicplayer-2-bottom">
-                        <p className="current-time-label">{this.state.currTime}</p>
+                        <p className="time-label">{this.formatTime(this.state.currTime)}</p>
                         {/* <p>current_play_time {this.player.currentTime}</p> */}
                         <input className="time-slider" 
+                               min="0"
+                               max={this.state.duration || ""}
                                type="range"
                                value={this.state.currTime}
                                onChange={this.handleTimeChange}
+                               step="1"
                         />
-                        {/* <p>total_play_time{this.player.duration}</p> */}
+                        <p className="time-label">{this.formatTime(this.state.duration)}</p>
                     </div>
                 </div>
 
                 <div className="musicplayer-3">
-                    <input className="time-slider" 
+                    <img src={window.volumeURL} alt="vol"/> 
+                    <input className="volume-slider" 
                             type="range"
                             min="0"
-                            max="100"
-                            step="10"
+                            max="1"
+                            step=".1"
                             value={this.state.volume}
-                            onChange = {this.handleVolumeChange}
+                            onChange={this.handleVolumeChange}
                     />
                 </div>
             </>
