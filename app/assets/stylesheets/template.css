@@ -97,4 +97,16 @@
    display: flex !important;
    align-items: center;
 }
+
+.navbar-top-item.active::before {
+    content: "";
+    width: 4px;
+    height: 29px;
+    background: rgb(0, 196, 90);
+    display: block;
+    position: absolute;
+    left: 5px;
+    top: 12px;
+
+}
  

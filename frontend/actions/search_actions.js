@@ -10,7 +10,7 @@ const receiveAllSearches = searches => {
 }
 
 const removeAllSearches = () => {
-    debugger
+    // debugger
     return {
         type: REMOVE_ALL_SEARCHES,
     }
@@ -23,7 +23,7 @@ export const fetchAllSearches = (query) => dispatch => {
 }
 
 export const deleteAllSearches = () => dispatch => {
-    debugger
+    // debugger
     return () => dispatch(removeAllSearches())
 }
 

@@ -7,7 +7,7 @@
 } */
 .home-options {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     background: rgb(27, 29, 32);
 }
 
@@ -20,3 +20,25 @@
 /* .home-selected:before {
 
 } */
+
+.active-home-link::before {
+    content: "";
+    width: 4px;
+    height: 29px;
+    background: rgb(0, 196, 90);
+    display: block;
+    position: absolute;
+    left: 5px;
+    top: 12px;
+
+}
+
+.home-active::before {
+    content: "";
+    width: 39px;
+    height: 4px;
+    background: rgb(0, 196, 90);
+    display: block;
+    position: absolute;
+    top: 31px;
+}

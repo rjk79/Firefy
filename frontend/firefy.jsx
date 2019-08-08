@@ -29,9 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //testing
     window.getState = store.getState
     window.dispatch = store.dispatch
-    window.fetchAllPlaylists = fetchAllPlaylists
-    window.fetchPlaylist = fetchPlaylist
-    window.fetchAlbum = fetchAlbum
+   
     window.createPlaylisting = createPlaylisting
     window.fetchAllSearches = fetchAllSearches
     window.deleteAllSearches = deleteAllSearches

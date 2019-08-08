@@ -57,6 +57,9 @@ class Musicplayer extends React.Component {
         let seconds = parseInt(secs)
         let minutes = Math.floor(seconds / 60)
         let netSeconds = seconds % 60
+        minutes = isNaN(minutes) ? "0" : minutes
+        netSeconds = isNaN(netSeconds) ? "0" : netSeconds
+
         if (netSeconds < 10) {
             return `${minutes}:0${netSeconds}`
         }
@@ -144,8 +147,10 @@ class Musicplayer extends React.Component {
         // debugger
         const {song, album, artist} = this.props
         
+        let checkedVolumeUrl 
+        if (this.player) checkedVolumeUrl = this.player.muted ? window.volume_muteURL : window.volumeURL
+        
         const playpause = (this.state.isPlaying || (typeof this.props.song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
-
         
         return (
             <>                    
@@ -167,7 +172,7 @@ class Musicplayer extends React.Component {
                                         >  
                                     <source src={song.audioUrl}
                                     />
-                                    Your browser does not support this file.
+                                    File not supported.
                                 </audio>
                             <div className="back-button" onClick={this.handleBack()}>
                                     <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
@@ -199,7 +204,7 @@ class Musicplayer extends React.Component {
                 </div>
 
                 <div className="musicplayer-3">
-                    <img className="vol-img lightup" onClick={this.handleMute} src={window.volumeURL} alt="vol"/> 
+                    <img className="vol-img lightup" onClick={this.handleMute} src={checkedVolumeUrl} alt="vol"/> 
                     <input className="volume-slider" 
                             type="range"
                             min="0"

@@ -7,6 +7,7 @@ const mdp = dispatch => {
     return {
         createPlaylisting: playlisting => dispatch(createPlaylisting(playlisting)),
         // handleClickPickSong: 
+        deletePlaylisting: (songId, playlistId) => dispatch(removePlaylisting(songId, playlistId))
     }
 } 
 
@@ -17,12 +18,10 @@ class SongComponent extends React.Component {
             popupShowing: false,
         }
         this.toggleOpenPlaylists = this.toggleOpenPlaylists.bind(this)
-        // this.handleClosePlaylists = this.handleClosePlaylists.bind(this)
     }
     toggleOpenPlaylists() {
         return this.setState({
             popupShowing: !this.state.popupShowing,
-            // popupId: id
         })
     }
     handleClosePlaylists(){
@@ -30,7 +29,7 @@ class SongComponent extends React.Component {
     }
     render(){
         // NEED TO PASS EVERYTHING EXCEPT createPlaylisting
-        const { song, artist, album, handleClickPickSong, createPlaylisting } = this.props
+        const { song, artist, album, handleClickPickSong, createPlaylisting, currPlaylistId } = this.props
 
         let playlists = this.props.playlists.map((playlist, idx) => (
             <p onClick={() => {
@@ -49,7 +48,7 @@ class SongComponent extends React.Component {
 
         return(
             <>
-                <img src={window.noteURL} onClick={handleClickPickSong(song.id)} />
+                <img className="lightup" src={window.noteURL} onClick={handleClickPickSong(song.id)} />
                 <div className="playlist-show-song-text">
                     <p onClick={handleClickPickSong(song.id)}>{song.title}</p>
                     <div className="songli-artist-album faded">
@@ -57,12 +56,10 @@ class SongComponent extends React.Component {
                          &nbsp;&nbsp;&#8226;&nbsp;&nbsp;
                             <Link to={`/album/${album.id}`} className="artist-album-li underlining">{album.name}</Link>
                     </div>
-                    <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> + </button>
+                    {/* <button className="songli-ell lightup" onClick={this.deletePlaylisting({song_id: song.id, playlist_id: currPlaylistId})}> + </button> */}
+                    {/* <button className="songli-ell lightup" onClick={this.handleRemoveFromPlaylist}> - </button> */}
                         {popup}
                 </div>
-                    
-                        
-                    {/* {this.popUpFactory(song.id)} */}
             </>
         )
     }

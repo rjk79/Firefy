@@ -14,13 +14,17 @@ class Template extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            currentSongId: null
+            currentSongId: null, 
+            songQueue: [],
         }
         this.handleClickPickSong = this.handleClickPickSong.bind(this)
     }
-    handleClickPickSong(songId){
+    handleClickPickSong(songId, songArray){
         // debugger
-        return () => this.setState({currentSongId: songId})
+        return () => this.setState({
+            currentSongId: songId,
+            songQueue: songArray,
+        })
     }
 
     render(){

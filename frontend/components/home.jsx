@@ -9,11 +9,19 @@ class HomeComponent extends React.Component {
         super(props)
         this.state = ({ tabName:"artists" })
     }
+    componentDidMount(){
+    }
+
     handleClick(tabName){
         return () => this.setState({tabName})
     }
 
     render(){
+        let addClassArtist = this.state.tabName === 'artists' ?                "home-active" : ""
+        let addClassAlbums = this.state.tabName === 'albums' ?                 "home-active" : ""
+        let addClassPlaylists = this.state.tabName === 'followed playlists' ? "home-active" : ""
+        
+        
         let index;
         if (this.state.tabName === 'artists') {
             index = <ArtistIndex/>
@@ -27,9 +35,9 @@ class HomeComponent extends React.Component {
         return (
             <>
             <div className="home-options">
-                <button className="lightup small home-button home-artists-button" onClick={this.handleClick("artists")}>Artists</button>     
-                <button className="lightup small home-button home-albums-button" onClick={this.handleClick("albums")}>Albums</button>     
-                <button className="lightup small home-button home-albums-button" onClick={this.handleClick("followed playlists")}>Followed Playlists</button>     
+                <button id="home-artists" className={`lightup small home-button home-artists-button ${addClassArtist}`} onClick={this.handleClick("artists")}>Artists</button>     
+                    <button id="home-albums" className={`lightup small home-button home-albums-button ${addClassAlbums}`} onClick={this.handleClick("albums")}>Albums</button>     
+                <button id="home-playlists" className={`lightup small home-button home-albums-button ${addClassPlaylists}`} onClick={this.handleClick("followed playlists")}>Follows</button>     
             </div>
             {index}
         </>

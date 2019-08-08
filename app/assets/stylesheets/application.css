@@ -303,7 +303,7 @@ html, body, #root, .primary-app-div {
     border: none;
 }
 
-.active:before {
+.index-playlist-item-link.active:before {
     content: "";
     width: 4px;
     height: 29px;
@@ -313,6 +313,8 @@ html, body, #root, .primary-app-div {
     left: 5px;
     top: 3px;
 }
+
+
 
 .app-name {
     font-size: 28px;
