@@ -71,6 +71,7 @@
 .audio-button-img {
     min-width: 140px;
     min-height: 140px;
+    cursor: pointer;
 }
 
 
@@ -147,6 +148,7 @@ audio {
 .volume-slider {
     height: 4px;
     -webkit-appearance: none;
+    cursor: pointer;
 
 }
 .volume-slider:focus {
@@ -200,7 +202,7 @@ input[type='range']:hover {
 } */
 
 input[type='range']::-webkit-slider-thumb {
-      width: 1px;
+      width: 0px;
       -webkit-appearance: none;
       height: 10px;
       background: rgb(180, 180, 180);

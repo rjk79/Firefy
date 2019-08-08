@@ -36,6 +36,8 @@ class Musicplayer extends React.Component {
         this.handleTimeChange = this.handleTimeChange.bind(this)
         this.handleVolumeChange = this.handleVolumeChange.bind(this)
         this.handleMute = this.handleMute.bind(this)
+        this.handleBack = this.handleBack.bind(this)
+        this.handleForward = this.handleForward.bind(this)
     }
     componentDidMount(){
         window.addEventListener('keypress', (e) => {
@@ -44,6 +46,11 @@ class Musicplayer extends React.Component {
                 this.handleClickPlayPause()
             }
         });
+        this.player.onended = ()=>{
+            return clearTimeout(this.timer)
+            }
+            // stops the timer and itll stop updating state
+
         // document.getElementById('mouse').addEventListener('mouseover', () => {
         //     document.getElementBy('mouse').classList.add("green-bar")
         // })
@@ -59,7 +66,7 @@ class Musicplayer extends React.Component {
         let netSeconds = seconds % 60
         minutes = isNaN(minutes) ? "0" : minutes
         netSeconds = isNaN(netSeconds) ? "0" : netSeconds
-
+    
         if (netSeconds < 10) {
             return `${minutes}:0${netSeconds}`
         }
@@ -71,31 +78,41 @@ class Musicplayer extends React.Component {
         return this.player.muted = !this.player.muted
     }
     handleVolumeChange(e) {
-
         return this.setState({ volume: e.target.value }, () => {
             this.player.volume = this.state.volume
-            if (this.state.volume === 0) this.player.muted = true
+            if (this.state.volume === 0) {
+                this.player.muted = true
+            }
         })
     }
     handleClickPlayPause() {
-        this.setState({ isPlaying: !this.state.isPlaying })
-        if (this.state.isPlaying) {
-            this.player.pause()
-            clearTimeout(this.timer)
+        if (this.player.currentSrc){
+            this.setState({ isPlaying: !this.state.isPlaying })
+            if (this.state.isPlaying) {
+                this.player.pause()
+                clearTimeout(this.timer)
 
-        } else {
-            this.player.play()
+            } else if (this.player.currentSrc && this.player.ended){
+                this.player.load()
+                this.player.play()
+                this.resetTimer()
+                //will play the song again if you push the button but the song ended
+                // this.handleClickPlay()
 
-            clearTimeout(this.timer)
-            this.timer = setInterval(
-                () => {
-                    return this.setState({ currTime: parseFloat(this.state.currTime) + .5 })
-                }
-                , 500)
-        }
+            } 
+            else {
+                this.player.play()
+                clearTimeout(this.timer)
+                this.timer = setInterval(
+                    () => {
+                        return this.setState({ currTime: parseFloat(this.state.currTime) + .5 })
+                    }
+                    , 500)
+            }}
     } 
-
-
+    handleToggleLoop(){
+        this.player.loop = !this.player.loop
+    }
     componentDidUpdate(prevProps, prevState){
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
             // debugger
@@ -116,7 +133,6 @@ class Musicplayer extends React.Component {
         if (this.timer) clearTimeout(this.timer)
         this.timer = setInterval(
             () => {
-                
                 return this.setState({ currTime: parseFloat(this.state.currTime) + .2 })
             }
             , 200)
@@ -127,7 +143,7 @@ class Musicplayer extends React.Component {
             
         return this.setState({ currTime: e.target.value }, ()=> {
             this.player.currentTime = this.state.currTime 
-            debugger
+            
             if (this.player.ended) {
                 // debugger
                 // this.handleClickPlayPause()  
@@ -137,9 +153,20 @@ class Musicplayer extends React.Component {
     }
 
     handleForward(){
+        if (this.player.currentSrc){
+            this.player.currentTime = this.state.duration
+            this.state.currTime = 0
+            debugger
+            
+        }
         return 
     }
     handleBack(){
+        if (this.player.currentSrc) {
+            this.player.load()
+            this.player.play()
+            this.resetTimer()
+        }
         return 
     }
 
@@ -148,7 +175,7 @@ class Musicplayer extends React.Component {
         const {song, album, artist} = this.props
         
         let checkedVolumeUrl 
-        if (this.player) checkedVolumeUrl = this.player.muted ? window.volume_muteURL : window.volumeURL
+        if (this.player) checkedVolumeUrl = (this.player.muted || this.state.volume === 0) ? window.volume_muteURL : window.volumeURL
         
         const playpause = (this.state.isPlaying || (typeof this.props.song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
         
@@ -174,14 +201,14 @@ class Musicplayer extends React.Component {
                                     />
                                     File not supported.
                                 </audio>
-                            <div className="back-button" onClick={this.handleBack()}>
+                            <div className="back-button" onClick={this.handleBack}>
                                     <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
                             <div className="play-button" onClick={this.handleClickPlayPause}>   
                                 <img className={playpause} src={window.controls_spriteURL} alt="playImg" />                             
                             </div>
                             <div className="forward-button">
-                            <img className="audio-button-img" onClick={this.handleForward()} src={window.controls_spriteURL} alt="Controls Img" />
+                            <img className="audio-button-img" onClick={this.handleForward} src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
                             {/* <div className="prog-bar-holder">
                                 <div className="prog-bar"></div>

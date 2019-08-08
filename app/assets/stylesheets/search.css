@@ -58,6 +58,7 @@
 .search-category {
   display: flex;
   flex-wrap: wrap;
+  
 }
 .search-category-songsplaylists {
   display: flex;

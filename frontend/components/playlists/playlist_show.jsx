@@ -55,7 +55,13 @@ class PlaylistShow extends React.Component {
 
             songLis = songs.map((song, idx) =>
                 <li key={idx} className="playlist-show-songli medium">
-                    <SongComponent currPlaylistId={playlist.id} playlists={playlists} song={song} artist={artists[idx]} album={albums[idx]} handleClickPickSong={handleClickPickSong}/>
+                    <SongComponent currPlaylistId={playlist.id}
+                                    playlists={playlists} 
+                                    song={song} 
+                                    artist={artists[idx]} 
+                                    album={albums[idx]} 
+                                    handleClickPickSong={handleClickPickSong}
+                    />
                 </li>
         )}
         // onClick={this.handleClickforSong(song.id)}
