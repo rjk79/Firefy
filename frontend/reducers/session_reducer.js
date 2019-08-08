@@ -9,6 +9,7 @@ export default (state = _nullSession, action) => {
     Object.freeze(state)
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
+            // sets the Current User Id
             return merge({}, { id: action.currentUser.id })
 
         case LOGOUT_CURRENT_USER:

@@ -49,7 +49,7 @@ class PlaylistShow extends React.Component {
     render() {
         
 
-        const { songs, albums, artists, handleClickPickSong, playlists} = this.props
+        const { songs, albums, artists, handleClickPickSong, playlists, currentUserId, createFollow, playlist} = this.props
         let songLis;
         if (this.props.songs){         
 
@@ -64,6 +64,8 @@ class PlaylistShow extends React.Component {
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
                     <img className="playlist-artwork" src={window.playlist_artworkURL} alt="Playlist Artwork"/>
+                    <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUserId, playlist_id: playlist.id})}>Follow</button>
+
                 <h2 className="playlist-show-name">{this.props.playlist.name}</h2>
                 <p className="song-quantity faded">{this.props.songs.length} songs</p>
                 <button className="playlist-delete-button deleting" onClick={this.deletePlaylist}>

@@ -38,7 +38,7 @@ class ArtistsIndex extends React.Component {
             <div className="artist-index">
                 <h1 className="artist-index-title">Artists</h1>
                 {artists}
-            </div>
+            </div> 
             </>
         )
     }

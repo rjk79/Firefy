@@ -38,20 +38,21 @@ class Musicplayer extends React.Component {
         this.handleMute = this.handleMute.bind(this)
     }
     componentDidMount(){
-        // debugger
+        window.addEventListener('keypress', (e) => {
+            let key = e.which || e.keyCode; //acounts for browsers
+            if (key === 32) {
+                this.handleClickPlayPause()
+            }
+        });
+        // document.getElementById('mouse').addEventListener('mouseover', () => {
+        //     document.getElementBy('mouse').classList.add("green-bar")
+        // })
+        // document.getElementById('mouse').addEventListener('mouseout', () => {
+        //     document.getElementById('mouse').classList.remove("green-bar")
+        // })
+        
     }
-    componentDidUpdate(prevProps, prevState){
-        if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
-            // debugger
-
-            this.player.load()
-            this.player.play()
-            this.setState({isPlaying: true})
-            this.resetTimer()
-        }
-        if (!isNaN(this.player.duration) && prevState.duration != this.state.duration) this.setState({duration: this.player.duration})
-    }
-     formatTime (secs) {
+    formatTime(secs) {
         // debugger
         let seconds = parseInt(secs)
         let minutes = Math.floor(seconds / 60)
@@ -63,7 +64,47 @@ class Musicplayer extends React.Component {
             return `${minutes}:${netSeconds}`
         }
     }
+    handleMute() {
+        return this.player.muted = !this.player.muted
+    }
+    handleVolumeChange(e) {
 
+        return this.setState({ volume: e.target.value }, () => {
+            this.player.volume = this.state.volume
+            if (this.state.volume === 0) this.player.muted = true
+        })
+    }
+    handleClickPlayPause() {
+        this.setState({ isPlaying: !this.state.isPlaying })
+        if (this.state.isPlaying) {
+            this.player.pause()
+            clearTimeout(this.timer)
+
+        } else {
+            this.player.play()
+
+            clearTimeout(this.timer)
+            this.timer = setInterval(
+                () => {
+                    return this.setState({ currTime: parseFloat(this.state.currTime) + .5 })
+                }
+                , 500)
+        }
+    } 
+
+
+    componentDidUpdate(prevProps, prevState){
+        if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
+            // debugger
+
+            this.player.load()
+            this.player.play()
+            this.setState({isPlaying: true})
+            this.resetTimer()
+        }
+        if (!isNaN(this.player.duration) && prevState.duration != this.state.duration) this.setState({duration: this.player.duration})
+    }
+     
     resetTimer() {
         // debugger
         this.setState({ currTime: 0,
@@ -77,45 +118,15 @@ class Musicplayer extends React.Component {
             }
             , 200)
     }
-    //DONE??
-    handleClickPlayPause(){
-        
-        this.setState({isPlaying: !this.state.isPlaying})
-        if (this.state.isPlaying) {
-            this.player.pause()
-            clearTimeout(this.timer)
 
-        } else {
-            this.player.play()  
-
-            clearTimeout(this.timer)
-            this.timer = setInterval(
-                () => {
-                    return this.setState({ currTime: parseFloat(this.state.currTime) + .5 })
-                }
-                , 500)  
-        }
-       
-    } 
-    handleMute(){
-        debugger
-        return this.player.muted = !this.player.muted
-    }
     // SLIDERS
-    handleVolumeChange(e){
-        
-        return this.setState({ volume: e.target.value }, () => {
-            this.player.volume = this.state.volume
-            if (this.state.volume === 0) this.player.muted = true
-        })
-    }
-  
-    handleTimeChange(e){
+      handleTimeChange(e){
             
         return this.setState({ currTime: e.target.value }, ()=> {
             this.player.currentTime = this.state.currTime 
+            debugger
             if (this.player.ended) {
-            //     debugger
+                // debugger
                 // this.handleClickPlayPause()  
             }
             // if (this.player.currentTime = this.player.duration) clearTimeout(this.timer)
@@ -128,11 +139,6 @@ class Musicplayer extends React.Component {
     handleBack(){
         return 
     }
-// type="audio/mpeg"
-
-
-
-
 
     render(){
         // debugger
@@ -179,13 +185,14 @@ class Musicplayer extends React.Component {
                     <div className="musicplayer-2-bottom">
                         <p className="time-label">{this.formatTime(this.state.currTime)}</p>
                         {/* <p>current_play_time {this.player.currentTime}</p> */}
-                        <input className="time-slider" 
+                        <input className="time-slider mouse" 
                                min="0"
                                max={this.state.duration || ""}
                                type="range"
                                value={this.state.currTime}
                                onChange={this.handleTimeChange}
                                step=".5"
+                               id="mouse"
                         />
                         <p className="time-label">{this.formatTime(this.state.duration)}</p>
                     </div>

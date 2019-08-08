@@ -19,7 +19,7 @@ class Template extends React.Component{
         this.handleClickPickSong = this.handleClickPickSong.bind(this)
     }
     handleClickPickSong(songId){
-        debugger
+        // debugger
         return () => this.setState({currentSongId: songId})
     }
 

@@ -4,8 +4,9 @@ import Root from './components/root';
 import configureStore from './store/store';
 import { fetchAllPlaylists, fetchPlaylist } from './actions/playlist_actions';
 import { fetchAlbum } from './actions/album_actions';
-import { createPlaylisting } from './util/playlisting_api_util';
 import { fetchAllSearches, deleteAllSearches } from './actions/search_actions';
+import { createFollow } from './actions/follow_actions';
+import { createPlaylisting } from './actions/playlisting_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.createPlaylisting = createPlaylisting
     window.fetchAllSearches = fetchAllSearches
     window.deleteAllSearches = deleteAllSearches
+    window.createFollow = createFollow
     //testing
 
 

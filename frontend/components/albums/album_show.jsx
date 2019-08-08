@@ -44,6 +44,7 @@ class AlbumShow extends React.Component {
                     <p className="center album-show-song-count">Songs: {this.props.songs.length}</p>
                     <div className="album-show-list-titles">Songs</div>
                     <ul>{songs}</ul>
+                    
                 </div>
             </>
         )

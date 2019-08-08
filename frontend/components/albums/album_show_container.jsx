@@ -5,7 +5,6 @@ import { fetchAlbum } from '../../actions/album_actions';
 import AlbumShow from './album_show';
 
 const msp = (state, ownProps) => {
-    
     let albumId = ownProps.match.params.albumId
     let album = state.entities.albums[albumId] || { name: "", artist_id: 0, photoUrl: "", song_ids: [] }
     let artist = state.entities.artists[album.artist_id] || {name: ""}
@@ -27,7 +26,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
     return {
-        fetchAlbum: id => dispatch(fetchAlbum(id))
+        fetchAlbum: id => dispatch(fetchAlbum(id)),
     }
 }
 

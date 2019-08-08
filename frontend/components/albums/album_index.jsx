@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {fetchAllAlbums} from '../../actions/album_actions'
 import {Link} from 'react-router-dom'
-
+ 
 const msp = state => {
     let albums = Object.values(state.entities.albums)
 
@@ -39,12 +39,12 @@ class AlbumsIndex extends React.Component {
             )
         })
         return (
-            <>
+            
                 <div className="album-index">
                     <h1 className="album-index-title">Albums</h1>
                     {albums}
                 </div>
-            </>
+        
         )
     }
 }

@@ -1,8 +1,8 @@
 .artist-index {
     overflow-y: scroll; 
-    padding: 5%;
     display: flex;
     flex-wrap: wrap;
+    padding: 5%;
     background-image: linear-gradient(135deg, rgb(37, 40, 44), rgb(0, 0, 0));
     height: 100%;
 }

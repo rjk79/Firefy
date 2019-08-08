@@ -8,7 +8,7 @@ const mdp = dispatch => {
         createPlaylisting: playlisting => dispatch(createPlaylisting(playlisting)),
         // handleClickPickSong: 
     }
-}
+} 
 
 class SongComponent extends React.Component {
     constructor(props){
@@ -54,10 +54,10 @@ class SongComponent extends React.Component {
                     <p onClick={handleClickPickSong(song.id)}>{song.title}</p>
                     <div className="songli-artist-album faded">
                         <Link to={`/artist/${artist.id}`} className="artist-album-li underlining">{artist.name}</Link>
-                         &#8226; 
+                         &nbsp;&nbsp;&#8226;&nbsp;&nbsp;
                             <Link to={`/album/${album.id}`} className="artist-album-li underlining">{album.name}</Link>
                     </div>
-                    <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> ... </button>
+                    <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> + </button>
                         {popup}
                 </div>
                     

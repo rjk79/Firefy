@@ -29,11 +29,11 @@ class SearchComponent extends React.Component {
         this.state = { query: "" }
     }
     componentDidMount(){
-        window.addEventListener('keypress', (e) => {
+        window.addEventListener('keypress',  (e) => {
             let key = e.which || e.keyCode; //acounts for browsers
-            if (key === 13) { 
+            if (key === 13 && this.state.query.length) {
                 this.props.fetchAllSearches(this.state.query)
-                this.setState({query: ""})
+                this.setState({ query: "" })
                 this.props.deleteAllSearches()
             }
         });
@@ -44,12 +44,15 @@ class SearchComponent extends React.Component {
 
     //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   
     componentWillUnmount(){
-        window.removeEventListener('keypress', function (e) {
+        window.removeEventListener('keypress',  (e) => {
             let key = e.which || e.keyCode; //acounts for browsers
             if (key === 13) {
-                fetchAllSearches(this.state.query)
+                this.props.fetchAllSearches(this.state.query)
+                this.setState({ query: "" })
+                this.props.deleteAllSearches()
             }
         });
+        // this.props.deleteAllSearches()
     }
     
     handleChange(field) {
@@ -96,7 +99,8 @@ class SearchComponent extends React.Component {
                 <li className="playlist-show-songli search-songplaylistname lightup" 
                     key={song.id} 
                 >
-                    <p onClick={this.props.handleClickPickSong(song.id)}>{song.title}</p>     
+                    {/* maybe just make this a song component */}
+                    <p onClick={this.props.handleClickPickSong(song.id)}><img src={window.noteURL} />{song.title}</p>     
                 </li>
             
         ))}

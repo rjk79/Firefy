@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     resources :songs, only: [:index, :show]
     resources :playlistings, only: [:create, :destroy]
     resources :searches, only: [:index]
+    resources :follows, only: [:index, :create, :destroy]
   end
 end
