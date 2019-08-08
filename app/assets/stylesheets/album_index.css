@@ -32,3 +32,8 @@
     width: 100%;
     text-align: center;
 }
+
+.search-item {
+    display: flex;
+    flex-wrap: wrap;
+}

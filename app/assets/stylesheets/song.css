@@ -1,0 +1,10 @@
+.playlist-show-popup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-end;
+    top: 40px;
+    /* position: relative; */
+    background: rgb(25, 25, 25);
+    opacity: 1;
+}

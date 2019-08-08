@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import { fetchAllPlaylists, fetchPlaylist } from './actions/playlist_actions';
 import { fetchAlbum } from './actions/album_actions';
 import { createPlaylisting } from './util/playlisting_api_util';
+import { fetchAllSearches, deleteAllSearches } from './actions/search_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,7 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
     window.fetchPlaylist = fetchPlaylist
     window.fetchAlbum = fetchAlbum
     window.createPlaylisting = createPlaylisting
-    
+    window.fetchAllSearches = fetchAllSearches
+    window.deleteAllSearches = deleteAllSearches
+    //testing
+
+
+
     let root = document.getElementById("root")
     ReactDOM.render(<Root store={store}/>, root)
 })

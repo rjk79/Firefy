@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+// import CreatePlaylistingComponent from '../playlisting/create_playlisting_button'
 
 class ArtistShow extends React.Component {
     constructor(props){
@@ -16,7 +17,9 @@ class ArtistShow extends React.Component {
             this.props.fetchArtist(artistId)
         }
     }
-
+    // handleAddToPlaylist(songId){
+        
+    // }
     
 
     render() {        
@@ -46,6 +49,7 @@ class ArtistShow extends React.Component {
             <li key={song.id} onClick={handleClickPickSong(song.id)} className="darkening artist-show-song">
                 <img src={window.noteURL} />
                 {song.title}
+                {/* <CreatePlaylistingComponent/> */}
                 {/* <img src={album.photoUrl} alt="album_art"/> */}
             </li>
             )

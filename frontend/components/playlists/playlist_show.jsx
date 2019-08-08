@@ -2,6 +2,7 @@ import React from 'react'
 import {withRouter} from 'react-router-dom'
 // import { Draggable } from 'react-beautiful-dnd';
 import {Link} from 'react-router-dom'
+import SongComponent from '../songs/song_component'
 
 
 class PlaylistShow extends React.Component {
@@ -9,13 +10,15 @@ class PlaylistShow extends React.Component {
         super(props)
         this.deletePlaylist = this.deletePlaylist.bind(this)
         this.state = {
-            popupShowing: false
         }
         // WORK IN PROGRESS ^
+        // this.popUpFactory = this.popUpFactory.bind(this)
     }
     componentDidMount() {
         let playlistId = this.props.match.params.playlistId        
         this.props.fetchPlaylist(playlistId)
+        // document.getElementByClassName("hideable").addEventListener("click", ());
+
     }
     componentDidUpdate(prevProps){
         if (this.props.match.params.playlistId != prevProps.match.params.playlistId) {
@@ -29,45 +32,35 @@ class PlaylistShow extends React.Component {
         this.props.deletePlaylist(this.props.playlist.id)
         this.props.history.push("/home")
     }
-    handleClickforSong() {
-        return this.setState({
-            popupShowing: !this.state.popupShowing
-        })
-    }
+    
     // WORK IN PROGRESS ^
 
-
+    // popUpFactory(id) {
+    //     id === (this.state.popupId && this.state.popupShowing) ?
+    //     return () => (
+    //         <div className="playlist-show-popup">
+    //             <ul>
+    //                 {playlists}
+    //             </ul>
+    //         </div>
+    //         : null
+    //     )
+    // }
     render() {
+        
 
-        let popup = this.state.popupShowing ?
-            <div className="playlist-show-popup">
-                <button>Add to Playlist</button>
-            </div>
-            : null
-
-
-
-        const { songs, albums, artists, handleClickPickSong} = this.props
+        const { songs, albums, artists, handleClickPickSong, playlists} = this.props
         let songLis;
         if (this.props.songs){         
 
             songLis = songs.map((song, idx) =>
-                <li key={idx} className="playlist-show-songli medium" onClick={handleClickPickSong(song.id)}>
-                    <img src={window.noteURL}/>
-                    <div className="playlist-show-song-text">
-                        {song.title}
-                        <div className="songli-artist-album faded">
-                            <Link to={`/artist/${artists[idx].id}`} className="artist-album-li underlining">{artists[idx].name}</Link>
-                             &#8226;  
-                            <Link to={`/album/${albums[idx].id}`} className="artist-album-li underlining">{albums[idx].name}</Link>
-                        </div>
-                        <button className="songli-ell lightup">...</button>
-                        {popup}
-                    </div>
+                <li key={idx} className="playlist-show-songli medium">
+                    <SongComponent playlists={playlists} song={song} artist={artists[idx]} album={albums[idx]} handleClickPickSong={handleClickPickSong}/>
                 </li>
         )}
         // onClick={this.handleClickforSong(song.id)}
         return (
+
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
                     <img className="playlist-artwork" src={window.playlist_artworkURL} alt="Playlist Artwork"/>
@@ -76,6 +69,7 @@ class PlaylistShow extends React.Component {
                 <button className="playlist-delete-button deleting" onClick={this.deletePlaylist}>
                     <span>...</span>
                 </button>
+                {/* <button className="invisbutton" onClick={() => openModal("add to playlist")}>Rename</button> */}
               </div>
                 <ul className="playlist-songlist">
                     {songLis}

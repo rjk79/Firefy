@@ -6,7 +6,7 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def create
-        @playlist = Playlist.new(playlist_params)
+        @playlist = Playlist.new(playlist_params) 
         @playlist.user_id = current_user.id
         if @playlist.save
             render :show
@@ -37,6 +37,7 @@ class Api::PlaylistsController < ApplicationController
     end
 
     private
+    # make sure the object has a name so in AJAX, data: { {name: }}
     def playlist_params
         params.require(:playlist).permit(:name)
     end

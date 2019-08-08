@@ -10,7 +10,7 @@ class Api::PlaylistingsController < ApplicationController
     end
 
     def destroy
-        @playlisting = Playlisting.find(params[:id])
+        @playlisting = Playlisting.find(params[:id]) 
         @playlisting.destroy
         render :show
     end

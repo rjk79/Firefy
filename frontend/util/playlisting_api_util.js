@@ -7,3 +7,11 @@ export const createPlaylisting = playlisting => {
         data: { playlisting }
     })
 }
+
+
+export const deletePlaylisting = id => {
+    return $.ajax({
+        method: 'delete',
+        url: `api/playlistings/${id}`,
+    })
+}

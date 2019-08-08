@@ -120,7 +120,7 @@ html, body, #root, .primary-app-div {
 }
  .lightup {
      opacity: .7;
-     transition-duration: .2s;
+     transition-duration: .3s;
      transition-property: opacity;
      transition-timing-function: linear;
  }
@@ -358,4 +358,10 @@ html, body, #root, .primary-app-div {
     position: relative;
     top: 15%;
     z-index: 1;
+}
+
+.welcome-messages {
+    text-align: center;
+    top: 23%;
+    position: relative;
 }

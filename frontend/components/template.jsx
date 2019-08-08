@@ -19,7 +19,7 @@ class Template extends React.Component{
         this.handleClickPickSong = this.handleClickPickSong.bind(this)
     }
     handleClickPickSong(songId){
-        
+        debugger
         return () => this.setState({currentSongId: songId})
     }
 
@@ -50,7 +50,6 @@ class Template extends React.Component{
 
 
                     <div className="template-display">
-                        {/* <img className="spotlight-background" src={window.spotlight_backgroundURL} alt="splash-img"/> */}
                         <div className="spotlight-background"></div>
                         <Switch>
                             <ProtectedRoute handleClickPickSong={this.handleClickPickSong} 

@@ -26,3 +26,48 @@
   color: rgb(86, 86, 86);
   font-weight: 700;
 }
+
+.search-searchspotify {
+  margin-top: 12%;
+  font-size: 28px;
+  text-align: center;
+}
+
+.search-findyour {
+  font-size: 14px;
+  text-align: center;
+}
+
+/* duplicate */
+.album-photo {
+    width: 250px;
+    height: 250px;
+    /* border-radius: 50%; */
+    padding: 10px;
+    margin: 0 auto;
+    min-height: 250px;
+    min-width: 250px;
+}
+
+.search-songplaylistname {
+  font-size: 16px;
+}
+.search-category {
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-category-songsplaylists {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-item-link {
+  display: flex;
+  flex-direction: column;
+}

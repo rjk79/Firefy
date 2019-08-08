@@ -152,6 +152,9 @@ audio {
 .volume-slider:focus {
     border: none;
 }
+.vol-img {
+    cursor: pointer;
+}
 
 .time-slider:focus {
     border: none;
@@ -198,9 +201,32 @@ input[type='range']::-webkit-slider-thumb {
       width: 1px;
       -webkit-appearance: none;
       height: 10px;
-      background: #434343;
+      background: rgb(180, 180, 180);
       box-shadow: -500px 0 0 500px rgb(3, 187, 92);
     }
+/* 
+input[type='range']::-webkit-slider-thumb:hover {
+      width: 1px;
+      -webkit-appearance: none;
+      height: 10px;
+      background: #434343;
+      box-shadow: -500px 0 0 500px rgb(180, 180, 180);
+    } */
+/* input[type='range']::-webkit-slider-thumb {
+    box-shadow: -500px 0 0 500px rgb(25, 25, 25);
+} */
+/* input[type='range']::-webkit-slider:hover {
+    box-shadow: -500px 0 0 500px rgb(25, 25, 25);
+} */
+
+/* 
+input[type='range']::-webkit-slider-thumb:hover {
+      width: 1px;
+      -webkit-appearance: none;
+      height: 10px;
+      background: #434343;
+      box-shadow: -500px 0 0 500px rgb(3, 187, 92);
+    } */
 /* 
 input[type='range']::-webkit-slider-thumb:hover {
       overflow: inherit;

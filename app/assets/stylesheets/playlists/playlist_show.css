@@ -25,6 +25,7 @@
 .playlist-show-song-text {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .playlist-title-delete {

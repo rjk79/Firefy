@@ -3,6 +3,7 @@ import { closeModal } from '../actions/modal_actions';
 import { connect } from 'react-redux';
 import CreatePlaylistContainer from './playlists/playlist_create_container'
 import EditPlaylistContainer from './playlists/playlist_edit_container'
+// import CreatePlaylistingComponent from './playlisting/create_playlisting_modal'
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
@@ -16,6 +17,9 @@ function Modal({ modal, closeModal }) {
             break;
         case 'editplaylist':
             component = <EditPlaylistContainer/>;
+            break;
+        case 'add to playlist':
+            // component = CreatePlaylistingComponent
             break;
         default:
             return null;

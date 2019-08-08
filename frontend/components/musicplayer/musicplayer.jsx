@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { fetchSong } from '../../actions/song.actions';
+import {Link} from 'react-router-dom'
 
 const msp = (state, ownProps) => {
     
@@ -34,13 +35,15 @@ class Musicplayer extends React.Component {
         this.handleClickPlayPause = this.handleClickPlayPause.bind(this)
         this.handleTimeChange = this.handleTimeChange.bind(this)
         this.handleVolumeChange = this.handleVolumeChange.bind(this)
+        this.handleMute = this.handleMute.bind(this)
     }
     componentDidMount(){
         // debugger
     }
     componentDidUpdate(prevProps, prevState){
-        // debugger
-        if ((this.props.song != prevProps.song) && (this.props.song.audioUrl)) {
+        if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
+            // debugger
+
             this.player.load()
             this.player.play()
             this.setState({isPlaying: true})
@@ -70,12 +73,13 @@ class Musicplayer extends React.Component {
         this.timer = setInterval(
             () => {
                 
-                return this.setState({ currTime: parseFloat(this.state.currTime) + .5 })
+                return this.setState({ currTime: parseFloat(this.state.currTime) + .2 })
             }
-            , 500)
+            , 200)
     }
     //DONE??
     handleClickPlayPause(){
+        
         this.setState({isPlaying: !this.state.isPlaying})
         if (this.state.isPlaying) {
             this.player.pause()
@@ -93,6 +97,10 @@ class Musicplayer extends React.Component {
         }
        
     } 
+    handleMute(){
+        debugger
+        return this.player.muted = !this.player.muted
+    }
     // SLIDERS
     handleVolumeChange(e){
         
@@ -105,7 +113,11 @@ class Musicplayer extends React.Component {
     handleTimeChange(e){
             
         return this.setState({ currTime: e.target.value }, ()=> {
-            this.player.currentTime = this.state.currTime    
+            this.player.currentTime = this.state.currTime 
+            if (this.player.ended) {
+            //     debugger
+                // this.handleClickPlayPause()  
+            }
             // if (this.player.currentTime = this.player.duration) clearTimeout(this.timer)
         })  
     }
@@ -132,11 +144,11 @@ class Musicplayer extends React.Component {
         return (
             <>                    
                 <div className="musicplayer-1">
-                    <img className="player-album-art" src={album.photoUrl} alt=""/>
+                    <Link to={`artist/${artist.id}`}><img className="player-album-art" src={album.photoUrl} alt="" /></Link>
                     {/* {albumArt} */}
                     <div className="player-song-artist">
-                        <p className="player-song-title">{song.title}</p>
-                        <p className="player-artist-name">{artist.name}</p>
+                        <Link to={`album/${album.id}`}><p className="player-song-title underlining">{song.title}</p></Link>
+                        <Link to={`artist/${artist.id}`}><p className="player-artist-name underlining">{artist.name}</p></Link>
                     </div> 
                 </div>
 
@@ -173,14 +185,14 @@ class Musicplayer extends React.Component {
                                type="range"
                                value={this.state.currTime}
                                onChange={this.handleTimeChange}
-                               step="1"
+                               step=".5"
                         />
                         <p className="time-label">{this.formatTime(this.state.duration)}</p>
                     </div>
                 </div>
 
                 <div className="musicplayer-3">
-                    <img src={window.volumeURL} alt="vol"/> 
+                    <img className="vol-img lightup" onClick={this.handleMute} src={window.volumeURL} alt="vol"/> 
                     <input className="volume-slider" 
                             type="range"
                             min="0"

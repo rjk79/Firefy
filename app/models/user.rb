@@ -18,10 +18,13 @@ class User < ApplicationRecord
 
   has_many :follows
 
+  has_one_attached :photo
+
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return user if user && BCrypt::Password.new(user.password_digest).is_password?(password)
-    nil
+    nil 
   end
 
   def self.generate_session_token

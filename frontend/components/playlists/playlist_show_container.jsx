@@ -2,6 +2,7 @@ import {fetchPlaylist, deletePlaylist} from '../../actions/playlist_actions'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import PlaylistShow from './playlist_show'
+// import { openModal } from '../../actions/modal_actions';
 //msp => mdp => didMount => other didMount
 const msp = (state, ownProps) => {
     let playlistId = ownProps.match.params.playlistId //grab the ID
@@ -20,19 +21,22 @@ const msp = (state, ownProps) => {
     let artists = albums.map(album =>
         state.entities.artists[album.artist_id]    
     )
+    let playlists = Object.values(state.entities.playlists)
         
     return {
         playlist,
         songs,
         albums,
-        artists
+        artists,
+        playlists
     }
 }
 
 const mdp = dispatch => {
     return {
         fetchPlaylist: id => dispatch(fetchPlaylist(id)),
-        deletePlaylist: id => dispatch(deletePlaylist(id))
+        deletePlaylist: id => dispatch(deletePlaylist(id)),
+        // openModal: string => dispatch(openModal(string))
     }
 }
 
