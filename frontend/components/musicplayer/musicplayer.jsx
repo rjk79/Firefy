@@ -30,7 +30,8 @@ class Musicplayer extends React.Component {
             isPlaying: false,
             currTime: 0,
             volume: .5,
-            duration: 0
+            duration: 0,
+            looping: false,
         }
         this.handleClickPlayPause = this.handleClickPlayPause.bind(this)
         this.handleTimeChange = this.handleTimeChange.bind(this)
@@ -38,6 +39,7 @@ class Musicplayer extends React.Component {
         this.handleMute = this.handleMute.bind(this)
         this.handleBack = this.handleBack.bind(this)
         this.handleForward = this.handleForward.bind(this)
+        this.handleToggleLoop = this.handleToggleLoop.bind(this)
     }
     componentDidMount(){
         window.addEventListener('keypress', (e) => {
@@ -47,17 +49,18 @@ class Musicplayer extends React.Component {
             }
         });
         this.player.onended = ()=>{
+            // this.setState({currTime: 0})
             return clearTimeout(this.timer)
             }
             // stops the timer and itll stop updating state
-
+        
         // document.getElementById('mouse').addEventListener('mouseover', () => {
         //     document.getElementBy('mouse').classList.add("green-bar")
         // })
         // document.getElementById('mouse').addEventListener('mouseout', () => {
         //     document.getElementById('mouse').classList.remove("green-bar")
         // })
-        
+        // this.player.onplay = () => {debugger}
     }
     formatTime(secs) {
         // debugger
@@ -75,8 +78,12 @@ class Musicplayer extends React.Component {
         }
     }
     handleMute() {
-        return this.player.muted = !this.player.muted
+        this.player.muted = !this.player.muted
+        if (this.player.muted) {this.state.volume = 0 }
+        else {this.state.volume = .5}
+        //if volume is not 0
     }
+    //opposites ^v
     handleVolumeChange(e) {
         return this.setState({ volume: e.target.value }, () => {
             this.player.volume = this.state.volume
@@ -112,6 +119,8 @@ class Musicplayer extends React.Component {
     } 
     handleToggleLoop(){
         this.player.loop = !this.player.loop
+        this.state.looping = !this.state.looping
+        debugger
     }
     componentDidUpdate(prevProps, prevState){
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
@@ -156,7 +165,7 @@ class Musicplayer extends React.Component {
         if (this.player.currentSrc){
             this.player.currentTime = this.state.duration
             this.state.currTime = 0
-            debugger
+            // debugger
             
         }
         return 
@@ -174,11 +183,17 @@ class Musicplayer extends React.Component {
         // debugger
         const {song, album, artist} = this.props
         
-        let checkedVolumeUrl 
-        if (this.player) checkedVolumeUrl = (this.player.muted || this.state.volume === 0) ? window.volume_muteURL : window.volumeURL
-        
+        let checkedVolumeUrl;
+        let loopImg;
+
+        if (this.player){
+            loopImg = this.player.loop ? "looping" : "loop"
+            checkedVolumeUrl = (this.player.muted || this.state.volume === 0) ? window.volume_muteURL : window.volumeURL
+        }
         const playpause = (this.state.isPlaying || (typeof this.props.song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
         
+
+
         return (
             <>                    
                 <div className="musicplayer-1">
@@ -210,6 +225,9 @@ class Musicplayer extends React.Component {
                             <div className="forward-button">
                             <img className="audio-button-img" onClick={this.handleForward} src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
+                            <div onClick={this.handleToggleLoop}>
+                                {loopImg}
+                            </div>
                             {/* <div className="prog-bar-holder">
                                 <div className="prog-bar"></div>
                             </div> */}
@@ -240,6 +258,7 @@ class Musicplayer extends React.Component {
                             value={this.state.volume}
                             onChange={this.handleVolumeChange}
                     />
+                    {/* Volume icon doesnt auto when manually drag bar and state.currTime doesnt reset upon loop trigger */}
                 </div>
             </>
         ) 
