@@ -6,6 +6,9 @@
  .faded {
      opacity: .7;
  }
+ .morefaded {
+     opacity: .5;
+ }
 
  .strong {
     font-weight: 800;

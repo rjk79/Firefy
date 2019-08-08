@@ -85,10 +85,19 @@
     background: rgb(17, 17, 17);
 }
 .artist-show-song {
+    display: flex;
+    align-items: center;
     cursor: pointer;
 }
 
 .artist-show-album_list {
     display: flex;
     flex-wrap: wrap;
+}
+
+.artist-show-album-li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
 }

@@ -20,7 +20,7 @@ class CreatePlaylistComponent extends React.Component {
         return(
             <button className="invisbutton create-playlist-button" onClick={this.handleClick}>
                 <div className="plusbutton faded">
-                    +
+                    <p className="plus-sign">+</p>
                 </div>
                 Create Playlist
             </button>

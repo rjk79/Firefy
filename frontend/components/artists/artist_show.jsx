@@ -15,7 +15,7 @@ class ArtistShow extends React.Component {
         if (this.props.match.params.artistId != prevProps.match.params.artistId) {
             let artistId = this.props.match.params.artistId
             this.props.fetchArtist(artistId)
-        }
+        } 
     }
     // handleAddToPlaylist(songId){
         
@@ -28,7 +28,7 @@ class ArtistShow extends React.Component {
             return (
                 
                 <li key={album.id}>
-                    <Link to={`/album/${album.id}`}>
+                    <Link className="artist-show-album-li" to={`/album/${album.id}`}>
                         <div><img className="artist-show-album-photo" src={album.photoUrl} alt="album_img" /></div>
                         <div className="">{album.name}</div>
                     </Link>
@@ -42,7 +42,7 @@ class ArtistShow extends React.Component {
         //     this.props.songs
         // }
         const { handleClickPickSong} = this.props
-        
+        debugger
         let songs = this.props.songs.map(song => {
             // let album = this.props.albums[song.id]
             return (

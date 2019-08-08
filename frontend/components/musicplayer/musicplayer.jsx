@@ -14,7 +14,7 @@ const msp = (state, ownProps) => {
         artist
     }
 }
-
+ 
 const mdp = dispatch => {
     return {
         fetchSong: id => dispatch(fetchSong(id)),
@@ -120,7 +120,6 @@ class Musicplayer extends React.Component {
     handleToggleLoop(){
         this.player.loop = !this.player.loop
         this.state.looping = !this.state.looping
-        debugger
     }
     componentDidUpdate(prevProps, prevState){
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
@@ -187,7 +186,7 @@ class Musicplayer extends React.Component {
         let loopImg;
 
         if (this.player){
-            loopImg = this.player.loop ? "looping" : "loop"
+            loopImg = this.player.loop ? <img className="loop-img" src={window.loopURL} alt="loop" /> : <img className="loop-img morefaded" src={window.loopURL} alt="loop" />
             checkedVolumeUrl = (this.player.muted || this.state.volume === 0) ? window.volume_muteURL : window.volumeURL
         }
         const playpause = (this.state.isPlaying || (typeof this.props.song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
@@ -225,7 +224,7 @@ class Musicplayer extends React.Component {
                             <div className="forward-button">
                             <img className="audio-button-img" onClick={this.handleForward} src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
-                            <div onClick={this.handleToggleLoop}>
+                            <div className="loop-container" onClick={this.handleToggleLoop}>
                                 {loopImg}
                             </div>
                             {/* <div className="prog-bar-holder">

@@ -15,7 +15,6 @@ class Template extends React.Component{
         super(props)
         this.state = {
             currentSongId: null, 
-            songQueue: [],
         }
         this.handleClickPickSong = this.handleClickPickSong.bind(this)
     }
@@ -23,7 +22,6 @@ class Template extends React.Component{
         // debugger
         return () => this.setState({
             currentSongId: songId,
-            songQueue: songArray,
         })
     }
 

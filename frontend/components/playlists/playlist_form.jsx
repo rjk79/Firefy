@@ -30,13 +30,15 @@ class PlaylistForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="playlist-form">
                     <label htmlFor="name" className="small playlist-name-input-label">Playlist Name</label>
-                    <input id="name" 
-                            className="playlist-name-input" 
-                            type="text" value={this.state.name} 
-                            onChange={this.handleChange("name")}
-                            placeholder="New Playlist"
-                            autofocus
-                            />
+                    <div className="playlist-form-background">
+                        <input id="name" 
+                                className="playlist-name-input" 
+                                type="text" value={this.state.name} 
+                                onChange={this.handleChange("name")}
+                                placeholder="New Playlist"
+                                autofocus
+                                />
+                    </div>
                     <br/>
                     </div>
                     <input className="session-button playlist-form-button long-padding" 

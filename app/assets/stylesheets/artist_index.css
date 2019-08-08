@@ -24,6 +24,7 @@
     height: 200px;
     width: 200px;
     margin-bottom: 10px;
+    box-shadow: 3px 3px 15px rgb(25, 25, 25);
 }
 
 .artist-index-img:hover {

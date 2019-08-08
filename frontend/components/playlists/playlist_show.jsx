@@ -18,7 +18,7 @@ class PlaylistShow extends React.Component {
         let playlistId = this.props.match.params.playlistId        
         this.props.fetchPlaylist(playlistId)
         // document.getElementByClassName("hideable").addEventListener("click", ());
-
+ 
     }
     componentDidUpdate(prevProps){
         if (this.props.match.params.playlistId != prevProps.match.params.playlistId) {
@@ -70,7 +70,7 @@ class PlaylistShow extends React.Component {
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
                     <img className="playlist-artwork" src={window.playlist_artworkURL} alt="Playlist Artwork"/>
-                    <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUserId, playlist_id: playlist.id})}>Follow</button>
+                    <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUserId, playlist_id: playlist.id})}>FOLLOW</button>
 
                 <h2 className="playlist-show-name">{this.props.playlist.name}</h2>
                 <p className="song-quantity faded">{this.props.songs.length} songs</p>

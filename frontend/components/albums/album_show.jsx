@@ -23,7 +23,7 @@ class AlbumShow extends React.Component {
         let songs = this.props.songs.map(song => {
             return (
 
-                <li key={song.id} onClick={handleClickPickSong(song.id)}>
+                <li className="album-show-songli" key={song.id} onClick={handleClickPickSong(song.id)}>
                     <div className="darkening album-show-song-item">
                         <img src={window.noteURL}/>
                         {song.title}
@@ -38,7 +38,7 @@ class AlbumShow extends React.Component {
             <>
                 <div className="album-show">
                     <h1 className="album-show-name center">{this.props.album.name}</h1>
-                    <Link to={`/artist/${artist.id}`} className="center underlining"><h2>By: {artist.name}</h2></Link>
+                    <Link to={`/artist/${artist.id}`} className="center underlining"><p className="album-show-artist-name faded">{artist.name}</p></Link>
                     {/* <p className="center album-show-artist">{artist.name}</p> */}
                     <img className="album-photo" src={this.props.album.photoUrl} alt="album_img" />
                     <p className="center album-show-song-count">Songs: {this.props.songs.length}</p>

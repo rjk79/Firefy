@@ -1,15 +1,16 @@
 .followedplaylists-index {
-    background: rgba(150, 150, 250, .3);
+    /* background: rgba(150, 150, 250, .3); */
     flex-wrap: wrap;
     display: flex;
     overflow-y: scroll;
+    
 
 }
 
 .album-index {   
-    background: rgba(0, 168, 79, .3);
+    /* background: rgba(0, 168, 79, .3); */
 }
 
 .artist-index {
-    background: rgba(0, 163, 217, .3);
+    /* background: rgba(0, 163, 217, .3); */
 }

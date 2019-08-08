@@ -38,6 +38,7 @@
 }
 
 .playlist-show-songli {
+    padding-top: 6px;
     display: flex;
     width: 100%;
     position: relative;
@@ -90,13 +91,17 @@
 .follow-button {
     cursor: pointer;
     border-radius: 50px;
-    width: 145px;
-    font-size: 14px;
+    width: 138px;
+    font-size: 10px;
     background: rgb(0, 208, 97);
     margin: auto;
-    height: 44px;
-    font-weight: 300;
+    height: 40px;
+    font-weight: 200;
     border: none;
     margin-top: 14px;
     letter-spacing: 1px;
 }
+/* .follow-button:hover {
+    width: 139px;
+    height: 41px;
+} */

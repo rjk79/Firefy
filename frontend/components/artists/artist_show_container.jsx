@@ -17,7 +17,8 @@ const msp = (state, ownProps) => {
             if (album) {
                 album.song_ids.forEach(song_id => {
                     let song = state.entities.songs[song_id]
-                    songs.push(song)
+                    
+                    if (typeof song!== 'undefined') songs.push(song)
                     }
                 )
             }
