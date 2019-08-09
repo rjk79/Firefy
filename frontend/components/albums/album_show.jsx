@@ -1,9 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import SongComponent from '../songs/song_component';
 
 class AlbumShow extends React.Component {
     constructor(props) {
         super(props)
+        this.handlePickSong = this.handlePickSong.bind(this)
     }
     componentDidMount() {
         let albumId = this.props.match.params.albumId
@@ -16,19 +18,22 @@ class AlbumShow extends React.Component {
             this.props.fetchAlbum(albumId)
         }
     }
+    handlePickSong(songId) {
+        this.props.receiveQueue(this.props.songs, songId)
+    }
 
     render() {
         // if (!albums) return <> </>
-        const {handleClickPickSong, artist} = this.props
+        const {handlePickSong, artist} = this.props
         let songs = this.props.songs.map(song => {
             return (
 
-                <li className="album-show-songli" key={song.id} onClick={handleClickPickSong(song.id)}>
-                    <div className="darkening album-show-song-item">
-                        <img src={window.noteURL}/>
-                        {song.title}
-                    </div>
-                </li>
+              <SongComponent key={song.id}
+                        song={song}
+                        artist={artist}
+                        album={this.props.album}
+                        handlePickSong={this.handlePickSong}
+                />
             )
         }
 

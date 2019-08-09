@@ -36,7 +36,7 @@
 .home-active::before {
     content: "";
     width: 39px;
-    height: 4px;
+    height: 2px;
     background: rgb(0, 196, 90);
     display: block;
     position: absolute;

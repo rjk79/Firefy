@@ -10,20 +10,22 @@ import HomeComponent from './home'
 import MusicplayerComponent from './musicplayer/musicplayer'
 import SearchComponent from './search'
 
+import {connect} from 'react-redux'
+// import {fetchAllSongs} from '../actions/song.actions'
+
+// const mdp = dispatch => {
+//     return {
+//         fetchAllSongs: ()=>dispatch(fetchAllSongs())
+//     }
+// }
 class Template extends React.Component{
     constructor(props){
         super(props)
-        this.state = {
-            currentSongId: null, 
-        }
-        this.handleClickPickSong = this.handleClickPickSong.bind(this)
+  
     }
-    handleClickPickSong(songId, songArray){
-        // debugger
-        return () => this.setState({
-            currentSongId: songId,
-        })
-    }
+    // componentDidMount(){
+    //     this.props.fetchAllSongs()
+    // }
 
     render(){
         return (
@@ -54,16 +56,16 @@ class Template extends React.Component{
                     <div className="template-display">
                         <div className="spotlight-background"></div>
                         <Switch>
-                            <ProtectedRoute handleClickPickSong={this.handleClickPickSong} 
+                            <ProtectedRoute  
                                             exact path="/playlist/:playlistId" 
                                             component={PlaylistShowContainer} />
-                            <ProtectedRoute handleClickPickSong={this.handleClickPickSong} 
+                            <ProtectedRoute  
                                             exact path="/artist/:artistId" 
                                             component={ArtistShowComponent} />
-                            <ProtectedRoute handleClickPickSong={this.handleClickPickSong} 
+                            <ProtectedRoute  
                                             exact path="/album/:albumId" 
                                             component={AlbumShowComponent} />
-                            <ProtectedRoute handleClickPickSong={this.handleClickPickSong} 
+                            <ProtectedRoute  
                                             exact path="/search" 
                                             component={SearchComponent} />
                             <Route path="/" component={HomeComponent} />
@@ -71,12 +73,12 @@ class Template extends React.Component{
                     </div>
                 </div>
             
-                <div className="template-player"><MusicplayerComponent currentSongId={this.state.currentSongId} /></div>
+                <div className="template-player"><MusicplayerComponent /></div>
                     
             </div>
         )
     }
 }
-
 export default Template
-
+// export default connect(null, mdp)(Template)
+// REMOVE

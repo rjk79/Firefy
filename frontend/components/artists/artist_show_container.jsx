@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import { fetchArtist } from '../../actions/artist_actions';
 import ArtistShow from './artist_show';
 import { createPlaylisting } from '../../util/playlisting_api_util';
+import { receiveQueue } from '../../actions/musicplayer_actions';
 
 const msp = (state, ownProps) => {
     let artistId = ownProps.match.params.artistId
@@ -37,7 +38,7 @@ const mdp = dispatch => {
     return {
         fetchArtist: id => dispatch(fetchArtist(id)),
         // createPlaylisting: playlisting => dispatch(createPlaylisting(playlisting))
-
+        receiveQueue: (songs, currId) => dispatch(receiveQueue(songs, currId))
     }
 }
 

@@ -5,21 +5,19 @@ import {Link} from 'react-router-dom'
 import SongComponent from '../songs/song_component'
 
 
+
 class PlaylistShow extends React.Component {
     constructor(props){
         super(props)
         this.deletePlaylist = this.deletePlaylist.bind(this)
-        this.state = {
-        }
-        // WORK IN PROGRESS ^
-        // this.popUpFactory = this.popUpFactory.bind(this)
+        this.handlePickSong = this.handlePickSong.bind(this)
     }
     componentDidMount() {
         let playlistId = this.props.match.params.playlistId        
         this.props.fetchPlaylist(playlistId)
         // document.getElementByClassName("hideable").addEventListener("click", ());
  
-    }
+    } 
     componentDidUpdate(prevProps){
         if (this.props.match.params.playlistId != prevProps.match.params.playlistId) {
             let playlistId = this.props.match.params.playlistId
@@ -32,39 +30,31 @@ class PlaylistShow extends React.Component {
         this.props.deletePlaylist(this.props.playlist.id)
         this.props.history.push("/home")
     }
+
+    handlePickSong(songId){
+        this.props.receiveQueue(this.props.songs, songId)
+        
+    }
     
     // WORK IN PROGRESS ^
 
-    // popUpFactory(id) {
-    //     id === (this.state.popupId && this.state.popupShowing) ?
-    //     return () => (
-    //         <div className="playlist-show-popup">
-    //             <ul>
-    //                 {playlists}
-    //             </ul>
-    //         </div>
-    //         : null
-    //     )
-    // }
     render() {
         
 
-        const { songs, albums, artists, handleClickPickSong, playlists, currentUserId, createFollow, playlist} = this.props
+        const { songs, albums, artists, currentUserId, createFollow, playlist} = this.props
         let songLis;
         if (this.props.songs){         
 
             songLis = songs.map((song, idx) =>
                 <li key={idx} className="playlist-show-songli medium">
-                    <SongComponent currPlaylistId={playlist.id}
-                                    playlists={playlists} 
+                    <SongComponent 
                                     song={song} 
                                     artist={artists[idx]} 
                                     album={albums[idx]} 
-                                    handleClickPickSong={handleClickPickSong}
+                                    handlePickSong={this.handlePickSong}
                     />
                 </li>
         )}
-        // onClick={this.handleClickforSong(song.id)}
         return (
 
             <div className="playlist-show">

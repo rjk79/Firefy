@@ -36,7 +36,7 @@ class Greeting extends React.Component {
     }
 
     render() {
-        debugger
+        
         
         let popup = this.state.popupShowing ? 
             <div className="greeting-popup" >

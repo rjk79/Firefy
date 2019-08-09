@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import PlaylistShow from './playlist_show'
 import {createFollow, deleteFollow} from '../../actions/follow_actions'
+import { receiveQueue } from '../../actions/musicplayer_actions';
 // import { openModal } from '../../actions/modal_actions';
 //msp => mdp => didMount => other didMount
 
@@ -45,7 +46,8 @@ const mdp = dispatch => {
         deletePlaylist: id => dispatch(deletePlaylist(id)),
         // openModal: string => dispatch(openModal(string))
         createFollow: follow => dispatch(createFollow(follow)),
-        deleteFollow: id => dispatch(deleteFollow(id))
+        deleteFollow: id => dispatch(deleteFollow(id)),
+        receiveQueue: (songs, currSongId) => dispatch(receiveQueue(songs, currSongId))
     }
 }
 

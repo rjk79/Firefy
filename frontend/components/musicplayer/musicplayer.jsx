@@ -3,15 +3,30 @@ import {connect} from 'react-redux'
 import { fetchSong } from '../../actions/song.actions';
 import {Link} from 'react-router-dom'
 
-const msp = (state, ownProps) => {
-    
-    let song = state.entities.songs[ownProps.currentSongId] || {id: null, audioUrl: ""}
+const msp = (state) => {
+    debugger
+    let song 
+    if (state.musicplayer && state.musicplayer.queue && state.musicplayer.currSongId) {
+    // let song = state.musicplayer.queue && state.musicplayer.queue[0] || {id: null, audioUrl: ""}
+        song = state.entities.songs[state.musicplayer.currSongId]
+    }
+    else {
+        song= { id: null, audioUrl: "" }
+    } 
+    debugger
     let album = state.entities.albums[song.album_id] || {id: null}
     let artist = state.entities.artists[album.artist_id] || {}
+    
+    let currSongId;
+    if (state.musicplayer) { currSongId = state.musicplayer.currSongId || null }
+    let songqueue;
+    if (state.musicplayer) {songqueue = state.musicplayer.songqueue || []}
     return {
         song,
         album,
-        artist
+        artist,
+        currSongId,
+        songqueue,
     }
 }
  
@@ -32,6 +47,8 @@ class Musicplayer extends React.Component {
             volume: .5,
             duration: 0,
             looping: false,
+            currentSongId: null,
+            queue: [],
         }
         this.handleClickPlayPause = this.handleClickPlayPause.bind(this)
         this.handleTimeChange = this.handleTimeChange.bind(this)
@@ -61,6 +78,21 @@ class Musicplayer extends React.Component {
         //     document.getElementById('mouse').classList.remove("green-bar")
         // })
         // this.player.onplay = () => {debugger}
+
+    }
+    componentDidUpdate(prevProps, prevState) {
+        //NEW SONG
+        debugger
+        if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
+            debugger
+            this.setState({currentSongId: this.props.currSongId})
+            this.player.load()
+            this.player.play()
+            this.setState({ isPlaying: true })
+            this.resetTimer()
+            this.setState({queue: this.props.songqueue})
+        }
+        if (!isNaN(this.player.duration) && prevState.duration != this.state.duration) this.setState({ duration: this.player.duration })
     }
     formatTime(secs) {
         // debugger
@@ -121,17 +153,7 @@ class Musicplayer extends React.Component {
         this.player.loop = !this.player.loop
         this.state.looping = !this.state.looping
     }
-    componentDidUpdate(prevProps, prevState){
-        if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
-            // debugger
-
-            this.player.load()
-            this.player.play()
-            this.setState({isPlaying: true})
-            this.resetTimer()
-        }
-        if (!isNaN(this.player.duration) && prevState.duration != this.state.duration) this.setState({duration: this.player.duration})
-    }
+    
      
     resetTimer() {
         // debugger

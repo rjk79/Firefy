@@ -2,24 +2,36 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { fetchAllSearches, deleteAllSearches } from '../actions/search_actions';
 import {Link} from 'react-router-dom'
+import { receiveQueue } from '../actions/musicplayer_actions';
+import SongComponent from './songs/song_component';
 
 const msp = state => {
-    let {songs, albums, artists, playlists} = state.entities.searches
-    if (songs) songs = Object.values(songs)
-    if (artists) artists = Object.values(artists)
-    if (albums) albums = Object.values(albums)
-    if (playlists) playlists = Object.values(playlists)
+
+    let {songIds, albumIds, artistIds, playlistIds} = state.searches
+    let songs
+    let artists
+    let albums
+    let playlists
+    if (songIds) songs = songIds.map(id => state.entities.songs[id])
+    if (artistIds) artists = artistIds.map(id => state.entities.artists[id])
+    if (albumIds) albums = albumIds.map(id => state.entities.albums[id])
+    if (playlistIds) playlists = playlistIds.map(id => state.entities.playlists[id])
+    
+    let currSongId;
+    if (state.musicplayer) { currSongId = state.musicplayer.currSongId || null }
     return {
         songs, 
         albums, 
         artists,
-        playlists
+        playlists,
+        currSongId,
     }
 }
 const mdp = dispatch => {
     return {
         deleteAllSearches: () => dispatch(deleteAllSearches()),
-        fetchAllSearches: string => dispatch(fetchAllSearches(string))
+        fetchAllSearches: string => dispatch(fetchAllSearches(string)),
+        receiveQueue: (songs, currSongId) => dispatch(receiveQueue(songs, currSongId)),
     }
 }
 
@@ -27,6 +39,7 @@ class SearchComponent extends React.Component {
     constructor(props){
         super(props)
         this.state = { query: "" }
+        this.handlePickSong = this.handlePickSong.bind(this)
     }
     componentDidMount(){
         window.addEventListener('keypress',  (e) => {
@@ -54,7 +67,10 @@ class SearchComponent extends React.Component {
         });
         // this.props.deleteAllSearches()
     }
-    
+    handlePickSong(songId) {
+        this.props.receiveQueue(this.props.songs, songId)
+    }
+
     handleChange(field) {
         
         return e => this.setState({
@@ -96,12 +112,12 @@ class SearchComponent extends React.Component {
         ))}
         if (songs){
             songLis = songs.map(song => (
-                <li className="playlist-show-songli search-songplaylistname lightup" 
-                    key={song.id} 
-                >
-                    {/* maybe just make this a song component */}
-                    <p onClick={this.props.handleClickPickSong(song.id)}><img src={window.noteURL} />{song.title}</p>     
-                </li>
+                <SongComponent key={song.id} 
+                               song={song}
+                               album={{name: ""}}
+                               artist={{name: ""}}
+                               handlePickSong={this.handlePickSong}
+                />
             
         ))}
         let finishedSongs;
@@ -116,7 +132,7 @@ class SearchComponent extends React.Component {
 
 
         // let search = this.state.query === "" ? 
-        let tooltip = !songs && !artists && !albums && !playlists ? <><p className="search-searchspotify">Search Spotify</p><p className="search-findyour">Find your favorite songs, artists, albums, podcasts, playlists.</p></> : null
+        let tooltip = !songs && !artists && !albums && !playlists ? <><p className="search-searchfirefy">Search Firefy</p><p className="search-findyour">Find your favorite songs, artists, albums, podcasts, playlists.</p></> : null
         return (
             <div className="search-area">
                 <input 

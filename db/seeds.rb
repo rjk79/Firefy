@@ -40,6 +40,10 @@ dd = Artist.create!(name: "Ed Sheeran")
 de = Artist.create!(name: "CHVRCHES")
 df = Artist.create!(name: "CAZZETTE")
 dg = Artist.create!(name: "Vacation Manor")
+####
+####
+####
+####
 
 da.photo.attach(io: File.open('app/assets/images/neighbourhood_artist.png'), filename: 'neighbourhood_artist.png')
 db.photo.attach(io: File.open('app/assets/images/panic_artist.jpg'), filename: 'panic_artist.jpg')
@@ -67,6 +71,9 @@ ce = Album.create!(name: "Love Is Dead", artist_id: de.id)
 cf = Album.create!(name: "Eject", artist_id: df.id)
 cg = Album.create!(name: "Static", artist_id: df.id)
 ch = Album.create!(name: "Say We'll Make It", artist_id: dg.id)
+###
+###
+###
    
 ca.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
 cb.photo.attach(io: File.open('app/assets/images/bachelor_album.jpg'), filename: 'bachelor_album.jpg')
@@ -99,10 +106,27 @@ bh.audio_file.attach(io: File.open('app/assets/audio/static.mp3'), filename: 'st
 bi.audio_file.attach(io: File.open('app/assets/audio/say_well_make_it.mp3'), filename: 'say_well_make_it.mp3')
 
 
-ea = Playlist.create(user_id: aa.id, name: "Sounds of Summer")
-eb = Playlist.create(user_id: aa.id, name: "Popular Jams")
-ec = Playlist.create(user_id: ab.id, name: "Beach Blues")
-ed = Playlist.create(user_id: ab.id, name: "Throwback Twists")
+ea = Playlist.create(user_id: aa.id, name: "Aa Audios")
+eb = Playlist.create(user_id: ab.id, name: "Beach Bangers")
+ec = Playlist.create(user_id: ab.id, name: "Cohort Chosen")
+ed = Playlist.create(user_id: ab.id, name: "Dank Drops")
+ee = Playlist.create(user_id: ab.id, name: "Ear Euphonies")
+ef = Playlist.create(user_id: ab.id, name: "Fan Favorites")
+eg = Playlist.create(user_id: ab.id, name: "Gig Grabbag")
+eh = Playlist.create(user_id: ab.id, name: "Harmonica Harmonies")
+ei = Playlist.create(user_id: aa.id, name: "Popular Picks")
+ej = Playlist.create(user_id: aa.id, name: "Sounds of Summer")
+ek = Playlist.create(user_id: ab.id, name: "Throwback Twists")
+
+# ea.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
+# eb.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
+# ec.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
+# ca.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
+# ca.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
+# ca.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
+# ca.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
+
+
 
 #########################################################################
 

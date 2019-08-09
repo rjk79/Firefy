@@ -7,7 +7,6 @@ json.songs do
         end
     end
 end
-# pluck is opposite of set in terms of interpol
 
 json.artist do
     json.set! @album.artist.id do

@@ -1,10 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import SongComponent from '../songs/song_component';
 // import CreatePlaylistingComponent from '../playlisting/create_playlisting_button'
 
 class ArtistShow extends React.Component {
     constructor(props){
         super(props)
+        this.handlePickSong = this.handlePickSong.bind(this)
     }
     componentDidMount() {
         let artistId = this.props.match.params.artistId
@@ -20,7 +22,10 @@ class ArtistShow extends React.Component {
     // handleAddToPlaylist(songId){
         
     // }
-    
+
+    handlePickSong(songId) {
+        this.props.receiveQueue(this.props.songs, songId)
+    }
 
     render() {        
         
@@ -41,17 +46,22 @@ class ArtistShow extends React.Component {
         // for(let i = 0; i < i++){
         //     this.props.songs
         // }
-        const { handleClickPickSong} = this.props
-        debugger
+        const { handlePickSong} = this.props
+        
         let songs = this.props.songs.map(song => {
             // let album = this.props.albums[song.id]
             return (
-            <li key={song.id} onClick={handleClickPickSong(song.id)} className="darkening artist-show-song">
-                <img src={window.noteURL} />
-                {song.title}
-                {/* <CreatePlaylistingComponent/> */}
-                {/* <img src={album.photoUrl} alt="album_art"/> */}
-            </li>
+            //     <li key={song.id}            className="darkening artist-show-song">
+            //     <img src={window.noteURL} />
+            //     {song.title}
+            //  </li> 8/9
+
+                <SongComponent key={song.id}
+                               song={song} 
+                               artist={this.props.artist} 
+                               album={this.props.albums.find(album => album.id === song.album_id)}
+                               handlePickSong={this.handlePickSong}
+                />
             )
         })
         

@@ -27,6 +27,7 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
     return {
         fetchAlbum: id => dispatch(fetchAlbum(id)),
+        receiveQueue: (songs, currSongId) => dispatch(receiveQueue(songs, currSongId))
     }
 }
 

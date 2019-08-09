@@ -42,3 +42,14 @@ end
 
 
 # have separate one for each model
+
+json.artistIds @artists.pluck(:id)
+
+json.albumIds @albums.pluck(:id)
+
+json.songIds @songs.pluck(:id)
+
+json.playlistIds @playlists.pluck(:id)
+
+
+

@@ -372,3 +372,15 @@ html, body, #root, .primary-app-div {
     top: 23%;
     position: relative;
 }
+
+
+ @keyframes flashing-true {
+    0%, 100%{color: white}
+    50%{color: rgb(0, 196, 90)}
+ }
+ .flashing-true {
+     animation-name: flashing-true;
+     animation-duration: 1s;
+     animation-iteration-count: infinite;
+     animation-timing-function: ease-out;
+ }

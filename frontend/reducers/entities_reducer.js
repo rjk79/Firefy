@@ -4,9 +4,8 @@ import playlistReducer from "./playlists_reducer";
 import songsReducer from "./songs_reducer";
 import albumsReducer from "./albums_reducer";
 import artistsReducer from "./artists_reducer";
-import searchesReducer from './search_reducer'
+// import searchesReducer from './search_reducer'
 // import followsReducer from "./follows_reducer";
-import songQueueReducer from "./musicplayer_reducer";
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
@@ -14,8 +13,7 @@ const entitiesReducer = combineReducers({
     songs: songsReducer,
     albums: albumsReducer,
     artists: artistsReducer,
-    searches: searchesReducer,
-    songqueue: songQueueReducer,
+    // searches: searchesReducer,
 })
 
 

@@ -5,7 +5,15 @@ export const REMOVE_ALL_SEARCHES = 'REMOVE_ALL_SEARCHES'
 const receiveAllSearches = searches => {
     return {
         type: RECEIVE_ALL_SEARCHES,
-        searches,
+        searches: {artistIds: searches.artistIds,
+                    albumIds: searches.albumIds,
+                    songIds: searches.songIds,
+                    playlistIds: searches.playlistIds,
+                    },
+        artists: searches.artists,
+        albums: searches.albums,
+        playlists: searches.playlists,
+        songs: searches.songs
     }
 }
 
