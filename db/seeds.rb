@@ -124,6 +124,9 @@ ei = Playlist.create(user_id: aa.id, name: "Popular Picks")
 ej = Playlist.create(user_id: aa.id, name: "Sounds of Summer")
 ek = Playlist.create(user_id: ab.id, name: "Throwback Twists")
 
+ci.photo.attach(io: File.open('app/assets/images/painting_album.jpg'), filename: 'painting_album.jpg')
+
+
 # ea.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
 # eb.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')
 # ec.photo.attach(io: File.open('app/assets/images/iloveyou_album.jpg'), filename: 'iloveyou_album.jpg')

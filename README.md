@@ -12,7 +12,7 @@ Dead Bugs:
   CSS - nav bar "before" elems, BW button changes
   playlist show- compdidUpdate, Mount, and Msp, remove class from container
   pushing undefined values into arrays
-  rgba
+  
   id instead of artist_id
 
   maximum callstack => need conditional in didupdate

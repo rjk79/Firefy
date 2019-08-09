@@ -93,6 +93,17 @@ class Musicplayer extends React.Component {
         //     })
         // }
     }
+    componentWillUnmount(){
+        document.getElementsByClassName('time-slider-wrapper')[0].removeEventListener('mouseenter', () => {
+            document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
+            document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
+        })
+
+        document.getElementsByClassName('time-slider-wrapper')[0].removeEventListener('mouseleave', () => {
+            document.getElementsByClassName('time-slider-wrapper')[0].classList.remove("green-bar")
+            document.getElementsByClassName('fake-thumb')[0].style.display = "none"
+        })
+    }
     componentDidUpdate(prevProps, prevState) {
         //NEW SONG
         

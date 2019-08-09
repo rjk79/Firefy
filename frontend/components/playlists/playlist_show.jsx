@@ -59,7 +59,7 @@ class PlaylistShow extends React.Component {
 
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
-                    <img className="playlist-artwork" src={window.playlist_artworkURL} alt="Playlist Artwork"/>
+                    <img className="playlist-artwork" src={playlist.photoUrl} alt="PlaylistArt"/>
                     <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUserId, playlist_id: playlist.id})}>FOLLOW</button>
 
                 <h2 className="playlist-show-name">{this.props.playlist.name}</h2>
