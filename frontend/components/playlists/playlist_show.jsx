@@ -55,6 +55,7 @@ class PlaylistShow extends React.Component {
                     />
                 </li>
         )}
+        // debugger
         return (
 
             <div className="playlist-show">

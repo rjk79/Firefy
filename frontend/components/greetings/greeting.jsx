@@ -11,15 +11,15 @@ class Greeting extends React.Component {
         }
         this.handleBlur = this.handleBlur.bind(this)
     }
-    componentDidMount(){
-        return this.setState({popupShowing: false})
+    componentDidMount() {
+        return this.setState({ popupShowing: false })
     }
-    componentDidUpdate(){
+    componentDidUpdate() {
         // if (this.state.popupShowing){
         // return this.setState({ popupShowing: false })
         // }
     }
-    
+
 
     handleClickOnName() {
         return this.setState({
@@ -30,41 +30,43 @@ class Greeting extends React.Component {
     handleClick() {
         this.props.logout()
     }
-    handleBlur(){
-        this.setState({popupShowing: false})
+    handleBlur() {
+        this.setState({ popupShowing: false })
         // debugger
     }
 
     render() {
-        
-        
-        let popup = this.state.popupShowing ? 
+
+
+        let popup = this.state.popupShowing ?
             <div className="greeting-popup" >
-                <Link to="/" className="small faded lightup" onClick={this.handleClick}> 
+                <Link to="/" className="small faded lightup" onClick={this.handleClick}>
                     Log Out
-                </Link> 
+                </Link>
             </div>
-                : null
-            
+            : null
+
 
         const name = this.props.currentUser ? this.props.currentUser.username : ""
         return this.props.currentUser ?
             (
                 <>
-                    <div className="greeting-logout" onBlur={this.handleBlur}>
-                    <hr className="greeting-hr"/>
-                    <button className="medium greeting-name" onClick={this.handleClickOnName}>{name}</button>
-                    {popup}
+                    {/* onBlur={this.handleBlur} supposed to be in the tag below */}
+                    <div className="greeting-logout" >
+                        <hr className="greeting-hr" />
+                        <button className="medium greeting-name" onClick={this.handleClickOnName}>{name}</button>
+                        {/* not rendering  anymore */}
+                        {popup}
                 </div>
                 </>
             ) : (
                 <>
-                    <div className = "greeting-bar"> 
+                    <div className="greeting-bar">
                         <div className="greeting-logoname">
                             <img src={window.firefly_logoURL} alt="Img" />
                             <Link className="splash-logo" to="/">Firefy</Link>
-                        </div> 
-                        <div className="greeting-buttons"> 
+                        </div>
+                        <div className="greeting-buttons">
                             {/* <i className="greeting-separator"></i> */}
                             <Link className="greeting-link small" to="/signup">Sign Up</Link>
                             <Link className="greeting-link small" to="/login">Log In</Link>
