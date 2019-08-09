@@ -10,6 +10,15 @@
     /* text-align: center; */
     position: relative;
 }
+.artist-show::-webkit-scrollbar {
+    background: transparent;
+}
+.artist-show::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+.artist-show::-webkit-scrollbar-track {
+    background: transparent;
+}
 
 .artist-show > * {
     padding: 10px;

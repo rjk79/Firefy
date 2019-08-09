@@ -48,13 +48,7 @@ class ArtistShow extends React.Component {
         // }
         const { handlePickSong} = this.props
         
-        let songs = this.props.songs.map(song => {
-            // let album = this.props.albums[song.id]
-            return (
-            //     <li key={song.id}            className="darkening artist-show-song">
-            //     <img src={window.noteURL} />
-            //     {song.title}
-            //  </li> 8/9
+        let songs = this.props.songs.map(song => 
 
                 <SongComponent key={song.id}
                                song={song} 
@@ -62,8 +56,8 @@ class ArtistShow extends React.Component {
                                album={this.props.albums.find(album => album.id === song.album_id)}
                                handlePickSong={this.handlePickSong}
                 />
-            )
-        })
+        )
+        
         
         return (
             <>

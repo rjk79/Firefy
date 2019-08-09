@@ -2,9 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { fetchSong } from '../../actions/song.actions';
 import {Link} from 'react-router-dom'
+import { receiveCurrentSongId } from '../../actions/musicplayer_actions';
 
 const msp = (state) => {
-    debugger
+    
     let song 
     if (state.musicplayer && state.musicplayer.queue && state.musicplayer.currSongId) {
     // let song = state.musicplayer.queue && state.musicplayer.queue[0] || {id: null, audioUrl: ""}
@@ -13,7 +14,7 @@ const msp = (state) => {
     else {
         song= { id: null, audioUrl: "" }
     } 
-    debugger
+    
     let album = state.entities.albums[song.album_id] || {id: null}
     let artist = state.entities.artists[album.artist_id] || {}
     
@@ -33,6 +34,7 @@ const msp = (state) => {
 const mdp = dispatch => {
     return {
         fetchSong: id => dispatch(fetchSong(id)),
+        receiveCurrentSongId: id => dispatch(receiveCurrentSongId(id))
     }
 }
 
@@ -48,7 +50,6 @@ class Musicplayer extends React.Component {
             duration: 0,
             looping: false,
             currentSongId: null,
-            queue: [],
         }
         this.handleClickPlayPause = this.handleClickPlayPause.bind(this)
         this.handleTimeChange = this.handleTimeChange.bind(this)
@@ -57,7 +58,7 @@ class Musicplayer extends React.Component {
         this.handleBack = this.handleBack.bind(this)
         this.handleForward = this.handleForward.bind(this)
         this.handleToggleLoop = this.handleToggleLoop.bind(this)
-    }
+    } 
     componentDidMount(){
         window.addEventListener('keypress', (e) => {
             let key = e.which || e.keyCode; //acounts for browsers
@@ -68,16 +69,23 @@ class Musicplayer extends React.Component {
         this.player.onended = ()=>{
             // this.setState({currTime: 0})
             return clearTimeout(this.timer)
-            }
+        }
             // stops the timer and itll stop updating state
                                                         
-                // document.getElementById('mouse').addEventListener('mouseover', () => {
-                //     document.getElementBy('mouse').classList.add("green-bar")
-                // })
-                // document.getElementById('mouse').addEventListener('mouseout', () => {
-                //     document.getElementById('mouse').classList.remove("green-bar")
-                // })
-                // this.player.onplay = () => {debugger}
+        document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseenter', () => {
+            document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
+            document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
+        })
+                                                    
+        document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseleave', () => {
+            document.getElementsByClassName('time-slider-wrapper')[0].classList.remove("green-bar")
+            document.getElementsByClassName('fake-thumb')[0].style.display = "none"
+        })
+        this.player.ontimeupdate = e => {
+            document.getElementsByClassName('fake-thumb')[0].style.left = `${Math.floor(this.state.currTime * 100 /this.state.duration)}%`;
+        }      
+        
+
         // this.player.ontimeupdate = e => {
         //     this.setState({
         //         currentTime: e.target.currentTime,
@@ -87,9 +95,9 @@ class Musicplayer extends React.Component {
     }
     componentDidUpdate(prevProps, prevState) {
         //NEW SONG
-        debugger
+        
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
-            debugger
+            
             this.setState({currentSongId: this.props.currSongId})
             this.player.load()
             this.player.play()
@@ -182,10 +190,20 @@ class Musicplayer extends React.Component {
     }
 
     handleForward(){
+        const {songqueue, receiveCurrentSongId} = this.props
         if (this.player.currentSrc){
+            // debugger
             this.player.currentTime = this.state.duration
             this.state.currTime = 0
-            
+            // let currentIdx = songqueue.find(song => {
+                // debugger
+            //     return song.id === this.state.currentSongId})
+            // if (currentIdx !== -1 && currentIdx !== songqueue.length - 1) {
+            //     currentIdx ++
+            //     debugger
+            //     this.setState({currentSongId: this.songqueue[currentIdx].id})
+            //     receiveCurrentSongId(this.songqueue[currentIdx].id)
+            // }
             // debugger
             
         }
@@ -256,6 +274,8 @@ class Musicplayer extends React.Component {
                     <div className="musicplayer-2-bottom">
                         <p className="time-label">{this.formatTime(this.state.currTime)}</p>
                         {/* <p>current_play_time {this.player.currentTime}</p> */}
+                        <div className="time-slider-wrapper">
+                            <div className="fake-thumb"></div>
                         <input className="time-slider mouse" 
                                min="0"
                                max={this.state.duration || ""}
@@ -265,6 +285,7 @@ class Musicplayer extends React.Component {
                                step=".5"
                                id="mouse"
                         />
+                        </div>
                         {/* <div className="seekbar-container"></div> */}
                         <p className="time-label">{this.formatTime(this.state.duration)}</p>
                     </div>

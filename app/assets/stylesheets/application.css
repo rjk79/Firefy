@@ -348,12 +348,33 @@ html, body, #root, .primary-app-div {
     flex-direction: row;
     margin: 3%;
 }
+.playlist-show::-webkit-scrollbar {
+    background: transparent;
+}
+.playlist-show::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+.playlist-show::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
 .songlist {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     height: 40%;
 }
+.songlist::-webkit-scrollbar {
+    background: transparent;
+}
+.songlist::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+.songlist::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 
 .plus-sign {
     display: flex;
@@ -377,18 +398,18 @@ html, body, #root, .primary-app-div {
     position: relative;
 }
 
-/* 
+
  @keyframes flashing-true {
-    0%, 100%{color: white}
+    0%, 100%{color: rgb(0, 176, 70)}
     50%{color: rgb(0, 196, 90)}
  }
  .flashing-true {
      animation-name: flashing-true;
-     animation-duration: 1s;
+     animation-duration: 1.5s;
      animation-iteration-count: infinite;
      animation-timing-function: ease-out;
- } */
-
- .flashing-true {
-     color: rgb(0, 196, 90);
  }
+
+ /* .flashing-true {
+     color: rgb(0, 196, 90);
+ } */

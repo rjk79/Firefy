@@ -79,7 +79,7 @@ class SongComponent extends React.Component {
                         </div>
 
 
-                        {/* <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> ADD </button> */}
+                        <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> + </button>
                         {/* <button className="songli-ell lightup" onClick={this.handleRemoveFromPlaylist}> - </button> */}
                             {popup}
                     </div>

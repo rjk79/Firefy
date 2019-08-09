@@ -20,12 +20,12 @@ const msp = (state, ownProps) => {
         ) 
     songs = songs.filter(el => el != null)
 
-    let albums = songs.map(song =>
-        state.entities.albums[song.album_id]
+    let albums = songs.map(song =>{
+        if (song) return state.entities.albums[song.album_id]}
     ) 
 
-    let artists = albums.map(album =>
-        state.entities.artists[album.artist_id]    
+    let artists = albums.map(album =>{
+        if (album) return (state.entities.artists[album.artist_id])  }  
     )
     let playlists = Object.values(state.entities.playlists)
         

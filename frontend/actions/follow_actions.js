@@ -24,7 +24,7 @@ const removeFollow = follow => {
         followId: follow.id
     }
 }
-
+ 
 export const fetchAllFollows = () => dispatch => {
     return FollowAPIUtil.fetchAllFollows()
         .then(follows => dispatch(receiveAllFollows(follows)))

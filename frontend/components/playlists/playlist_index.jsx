@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-
+ 
 class PlaylistIndex extends React.Component {
 //add conditional using history.push
     componentDidMount(){

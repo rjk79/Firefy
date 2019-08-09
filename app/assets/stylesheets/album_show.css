@@ -12,6 +12,15 @@
     overflow-y: scroll;
     /* text-align: center; */
 }
+.album-show::-webkit-scrollbar {
+    background: transparent;
+}
+.album-show::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+.album-show::-webkit-scrollbar-track {
+    background: transparent;
+}
 
 .album-show > * {
     padding: 5px;

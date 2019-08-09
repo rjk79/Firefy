@@ -18,7 +18,7 @@ class Api::PlaylistingsController < ApplicationController
         #     user_id: current_user.id,
         #     room_id: params[:room_id]
         #     ).destroy
-
+ 
     private
     def playlisting_params
         params.require(:playlisting).permit(:playlist_id, :song_id)

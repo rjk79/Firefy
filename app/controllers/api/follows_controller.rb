@@ -14,7 +14,7 @@ class Api::FollowsController < ApplicationController
     end
 
     def destroy
-        @follow = Follow.find(params[:id]) 
+        # @follow = Follow.search(params[:search][:car_number], params[:search][:car_model]) 
         # find_by(
         #     user_id: current_user.id,
         #     room_id: params[:room_id]
