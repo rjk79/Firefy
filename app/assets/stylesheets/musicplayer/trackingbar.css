@@ -1,0 +1,11 @@
+.seekbar-container {
+    position: absolute;
+    height: 10px;
+    background: red;
+    opacity: .5;
+    width: 86%;
+    left: 7.1%
+}
+input#mouse.time-slider.mouse {
+    position: relative;
+}

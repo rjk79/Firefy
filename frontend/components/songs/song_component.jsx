@@ -68,10 +68,13 @@ class SongComponent extends React.Component {
                 <div className="songcomponent">
                     <img className="lightup" src={window.noteURL} onClick={()=>handlePickSong(song.id)} />
                     <div className="playlist-show-song-text">
-                        <p className={`${flashing}`} onClick={() => handlePickSong(song.id)}>{song.title}</p>
+                        <p className={`${flashing} song-component-title`} 
+                           onClick={() => handlePickSong(song.id)}>
+                           {song.title}
+                        </p>
                         <div className={`songli-artist-album faded`}>
                             <Link to={`/artist/${artist.id}`} className="artist-album-li underlining">{artist.name}</Link>
-                            &nbsp;&nbsp;&#8226;&nbsp;&nbsp;
+                            {artist.name && album.name ? "  -  " : ""}
                             <Link to={`/album/${album.id}`} className="artist-album-li underlining">{album.name}</Link>
                         </div>
 

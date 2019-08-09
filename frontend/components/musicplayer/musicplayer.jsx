@@ -70,15 +70,20 @@ class Musicplayer extends React.Component {
             return clearTimeout(this.timer)
             }
             // stops the timer and itll stop updating state
-        
-        // document.getElementById('mouse').addEventListener('mouseover', () => {
-        //     document.getElementBy('mouse').classList.add("green-bar")
-        // })
-        // document.getElementById('mouse').addEventListener('mouseout', () => {
-        //     document.getElementById('mouse').classList.remove("green-bar")
-        // })
-        // this.player.onplay = () => {debugger}
-
+                                                        
+                // document.getElementById('mouse').addEventListener('mouseover', () => {
+                //     document.getElementBy('mouse').classList.add("green-bar")
+                // })
+                // document.getElementById('mouse').addEventListener('mouseout', () => {
+                //     document.getElementById('mouse').classList.remove("green-bar")
+                // })
+                // this.player.onplay = () => {debugger}
+        // this.player.ontimeupdate = e => {
+        //     this.setState({
+        //         currentTime: e.target.currentTime,
+        //         duration: e.target.duration,
+        //     })
+        // }
     }
     componentDidUpdate(prevProps, prevState) {
         //NEW SONG
@@ -173,12 +178,6 @@ class Musicplayer extends React.Component {
             
         return this.setState({ currTime: e.target.value }, ()=> {
             this.player.currentTime = this.state.currTime 
-            
-            if (this.player.ended) {
-                // debugger
-                // this.handleClickPlayPause()  
-            }
-            // if (this.player.currentTime = this.player.duration) clearTimeout(this.timer)
         })  
     }
 
@@ -186,6 +185,7 @@ class Musicplayer extends React.Component {
         if (this.player.currentSrc){
             this.player.currentTime = this.state.duration
             this.state.currTime = 0
+            
             // debugger
             
         }
@@ -265,6 +265,7 @@ class Musicplayer extends React.Component {
                                step=".5"
                                id="mouse"
                         />
+                        {/* <div className="seekbar-container"></div> */}
                         <p className="time-label">{this.formatTime(this.state.duration)}</p>
                     </div>
                 </div>

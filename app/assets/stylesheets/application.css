@@ -333,11 +333,15 @@ html, body, #root, .primary-app-div {
     width: 100%;
     /* padding: 5px; */
 }
+.song-component-title {
+    padding-bottom: 14px;
+}
 .songli-artist-album {
     font-size: 12px;
     font-weight: 400;
     position: relative;
     top: -7px;
+  display: inline-block;
 }
 .playlist-show {
     display: flex;
@@ -373,7 +377,7 @@ html, body, #root, .primary-app-div {
     position: relative;
 }
 
-
+/* 
  @keyframes flashing-true {
     0%, 100%{color: white}
     50%{color: rgb(0, 196, 90)}
@@ -383,4 +387,8 @@ html, body, #root, .primary-app-div {
      animation-duration: 1s;
      animation-iteration-count: infinite;
      animation-timing-function: ease-out;
+ } */
+
+ .flashing-true {
+     color: rgb(0, 196, 90);
  }

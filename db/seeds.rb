@@ -40,6 +40,8 @@ dd = Artist.create!(name: "Ed Sheeran")
 de = Artist.create!(name: "CHVRCHES")
 df = Artist.create!(name: "CAZZETTE")
 dg = Artist.create!(name: "Vacation Manor")
+dh = Artist.create!(name: "Tritonal")
+
 ####
 ####
 ####
@@ -52,6 +54,7 @@ dd.photo.attach(io: File.open('app/assets/images/sheeran_artist.jpg'), filename:
 de.photo.attach(io: File.open('app/assets/images/chvrches_artist.jpg'), filename: 'chvrches_artist.jpg')
 df.photo.attach(io: File.open('app/assets/images/cazzette_artist.jpg'), filename: 'cazzette_artist.jpg')
 dg.photo.attach(io: File.open('app/assets/images/vacation_artist.jpg'), filename: 'vacation_artist.jpg')
+dh.photo.attach(io: File.open('app/assets/images/tritonal_artist.jpg'), filename: 'tritonal_artist.jpg')
 
 da.jumbo.attach(io: File.open('app/assets/images/neigh_jumbo.jpg'), filename: 'neigh_jumbo.jpg')
 db.jumbo.attach(io: File.open('app/assets/images/panic_jumbo.jpg'), filename: 'panic_jumbo.jpg')
@@ -60,6 +63,7 @@ dd.jumbo.attach(io: File.open('app/assets/images/sheeran_jumbo.jpg'), filename: 
 de.jumbo.attach(io: File.open('app/assets/images/chvrches_jumbo.jpg'), filename: 'chvrches_jumbo.jpg')
 df.jumbo.attach(io: File.open('app/assets/images/cazzette_jumbo.jpg'), filename: 'cazzette_jumbo.jpg')
 dg.jumbo.attach(io: File.open('app/assets/images/vacation_jumbo.jpg'), filename: 'vacation_jumbo.jpg')
+dh.jumbo.attach(io: File.open('app/assets/images/tritonal_jumbo.jpg'), filename: 'tritonal_jumbo.jpg')
 
 
 ################################### ALBUMS ######################################
@@ -71,6 +75,7 @@ ce = Album.create!(name: "Love Is Dead", artist_id: de.id)
 cf = Album.create!(name: "Eject", artist_id: df.id)
 cg = Album.create!(name: "Static", artist_id: df.id)
 ch = Album.create!(name: "Say We'll Make It", artist_id: dg.id)
+ci = Album.create!(name: "Painting with Dreams", artist_id: dh.id)
 ###
 ###
 ###
@@ -83,7 +88,7 @@ ce.photo.attach(io: File.open('app/assets/images/loveisdead_album.jpg'), filenam
 cf.photo.attach(io: File.open('app/assets/images/eject_album.jpg'), filename: 'eject_album.jpg')
 cg.photo.attach(io: File.open('app/assets/images/static_album.jpg'), filename: 'static_album.jpg')
 ch.photo.attach(io: File.open('app/assets/images/saywell_album.jpg'), filename: 'saywell_album.jpg')
-
+ci.photo.attach(io: File.open('app/assets/images/painting_album.jpg'), filename: 'painting_album.jpg')
 
 ba = Song.create!(title: "Sweater Weather", album_id: ca.id)
 bb = Song.create!(title: "Death of a Bachelor", album_id: cb.id)
@@ -94,6 +99,7 @@ bf = Song.create!(title: "Weapon", album_id: cf.id)
 bg = Song.create!(title: "Beam Me Up", album_id: cf.id)
 bh = Song.create!(title: "Static", album_id: cg.id)
 bi = Song.create!(title: "Say We'll Make It", album_id: ch.id)
+bj = Song.create!(title: "Painting with Dreams", album_id: ci.id)
 
 ba.audio_file.attach(io: File.open('app/assets/audio/sweater_weather.mp3'), filename: 'sweater_weather.mp3')
 bb.audio_file.attach(io: File.open('app/assets/audio/death_of_a_bachelor.mp3'), filename: 'death_of_a_bachelor.mp3')
@@ -104,7 +110,7 @@ bf.audio_file.attach(io: File.open('app/assets/audio/weapon.mp3'), filename: 'we
 bg.audio_file.attach(io: File.open('app/assets/audio/beam_me_up.mp3'), filename: 'beam_me_up.mp3')
 bh.audio_file.attach(io: File.open('app/assets/audio/static.mp3'), filename: 'static.mp3')
 bi.audio_file.attach(io: File.open('app/assets/audio/say_well_make_it.mp3'), filename: 'say_well_make_it.mp3')
-
+bj.audio_file.attach(io: File.open('app/assets/audio/painting.mp3'), filename: 'painting.mp3')
 
 ea = Playlist.create(user_id: aa.id, name: "Aa Audios")
 eb = Playlist.create(user_id: ab.id, name: "Beach Bangers")

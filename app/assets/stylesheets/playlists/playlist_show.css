@@ -48,10 +48,7 @@
 .playlist-show-songli:hover {
     background: rgba(0, 0, 0, .3)
 }
-.songli-artist-album {
-  display: inline-block;
-  padding-top: 14px;
-}
+
 .songli-ell {
   display: inline-block;
   position: absolute;

@@ -7,7 +7,7 @@ import { fetchAlbum } from './actions/album_actions';
 import { fetchAllSearches, deleteAllSearches } from './actions/search_actions';
 import { createFollow } from './actions/follow_actions';
 import { createPlaylisting } from './actions/playlisting_actions';
-import { receiveQueue, deleteFromQueue, receiveCurrentSongId } from './actions/musicplayer_actions';
+import { receiveQueue, receiveCurrentSongId } from './actions/musicplayer_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     

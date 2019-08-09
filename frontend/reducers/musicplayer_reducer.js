@@ -1,4 +1,4 @@
-import { RECEIVE_QUEUE, ADD_TO_QUEUE, DELETE_QUEUE, DELETE_FROM_QUEUE, RECEIVE_CURRENT_SONG_ID } from '../actions/musicplayer_actions';
+import { RECEIVE_QUEUE, RECEIVE_CURRENT_SONG_ID } from '../actions/musicplayer_actions';
 import {merge} from 'lodash'
 
 //action.songs is an array of songs
