@@ -22,7 +22,7 @@
 .player-song-artist {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .musicplayer-2-top {

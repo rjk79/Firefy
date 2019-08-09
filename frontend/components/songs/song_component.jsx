@@ -20,6 +20,7 @@ class SongComponent extends React.Component {
         this.toggleOpenPlaylists = this.toggleOpenPlaylists.bind(this)
     }
     toggleOpenPlaylists() {
+        debugger
         return this.setState({
             popupShowing: !this.state.popupShowing,
         })
@@ -39,7 +40,7 @@ class SongComponent extends React.Component {
             } className="lightup" key={idx}>{playlist.name}</p>
         )
         )
-
+            
         let popup = this.state.popupShowing ?
             <div className="playlist-show-popup hideable">
                     {playlists}
@@ -56,7 +57,7 @@ class SongComponent extends React.Component {
                          &nbsp;&nbsp;&#8226;&nbsp;&nbsp;
                             <Link to={`/album/${album.id}`} className="artist-album-li underlining">{album.name}</Link>
                     </div>
-                    {/* <button className="songli-ell lightup" onClick={this.deletePlaylisting({song_id: song.id, playlist_id: currPlaylistId})}> + </button> */}
+                    <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> + </button>
                     {/* <button className="songli-ell lightup" onClick={this.handleRemoveFromPlaylist}> - </button> */}
                         {popup}
                 </div>
