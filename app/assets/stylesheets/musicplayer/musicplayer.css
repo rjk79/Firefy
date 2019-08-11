@@ -180,6 +180,7 @@ input[type='range']:hover {
     opacity: .5;
 }
 .time-label {
+    user-select: none;
     min-width: 35px;
     font-size: 11px;
 }
@@ -224,6 +225,7 @@ input[type='range']::-webkit-slider-thumb {
     }
 
 .time-slider-wrapper {
+    height: 15px;
     position: relative;
     display: flex;
     align-items: center

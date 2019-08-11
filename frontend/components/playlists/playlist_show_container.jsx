@@ -48,6 +48,7 @@ const mdp = dispatch => {
         createFollow: follow => dispatch(createFollow(follow)),
         deleteFollow: id => dispatch(deleteFollow(id)),
         receiveQueue: (songs, currSongId) => dispatch(receiveQueue(songs, currSongId))
+        
     }
 }
 

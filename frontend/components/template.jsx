@@ -1,5 +1,5 @@
 import React from 'react'
-import PlaylistIndexContainer from './playlists/playlist_index_container'
+import FollowedPlaylistsContainer from './playlists/playlist_followed_container'
 import {Switch, NavLink, Link, Route} from 'react-router-dom'
 import PlaylistShowContainer from './playlists/playlist_show_container'
 import CreatePlaylistComponent from './create_playlist_component';
@@ -12,6 +12,15 @@ import SearchComponent from './search'
 
 import {connect} from 'react-redux'
 // import {fetchAllSongs} from '../actions/song.actions'
+
+const msp = state => {
+    let sessionId
+    if (state.session) sessionId = state.session.id
+    
+    return {
+        sessionId
+    }
+}
 
 // const mdp = dispatch => {
 //     return {
@@ -26,8 +35,9 @@ class Template extends React.Component{
     // componentDidMount(){
     //     this.props.fetchAllSongs()
     // }
-
+    
     render(){
+        
         return (
             <div className="template">
                 <div className="template-nav-display">
@@ -49,7 +59,7 @@ class Template extends React.Component{
                             
                         </div>
                         
-                        <PlaylistIndexContainer className="playlist-index-container"/>
+                        <FollowedPlaylistsContainer className="playlist-index-container" userId={this.props.sessionId}/>
                     </div>
 
 
@@ -79,6 +89,6 @@ class Template extends React.Component{
         )
     }
 }
-export default Template
-// export default connect(null, mdp)(Template)
+// export default Template
+export default connect(msp)(Template)
 // REMOVE

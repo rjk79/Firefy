@@ -1,5 +1,5 @@
 # done
- json.partial! 'api/playlists/playlist', playlist: @playlist
+json.partial! 'api/playlists/playlist', playlist: @playlist
 
 
 # add users -- owners of playlists

@@ -10,13 +10,16 @@ class User < ApplicationRecord
 
   has_many :friendships1,
     foreign_key: :user1_id,
-    class_name: :Friendship
+    class_name: :Friendship,
+    dependent: :destroy
 
   has_many :friendships2,
     foreign_key: :user2_id,
-    class_name: :Friendship
+    class_name: :Friendship,
+    dependent: :destroy
 
-  has_many :follows
+  has_many :follows,
+    dependent: :destroy
 
   has_one_attached :photo
 

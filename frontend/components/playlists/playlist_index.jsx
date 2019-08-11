@@ -1,29 +1,42 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
- 
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { fetchAllPlaylists } from '../../actions/playlist_actions';
+
+const msp = state => {
+    let playlists = Object.values(state.entities.playlists)
+    return {
+        playlists,
+    }
+}
+
+const mdp = dispatch => {
+    return {
+        fetchAllPlaylists: () => dispatch(fetchAllPlaylists())
+    }
+}
+
 class PlaylistIndex extends React.Component {
-//add conditional using history.push
-    componentDidMount(){
+    componentDidMount() {
         this.props.fetchAllPlaylists()
     }
     render() {
-        
-    let playlists = Object.values(this.props.playlists)
-    let playlistLinks = playlists.map(playlist => {
+    
+    const {playlists} = this.props
+    let playlistLis = playlists.map(playlist => (
+        <li  key={playlist.id}>
+            <Link className="album-index-item" to={`/playlist/${playlist.id}`}>
+                <img className="album-photo" src={playlist.photoUrl}/>
+                {playlist.name}
+            </Link>
+        </li>
+    ))
         return (
-            <li key={playlist.id} className="index-playlist-item lightup">
-                <NavLink className="list-padding index-playlist-item-link " to={`/playlist/${playlist.id}`}>
-                    {playlist.name}
-                </NavLink>
-            </li>
+            <div className="playlist-index-list">
+               {playlistLis}
+            </div>
         )
-    })
-    return (
-        <ul className="songlist">
-            {playlistLinks}
-        </ul>
-    )
-            }
     }
+}
 
-export default PlaylistIndex
+export default connect(msp, mdp)(PlaylistIndex)

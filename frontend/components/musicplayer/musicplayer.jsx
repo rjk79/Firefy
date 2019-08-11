@@ -84,7 +84,23 @@ class Musicplayer extends React.Component {
         this.player.ontimeupdate = e => {
             document.getElementsByClassName('fake-thumb')[0].style.left = `${Math.floor(this.state.currTime * 100 /this.state.duration)}%`;
         }      
+
+
         
+        this.player.onended = e => {
+            let currentIdx = this.props.songqueue.find(song => {
+                debugger
+                return song.id === this.state.currentSongId})
+            if (currentIdx !== -1 && currentIdx !== songqueue.length - 1) {
+                currentIdx ++
+                debugger
+                this.setState({currentSongId: this.props.songqueue[currentIdx].id})
+                receiveCurrentSongId(this.state.currentSongId)
+            }
+
+        }
+        // this.player.ended => 
+
 
         // this.player.ontimeupdate = e => {
         //     this.setState({
@@ -98,7 +114,6 @@ class Musicplayer extends React.Component {
             document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
             document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
         })
-
         document.getElementsByClassName('time-slider-wrapper')[0].removeEventListener('mouseleave', () => {
             document.getElementsByClassName('time-slider-wrapper')[0].classList.remove("green-bar")
             document.getElementsByClassName('fake-thumb')[0].style.display = "none"
@@ -204,7 +219,7 @@ class Musicplayer extends React.Component {
         const {songqueue, receiveCurrentSongId} = this.props
         if (this.player.currentSrc){
             // debugger
-            this.player.currentTime = this.state.duration
+            this.player.currentTime = this.state.duration - 1
             this.state.currTime = 0
             // let currentIdx = songqueue.find(song => {
                 // debugger
