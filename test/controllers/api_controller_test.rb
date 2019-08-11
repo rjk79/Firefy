@@ -5,5 +5,5 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     get api_users_url
     assert_response :success
   end
-
+ 
 end
