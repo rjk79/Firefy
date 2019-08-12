@@ -115,7 +115,7 @@ class Musicplayer extends React.Component {
         //         duration: e.target.duration,
         //     })
         // }
-    }
+    } 
     componentWillUnmount(){
         let oldEl = document.getElementsByClassName('time-slider-wrapper')[0]
         let newEl = oldEl.cloneNode(true)
