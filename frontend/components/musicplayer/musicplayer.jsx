@@ -20,14 +20,15 @@ const msp = (state) => {
     
     let currSongId;
     if (state.musicplayer) { currSongId = state.musicplayer.currSongId || null }
-    let songqueue;
-    if (state.musicplayer) {songqueue = state.musicplayer.songqueue || []}
+    let queue;
+    if (state.musicplayer) {queue = state.musicplayer.queue || []}
     return {
         song,
         album,
         artist,
+
         currSongId,
-        songqueue,
+        queue,
     }
 }
   
@@ -41,15 +42,14 @@ const mdp = dispatch => {
 
 class Musicplayer extends React.Component {
     constructor(props){
-        // debugger
         super(props)
         this.state = {
             isPlaying: false,
             currTime: 0,
-            volume: .1,
             duration: 0,
-            looping: false,
+            volume: .1,
             currentSongId: null,
+            looping: false,
         }
         this.handleClickPlayPause = this.handleClickPlayPause.bind(this)
         this.handleTimeChange = this.handleTimeChange.bind(this)
@@ -60,18 +60,17 @@ class Musicplayer extends React.Component {
         this.handleToggleLoop = this.handleToggleLoop.bind(this)
     } 
     componentDidMount(){
+        debugger
         // window.addEventListener('keypress', (e) => {
         //     let key = e.which || e.keyCode; 
         //     if (key === 32) {
         //         this.handleClickPlayPause()
         //     }
         // });
-        this.player.onended = ()=>{
-            // this.setState({currTime: 0})
-            return clearTimeout(this.timer)
-        }
+        
             // stops the timer and itll stop updating state
-                                      
+        
+        // TIME
         document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseenter', () => {
             document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
             document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
@@ -96,23 +95,19 @@ class Musicplayer extends React.Component {
             document.getElementsByClassName('fake-volume-thumb')[0].style.left = `${Math.floor(this.state.volume * 100 / 1.0)}%`;
         }      
 
-
-        // find find which idx corresp to the curr song. 
-        // if the idx is not the last one
-        this.player.onended = e => {
-            let currentIdx = this.props.songqueue.find(song => {
-                debugger
-                return song.id === this.state.currentSongId})
-            if (currentIdx !== songqueue.length - 1) {
-                currentIdx ++
-                debugger
-                this.setState({currentSongId: this.props.songqueue[currentIdx].id})
-                receiveCurrentSongId(this.state.currentSongId)
+        
+        this.player.onended = () => {
+            clearTimeout(this.timer)
+            let currentIdx = this.props.queue.findIndex(song => song.id === this.state.currentSongId)        
+            if (currentIdx !== this.props.queue.length - 1) {
+                currentIdx++  
+                this.setState({ currentSongId: this.props.queue[currentIdx].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId))       
             }
-
-        }
-        // this.player.ended => 
-
+            //test
+            else if (currentIdx === this.props.queue.length - 1 && this.state.looping) {
+                this.setState({ currentSongId: this.props.queue[0].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId)) 
+            }
+        };
 
         // this.player.ontimeupdate = e => {
         //     this.setState({
@@ -141,12 +136,12 @@ class Musicplayer extends React.Component {
             this.player.play()
             this.setState({ isPlaying: true })
             this.resetTimer()
-            this.setState({queue: this.props.songqueue})
+            this.setState({queue: this.props.queue})
         }
         if (!isNaN(this.player.duration) && prevState.duration != this.state.duration) this.setState({ duration: this.player.duration })
+        
     }
     formatTime(secs) {
-        // debugger
         let seconds = parseInt(secs)
         let minutes = Math.floor(seconds / 60)
         let netSeconds = seconds % 60
@@ -160,10 +155,11 @@ class Musicplayer extends React.Component {
             return `${minutes}:${netSeconds}`
         }
     }
+
     handleMute() {
         this.player.muted = !this.player.muted
-        if (this.player.muted) {this.state.volume = 0 }
-        else {this.state.volume = .5}
+        if (this.player.muted) {this.setState({volume: 0})}
+        else {this.setState({volume: .5})}
         //if volume is not 0
     }
     //opposites ^v
@@ -201,8 +197,8 @@ class Musicplayer extends React.Component {
             }}
     } 
     handleToggleLoop(){
-        this.player.loop = !this.player.loop
-        this.state.looping = !this.state.looping
+        // this.player.loop = !this.player.loop
+        this.setState({looping: !this.state.looping})
     }
     
      
@@ -222,13 +218,18 @@ class Musicplayer extends React.Component {
     // SLIDERS
       handleTimeChange(e){
             
-        return this.setState({ currTime: e.target.value }, ()=> {
+        this.setState({ currTime: e.target.value }, ()=> {
             this.player.currentTime = this.state.currTime 
         })  
+
+        if (this.state.currTime === this.state.duration) {
+
+         
+        }
     }
 
     handleForward(){
-        const {songqueue, receiveCurrentSongId} = this.props
+       
         if (this.player.currentSrc){
             // debugger
             this.player.currentTime = this.state.duration - 1
@@ -248,7 +249,18 @@ class Musicplayer extends React.Component {
         return 
     }
     handleBack(){
-        if (this.player.currentSrc) {
+        if (this.state.currTime === 0) {
+            let currentIdx = this.props.queue.findIndex(song => song.id === this.state.currentSongId)
+            debugger
+            
+            if (currentIdx !== 0) {
+                currentIdx --
+                this.setState({ currentSongId: this.props.queue[currentIdx].id }, 
+                    () => this.props.receiveCurrentSongId(this.state.currentSongId))
+            }
+        }
+
+        else if (this.player.currentSrc) {
             this.player.load()
             this.player.play()
             this.resetTimer()
@@ -264,7 +276,7 @@ class Musicplayer extends React.Component {
         let loopImg;
 
         if (this.player){
-            loopImg = this.player.loop ? <img className="loop-img" src={window.loopURL} alt="loop" /> : <img className="loop-img morefaded" src={window.loopURL} alt="loop" />
+            loopImg = this.state.looping ? <img className="loop-img" src={window.loopURL} alt="loop" /> : <img className="loop-img morefaded" src={window.loopURL} alt="loop" />
             checkedVolumeUrl = (this.player.muted || this.state.volume === 0) ? window.volume_muteURL : window.volumeURL
         }
         const playpause = (this.state.isPlaying || (typeof this.props.song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 

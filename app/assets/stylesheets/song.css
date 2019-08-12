@@ -9,6 +9,7 @@
     opacity: 1;
 }
 .songcomponent {
+    align-items: center;
     display: flex;
     font-size: 16px;
     cursor: pointer;

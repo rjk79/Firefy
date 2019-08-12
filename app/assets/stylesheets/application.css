@@ -401,7 +401,7 @@ html, body, #root, .primary-app-div {
 
  @keyframes flashing-true {
     0%, 100%{color: rgb(0, 176, 70) };
-    50%{color: rgb(0, 196, 90) };
+    50%{color: rgb(167, 216, 190) };
  }
  .flashing-true {
      animation-name: flashing-true;
