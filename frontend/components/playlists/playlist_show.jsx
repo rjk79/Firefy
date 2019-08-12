@@ -24,7 +24,7 @@ class PlaylistShow extends React.Component {
             this.props.fetchPlaylist(playlistId)
         }
     }
-
+ 
     deletePlaylist(e){
         e.preventDefault()
         this.props.deletePlaylist(this.props.playlist.id)
@@ -56,6 +56,8 @@ class PlaylistShow extends React.Component {
                 </li>
         )}
         // debugger
+        // let following;
+        // following = 
         return (
 
             <div className="playlist-show">

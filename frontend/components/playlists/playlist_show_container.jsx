@@ -10,7 +10,6 @@ import { receiveQueue } from '../../actions/musicplayer_actions';
 const msp = (state, ownProps) => {
     let currentUserId = state.session.id
 
-
     let playlistId = ownProps.match.params.playlistId //grab the ID
     
     let playlist = state.entities.playlists[playlistId] || {name: "", song_ids: []}//get the playlist within the state
@@ -28,7 +27,8 @@ const msp = (state, ownProps) => {
         if (album) return (state.entities.artists[album.artist_id])  }  
     )
     let playlists = Object.values(state.entities.playlists)
-        
+    
+    
     return {
         playlist,
         songs,
@@ -36,7 +36,6 @@ const msp = (state, ownProps) => {
         artists,
         playlists,
         currentUserId,
-
     }
 }
 

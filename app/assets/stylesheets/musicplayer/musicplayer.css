@@ -239,4 +239,21 @@ input[type='range']::-webkit-slider-thumb {
     z-index: 1;
     display: none;
 }
+
+
+.volume-slider-wrapper {
+    height: 15px;
+    position: relative;
+    display: flex;
+    align-items: center
+}
+.fake-volume-thumb {
+    position: absolute;
+    width: 10px;
+    background: rgb(180, 180, 180);
+    border-radius: 50%;
+    height: 10px;
+    z-index: 1;
+    display: none;
+}
     

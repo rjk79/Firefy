@@ -46,7 +46,7 @@ class Musicplayer extends React.Component {
         this.state = {
             isPlaying: false,
             currTime: 0,
-            volume: .5,
+            volume: .1,
             duration: 0,
             looping: false,
             currentSongId: null,
@@ -60,23 +60,22 @@ class Musicplayer extends React.Component {
         this.handleToggleLoop = this.handleToggleLoop.bind(this)
     } 
     componentDidMount(){
-        window.addEventListener('keypress', (e) => {
-            let key = e.which || e.keyCode; //acounts for browsers
-            if (key === 32) {
-                this.handleClickPlayPause()
-            }
-        });
+        // window.addEventListener('keypress', (e) => {
+        //     let key = e.which || e.keyCode; 
+        //     if (key === 32) {
+        //         this.handleClickPlayPause()
+        //     }
+        // });
         this.player.onended = ()=>{
             // this.setState({currTime: 0})
             return clearTimeout(this.timer)
         }
             // stops the timer and itll stop updating state
-                                                        
+                                      
         document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseenter', () => {
             document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
             document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
-        })
-                                                    
+        })                                        
         document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseleave', () => {
             document.getElementsByClassName('time-slider-wrapper')[0].classList.remove("green-bar")
             document.getElementsByClassName('fake-thumb')[0].style.display = "none"
@@ -84,14 +83,27 @@ class Musicplayer extends React.Component {
         this.player.ontimeupdate = e => {
             document.getElementsByClassName('fake-thumb')[0].style.left = `${Math.floor(this.state.currTime * 100 /this.state.duration)}%`;
         }      
+        // VOLUME
+        document.getElementsByClassName('volume-slider-wrapper')[0].addEventListener('mouseenter', () => {
+            document.getElementsByClassName('volume-slider-wrapper')[0].classList.add("green-bar")
+            document.getElementsByClassName('fake-volume-thumb')[0].style.display = "inherit"
+        })                                        
+        document.getElementsByClassName('volume-slider-wrapper')[0].addEventListener('mouseleave', () => {
+            document.getElementsByClassName('volume-slider-wrapper')[0].classList.remove("green-bar")
+            document.getElementsByClassName('fake-volume-thumb')[0].style.display = "none"
+        })
+        this.player.onvolumechange = e => {
+            document.getElementsByClassName('fake-volume-thumb')[0].style.left = `${Math.floor(this.state.volume * 100 / 1.0)}%`;
+        }      
 
 
-        
+        // find find which idx corresp to the curr song. 
+        // if the idx is not the last one
         this.player.onended = e => {
             let currentIdx = this.props.songqueue.find(song => {
                 debugger
                 return song.id === this.state.currentSongId})
-            if (currentIdx !== -1 && currentIdx !== songqueue.length - 1) {
+            if (currentIdx !== songqueue.length - 1) {
                 currentIdx ++
                 debugger
                 this.setState({currentSongId: this.props.songqueue[currentIdx].id})
@@ -110,14 +122,14 @@ class Musicplayer extends React.Component {
         // }
     }
     componentWillUnmount(){
-        document.getElementsByClassName('time-slider-wrapper')[0].removeEventListener('mouseenter', () => {
-            document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
-            document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
-        })
-        document.getElementsByClassName('time-slider-wrapper')[0].removeEventListener('mouseleave', () => {
-            document.getElementsByClassName('time-slider-wrapper')[0].classList.remove("green-bar")
-            document.getElementsByClassName('fake-thumb')[0].style.display = "none"
-        })
+        let oldEl = document.getElementsByClassName('time-slider-wrapper')[0]
+        let newEl = oldEl.cloneNode(true)
+        oldEl.parentNode.replaceChild(newEl, oldEl)
+
+        let oldEl2 = document.getElementsByClassName('volume-slider-wrapper')[0]
+        let newEl2 = oldEl.cloneNode(true)
+        oldEl2.parentNode.replaceChild(newEl2, oldEl2)
+
     }
     componentDidUpdate(prevProps, prevState) {
         //NEW SONG
@@ -319,6 +331,8 @@ class Musicplayer extends React.Component {
 
                 <div className="musicplayer-3">
                     <img className="vol-img lightup" onClick={this.handleMute} src={checkedVolumeUrl} alt="vol"/> 
+                    <div className="volume-slider-wrapper">
+                        <div className="fake-volume-thumb"></div>
                     <input className="volume-slider" 
                             type="range"
                             min="0"
@@ -327,6 +341,7 @@ class Musicplayer extends React.Component {
                             value={this.state.volume}
                             onChange={this.handleVolumeChange}
                     />
+                    </div>
                     {/* Volume icon doesnt auto when manually drag bar and state.currTime doesnt reset upon loop trigger */}
                 </div>
             </>

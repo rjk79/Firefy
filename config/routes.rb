@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources :songs, only: [:index, :show]
     resources :playlistings, only: [:create, :destroy]
     resources :searches, only: [:index]
-    resources :follows, only: [:index, :create, :destroy]
+    resources :follows, only: [:index, :create, :show, :destroy]
+    resources :friendships, only: [:create, :show, :destroy]
     # get 'playlists/:id/songs', to: 'playlists#songs'
   end
 end
