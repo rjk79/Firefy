@@ -286,11 +286,11 @@ class Musicplayer extends React.Component {
         return (
             <>                    
                 <div className="musicplayer-1">
-                    <Link to={`artist/${artist.id}`}><img className="player-album-art" src={album.photoUrl} alt="" /></Link>
+                    <Link to={`/artist/${artist.id}`}><img className="player-album-art" src={album.photoUrl} alt="" /></Link>
                     {/* {albumArt} */}
                     <div className="player-song-artist">
-                        <Link to={`album/${album.id}`}><p className="player-song-title underlining">{song.title}</p></Link>
-                        <Link to={`artist/${artist.id}`}><p className="player-artist-name underlining">{artist.name}</p></Link>
+                        <Link to={`/album/${album.id}`}><p className="player-song-title underlining">{song.title}</p></Link>
+                        <Link to={`/artist/${artist.id}`}><p className="player-artist-name underlining">{artist.name}</p></Link>
                     </div> 
                 </div>
 
