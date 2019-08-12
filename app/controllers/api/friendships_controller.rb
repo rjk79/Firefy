@@ -1,6 +1,15 @@
 class Api::FriendshipsController < ApplicationController
-  
+    def index
+        @friendships = Friendship.all
+        render :index
+    end
 
+
+    def show
+        @friendship = Friendship.find(params[:id])
+        render :show
+    end
+     
     def create
         @friendship = Friendship.new(friendship_params)
         if @friendship.save
@@ -9,14 +18,12 @@ class Api::FriendshipsController < ApplicationController
           render json: @friendship.errors.full_messages, status: 422 #unprocesssable entity
         end
     end
-
-    def show
-        @friendship = Friendship.find(params[:id])
-        render :show
-    end
-
     def destroy
-        @friendship = Friendship.find(params[:id])
+        # @friendship = Friendship.find(params[:id])
+        # @friendship = current_user.friendships1.find_by()
+        # @friendship = current_user.friendships2.find_by()
+        @friendship = current_user.friendships1.find_by(playlist_id: params[:id])
+
         @friendship.destroy
         render :show
     end

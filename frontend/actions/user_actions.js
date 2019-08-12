@@ -8,7 +8,7 @@ const receiveUser = user => {
         user
     }
 }
-
+ 
 // const receiveAllUsers = users => {
 //     return {
 //         type: RECEIVE_ALL_USERS,
@@ -17,6 +17,7 @@ const receiveUser = user => {
 // }
 
 export const fetchUser = id => dispatch => {
+    debugger
     return UserAPIUtil.fetchUser(id)
         .then(user => dispatch(receiveUser(user)))
 }

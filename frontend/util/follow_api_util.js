@@ -16,7 +16,7 @@ export const createFollow = follow => {
     })
 }
 
-
+//id is actually the playlistId
 export const deleteFollow = id => {
     return $.ajax({
         method: 'delete',

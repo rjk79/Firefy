@@ -14,4 +14,4 @@ export const deleteFriendship = id => {
         method: 'delete',
         url: `api/friendships/${id}`,
     })
-}
+} 

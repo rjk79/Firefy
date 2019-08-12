@@ -13,10 +13,11 @@ class PlaylistShow extends React.Component {
         this.handlePickSong = this.handlePickSong.bind(this)
     }
     componentDidMount() {
+        
         let playlistId = this.props.match.params.playlistId        
         this.props.fetchPlaylist(playlistId)
         // document.getElementByClassName("hideable").addEventListener("click", ());
- 
+        // this.props.fetchUser(this.props.playlist.user_id)
     } 
     componentDidUpdate(prevProps){
         if (this.props.match.params.playlistId != prevProps.match.params.playlistId) {
@@ -24,7 +25,7 @@ class PlaylistShow extends React.Component {
             this.props.fetchPlaylist(playlistId)
         }
     }
- 
+  
     deletePlaylist(e){
         e.preventDefault()
         this.props.deletePlaylist(this.props.playlist.id)
@@ -39,10 +40,17 @@ class PlaylistShow extends React.Component {
     // WORK IN PROGRESS ^
 
     render() {
+        // debugger
+        const { songs, albums, artists, currentUser, createFollow, playlist, match, deleteFollow, owner} = this.props
+        let songLis;
         
 
-        const { songs, albums, artists, currentUserId, createFollow, playlist} = this.props
-        let songLis;
+        let followButton;
+        // debugger
+        followButton = !currentUser.follow_ids.includes(parseInt(match.params.playlistId)) ? 
+            <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUser.id, playlist_id: playlist.id })}>FOLLOW</button> :
+            <button className="follow-button lightup" onClick={() => deleteFollow(playlist.id)}>UNFOLLOW</button>
+
         if (this.props.songs){         
 
             songLis = songs.map((song, idx) =>
@@ -55,17 +63,16 @@ class PlaylistShow extends React.Component {
                     />
                 </li>
         )}
-        // debugger
+        debugger
         // let following;
-        // following = 
         return (
 
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
                     <img className="playlist-artwork" src={playlist.photoUrl} alt="PlaylistArt"/>
-                    <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUserId, playlist_id: playlist.id})}>FOLLOW</button>
-
+                    {followButton}
                 <h2 className="playlist-show-name">{this.props.playlist.name}</h2>
+                <p className="center playlist-owner faded">Created by: {owner.username}</p>
                 <p className="song-quantity faded">{this.props.songs.length} songs</p>
                 <button className="playlist-delete-button deleting" onClick={this.deletePlaylist}>
                     <span>...</span>

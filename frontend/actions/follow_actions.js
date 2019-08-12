@@ -17,11 +17,11 @@ const receiveFollow = follow => {
         follow
     }
 }
-
+ 
 const removeFollow = follow => {
     return {
         type: REMOVE_FOLLOW,
-        followId: follow.id
+        follow
     }
 }
  
@@ -36,6 +36,7 @@ export const createFollow = follow => dispatch => {
         .then(follow => dispatch(receiveFollow(follow)))
 }
 
+//playlistId
 export const deleteFollow = id => dispatch => {
     return FollowAPIUtil.deleteFollow(id)
         .then(follow => dispatch(removeFollow(follow)))

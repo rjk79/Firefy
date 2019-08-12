@@ -2,10 +2,11 @@ class Api::FollowsController < ApplicationController
     def index
         @follows = Follow.all
         render :index
-    end
+    end 
 
     def create
         @follow = Follow.new(follow_params)
+        
         if @follow.save
           render :show
         else
@@ -14,12 +15,15 @@ class Api::FollowsController < ApplicationController
     end
 
     def show
-        @follow = Follow.find(params[:id])
+        # @follow = Follow.find(params[:id])
+        @follow = current_user.follows.find_by(playlist_id: params[:id])
         render :show
     end
 
     def destroy
-        @follow = Follow.find(params[:id])
+        # @friendship = current_user.friendships1.find_by()
+        
+        @follow = current_user.follows.find_by(playlist_id: params[:id])
         @follow.destroy
         render :show
     end

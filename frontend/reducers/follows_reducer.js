@@ -4,8 +4,7 @@
 // const followsReducer = (state = {}, action) => {
 //     Object.freeze(state)
 //     switch (action.type) {
-//         case RECEIVE_ALL_FOLLOWS:
-//             return action.follows
+       
 //         case RECEIVE_FOLLOW:
 //             return merge({}, state, { [action.follow.id]: action.follow })
 //         case REMOVE_FOLLOW:

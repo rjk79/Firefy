@@ -60,7 +60,7 @@ class Musicplayer extends React.Component {
         this.handleToggleLoop = this.handleToggleLoop.bind(this)
     } 
     componentDidMount(){
-        debugger
+        
         // window.addEventListener('keypress', (e) => {
         //     let key = e.which || e.keyCode; 
         //     if (key === 32) {

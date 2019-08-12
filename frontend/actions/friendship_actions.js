@@ -9,21 +9,22 @@ const receiveFriendship = friendship => {
         friendship
     }
 }
-
-// const removeFriendship = friendship => {
-//     return {
-//         type: REMOVE_FRIENDSHIP,
-//         friendshipId: friendship.id
-//     }
-// }
+ 
+const removeFriendship = friendship => {
+    return {
+        type: REMOVE_FRIENDSHIP,
+        friendshipId: friendship.id
+    }
+}
 
 export const createFriendship = friendship => dispatch => {
     return FriendshipAPIUtil.createFriendship(friendship)
         .then(friendship => dispatch(receiveFriendship(friendship)))
 }
 
-// export const deleteFriendship = (songId, playlistId) => dispatch => {
-//     return FriendshipAPIUtil.deleteFriendship(songId, playlistId)
-//         .then(friendship => dispatch(removeFriendship(songId, playlistId)))
-// }
+export const deleteFriendship = (friendship) => dispatch => {
+    return FriendshipAPIUtil.deleteFriendship(friendship)
+        .then(friendship => dispatch(removeFriendship(friendship)))
+}
 
+ 

@@ -22,7 +22,7 @@ json.friend_ids friendships
 
 
 # json.friend_ids do
-#     user.friendships1
+#     user.friendships1 each
 # end
 
 
