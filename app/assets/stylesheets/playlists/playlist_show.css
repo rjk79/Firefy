@@ -113,6 +113,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    font-size: 18px;
 }
 
  .playlist-delete-button {
@@ -124,5 +125,5 @@
     /* width: 40px; */
     margin: auto;
     vertical-align: default;
-
+    font-size: 18px;
 }
