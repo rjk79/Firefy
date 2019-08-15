@@ -74,4 +74,12 @@
 .search-item-link {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.search-title {
+  font-size: 36px;
+  font-weight: 700;
+  padding: 10px;
+  
 }

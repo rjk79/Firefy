@@ -6,7 +6,7 @@ export const fetchAllFollows = () => {
         url: 'api/follows'
     })
 }
-
+ 
 //create
 export const createFollow = follow => {
     return $.ajax({

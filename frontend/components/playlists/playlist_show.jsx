@@ -4,27 +4,28 @@ import {withRouter} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import SongComponent from '../songs/song_component'
 
-
-
 class PlaylistShow extends React.Component {
     constructor(props){
         super(props)
+        this.state = { popupShowing: false }
         this.deletePlaylist = this.deletePlaylist.bind(this)
         this.handlePickSong = this.handlePickSong.bind(this)
+        this.handleOpenPopup = this.handleOpenPopup.bind(this)
     }
     componentDidMount() {
-        
         let playlistId = this.props.match.params.playlistId        
-        this.props.fetchPlaylist(playlistId)
-        // document.getElementByClassName("hideable").addEventListener("click", ());
-        // this.props.fetchUser(this.props.playlist.user_id)
+        this.props.fetchPlaylist(playlistId)         
     } 
     componentDidUpdate(prevProps){
+   
         if (this.props.match.params.playlistId != prevProps.match.params.playlistId) {
             let playlistId = this.props.match.params.playlistId
             this.props.fetchPlaylist(playlistId)
+            this.props.fetchUser(this.props.playlist.user_id)
         }
-    }
+        if (this.props.playlist.user_id !== prevProps.playlist.user_id)
+    {     this.props.fetchUser(this.props.playlist.user_id)
+}    }
   
     deletePlaylist(e){
         e.preventDefault()
@@ -34,23 +35,32 @@ class PlaylistShow extends React.Component {
 
     handlePickSong(songId){
         this.props.receiveQueue(this.props.songs, songId)
-        
+    } 
+
+    handleAddFriend(friendship){
+        return () => this.props.createFriendship(friendship)
     }
-    
-    // WORK IN PROGRESS ^
+    handleOpenPopup(){
+        this.setState({ popupShowing: !this.state.popupShowing })
+    }
 
     render() {
+       
         // debugger
         const { songs, albums, artists, currentUser, createFollow, playlist, match, deleteFollow, owner} = this.props
         let songLis;
-        
-
         let followButton;
         // debugger
         followButton = !currentUser.follow_ids.includes(parseInt(match.params.playlistId)) ? 
             <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUser.id, playlist_id: playlist.id })}>FOLLOW</button> :
             <button className="follow-button lightup" onClick={() => deleteFollow(playlist.id)}>UNFOLLOW</button>
 
+        let popup = this.state.popupShowing ?
+            <div className="playlist-show-popup" >
+                <button className="addfriend-button lightup" onClick={this.handleAddFriend({user1_id: currentUser.id, user2_id: owner.id})}>Add Friend</button>
+                <button className="playlist-delete-button lightup" onClick={this.deletePlaylist}>Delete</button>
+            </div>
+            : null
         if (this.props.songs){         
 
             songLis = songs.map((song, idx) =>
@@ -63,20 +73,21 @@ class PlaylistShow extends React.Component {
                     />
                 </li>
         )}
-        debugger
-        // let following;
+        let photoUrl;
+        photoUrl = playlist.photoUrl || window.default_albumURL
         return (
 
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
-                    <img className="playlist-artwork" src={playlist.photoUrl} alt="PlaylistArt"/>
+                    <img className="playlist-artwork" src={photoUrl} alt="PlaylistArt"/>
                     {followButton}
-                <h2 className="playlist-show-name">{this.props.playlist.name}</h2>
-                <p className="center playlist-owner faded">Created by: {owner.username}</p>
-                <p className="song-quantity faded">{this.props.songs.length} songs</p>
-                <button className="playlist-delete-button deleting" onClick={this.deletePlaylist}>
-                    <span>...</span>
-                </button>
+                <h2 className="playlist-show-name">{playlist.name}</h2>
+                <p className="center playlist-owner faded">By: {owner.username}</p>
+                <p className="song-quantity faded">{songs.length} songs</p>
+                    <span className="playlist-show-ellipses" onClick={this.handleOpenPopup}>
+                        ...
+                        {popup}
+                    </span>
                 {/* <button className="invisbutton" onClick={() => openModal("add to playlist")}>Rename</button> */}
               </div>
                 <ul className="playlist-songlist">

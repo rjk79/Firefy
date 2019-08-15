@@ -1,0 +1,46 @@
+.friends-title {
+    font-size: 36px;
+    font-weight: 800;
+}
+
+.friends-index {
+    padding: 5px;
+    display: flex;
+    height: 100%;
+
+}
+.friends-index > * {
+    padding: 5px;    
+}
+
+.friends-followed-playlists {
+    width: 80%;
+    text-align: center;
+}
+
+.friends-index-playlist-art {
+    height: 250px;
+    width: 250px;
+}
+.friends-index-playlist-art-name {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+.friends-name-list {
+    border-right: 2px solid rgb(5, 15, 15);
+    height: 100%;
+    width: 20%;
+}
+.remove-friend-button {
+    background: rgb(35, 35, 35);
+    border: none;
+    cursor: pointer;
+}
+.friends-index-username-remove {
+    display: flex;
+}
+.friends-index-list {
+    display: flex;
+    flex-wrap: wrap;
+}

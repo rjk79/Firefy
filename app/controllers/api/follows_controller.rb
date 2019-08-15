@@ -19,7 +19,7 @@ class Api::FollowsController < ApplicationController
         @follow = current_user.follows.find_by(playlist_id: params[:id])
         render :show
     end
-
+ 
     def destroy
         # @friendship = current_user.friendships1.find_by()
         

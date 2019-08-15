@@ -55,7 +55,7 @@ class SongComponent extends React.Component {
         )
             
         let popup = this.state.popupShowing ?
-            <div className="playlist-show-popup hideable">
+            <div className="song-playlist-show-popup hideable">
                     {playlists}
             </div>
             : null

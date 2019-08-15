@@ -9,20 +9,20 @@ const receiveUser = user => {
     }
 }
  
-// const receiveAllUsers = users => {
-//     return {
-//         type: RECEIVE_ALL_USERS,
-//         users
-//     }
-// }
+const receiveAllUsers = users => {
+    return {
+        type: RECEIVE_ALL_USERS,
+        users
+    }
+}
 
 export const fetchUser = id => dispatch => {
-    debugger
+    
     return UserAPIUtil.fetchUser(id)
         .then(user => dispatch(receiveUser(user)))
 }
 
-// export const fetchAllUsers = () => dispatch => {
-//     return UserAPIUtil.fetchAllUsers()
-//         .then(users => dispatch(receiveAllUsers(users)))
-// }
+export const fetchAllUsers = () => dispatch => {
+    return UserAPIUtil.fetchAllUsers()
+        .then(users => dispatch(receiveAllUsers(users)))
+}

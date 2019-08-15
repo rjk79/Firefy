@@ -2,17 +2,6 @@
      overflow-y: scroll;
  }
  
- .playlist-delete-button {
-    font-size: 30px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0);
-    border: none;
-    cursor: pointer;
-    width: 40px;
-    margin: auto;
-    vertical-align: default;
-
-}
 .deleting:hover span{
    display: none;
 }
@@ -35,6 +24,7 @@
 .playlist-title-delete {
     margin-left: 10%;
     margin-right: 10%;
+    text-align: center;
 }
 
 .playlist-show-songli {
@@ -104,4 +94,35 @@
 .playlist-owner {
     font-size: 18px;
     padding: 5px;
+}
+.playlist-show-ellipses {
+    cursor: pointer;
+}
+.playlist-show-popup {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    background: rgb(35, 35, 35);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgb(15, 15, 15);
+}
+.addfriend-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+ .playlist-delete-button {
+    font-size: 24px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    /* width: 40px; */
+    margin: auto;
+    vertical-align: default;
+
 }

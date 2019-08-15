@@ -8,7 +8,7 @@ import { fetchAllSearches, deleteAllSearches } from './actions/search_actions';
 import { createFollow } from './actions/follow_actions';
 import { createPlaylisting } from './actions/playlisting_actions';
 import { receiveQueue, receiveCurrentSongId } from './actions/musicplayer_actions';
-import { createFriendship } from './actions/friendship_actions';
+import { createFriendship, deleteFriendship } from './actions/friendship_actions';
 // import { fetchAllUsers } from './actions/user_actions'
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.receiveQueue = receiveQueue
     window.receiveCurrentSongId = receiveCurrentSongId
     window.createFriendship = createFriendship
+    window.deleteFriendship = deleteFriendship
     // window.fetchAllUsers = fetchAllUsers
 
     // window.deleteFromQueue = deleteFromQueue

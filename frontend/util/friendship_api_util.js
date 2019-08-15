@@ -8,7 +8,7 @@ export const createFriendship = friendship => {
     })
 }
 
-
+//the friend's id
 export const deleteFriendship = id => {
     return $.ajax({
         method: 'delete',

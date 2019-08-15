@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
 
   def index
-    debugger
+    
     @users = User.all
     render :index
   end 

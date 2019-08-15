@@ -23,14 +23,18 @@ class PlaylistIndex extends React.Component {
     render() {
     
     const {playlists} = this.props
-    let playlistLis = playlists.map(playlist => (
-        <li  key={playlist.id}>
-            <Link className="album-index-item" to={`/playlist/${playlist.id}`}>
-                <img className="album-photo" src={playlist.photoUrl}/>
-                {playlist.name}
-            </Link>
-        </li>
-    ))
+    let playlistLis = playlists.map(playlist => {
+        let playlistUrl = playlist.photoUrl || window.default_albumURL
+        return (
+             <li key={playlist.id}>
+                <Link className="album-index-item" to={`/playlist/${playlist.id}`}>
+                    <img className="album-photo" src={playlistUrl}/>
+                    {playlist.name}
+                </Link>
+            </li>
+        )
+       
+    })
         return (
             <div className="playlist-index-list">
                {playlistLis}

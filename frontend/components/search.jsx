@@ -106,7 +106,9 @@ class SearchComponent extends React.Component {
         if (playlists){
             playlistLis = playlists.map(playlist => (
                 <li key={playlist.id} className="search-songplaylistname lightup">
-                    <Link to={`/playlist/${playlist.id}`}>{playlist.name}
+                    <Link to={`/playlist/${playlist.id}`} className="search-item-link">
+                        <img className="album-photo" src={playlist.photoUrl} />
+                        {playlist.name}
                     </Link>
                 </li>
         ))}
@@ -124,13 +126,21 @@ class SearchComponent extends React.Component {
         let finishedAlbums;
         let finishedArtists;
         let finishedPlaylists;
+                
+        finishedSongs = songs && songs.length ? <div><p className="search-title">Songs</p>
+                                    <div className="search-category-songsplaylists">
+                                    {songLis}</div></div> : null
+        finishedAlbums = albums && albums.length ? < div><p className="search-title"> Albums </p><br/> 
+                                    <div className="search-category">
+                                    {albumLis}</div></div > : null
+        finishedArtists = artists && artists.length ? <div><p className="search-title">Artists</p><br/>
+                                        <div className="search-category">
+                                        {artistLis}</div></div> : null
+        finishedPlaylists = playlists && playlists.length ? < div > <p className="search-title">Playlists</p> < br /> 
+                                                <div className="search-category">
+                                                {playlistLis}</div></div > : null
 
-        finishedSongs = songs ? <div>Songs<div className="search-category-songsplaylists">{songLis}</div></div> : null
-        finishedAlbums = albums ? < div > Albums < br /> <div className="search-category">{albumLis}</div></div > : null
-        finishedArtists = artists ? <div>Artists<br /><div className="search-category">{artistLis}</div></div> : null
-        finishedPlaylists = playlists ? < div > Playlists < br /> <div className="search-category-songsplaylists">{playlistLis}</div></div > : null
-
-
+                
         // let search = this.state.query === "" ? 
         let tooltip = !songs && !artists && !albums && !playlists ? <><p className="search-searchfirefy">Search Firefy</p><p className="search-findyour">Find your favorite songs, artists, albums, podcasts, playlists.</p></> : null
         return (
