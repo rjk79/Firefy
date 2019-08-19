@@ -39,6 +39,7 @@
 }
 .friends-index-username-remove {
     display: flex;
+    justify-content: space-between;
 }
 .friends-index-list {
     display: flex;

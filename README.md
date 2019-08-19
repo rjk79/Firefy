@@ -1,88 +1,66 @@
-Bugs:
-  artist show page (cant be navigated to/from) and playlist show page (cant be navigated to/from) 
-  
+# Firefy
 
-  green bar
-  log out doesnt work on hard refresh
-  list items in playlist... https://medium.com/@codenode/10-tips-for-eager-loading-to-avoid-n-1-queries-in-rails-2bad54456a3f
+http://firefy-aa.herokuapp.com/#/
 
+## Overview
+Firefy is a clone of Spotify that allows you to listen to music wherever you are, whenever you want and appreciate music in an interactive, and social environment.  
 
-Dead Bugs:
-  importing image
-  CSS - nav bar "before" elems, BW button changes
-  playlist show- compdidUpdate, Mount, and Msp, remove class from container
-  pushing undefined values into arrays
-  
-  id instead of artist_id
+## Features:
+### Create Playlists
+Share your music tastes with others! Create or edit your own playlists so others can view them. 
 
-  maximum callstack => need conditional in didupdate
+### Continuous Song Play
+As you navigate Firefy, enjoy seamless music playback via an informative media player with smooth controls.
 
-  
-  alternate fonts:
+### Searching
+Search for your favorite artists, albums, songs or playlists using a quick, backend-filtering search bar.
 
-  Montserrat bold and 800
+### Friend Other Users / Follow Playlists
+Follow playlists that you like so that you can easily access them all the time.  Friend other users to see what playlists they are following.
 
-Re-render:
-  its state changes
-  its props change
-  parent changes
-
-npm install
-bundle install
-db:setup
-
-2 DAYS DOWN
-8
-
-X HEROKU
-
-X AUTH
-
-PLAYLIST AND SONGS CRUD 2
-  AWS
-  MODAL
-  DRAG AND DROP
-  n + 1 clean up
-
-SEARCH 1
-
-CONTINUOUS PLAY 1
-
-FOLLOW 1
-
-FRIENDS
-
-bonuses
-  radio play
-  inline errors
+## Challenging, Successful Features
+### "Smart" Song Items
+Once selected and playing, songs in playlists, album pages, and artist pages will indicate they're being played regardless of where they are. And they will allow you to go navigate through their lists without you having to go back to their page.  This means you can shuffle, go back, or go forward through your playlist even when you leave the playlist page.  This feature was quite a hurdle but by allowing components to manipulate their parent's state via the following code, I was able to accomplish this feature.
+```
+<div className="songcomponent">
+                    <img className="lightup" src={window.noteURL} onClick={()=>handlePickSong(song.id)} />
+                    <div className="playlist-show-song-text">
+                        <p className={`${flashing} song-component-title`} 
+                           onClick={() => handlePickSong(song.id)}>
+                           {song.title}
+                        </p>
+                        <div className={`songli-artist-album faded`}>
+                            <Link to={`/artist/${artist.id}`} className="artist-album-li underlining">{artist.name}</Link>
+                            {artist.name && album.name ? "  -  " : ""}
+                            <Link to={`/album/${album.id}`} className="artist-album-li underlining">{album.name}</Link>
+                        </div>
 
 
+                        <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> + </button>
+                        {/* <button className="songli-ell lightup" onClick={this.handleRemoveFromPlaylist}> - </button> */}
+                            {popup}
+                    </div>
+                </div>
+```
+### Dynamic and Interactive Media Player
+The seek bar and volume allows you to easily traverse the duration of a song and manipulate the volume in a dynamic, responsive manner. It was quite challenging to create a sleek, fully-customized seek and volume bar. But using a series of event-listeners and "substitute" slider-input elements, I was able to successfully create the seek bar.  Partial code snippet for the time seek bar:
+```
+document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseenter', () => {
+            document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
+            document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
+        })                                        
+        document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseleave', () => {
+            document.getElementsByClassName('time-slider-wrapper')[0].classList.remove("green-bar")
+            document.getElementsByClassName('fake-thumb')[0].style.display = "none"
+        })
+        this.player.ontimeupdate = e => {
+            document.getElementsByClassName('fake-thumb')[0].style.left = `${Math.floor(this.state.currTime * 100 /this.state.duration)}%`;
+        }  
+```    
 
 
+## Technologies:
+* Rails and Postgresql on the backend to store and retrieve data
+* React and Redux on the frontend to display and take in data
+* Amazon Web Services - S3 for photo and audio file storage
 
-
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
