@@ -8,7 +8,7 @@ const searchesReducer = (state = {}, action) => {
         case RECEIVE_ALL_SEARCHES:
             return action.searches
         case REMOVE_ALL_SEARCHES:
-            // debugger
+            // 
             return {}
         default:
             return state;

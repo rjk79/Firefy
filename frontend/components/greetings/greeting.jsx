@@ -9,10 +9,11 @@ class Greeting extends React.Component {
         this.state = {
             popupShowing: false
         }
-        this.handleBlur = this.handleBlur.bind(this)
+        // this.handleBlur = this.handleBlur.bind(this)
     }
     componentDidMount() {
-        return this.setState({ popupShowing: false })
+        
+        this.setState({ popupShowing: false })
     }
     componentDidUpdate() {
         // if (this.state.popupShowing){
@@ -29,14 +30,17 @@ class Greeting extends React.Component {
 
     handleClick() {
         this.props.logout()
+        this.setState({
+            popupShowing: !this.state.popupShowing
+        })
     }
-    handleBlur() {
-        this.setState({ popupShowing: false })
-        // debugger
-    }
+    // handleBlur() {
+    //     this.setState({ popupShowing: false })
+    //     // 
+    // }
 
     render() {
-
+        
 
         let popup = this.state.popupShowing ?
             <div className="greeting-popup" >
@@ -57,7 +61,7 @@ class Greeting extends React.Component {
                         <button className="medium greeting-name" onClick={this.handleClickOnName}>{name}</button>
                         {/* not rendering  anymore */}
                         {popup}
-                </div>
+                    </div>
                 </>
             ) : (
                 <>

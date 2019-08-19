@@ -44,7 +44,7 @@ class SongComponent extends React.Component {
     render(){
         // NEED TO PASS EVERYTHING            EXCEPT createPlaylisting
         const { song, artist, album, handlePickSong, createPlaylisting } = this.props
-        // debugger
+        // 
         let playlists = this.props.playlists.map((playlist, idx) => (
             <p onClick={() => {
                 this.setState({popupShowing: false})
@@ -62,7 +62,7 @@ class SongComponent extends React.Component {
 
             let flashing;
             flashing = this.props.currSongId === song.id ? "flashing-true" : ""
-            // debugger 
+            //  
         return(
             <>
                 <div className="songcomponent">

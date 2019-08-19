@@ -1,6 +1,7 @@
+<!-- ![alt text](https://github.com/rjk79/Firefy/blob/master/app/assets/images/firefly_logo.png "Logo") -->
 # Firefy
 
-http://firefy-aa.herokuapp.com/#/
+[Live Demo](http://firefy-aa.herokuapp.com/#/)
 
 ## Overview
 Firefy is a clone of Spotify that allows you to listen to music wherever you are, whenever you want and appreciate music in an interactive, and social environment.  
@@ -9,16 +10,16 @@ Firefy is a clone of Spotify that allows you to listen to music wherever you are
 ### User Authentication
 Sign up or log in to start listening!
 ### Create Playlists
-Share your music tastes with others. Create or edit your own playlists so others can view them. 
+Share your music tastes with others. Create or edit your own playlists so others can view them.
 
 ### Continuous Song Play
 As you navigate Firefy, enjoy seamless music playback via an informative media player with smooth controls.
 
 ### Searching
-Search for your favorite artists, albums, songs or playlists using a quick, database-querying search bar.
+Search for your favorite artists, albums, songs or playlists using a quick, database-querying search bar. 
 
 ### Friend Other Users / Follow Playlists
-Follow playlists that you like so that you can easily access them all the time.  Friend other users to see what playlists they are following.
+Follow playlists that you like so that you can easily access them all the time.  Friend other users to see what playlists they are following share your followed playlists.
 
 ## Challenging, but Successful Features
 ### "Smart" Song Items

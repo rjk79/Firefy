@@ -46,11 +46,11 @@ class PlaylistShow extends React.Component {
 
     render() {
        
-        // debugger
+        // 
         const { songs, albums, artists, currentUser, createFollow, playlist, match, deleteFollow, owner} = this.props
         let songLis;
         let followButton;
-        // debugger
+        // 
         followButton = !currentUser.follow_ids.includes(parseInt(match.params.playlistId)) ? 
             <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUser.id, playlist_id: playlist.id })}>FOLLOW</button> :
             <button className="follow-button lightup" onClick={() => deleteFollow(playlist.id)}>UNFOLLOW</button>

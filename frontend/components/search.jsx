@@ -84,7 +84,7 @@ class SearchComponent extends React.Component {
         let albumLis;
         let songLis;
         let playlistLis;
-        // debugger
+        // 
         if (artists){
             artistLis = artists.map(artist => (
                 <li key={artist.id} className="artist-index-item search-item">

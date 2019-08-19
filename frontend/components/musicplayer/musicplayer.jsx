@@ -203,7 +203,7 @@ class Musicplayer extends React.Component {
     
      
     resetTimer() {
-        // debugger
+        // 
         this.setState({ currTime: 0,
                         duration: this.player.duration })
 
@@ -231,19 +231,19 @@ class Musicplayer extends React.Component {
     handleForward(){
        
         if (this.player.currentSrc){
-            // debugger
+            // 
             this.player.currentTime = this.state.duration - 1
             this.state.currTime = 0
             // let currentIdx = songqueue.find(song => {
-                // debugger
+                // 
             //     return song.id === this.state.currentSongId})
             // if (currentIdx !== -1 && currentIdx !== songqueue.length - 1) {
             //     currentIdx ++
-            //     debugger
+            //     
             //     this.setState({currentSongId: this.songqueue[currentIdx].id})
             //     receiveCurrentSongId(this.songqueue[currentIdx].id)
             // }
-            // debugger
+            // 
             
         }
         return 
@@ -251,7 +251,7 @@ class Musicplayer extends React.Component {
     handleBack(){
         if (this.state.currTime === 0) {
             let currentIdx = this.props.queue.findIndex(song => song.id === this.state.currentSongId)
-            debugger
+            
             
             if (currentIdx !== 0) {
                 currentIdx --
@@ -269,7 +269,7 @@ class Musicplayer extends React.Component {
     }
 
     render(){
-        // debugger
+        // 
         const {song, album, artist} = this.props
         
         let checkedVolumeUrl;
