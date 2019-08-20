@@ -30,7 +30,7 @@ const App = () => (
       
     </div>
     
-
+{/* 
     <div className="handles">
       <a className="github-link" href="https://github.com/rjk79">
         <img className="icon" src={githubURL}/>
@@ -38,8 +38,8 @@ const App = () => (
       <a className="linkedin-link" href="https://www.linkedin.com/in/robert-ku-b9464461">
           <img className="icon" src={linkedinURL}/>
       </a>
-          robertku79@gmail.com
-    </div>
+          <div className="faded">robertku79@gmail.com</div>
+    </div> */}
 
   </div>
 )
