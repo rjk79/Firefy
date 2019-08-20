@@ -415,3 +415,16 @@ html, body, #root, .primary-app-div {
  /* .flashing-true {
      color: rgb(0, 196, 90);
  } */
+
+ .handles {
+     position: absolute;
+     bottom: 0px;
+     display: flex;
+     align-items: center;
+     font-size: 14px;
+     width: 100%;
+     justify-content: center;
+ }
+ .handles > * {
+     margin: 0px 10px;
+ }

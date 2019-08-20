@@ -30,6 +30,17 @@ const App = () => (
       
     </div>
     
+
+    <div className="handles">
+      <a className="github-link" href="https://github.com/rjk79">
+        <img className="icon" src={githubURL}/>
+      </a>
+      <a className="linkedin-link" href="https://www.linkedin.com/in/robert-ku-b9464461">
+          <img className="icon" src={linkedinURL}/>
+      </a>
+          robertku79@gmail.com
+    </div>
+
   </div>
 )
 // always show greeting container so u can log out
