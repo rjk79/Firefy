@@ -8,6 +8,7 @@ import WelcomeContainer from './welcome/welcome_container'
 import Template from './template'
 import Modal from './modal'
 import WelcomeMessages from './welcome/welcome_messages';
+import SocialIcons from './social_icons'
 
 const App = () => (
   <div className="primary-app-div">
@@ -30,17 +31,9 @@ const App = () => (
       
     </div>
     
-{/* 
-    <div className="handles">
-      <a className="github-link" href="https://github.com/rjk79">
-        <img className="icon" src={githubURL}/>
-      </a>
-      <a className="linkedin-link" href="https://www.linkedin.com/in/robert-ku-b9464461">
-          <img className="icon" src={linkedinURL}/>
-      </a>
-          <div className="faded">robertku79@gmail.com</div>
-    </div> */}
 
+    <Route path="/" exact component={SocialIcons} />
+    
   </div>
 )
 // always show greeting container so u can log out
