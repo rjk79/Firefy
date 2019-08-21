@@ -72,7 +72,7 @@ class PlaylistShow extends React.Component {
                                     handlePickSong={this.handlePickSong}
                     />
                 </li>
-        )}
+        )} 
         let photoUrl;
         photoUrl = playlist.photoUrl || window.default_albumURL
         return (

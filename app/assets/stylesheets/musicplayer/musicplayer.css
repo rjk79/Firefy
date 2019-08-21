@@ -174,17 +174,22 @@ input[type='range']:hover {
 }
 .player-song-title {
     font-size: 14px;
+    margin: 5px;
 }
 .player-artist-name {
     font-size: 12px;
     opacity: .5;
+    margin: 5px;
 }
 .time-label {
     user-select: none;
     min-width: 35px;
     font-size: 11px;
+    text-align: center;
 }
-
+.template-player {
+    border-top: 1px solid black;
+}
 
 /* .template-player {
     font-size: 30px;
@@ -256,4 +261,13 @@ input[type='range']::-webkit-slider-thumb {
     z-index: 1;
     display: none;
 }
-    
+
+.shuffle-button {
+    display: flex;
+    cursor: pointer;
+}
+.shuffle-img {
+    height: 20px;
+    width: 20px;
+}
+

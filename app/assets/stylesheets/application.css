@@ -109,8 +109,9 @@ html, body, #root, .primary-app-div {
 
 /* Reusable classes */
  .errors {
-     color: black;
+     color: red;
      text-align: center;
+     font-size: 20px;
  }
  
 /* HOVERS  HOVERS  HOVERS  HOVERS   */

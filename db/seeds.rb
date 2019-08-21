@@ -28,7 +28,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('friendships')
 
 
 aa = User.create!(username: "Guest", password: "password")
-ab = User.create!(username: "user", password: "starwars")
+ab = User.create!(username: "Jimmy", password: "starwars")
 ac = User.create!(username: "Bob", password: "orange")
 ad = User.create!(username: "Ed", password: "banana")
 

@@ -50,6 +50,7 @@ class Musicplayer extends React.Component {
             volume: .1,
             currentSongId: null,
             looping: false,
+            shuffling: false,
         }
         this.handleClickPlayPause = this.handleClickPlayPause.bind(this)
         this.handleTimeChange = this.handleTimeChange.bind(this)
@@ -58,6 +59,7 @@ class Musicplayer extends React.Component {
         this.handleBack = this.handleBack.bind(this)
         this.handleForward = this.handleForward.bind(this)
         this.handleToggleLoop = this.handleToggleLoop.bind(this)
+        this.handleToggleShuffle = this.handleToggleShuffle.bind(this)
     } 
     componentDidMount(){
         
@@ -97,13 +99,20 @@ class Musicplayer extends React.Component {
 
         
         this.player.onended = () => {
+            const {queue, receiveCurrentSongId} = this.props
             clearTimeout(this.timer)
             let currentIdx = this.props.queue.findIndex(song => song.id === this.state.currentSongId)        
             if (currentIdx !== this.props.queue.length - 1) {
-                currentIdx++  
-                this.setState({ currentSongId: this.props.queue[currentIdx].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId))       
+                if (!this.state.shuffling) {
+                    currentIdx++  
+                    this.setState({ currentSongId: this.props.queue[currentIdx].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId))       
+                }
+                else { //shuffling
+                    currentIdx = Math.floor(Math.random() * this.props.queue.length)//not keeping track of what was already shuffled thru
+                    this.setState({ currentSongId: this.props.queue[currentIdx].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId))
+                }
             }
-            //test
+            //if it is the last song
             else if (currentIdx === this.props.queue.length - 1 && this.state.looping) {
                 this.setState({ currentSongId: this.props.queue[0].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId)) 
             }
@@ -197,8 +206,10 @@ class Musicplayer extends React.Component {
             }}
     } 
     handleToggleLoop(){
-        // this.player.loop = !this.player.loop
         this.setState({looping: !this.state.looping})
+    }
+    handleToggleShuffle(){
+        this.setState({shuffling: !this.state.shuffling})
     }
     
      
@@ -274,15 +285,18 @@ class Musicplayer extends React.Component {
         
         let checkedVolumeUrl;
         let loopImg;
+        let shuffleImg
 
         if (this.player){
-            loopImg = this.state.looping ? <img className="loop-img" src={window.loopURL} alt="loop" /> : <img className="loop-img morefaded" src={window.loopURL} alt="loop" />
+            loopImg = this.state.looping ? <img className="loop-img" src={window.loopURL} alt="loop" /> 
+                                         : <img className="loop-img morefaded" src={window.loopURL} alt="loop" />
+            shuffleImg = this.state.shuffling ? <img className="shuffle-img" src={shuffleURL} alt="shuffle" />
+                                         : <img className="shuffle-img morefaded" src={shuffleURL} alt="shuffle" />
             checkedVolumeUrl = (this.player.muted || this.state.volume === 0) ? window.volume_muteURL : window.volumeURL
         }
+
         const playpause = (this.state.isPlaying || (typeof this.props.song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
         
-
-
         return (
             <>                    
                 <div className="musicplayer-1">
@@ -305,6 +319,10 @@ class Musicplayer extends React.Component {
                                     />
                                     File not supported.
                                 </audio>
+                            
+                            <div className="shuffle-button" onClick={this.handleToggleShuffle}>
+                                {shuffleImg}
+                            </div>
                             <div className="back-button" onClick={this.handleBack}>
                                     <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
