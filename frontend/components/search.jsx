@@ -104,14 +104,16 @@ class SearchComponent extends React.Component {
                 </li>
         ))}
         if (playlists){
-            playlistLis = playlists.map(playlist => (
+            playlistLis = playlists.map(playlist => {
+                let playlistUrl = playlist.photoUrl || window.default_albumURL     
+                return (
                 <li key={playlist.id} className="search-songplaylistname lightup">
                     <Link to={`/playlist/${playlist.id}`} className="search-item-link">
-                        <img className="album-photo" src={playlist.photoUrl} />
+                        <img className="album-photo" src={playlistUrl} />
                         {playlist.name}
                     </Link>
                 </li>
-        ))}
+        )})}
         if (songs){
             songLis = songs.map(song => (
                 <SongComponent key={song.id} 
