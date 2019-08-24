@@ -25,6 +25,7 @@
     margin-left: 10%;
     margin-right: 10%;
     text-align: center;
+    align-items: center
 }
 
 .playlist-show-songli {
@@ -84,6 +85,7 @@
     font-weight: 200;
     border: none;
     margin-top: 14px;
+    margin-bottom: 10px;
     letter-spacing: 1px;
 }
 /* .follow-button:hover {
@@ -111,9 +113,14 @@
 }
 .addfriend-button {
     background: transparent;
-    border: none;
+    border: 2px solid gray;
+    border-radius: 30px;
+    width: 137px;  
+    height: 40px;  
     cursor: pointer;
-    font-size: 18px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 200;
 }
 
  .playlist-delete-button {

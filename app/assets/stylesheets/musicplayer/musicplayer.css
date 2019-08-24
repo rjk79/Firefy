@@ -17,6 +17,7 @@
     margin-right: 1%;
     width: 10%;
     align-items: center;
+    justify-content: space-between;
 }
 
 .player-song-artist {
@@ -270,4 +271,10 @@ input[type='range']::-webkit-slider-thumb {
     height: 20px;
     width: 20px;
 }
-
+.queue-img {
+    cursor: pointer;
+}
+.queue-link {
+    display: flex;
+    margin-right: 5px;
+}

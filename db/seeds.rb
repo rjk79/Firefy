@@ -31,6 +31,13 @@ aa = User.create!(username: "Guest", password: "password")
 ab = User.create!(username: "Jimmy", password: "starwars")
 ac = User.create!(username: "Bob", password: "orange")
 ad = User.create!(username: "Ed", password: "banana")
+ae = User.create!(username: "Fred", password: "flintstone")
+af = User.create!(username: "Alexandra", password: "yellow")
+ag = User.create!(username: "Jerome", password: "greeneggs")
+ah = User.create!(username: "Kendall", password: "bluebirds")
+ai = User.create!(username: "Catherine", password: "redfire")
+aj = User.create!(username: "Daniel", password: "dragon")
+
 
 ################################## ARTISTS ############################################
 da = Artist.create!(name: "The Neighborhood")
@@ -84,7 +91,7 @@ ci = Album.create!(name: "Painting with Dreams", artist_id: dh.id)
 cj = Album.create!(name: "Kids See Ghosts", artist_id: di.id)
 ck = Album.create!(name: "Zedd", artist_id: dj.id)
 cm = Album.create!(name: "Songs About Jane", artist_id: dk.id)
-###
+# give every album at least 2 songs
 ###
 ###
    
@@ -135,14 +142,14 @@ bm.audio_file.attach(io: File.open('app/assets/audio/sunday_morning.mp3'), filen
 
 ea = Playlist.create(user_id: aa.id, name: "Aa Audios")
 eb = Playlist.create(user_id: ab.id, name: "Beach Bangers")
-ec = Playlist.create(user_id: ab.id, name: "Cohort Chosen")
-ed = Playlist.create(user_id: ab.id, name: "Dank Drops")
-ee = Playlist.create(user_id: ab.id, name: "Ear Euphonies")
-ef = Playlist.create(user_id: ab.id, name: "Fan Favorites")
-eg = Playlist.create(user_id: ab.id, name: "Gig Grabbag")
-eh = Playlist.create(user_id: ab.id, name: "Harmonica Harmonies")
-ei = Playlist.create(user_id: aa.id, name: "Popular Picks")
-ej = Playlist.create(user_id: aa.id, name: "Sounds of Summer")
+ec = Playlist.create(user_id: ac.id, name: "Cohort Chosen")
+ed = Playlist.create(user_id: ad.id, name: "Dank Drops")
+ee = Playlist.create(user_id: ae.id, name: "Ear Euphonies")
+ef = Playlist.create(user_id: af.id, name: "Fan Favorites")
+eg = Playlist.create(user_id: ag.id, name: "Gig Grabbag")
+eh = Playlist.create(user_id: ah.id, name: "Harmonica Harmonies")
+ei = Playlist.create(user_id: ai.id, name: "Popular Picks")
+ej = Playlist.create(user_id: aj.id, name: "Sounds of Summer")
 ek = Playlist.create(user_id: ab.id, name: "Throwback Twists")
 
 ea.photo.attach(io: File.open('app/assets/images/playlist-1.jpg'), filename: 'playlist-1.jpg')
@@ -167,11 +174,24 @@ fh = Playlisting.create!(song_id: bf.id, playlist_id: ec.id)
 fi = Playlisting.create!(song_id: bg.id, playlist_id: eb.id)
 fj = Playlisting.create!(song_id: bh.id, playlist_id: eb.id)
 fg = Playlisting.create!(song_id: bi.id, playlist_id: ea.id)
-
+# a-j users, ea-ek playlist
 ga = Follow.create!(user_id: aa.id, playlist_id: ec.id)
 gb = Follow.create!(user_id: aa.id, playlist_id: ed.id)
-gc = Follow.create!(user_id: ac.id, playlist_id: eb.id)
+gc = Follow.create!(user_id: ab.id, playlist_id: eb.id)
+gd = Follow.create!(user_id: ab.id, playlist_id: eb.id)
+ge = Follow.create!(user_id: ac.id, playlist_id: ea.id)
+gf = Follow.create!(user_id: ac.id, playlist_id: eb.id)
+gg = Follow.create!(user_id: ad.id, playlist_id: ec.id)
+gh = Follow.create!(user_id: ad.id, playlist_id: ed.id)
+gi = Follow.create!(user_id: ae.id, playlist_id: ee.id)
+gj = Follow.create!(user_id: af.id, playlist_id: ej.id)
 
 ha = Friendship.create!(user1_id: aa.id, user2_id: ab.id)
 hb = Friendship.create!(user1_id: aa.id, user2_id: ac.id)
 hc = Friendship.create!(user1_id: ab.id, user2_id: ac.id)
+hd = Friendship.create!(user1_id: aa.id, user2_id: ad.id)
+he = Friendship.create!(user1_id: aa.id, user2_id: ae.id)
+hf = Friendship.create!(user1_id: aa.id, user2_id: af.id)
+hg = Friendship.create!(user1_id: aa.id, user2_id: ag.id)
+hh = Friendship.create!(user1_id: aa.id, user2_id: ah.id)
+

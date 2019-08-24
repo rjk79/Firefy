@@ -360,6 +360,9 @@ class Musicplayer extends React.Component {
                 </div>
 
                 <div className="musicplayer-3">
+                    <Link to="/queue" className="queue-link">
+                    <img className="queue-img lightup" src={queueURL} alt="queue" /> 
+                    </Link>
                     <img className="vol-img lightup" onClick={this.handleMute} src={checkedVolumeUrl} alt="vol"/> 
                     <div className="volume-slider-wrapper">
                         <div className="fake-volume-thumb"></div>

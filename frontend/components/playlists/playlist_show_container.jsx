@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
     let currentUser = state.entities.users[state.session.id]
     let playlistId = ownProps.match.params.playlistId //grab the ID   
     let playlist = state.entities.playlists[playlistId] || {name: "", song_ids: [], user_id: 0}//get the playlist within the state
-    let owner
+    let owner 
     owner = state.entities.users[playlist.user_id] || { username: " " }
     let songs = playlist.song_ids.map(id => 
         state.entities.songs[id] 

@@ -28,15 +28,16 @@ class PlaylistIndex extends React.Component {
         return (
              <li key={playlist.id}>
                 <Link className="album-index-item" to={`/playlist/${playlist.id}`}>
-                    <img className="album-photo" src={playlistUrl}/>
+                    <img className="playlist-index-img" src={playlistUrl}/>
                     {playlist.name}
                 </Link>
             </li>
         )
        
-    })
+    }) 
         return (
             <div className="playlist-index-list">
+                <h1 className="playlist-index-title">Playlists</h1>
                {playlistLis}
             </div>
         )
