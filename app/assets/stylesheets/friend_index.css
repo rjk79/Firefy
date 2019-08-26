@@ -1,6 +1,7 @@
 .friends-title {
     font-size: 36px;
     font-weight: 800;
+    border-bottom: 2px solid rgb(120, 124, 123);
 }
 
 .friends-index {
@@ -36,6 +37,7 @@
     background: rgb(35, 35, 35);
     border: none;
     cursor: pointer;
+    font-size: 12px;
 }
 .friends-index-username-remove {
     display: flex;

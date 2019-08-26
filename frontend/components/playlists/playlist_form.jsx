@@ -27,7 +27,7 @@ class PlaylistForm extends React.Component {
             <div className="modal-title-create">Create new playlist</div>
             
             <div className="playlist-form-div">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} autocomplete="off">
                     <div className="playlist-form">
                     <label htmlFor="name" className="small playlist-name-input-label">Playlist Name</label>
                     <div className="playlist-form-background">

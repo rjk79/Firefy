@@ -49,7 +49,9 @@ class FriendsIndex extends React.Component {
             <li className="underlining faded"  onClick={this.clickFriend(user.id)}>
                 {user.username}
             </li>
-            <button className="remove-friend-button lightup" onClick={this.handleDeleteFriend(user.id)}>X</button>
+            <button className="remove-friend-button lightup" onClick={this.handleDeleteFriend(user.id)}>
+                X
+            </button>
             </div>
         )) 
         let friend = friends.filter(friend => friend.id === this.state.currentFriendId)[0] || {follow_ids: []}

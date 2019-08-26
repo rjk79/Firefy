@@ -14,18 +14,20 @@ class PlaylistShow extends React.Component {
     }
     componentDidMount() {
         let playlistId = this.props.match.params.playlistId        
-        this.props.fetchPlaylist(playlistId)         
+        this.props.fetchPlaylist(playlistId)  
+        this.props.fetchUser(this.props.playlist.user_id)       
     } 
     componentDidUpdate(prevProps){
-   
-        if (this.props.match.params.playlistId != prevProps.match.params.playlistId) {
+        //switching between playlists
+        if (this.props.match.params.playlistId !== prevProps.match.params.playlistId) {
             let playlistId = this.props.match.params.playlistId
             this.props.fetchPlaylist(playlistId)
             this.props.fetchUser(this.props.playlist.user_id)
         }
-        if (this.props.playlist.user_id !== prevProps.playlist.user_id)
-    {     this.props.fetchUser(this.props.playlist.user_id)
-}    }
+        if (this.props.playlist.user_id !== prevProps.playlist.user_id) {   
+            this.props.fetchUser(this.props.playlist.user_id)
+        }    
+    }
   
     deletePlaylist(e){
         e.preventDefault()
