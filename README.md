@@ -1,4 +1,4 @@
-![logo](app/assets/firefy-logo.png?raw=true)
+![logo](app/assets/firefy-logo2.png?raw=true)
 # Firefy
 
 [Live Demo](http://firefy-aa.herokuapp.com/#/)
