@@ -21,7 +21,7 @@ Search for your favorite artists, albums, songs or playlists using a quick, data
 ### Friend Other Users / Follow Playlists
 Follow playlists that you like so that you can easily access them all the time.  Friend other users to see what playlists they are following share your followed playlists.
 
-![gif](assets/images/stockvis.gif)
+![gif](assets/images/firefy.gif)
 ## Notable Features
 ### "Smart" Song Items
 Once selected and playing, songs in playlists, album pages, and artist pages will indicate they're being played regardless of where they are. And they will allow you to go navigate through their lists without you having to go back to their page.  This means you can shuffle, go back, or go forward through your playlist even when you leave the playlist page.  This feature was quite a hurdle but by allowing components to manipulate their parent's state via the following code, I was able to accomplish this feature.
