@@ -33,7 +33,7 @@ class QueueComponent extends React.Component {
         this.handlePickSong = this.handlePickSong.bind(this)
     }
     handlePickSong(songId) {
-        //TODO: reordering queue
+        //TODO: reordering queue, duplicates will mess it up
         this.props.receiveQueue(Object.values(this.props.musicplayer.queue), songId)
     } 
     render(){
