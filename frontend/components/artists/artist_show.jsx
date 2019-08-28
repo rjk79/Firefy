@@ -19,17 +19,15 @@ class ArtistShow extends React.Component {
             this.props.fetchArtist(artistId)
         } 
     }
-    // handleAddToPlaylist(songId){
-        
-    // }
 
     handlePickSong(songId) {
         this.props.receiveQueue(this.props.songs, songId)
     }
 
     render() {        
+        const { artist, albums, songs } = this.props
         
-        let albums = this.props.albums.map(album => {
+        let albumLis = albums.map(album => {
             return (
                 
                 <li key={album.id}>
@@ -46,14 +44,13 @@ class ArtistShow extends React.Component {
         // for(let i = 0; i < i++){
         //     this.props.songs
         // }
-        const { handlePickSong} = this.props
         
-        let songs = this.props.songs.map(song => 
+        let songLis = songs.map(song => 
 
                 <SongComponent key={song.id}
                                song={song} 
-                               artist={this.props.artist} 
-                               album={this.props.albums.find(album => album.id === song.album_id)}
+                               artist={artist} 
+                               album={albums.find(album => album.id === song.album_id)}
                                handlePickSong={this.handlePickSong}
                 />
         )
@@ -62,14 +59,14 @@ class ArtistShow extends React.Component {
         return (
             <>
                 <div className="artist-show">
-                    <h1 className="artist-show-name center">{this.props.artist.name}</h1>
+                    <h1 className="artist-show-name center">{artist.name}</h1>
                     <div className="artist-show-shader">
                     </div>
-                        <img className="artist-jumbo" src={this.props.artist.jumboUrl} alt="artist_jumbo" />
+                        <img className="artist-jumbo" src={artist.jumboUrl} alt="artist_jumbo" />
                     <div className="artist-show-list-titles">Popular</div>
-                    <ul className="artist-show-song-list">{songs}</ul>
+                    <ul className="artist-show-song-list">{songLis}</ul>
                     <div className="artist-show-list-titles">Albums</div>
-                    <ul className="artist-show-album_list">{albums}</ul>
+                    <ul className="artist-show-album_list">{albumLis}</ul>
                 </div>
             </>
         )

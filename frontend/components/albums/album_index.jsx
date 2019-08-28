@@ -26,7 +26,9 @@ class AlbumsIndex extends React.Component {
     componentDidMount() {
         this.props.fetchAllAlbums()
     }
+
     render() {
+    
         //Object.values
         let albums = this.props.albums.map(album => {
             return (

@@ -54,6 +54,7 @@
     width: 240px;
     margin: auto;
     padding: 10px;
+    cursor: pointer;
 }
 
 .playlist-artwork:hover {
@@ -124,7 +125,6 @@
 }
 
  .playlist-delete-button {
-    font-size: 24px;
     text-align: center;
     background: rgba(0, 0, 0, 0);
     border: none;
@@ -132,5 +132,30 @@
     /* width: 40px; */
     margin: auto;
     vertical-align: default;
-    font-size: 18px;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
 }
+.change-art-choose {
+    display: none;
+}
+.change-art-submit {
+    background: rgb(15, 15, 15);
+    border-radius: 15px;
+    letter-spacing: 1px;
+    font-size: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid white;
+    padding: 5px;
+}
+
+form.change-art {
+   
+}
+/* img.playlist-artwork:hover::after {
+    content: "CHANGE";
+    position: absolute;
+    top: 120px;
+    left: 83px;
+} */

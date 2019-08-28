@@ -25,7 +25,6 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def show
-        
         @playlist = Playlist.includes(playlistings: [song: [album: :artist]], playlistings: [song: :album]).find(params[:id])
         render :show
     end
@@ -40,6 +39,11 @@ class Api::PlaylistsController < ApplicationController
     private
     # make sure the object has a name so in AJAX, data: { {name: }}
     def playlist_params
-        params.require(:playlist).permit(:name)
+        
+        if params[:playlist][:photo].nil?
+            return params.require(:playlist).permit(:name)
+        else 
+            return params.require(:playlist).permit(:name, :photo) 
+        end
     end
 end

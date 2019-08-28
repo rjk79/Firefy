@@ -1,4 +1,4 @@
-import {fetchPlaylist, deletePlaylist} from '../../actions/playlist_actions'
+import {fetchPlaylist, deletePlaylist, updatePlaylist} from '../../actions/playlist_actions'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import PlaylistShow from './playlist_show'
@@ -45,6 +45,7 @@ const mdp = dispatch => {
         receiveQueue: (songs, currSongId) => dispatch(receiveQueue(songs, currSongId)),
         fetchUser: id => dispatch(fetchUser(id)),
         createFriendship: friendship => dispatch(createFriendship(friendship)),
+        updatePlaylist: (formData, playlistId) => dispatch(updatePlaylist(formData, playlistId)) 
     }
 }
 

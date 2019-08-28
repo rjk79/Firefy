@@ -23,7 +23,7 @@ const removePlaylist = playlist => {
         type: REMOVE_PLAYLIST,
         playlistId: playlist.id
     }
-}
+} 
 
 export const fetchAllPlaylists = () => dispatch => {
     return PlaylistAPIUtil.fetchAllPlaylists()
@@ -40,8 +40,9 @@ export const createPlaylist = playlist => dispatch => {
         .then(playlist => dispatch(receivePlaylist(playlist)))
 }
 
-export const updatePlaylist = playlist => dispatch => {
-    return PlaylistAPIUtil.updatePlaylist(playlist)
+export const updatePlaylist = (formData, playlistId) => dispatch => {
+    debugger
+    return PlaylistAPIUtil.updatePlaylist(formData, playlistId)
         .then(playlist => dispatch(receivePlaylist(playlist)))
 }
 

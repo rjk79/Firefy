@@ -260,14 +260,15 @@ class Musicplayer extends React.Component {
         return 
     }
     handleBack(){
+        const { queue, receiveCurrentSongId } = this.props
         if (this.state.currTime === 0) {
-            let currentIdx = this.props.queue.findIndex(song => song.id === this.state.currentSongId)
+            let currentIdx = queue.findIndex(song => song.id === this.state.currentSongId)
             
             
             if (currentIdx !== 0) {
                 currentIdx --
-                this.setState({ currentSongId: this.props.queue[currentIdx].id }, 
-                    () => this.props.receiveCurrentSongId(this.state.currentSongId))
+                this.setState({ currentSongId: queue[currentIdx].id }, 
+                    () => receiveCurrentSongId(this.state.currentSongId))
             }
         }
 
@@ -295,7 +296,7 @@ class Musicplayer extends React.Component {
             checkedVolumeUrl = (this.player.muted || this.state.volume === 0) ? window.volume_muteURL : window.volumeURL
         }
 
-        const playpause = (this.state.isPlaying || (typeof this.props.song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
+        const playpause = (this.state.isPlaying || (typeof song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
         
         return (
             <>                    

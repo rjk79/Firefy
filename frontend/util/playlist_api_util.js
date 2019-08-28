@@ -17,14 +17,22 @@ export const createPlaylist = playlist => {
     })
 }
 
-export const updatePlaylist = playlist => {
+// export const updatePlaylist = playlist => {
+//     return $.ajax({
+//         method: 'patch',
+//         url: `api/playlists/${playlist.id}`,
+//         data: { playlist }
+//     })
+// }
+export const updatePlaylist = (formData, playlistId) => {
     return $.ajax({
         method: 'patch',
-        url: `api/playlists/${playlist.id}`,
-        data: { playlist }
+        url: `api/playlists/${playlistId}`,
+        data: formData,
+        contentType: false,
+        processData: false,
     })
 }
-
 //show
 export const fetchPlaylist = id => {
     return $.ajax({

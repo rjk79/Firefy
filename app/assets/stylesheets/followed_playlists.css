@@ -3,8 +3,11 @@
     flex-wrap: wrap;
     display: flex;
     overflow-y: scroll;
-    justify-content: space-evenly;    
+    /* justify-content: space-evenly;     */
     padding: 5%;
+}
+.playlist-index-list > * {
+    margin-right: auto;
 }
 
 .album-index {   

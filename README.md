@@ -10,7 +10,7 @@ Firefy is a clone of Spotify that allows you to listen to music wherever you are
 ### User Authentication
 Sign up or log in to start listening!
 ### Create Playlists
-Share your music tastes with others. Create or edit your own playlists so others can view them.
+Share your music tastes with others. Create and edit your own playlists, upload your own artwork, then share them with others.
 
 ### Continuous Song Play
 As you navigate Firefy, enjoy seamless music playback via an informative media player with smooth controls.
@@ -45,7 +45,7 @@ Once selected and playing, songs in playlists, album pages, and artist pages wil
 </div>
 ```
 ### Dynamic and Interactive Media Player
-The seek bar and volume allows you to easily traverse the duration of a song and manipulate the volume in a dynamic, responsive manner. It was quite challenging to create a sleek, fully-customized seek and volume bar. But using a series of event-listeners and "substitute" slider-input elements, I was able to successfully create the seek bar.  Partial code snippet for the time seek bar:
+The seek bar and volume allows you to easily traverse the duration of a song and manipulate the volume in a dynamic, responsive manner. It was quite challenging to create a sleek, fully-customized seek and volume bar. But using a series of event-listeners and "substitute" slider-input elements, I was able to successfully faithfully recreate them.  Partial code snippet for the time seek bar:
 ```
 document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseenter', () => {
     document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
@@ -64,5 +64,5 @@ this.player.ontimeupdate = e => {
 ## Technologies:
 * Rails and Postgresql on the backend to store and retrieve data
 * React and Redux on the frontend to display and take in data
-* Amazon Web Services - S3 for photo and audio file storage
+* Amazon Web Services - S3 for photo and audio file storage 
 

@@ -7,15 +7,27 @@ import SongComponent from '../songs/song_component'
 class PlaylistShow extends React.Component {
     constructor(props){
         super(props)
-        this.state = { popupShowing: false }
+        this.state = { popupShowing: false,
+            imageUrl: "",
+            imageFile: null,
+        }
         this.deletePlaylist = this.deletePlaylist.bind(this)
         this.handlePickSong = this.handlePickSong.bind(this)
         this.handleOpenPopup = this.handleOpenPopup.bind(this)
+        this.handleChangePickArt = this.handleChangePickArt.bind(this)
+        this.handleSubmitPickArt = this.handleSubmitPickArt.bind(this)
     }
     componentDidMount() {
         let playlistId = this.props.match.params.playlistId        
         this.props.fetchPlaylist(playlistId)  
-        this.props.fetchUser(this.props.playlist.user_id)       
+        this.props.fetchUser(this.props.playlist.user_id)     
+        // User clicks on playlist art => Choose File
+        // onChange Event of input:file => Submit
+
+        document.getElementsByClassName("playlist-artwork")[0].addEventListener('click', e => {
+            document.getElementsByClassName("change-art-choose")[0].click()
+        })  
+        // document.getElementsByClassName("change-art-choose")[0].onchange => steals event listener?
     } 
     componentDidUpdate(prevProps){
         //switching between playlists
@@ -34,6 +46,33 @@ class PlaylistShow extends React.Component {
         this.props.deletePlaylist(this.props.playlist.id)
         this.props.history.push("/home")
     }
+    handleChangePickArt(e) {
+        const reader = new FileReader()
+        const file = e.currentTarget.files[0]
+        reader.onloadend = () => {
+            this.setState({imageUrl: reader.result, imageFile: file})
+            // document.getElementsByClassName("change-art-submit")[0].submit()
+        }
+        if (file){
+            reader.readAsDataURL(file)
+        } else {
+            this.setState({imageUrl: "", imageFile: null})
+        }
+        
+    }
+    handleSubmitPickArt(e) {
+        const {playlist, updatePlaylist} = this.props
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('playlist[id]', playlist.id)
+        formData.append('playlist[name]', playlist.name)
+        formData.append('playlist[user_id]', playlist.user_id) //song ids already assoc
+        
+        if (this.state.imageUrl) {
+            formData.append('playlist[photo]', this.state.imageFile)
+        }
+        updatePlaylist(formData, playlist.id)
+    }
 
     handlePickSong(songId){
         this.props.receiveQueue(this.props.songs, songId)
@@ -48,12 +87,12 @@ class PlaylistShow extends React.Component {
 
     render() {
        
-        // 
+         
         const { songs, albums, artists, currentUser, createFollow, playlist, match, deleteFollow, owner} = this.props
         let songLis;
         let followButton;
         let friendButton;
-        // 
+         
         followButton = !currentUser.follow_ids.includes(parseInt(match.params.playlistId)) ? 
             <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUser.id, playlist_id: playlist.id })}>FOLLOW</button> :
             <button className="follow-button lightup" onClick={() => deleteFollow(playlist.id)}>UNFOLLOW</button>
@@ -85,6 +124,11 @@ class PlaylistShow extends React.Component {
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
                 <img className="playlist-artwork" src={photoUrl} alt="PlaylistArt"/>
+
+                <form className="change-art" onSubmit={this.handleSubmitPickArt}>
+                    <input type="file" onChange={this.handleChangePickArt} className="change-art-choose" />
+                    <input type="submit" value="Update Image" className="change-art-submit lightup" />
+                </form>
                 
                 <h2 className="playlist-show-name">{playlist.name}</h2>
                 <p className="center playlist-owner faded">By: {owner.username}</p>
@@ -95,6 +139,7 @@ class PlaylistShow extends React.Component {
                     </span>
                 {followButton}
                 {friendButton}
+                    
               </div>
                 <ul className="playlist-songlist">
                     {songLis}

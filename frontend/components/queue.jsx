@@ -33,10 +33,11 @@ class QueueComponent extends React.Component {
         this.handlePickSong = this.handlePickSong.bind(this)
     }
     handlePickSong(songId) {
+        //TODO: reordering queue
         this.props.receiveQueue(Object.values(this.props.musicplayer.queue), songId)
     } 
     render(){
-        // debugger
+        
         const {musicplayer, artists, albums} = this.props
         let songLis = musicplayer.queue && musicplayer.queue.length ? Object.values(musicplayer.queue).map((song, idx) => 
             <li className="queue-song" key={song.id}>
