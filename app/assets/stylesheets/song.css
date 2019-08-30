@@ -1,13 +1,20 @@
 .song-playlist-show-popup {
+    background: rgb(25, 25, 25);
+    box-shadow: 0px 0px 16px 7px black;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    align-items: flex-end;
+    width: 250px;
+    align-items: flex-start;
     top: 40px;
-    /* position: relative; */
-    background: rgb(25, 25, 25);
+    right: 0px;
+    position: absolute;
     opacity: 1;
+    z-index: 1;
 }
+    .song-playlist-show-popup > * { 
+        margin: 5px 25px;
+        font-weight: 300;
+    }
 .songcomponent {
     align-items: center;
     display: flex;

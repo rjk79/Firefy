@@ -1,5 +1,6 @@
  .playlist-show{
      overflow-y: scroll;
+     overflow-x: hidden
  }
  
 .deleting:hover span{
@@ -153,9 +154,9 @@
 form.change-art {
    
 }
-/* img.playlist-artwork:hover::after {
+img.playlist-artwork:hover::after {
     content: "CHANGE";
     position: absolute;
     top: 120px;
     left: 83px;
-} */
+}

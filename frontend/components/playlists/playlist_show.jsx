@@ -3,13 +3,14 @@ import {withRouter} from 'react-router-dom'
 // import { Draggable } from 'react-beautiful-dnd';
 import {Link} from 'react-router-dom'
 import SongComponent from '../songs/song_component'
-
+ 
 class PlaylistShow extends React.Component {
     constructor(props){
         super(props)
         this.state = { popupShowing: false,
             imageUrl: "",
             imageFile: null,
+            
         }
         this.deletePlaylist = this.deletePlaylist.bind(this)
         this.handlePickSong = this.handlePickSong.bind(this)
@@ -35,10 +36,13 @@ class PlaylistShow extends React.Component {
             let playlistId = this.props.match.params.playlistId
             this.props.fetchPlaylist(playlistId)
             this.props.fetchUser(this.props.playlist.user_id)
+            this.setState({imageUrl: "", imageFile: null})
         }
         if (this.props.playlist.user_id !== prevProps.playlist.user_id) {   
             this.props.fetchUser(this.props.playlist.user_id)
         }    
+        // document.getElementsByClassName("change-art-submit")[0].submit()
+
     }
   
     deletePlaylist(e){
@@ -118,7 +122,8 @@ class PlaylistShow extends React.Component {
                 </li>
         )} 
         let photoUrl;
-        photoUrl = playlist.photoUrl || window.default_albumURL
+        debugger
+        photoUrl = this.state.imageUrl || playlist.photoUrl || window.default_albumURL
         return (
 
             <div className="playlist-show">
@@ -127,7 +132,7 @@ class PlaylistShow extends React.Component {
 
                 <form className="change-art" onSubmit={this.handleSubmitPickArt}>
                     <input type="file" onChange={this.handleChangePickArt} className="change-art-choose" />
-                    <input type="submit" value="Update Image" className="change-art-submit lightup" />
+                    <input type="submit" value="Save Image" className="change-art-submit lightup" />
                 </form>
                 
                 <h2 className="playlist-show-name">{playlist.name}</h2>

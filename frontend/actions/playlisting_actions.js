@@ -10,20 +10,20 @@ const receivePlaylisting = playlisting => {
     }
 }
 
-// const removePlaylisting = playlisting => {
-//     return {
-//         type: REMOVE_PLAYLISTING,
-//         playlistingId: playlisting.id
-//     }
-// }
+const removePlaylisting = playlisting => {
+    return {
+        type: REMOVE_PLAYLISTING,
+        playlistingId: playlisting.id
+    }
+}
 
 export const createPlaylisting = playlisting => dispatch => {
     return PlaylistingAPIUtil.createPlaylisting(playlisting)
         .then(playlisting => dispatch(receivePlaylisting(playlisting)))
 }
 
-// export const deletePlaylisting = (songId, playlistId) => dispatch => {
-//     return PlaylistingAPIUtil.deletePlaylisting(songId, playlistId)
-//         .then(playlisting => dispatch(removePlaylisting(songId, playlistId)))
-// }
+export const deletePlaylisting = (playlistId, songId) => dispatch => {
+    return PlaylistingAPIUtil.deletePlaylisting(playlistId, songId)
+        .then(playlisting => dispatch(removePlaylisting(playlisting)))
+}
 

@@ -71,7 +71,6 @@ class Greeting extends React.Component {
                             <Link className="splash-logo" to="/">Firefy</Link>
                         </div>
                         <div className="greeting-buttons">
-                            {/* <i className="greeting-separator"></i> */}
                             <Link className="greeting-link small" to="/signup">Sign Up</Link>
                             <Link className="greeting-link small" to="/login">Log In</Link>
                         </div>

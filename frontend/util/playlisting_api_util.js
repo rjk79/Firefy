@@ -9,9 +9,10 @@ export const createPlaylisting = playlisting => {
 }
 
 
-export const deletePlaylisting = id => {
+export const deletePlaylisting = (playlistId, songId) => {
     return $.ajax({
         method: 'delete',
-        url: `api/playlistings/${id}`,
+        url: `api/playlistings/${playlistId}`,
+        data: { songId }
     })
 }

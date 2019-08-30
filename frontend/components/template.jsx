@@ -11,7 +11,6 @@ import MusicplayerComponent from './musicplayer/musicplayer'
 import SearchComponent from './search'
 import QueueComponent from './queue'
 import {connect} from 'react-redux'
-// import {fetchAllSongs} from '../actions/song.actions'
 
 const msp = state => {
     let sessionId
@@ -22,19 +21,13 @@ const msp = state => {
     }
 }
 
-// const mdp = dispatch => {
-//     return {
-//         fetchAllSongs: ()=>dispatch(fetchAllSongs())
-//     }
-// }
+
 class Template extends React.Component{
     constructor(props){
         super(props)
   
     }
-    // componentDidMount(){
-    //     this.props.fetchAllSongs()
-    // }
+  
     
     render(){
         
@@ -92,6 +85,4 @@ class Template extends React.Component{
         )
     }
 }
-// export default Template
 export default connect(msp)(Template)
-// REMOVE

@@ -15,14 +15,11 @@ class Api::FollowsController < ApplicationController
     end
 
     def show
-        # @follow = Follow.find(params[:id])
         @follow = current_user.follows.find_by(playlist_id: params[:id])
         render :show
     end
  
-    def destroy
-        # @friendship = current_user.friendships1.find_by()
-        
+    def destroy        
         @follow = current_user.follows.find_by(playlist_id: params[:id])
         @follow.destroy
         render :show

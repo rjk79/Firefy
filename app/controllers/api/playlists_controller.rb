@@ -4,7 +4,7 @@ class Api::PlaylistsController < ApplicationController
         @playlists = Playlist.all
         render :index
     end
- 
+  
     def create
         @playlist = Playlist.new(playlist_params) 
         @playlist.user_id = current_user.id

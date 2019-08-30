@@ -41,9 +41,7 @@ class ArtistShow extends React.Component {
            
             )
         
-        // for(let i = 0; i < i++){
-        //     this.props.songs
-        // }
+       
         
         let songLis = songs.map(song => 
 

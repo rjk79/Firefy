@@ -26,8 +26,14 @@ class SongComponent extends React.Component {
         super(props)
         this.state = {
             popupShowing: false,
+            // duration: 0,
         }
         this.toggleOpenPlaylists = this.toggleOpenPlaylists.bind(this)
+        // let audio = new Audio()
+        // audio.src = this.props.song.audioUrl 
+        // audio.onloadedmetadata = () => {
+        //     debugger
+        // }
     }
     componentDidMount(){
     }

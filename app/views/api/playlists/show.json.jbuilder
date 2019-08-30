@@ -8,8 +8,7 @@ json.songs do
     @playlist.songs.each do |song|
         json.set! song.id do
             json.partial! 'api/songs/song', song: song
-            # json.artist song.artist.name
-            # json.album song.album.name
+        
         end
     end
 end

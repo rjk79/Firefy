@@ -17,19 +17,4 @@ user.friendships2.each do |friendship|
 end
 json.friend_ids friendships
 
-# json.follow_ids follows
 
-
-
-# json.friend_ids do
-#     user.friendships1 each
-# end
-
-
-# json.follow_ids do
-#     json.array! user.follows do |follow| 
-#         follow.playlist_id
-#     end
-# end
-
-# json.follows user.follows 

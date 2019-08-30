@@ -25,7 +25,7 @@ export default (state = {}, action) => {
             user.follow_ids.push(action.follow.playlist_id)
             return merge({}, state, { [user.id]: user }) 
         case REMOVE_FOLLOW:
-             newState = merge({}, state)
+            newState = merge({}, state)
             // find the user           
             user = newState[action.follow.user_id]
             //find the index of the playlist inside of the users follows

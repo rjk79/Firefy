@@ -36,7 +36,7 @@ const App = () => (
     
   </div>
 )
-// always show greeting container so u can log out
+// always show greeting container so you can log out
 // the auth routes will just sit there once they do their job
 
 export default App

@@ -41,7 +41,7 @@ export const createPlaylist = playlist => dispatch => {
 }
 
 export const updatePlaylist = (formData, playlistId) => dispatch => {
-    debugger
+    
     return PlaylistAPIUtil.updatePlaylist(formData, playlistId)
         .then(playlist => dispatch(receivePlaylist(playlist)))
 }

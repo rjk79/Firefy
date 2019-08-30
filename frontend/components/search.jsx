@@ -55,10 +55,9 @@ class SearchComponent extends React.Component {
 
     // }
 
-    //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   //UNMOUNT   
     componentWillUnmount(){
         window.removeEventListener('keypress',  (e) => {
-            let key = e.which || e.keyCode; //acounts for browsers
+            let key = e.which || e.keyCode; //accounts for browsers
             if (key === 13) {
                 this.props.fetchAllSearches(this.state.query)
                 this.setState({ query: "" })
