@@ -122,7 +122,7 @@ class PlaylistShow extends React.Component {
                 </li>
         )} 
         let photoUrl;
-        debugger
+        
         photoUrl = this.state.imageUrl || playlist.photoUrl || window.default_albumURL
         return (
 

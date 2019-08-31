@@ -32,7 +32,7 @@ class SongComponent extends React.Component {
         // let audio = new Audio()
         // audio.src = this.props.song.audioUrl 
         // audio.onloadedmetadata = () => {
-        //     debugger
+        //     
         // }
     }
     componentDidMount(){

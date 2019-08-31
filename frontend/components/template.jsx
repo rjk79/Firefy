@@ -9,6 +9,7 @@ import AlbumShowComponent from './albums/album_show_container';
 import HomeComponent from './home'
 import MusicplayerComponent from './musicplayer/musicplayer'
 import SearchComponent from './search'
+import LibraryComponent from './song_index'
 import QueueComponent from './queue'
 import {connect} from 'react-redux'
 
@@ -71,6 +72,9 @@ class Template extends React.Component{
                             <ProtectedRoute  
                                             exact path="/search" 
                                             component={SearchComponent} />
+                            <ProtectedRoute  
+                                            exact path="/library" 
+                                            component={LibraryComponent} />
                             <ProtectedRoute  
                                             exact path="/queue" 
                                             component={QueueComponent} />

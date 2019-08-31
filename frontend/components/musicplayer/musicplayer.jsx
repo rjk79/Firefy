@@ -139,7 +139,7 @@ class Musicplayer extends React.Component {
         //NEW SONG
         
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
-            
+            document.getElementsByClassName("time-slider")[0].disabled = false
             this.setState({currentSongId: this.props.currSongId})
             this.player.load()
             this.player.play()
@@ -227,7 +227,7 @@ class Musicplayer extends React.Component {
     }
 
     // SLIDERS
-      handleTimeChange(e){
+    handleTimeChange(e){
             
         this.setState({ currTime: e.target.value }, ()=> {
             this.player.currentTime = this.state.currTime 
@@ -353,6 +353,7 @@ class Musicplayer extends React.Component {
                                onChange={this.handleTimeChange}
                                step=".5"
                                id="mouse"
+                               disabled
                         />
                         </div>
                         {/* <div className="seekbar-container"></div> */}
