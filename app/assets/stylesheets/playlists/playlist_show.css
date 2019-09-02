@@ -155,9 +155,22 @@
 form.change-art {
    
 }
-img.playlist-artwork:hover::after {
-    content: "CHANGE";
+img.playlist-artwork {
+
+}
+
+.playlist-artwork-holder {
+    position: relative;
+}
+.playlist-artwork-holder:hover::after {
+    content: "UPLOAD";
     position: absolute;
     top: 120px;
-    left: 83px;
+    left: 32%;
+    LETTER-SPACING: 1px;
+    pointer-events: none;
+    font-weight: 300;
+    font-size: 18px;
 }
+
+

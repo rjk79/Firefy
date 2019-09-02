@@ -15,6 +15,7 @@ Playlist.destroy_all
 Playlisting.destroy_all
 Follow.destroy_all
 Friendship.destroy_all
+Like.destroy_all
 
 
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
@@ -194,4 +195,8 @@ he = Friendship.create!(user1_id: aa.id, user2_id: ae.id)
 hf = Friendship.create!(user1_id: aa.id, user2_id: af.id)
 hg = Friendship.create!(user1_id: aa.id, user2_id: ag.id)
 hh = Friendship.create!(user1_id: aa.id, user2_id: ah.id)
+
+ja = Like.create!(user_id: aa.id, song_id: ba.id)
+jb = Like.create!(user_id: aa.id, song_id: bb.id)
+jc = Like.create!(user_id: ab.id, song_id: bc.id)
 

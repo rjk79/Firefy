@@ -96,7 +96,8 @@ class PlaylistShow extends React.Component {
         let songLis;
         let followButton;
         let friendButton;
-         
+        // debugger
+
         followButton = !currentUser.follow_ids.includes(parseInt(match.params.playlistId)) ? 
             <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUser.id, playlist_id: playlist.id })}>FOLLOW</button> :
             <button className="follow-button lightup" onClick={() => deleteFollow(playlist.id)}>UNFOLLOW</button>
@@ -109,7 +110,7 @@ class PlaylistShow extends React.Component {
                 <button className="playlist-delete-button lightup" onClick={this.deletePlaylist}>Delete</button>
             </div>
             : null
-        if (this.props.songs){         
+        if (this.props.songs && artists.length && albums.length){         
 
             songLis = songs.map((song, idx) =>
                 <li key={idx} className="playlist-show-songli medium">
@@ -128,8 +129,9 @@ class PlaylistShow extends React.Component {
 
             <div className="playlist-show">
               <div className="flex-col playlist-title-delete">
-                <img className="playlist-artwork" src={photoUrl} alt="PlaylistArt"/>
-
+                <div className="playlist-artwork-holder">
+                    <img className="playlist-artwork" src={photoUrl} alt="PlaylistArt"/>
+                </div>
                 <form className="change-art" onSubmit={this.handleSubmitPickArt}>
                     <input type="file" onChange={this.handleChangePickArt} className="change-art-choose" />
                     <input type="submit" value="Save Image" className="change-art-submit lightup" />

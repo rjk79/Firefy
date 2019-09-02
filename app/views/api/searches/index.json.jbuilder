@@ -16,6 +16,7 @@ json.artists do
             end
         end
     end
+    
 end
 
 json.albums do

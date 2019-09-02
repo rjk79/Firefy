@@ -4,6 +4,7 @@ import { RECEIVE_ARTIST } from '../actions/artist_actions';
 import { RECEIVE_ALBUM } from '../actions/album_actions';
 import { RECEIVE_ALL_SEARCHES } from '../actions/search_actions';
 import { RECEIVE_ALL_SONGS } from '../actions/song.actions';
+import { RECEIVE_USER_LIKES } from '../actions/user_actions'
 
 
 const songsReducer = (state = {}, action) => {
@@ -19,6 +20,8 @@ const songsReducer = (state = {}, action) => {
             return merge({}, state, action.album.songs)
         case RECEIVE_ALL_SEARCHES:
             return merge({}, state, action.songs)
+        case RECEIVE_USER_LIKES:
+            return merge({}, state, action.likes)
         default:
             return state;
     }

@@ -21,6 +21,15 @@ class Api::UsersController < ApplicationController
     end
   end
 
+
+  def likes
+    user = User.find(params[:id])
+    song_ids = user.likes.map{|like| like.song_id}
+    
+    @songs = Song.find(song_ids) 
+    render :likes
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :password)

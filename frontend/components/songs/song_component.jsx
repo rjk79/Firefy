@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import { connect } from 'react-redux';
 import {createPlaylisting} from '../../actions/playlisting_actions'
 import { fetchAllPlaylists } from '../../actions/playlist_actions';
-
+ 
 const msp = state => {
     let currSongId;
     
@@ -50,6 +50,7 @@ class SongComponent extends React.Component {
     render(){
         // NEED TO PASS EVERYTHING            EXCEPT createPlaylisting
         const { song, artist, album, handlePickSong, createPlaylisting } = this.props
+        
         // 
         let playlists = this.props.playlists.map((playlist, idx) => (
             <p onClick={() => {
@@ -69,6 +70,7 @@ class SongComponent extends React.Component {
             let flashing;
             flashing = this.props.currSongId === song.id ? "flashing-true" : ""
             //  
+            // debugger
         return(
             <>
                 <div className="songcomponent">

@@ -1,6 +1,7 @@
 import * as UserAPIUtil from '../util/user_api_util'
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS'
+export const RECEIVE_USER_LIKES = 'RECEIVE_USER_LIKES'
 
 const receiveUser = user => {
     return {
@@ -16,6 +17,13 @@ const receiveAllUsers = users => {
     }
 }
 
+const receiveUserLikes = likes => {
+    return {
+        type: RECEIVE_USER_LIKES,
+        likes
+    }
+}
+
 export const fetchUser = id => dispatch => {
     
     return UserAPIUtil.fetchUser(id)
@@ -25,4 +33,9 @@ export const fetchUser = id => dispatch => {
 export const fetchAllUsers = () => dispatch => {
     return UserAPIUtil.fetchAllUsers()
         .then(users => dispatch(receiveAllUsers(users)))
+}
+
+export const fetchUserLikes = id => dispatch => {
+    return UserAPIUtil.fetchUserLikes(id)
+        .then(likes => dispatch(receiveUserLikes(likes)))
 }

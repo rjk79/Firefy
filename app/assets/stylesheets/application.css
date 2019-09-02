@@ -440,3 +440,7 @@ html, body, #root, .primary-app-div {
     .fa-envelope-square {
         font-size: 29px;
     } */
+
+.mostfaded {
+    opacity: .2;
+}

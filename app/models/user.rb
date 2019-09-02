@@ -20,6 +20,9 @@ class User < ApplicationRecord
 
   has_many :follows,
     dependent: :destroy
+    
+  has_many :likes,
+    dependent: :destroy
 
   has_one_attached :photo
 

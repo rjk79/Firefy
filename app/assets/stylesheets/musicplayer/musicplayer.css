@@ -2,6 +2,7 @@
 .musicplayer-1 {
     display: flex;
     min-width: 15%;
+    align-items: center;
 }
 
 .musicplayer-2 {
@@ -277,4 +278,12 @@ input[type='range']::-webkit-slider-thumb {
 .queue-link {
     display: flex;
     margin-right: 5px;
+}
+
+.like-button {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    z-index: 2;
+    margin-left: 10px;
 }

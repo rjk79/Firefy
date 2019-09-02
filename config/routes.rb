@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :searches, only: [:index]
     resources :follows, only: [:index, :create, :show, :destroy]
     resources :friendships, only: [:index, :create, :show, :destroy]
-    # get 'playlists/:id/songs', to: 'playlists#songs'
+    resources :likes, only: [:index, :create, :show, :destroy]
+
+    get 'users/:id/likes', to: 'users#likes'
   end
 end

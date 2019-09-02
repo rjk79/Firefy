@@ -9,7 +9,7 @@ import AlbumShowComponent from './albums/album_show_container';
 import HomeComponent from './home'
 import MusicplayerComponent from './musicplayer/musicplayer'
 import SearchComponent from './search'
-import LibraryComponent from './song_index'
+import LibraryComponent from './liked_songs'
 import QueueComponent from './queue'
 import {connect} from 'react-redux'
 
@@ -44,7 +44,7 @@ class Template extends React.Component{
                                 <li className="nav-link lightup small top-left-item bold">
                                     <NavLink className="navbar-top-item" to="/search"><img className="navbar-icon" src={window.navbar_searchURL} />Search</NavLink></li>
                                 <li className="nav-link lightup small top-left-item bold">
-                                    <NavLink className="navbar-top-item" to="/library"><img className="navbar-icon" src={window.navbar_libraryURL} />Your Library</NavLink></li>
+                                    <NavLink className="navbar-top-item" to={`/users/${this.props.sessionId}/likes`}><img className="navbar-icon" src={window.navbar_libraryURL} />Your Library</NavLink></li>
                                 <li className="faded playlists-label">Playlists</li>
                                 <li className="lightup small create-playlist-holder">
                                     <CreatePlaylistComponent />
@@ -73,7 +73,7 @@ class Template extends React.Component{
                                             exact path="/search" 
                                             component={SearchComponent} />
                             <ProtectedRoute  
-                                            exact path="/library" 
+                                            exact path={`/users/${this.props.sessionId}/likes`}
                                             component={LibraryComponent} />
                             <ProtectedRoute  
                                             exact path="/queue" 

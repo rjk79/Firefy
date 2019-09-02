@@ -18,3 +18,10 @@ end
 json.friend_ids friendships
 
 
+likes = []
+user.likes.each do |like|
+    likes << like.song_id
+end
+json.liked_song_ids likes
+
+

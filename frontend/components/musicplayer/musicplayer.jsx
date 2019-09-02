@@ -3,9 +3,11 @@ import {connect} from 'react-redux'
 import { fetchSong } from '../../actions/song.actions';
 import {Link} from 'react-router-dom'
 import { receiveCurrentSongId } from '../../actions/musicplayer_actions';
+import {createLike, deleteLike} from '../../actions/like_actions'
 
 const msp = (state) => {
-    
+    let currentUser = state.entities.users[state.session.id]
+
     let song 
     if (state.musicplayer && state.musicplayer.queue && state.musicplayer.currSongId) {
     // let song = state.musicplayer.queue && state.musicplayer.queue[0] || {id: null, audioUrl: ""}
@@ -29,13 +31,16 @@ const msp = (state) => {
 
         currSongId,
         queue,
+        currentUser,
     }
 }
   
 const mdp = dispatch => {
     return {
         fetchSong: id => dispatch(fetchSong(id)),
-        receiveCurrentSongId: id => dispatch(receiveCurrentSongId(id))
+        receiveCurrentSongId: id => dispatch(receiveCurrentSongId(id)),
+        createLike: like => dispatch(createLike(like)),
+        deleteLike: id => dispatch(deleteLike(id))
     }
 }
 
@@ -279,10 +284,10 @@ class Musicplayer extends React.Component {
         }
         return 
     }
-
+  
     render(){
         // 
-        const {song, album, artist} = this.props
+        const {song, album, artist, createLike, deleteLike, currentUser} = this.props
         
         let checkedVolumeUrl;
         let loopImg;
@@ -298,6 +303,13 @@ class Musicplayer extends React.Component {
 
         const playpause = (this.state.isPlaying || (typeof song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
         
+        let likeButton;
+        
+        likeButton = !currentUser.liked_song_ids.includes(this.state.currentSongId) ?
+            <img src={likeURL} className="like-button lightup mostfaded" onClick={() => createLike({ user_id: currentUser.id, song_id: this.state.currentSongId })}/> :
+            <img src={likeURL} className="like-button" onClick={() => deleteLike(this.state.currentSongId)}/>
+        
+
         return (
             <>                    
                 <div className="musicplayer-1">
@@ -307,6 +319,7 @@ class Musicplayer extends React.Component {
                         <Link to={`/album/${album.id}`}><p className="player-song-title underlining">{song.title}</p></Link>
                         <Link to={`/artist/${artist.id}`}><p className="player-artist-name underlining">{artist.name}</p></Link>
                     </div> 
+                    {likeButton}
                 </div>
 
                 <div className="musicplayer-2">

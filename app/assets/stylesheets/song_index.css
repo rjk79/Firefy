@@ -1,6 +1,7 @@
 .song-index-title {
+    padding: 10px;
     font-size: 36px;
-    margin: 10px;
     font-weight: bolder;
+    background: rgb(15, 15, 15);
 }
  

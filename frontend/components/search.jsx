@@ -117,8 +117,8 @@ class SearchComponent extends React.Component {
             songLis = songs.map(song => (
                 <SongComponent key={song.id} 
                                song={song}
-                               album={{name: ""}}
-                               artist={{name: ""}}
+                               album={{id: song.album_id, name: ""}}
+                               artist={{id: 0, name: ""}}
                                handlePickSong={this.handlePickSong}
                 />
             

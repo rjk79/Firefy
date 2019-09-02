@@ -11,3 +11,10 @@ export const fetchAllUsers = () => {
         url: 'api/users'
     })
 }
+
+export const fetchUserLikes = id => {
+    return $.ajax({
+        method: 'get',
+        url: `api/users/${id}/likes`
+    })
+}
