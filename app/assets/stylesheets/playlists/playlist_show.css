@@ -1,6 +1,6 @@
  .playlist-show{
      overflow-y: scroll;
-     overflow-x: hidden
+     overflow-x: hidden;
  }
  
 .deleting:hover span{

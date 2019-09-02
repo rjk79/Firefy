@@ -350,7 +350,8 @@ html, body, #root, .primary-app-div {
 .playlist-show {
     display: flex;
     flex-direction: row;
-    margin: 3%;
+    padding: 3%;
+    height: 100%
 }
 .playlist-show::-webkit-scrollbar {
     background: transparent;

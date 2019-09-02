@@ -7,10 +7,10 @@ import SongComponent from '../songs/song_component'
 class PlaylistShow extends React.Component {
     constructor(props){
         super(props)
+
         this.state = { popupShowing: false,
             imageUrl: "",
             imageFile: null,
-            
         }
         this.deletePlaylist = this.deletePlaylist.bind(this)
         this.handlePickSong = this.handlePickSong.bind(this)
@@ -18,7 +18,14 @@ class PlaylistShow extends React.Component {
         this.handleChangePickArt = this.handleChangePickArt.bind(this)
         this.handleSubmitPickArt = this.handleSubmitPickArt.bind(this)
     }
+    colorPicker (){
+        let backColor1 = Math.floor(Math.random() * 255)
+        let backColor2 = Math.floor(Math.random() * 255)
+        let backColor3 = Math.floor(Math.random() * 255)
+        document.getElementsByClassName("playlist-show")[0].style.background = `rgba(${backColor1}, ${backColor2}, ${backColor3}, .2)`
+    }
     componentDidMount() {
+        this.colorPicker()
         let playlistId = this.props.match.params.playlistId        
         this.props.fetchPlaylist(playlistId)  
         this.props.fetchUser(this.props.playlist.user_id)     
@@ -37,6 +44,7 @@ class PlaylistShow extends React.Component {
             this.props.fetchPlaylist(playlistId)
             this.props.fetchUser(this.props.playlist.user_id)
             this.setState({imageUrl: "", imageFile: null})
+            this.colorPicker()
         }
         if (this.props.playlist.user_id !== prevProps.playlist.user_id) {   
             this.props.fetchUser(this.props.playlist.user_id)
@@ -127,7 +135,7 @@ class PlaylistShow extends React.Component {
         photoUrl = this.state.imageUrl || playlist.photoUrl || window.default_albumURL
         return (
 
-            <div className="playlist-show">
+            <div className="playlist-show" >
               <div className="flex-col playlist-title-delete">
                 <div className="playlist-artwork-holder">
                     <img className="playlist-artwork" src={photoUrl} alt="PlaylistArt"/>
