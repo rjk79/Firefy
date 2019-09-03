@@ -22,7 +22,7 @@ class PlaylistShow extends React.Component {
         let backColor1 = Math.floor(Math.random() * 255)
         let backColor2 = Math.floor(Math.random() * 255)
         let backColor3 = Math.floor(Math.random() * 255)
-        document.getElementsByClassName("playlist-show")[0].style.background = `rgba(${backColor1}, ${backColor2}, ${backColor3}, .2)`
+        document.getElementsByClassName("playlist-show")[0].style.background = `rgba(${backColor1}, ${backColor2}, ${backColor3}, .1)`
     }
     componentDidMount() {
         this.colorPicker()

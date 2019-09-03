@@ -178,7 +178,7 @@
 # ga = Follow.create!(user_id: aa.id, playlist_id: ec.id)
 # gb = Follow.create!(user_id: aa.id, playlist_id: ed.id)
 # gc = Follow.create!(user_id: ab.id, playlist_id: eb.id)
-# gd = Follow.create!(user_id: ab.id, playlist_id: eb.id)
+# gd = Follow.create!(user_id: ab.id, playlist_id: ec.id)
 # ge = Follow.create!(user_id: ac.id, playlist_id: ea.id)
 # gf = Follow.create!(user_id: ac.id, playlist_id: eb.id)
 # gg = Follow.create!(user_id: ad.id, playlist_id: ec.id)

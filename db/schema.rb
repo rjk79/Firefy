@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_01_180538) do
+ActiveRecord::Schema.define(version: 2019_09_03_140901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_09_01_180538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["playlist_id"], name: "index_follows_on_playlist_id"
+    t.index ["user_id", "playlist_id"], name: "index_follows_on_user_id_and_playlist_id", unique: true
     t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_09_01_180538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["song_id"], name: "index_likes_on_song_id"
+    t.index ["user_id", "song_id"], name: "index_likes_on_user_id_and_song_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -83,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_09_01_180538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["playlist_id"], name: "index_playlistings_on_playlist_id"
+    t.index ["song_id", "playlist_id"], name: "index_playlistings_on_song_id_and_playlist_id", unique: true
     t.index ["song_id"], name: "index_playlistings_on_song_id"
   end
 
