@@ -39,8 +39,8 @@ function LikedSongs (props) {
     let songLis = props.likedSongs.map(song => (
         <SongComponent key={song.id}
             song={song}
-            album={{ name: "" }}
-            artist={{ name: "" }}
+            album={{id: null, name: "" }}
+            artist={{id: null, name: "" }}
             handlePickSong={handlePickSong}
         />
     ))

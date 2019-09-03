@@ -112,13 +112,13 @@ class SearchComponent extends React.Component {
                         {playlist.name}
                     </Link>
                 </li>
-        )})}
+        )})} 
         if (songs){
             songLis = songs.map(song => (
                 <SongComponent key={song.id} 
                                song={song}
-                               album={{id: song.album_id, name: ""}}
-                               artist={{id: 0, name: ""}}
+                               album={{id: null, name: ""}}
+                               artist={{id: null, name: ""}}
                                handlePickSong={this.handlePickSong}
                 />
             

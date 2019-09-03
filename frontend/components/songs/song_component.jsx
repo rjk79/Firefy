@@ -48,6 +48,7 @@ class SongComponent extends React.Component {
         return this.setState({popupShowing: false,})
     }
     render(){
+        debugger
         // NEED TO PASS EVERYTHING            EXCEPT createPlaylisting
         const { song, artist, album, handlePickSong, createPlaylisting } = this.props
         
@@ -71,6 +72,10 @@ class SongComponent extends React.Component {
             flashing = this.props.currSongId === song.id ? "flashing-true" : ""
             //  
             // debugger
+            let artistId = artist ? artist.id : null
+            let albumId = album ? album.id : null
+            let artistName = artist ? artist.name : null
+            let albumName = album ? album.name : null
         return(
             <>
                 <div className="songcomponent">
@@ -81,9 +86,9 @@ class SongComponent extends React.Component {
                            {song.title}
                         </p>
                         <div className={`songli-artist-album faded`}>
-                            <Link to={`/artist/${artist.id}`} className="artist-album-li underlining">{artist.name}</Link>
-                            {artist.name && album.name ? "  -  " : ""}
-                            <Link to={`/album/${album.id}`} className="artist-album-li underlining">{album.name}</Link>
+                            <Link to={`/artist/${artistId}`} className="artist-album-li underlining">{artistName}</Link>
+                            {artistName && albumName ? "  -  " : ""}
+                            <Link to={`/album/${albumId}`} className="artist-album-li underlining">{albumName}</Link>
                         </div>
 
 
