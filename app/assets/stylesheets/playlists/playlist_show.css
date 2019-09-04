@@ -174,3 +174,14 @@ img.playlist-artwork {
 }
 
 
+ul.playlist-songlist:empty::after {
+    content: "It's a bit empty here...";
+    font-size: 42px;
+    font-weight: 800;
+}
+/* 
+ul.playlist-songlist:empty::after {
+    content: "Let's find some songs for your playlist";
+    font-size: 18px;
+    font-weight: 800;
+} */

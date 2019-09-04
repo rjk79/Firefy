@@ -129,7 +129,8 @@ class PlaylistShow extends React.Component {
                                     handlePickSong={this.handlePickSong}
                     />
                 </li>
-        )} 
+        ) } 
+        // || <p className="its-empty-title">It's a bit empty here....</p> <p>Let's find some songs for your playlist</p>
         let photoUrl;
         
         photoUrl = this.state.imageUrl || playlist.photoUrl || window.default_albumURL
