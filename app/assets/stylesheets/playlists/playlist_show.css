@@ -179,9 +179,3 @@ ul.playlist-songlist:empty::after {
     font-size: 42px;
     font-weight: 800;
 }
-/* 
-ul.playlist-songlist:empty::after {
-    content: "Let's find some songs for your playlist";
-    font-size: 18px;
-    font-weight: 800;
-} */
