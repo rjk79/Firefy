@@ -131,13 +131,13 @@ class SearchComponent extends React.Component {
         finishedSongs = songs && songs.length ? <div><p className="search-title">Songs</p>
                                     <div className="search-category-songsplaylists">
                                     {songLis}</div></div> : null
-        finishedAlbums = albums && albums.length ? < div><p className="search-title"> Albums </p><br/> 
+        finishedAlbums = albums && albums.length ? < div><p className="search-title"> Albums </p> 
                                     <div className="search-category">
                                     {albumLis}</div></div > : null
-        finishedArtists = artists && artists.length ? <div><p className="search-title">Artists</p><br/>
+        finishedArtists = artists && artists.length ? <div><p className="search-title">Artists</p>
                                         <div className="search-category">
                                         {artistLis}</div></div> : null
-        finishedPlaylists = playlists && playlists.length ? < div > <p className="search-title">Playlists</p> < br /> 
+        finishedPlaylists = playlists && playlists.length ? < div > <p className="search-title">Playlists</p> 
                                                 <div className="search-category">
                                                 {playlistLis}</div></div > : null
 

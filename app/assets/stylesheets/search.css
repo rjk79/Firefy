@@ -8,6 +8,10 @@
     padding: 10px;
 }
 
+.search-area > div {
+  margin: 2% 0px;
+}
+
 
 .search-input {
   caret-color: #00C45A;
