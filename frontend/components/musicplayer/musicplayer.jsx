@@ -65,6 +65,7 @@ class Musicplayer extends React.Component {
         this.handleForward = this.handleForward.bind(this)
         this.handleToggleLoop = this.handleToggleLoop.bind(this)
         this.handleToggleShuffle = this.handleToggleShuffle.bind(this)
+        this.handleCreateLike = this.handleCreateLike.bind(this)
     } 
     componentDidMount(){
         
@@ -284,6 +285,12 @@ class Musicplayer extends React.Component {
         }
         return 
     }
+    handleCreateLike(){
+        this.props.createLike({ user_id: this.props.currentUser.id, song_id: this.state.currentSongId })
+        document.getElementsByClassName("liked-popup")[0].style.display = "flex"
+        document.getElementsByClassName("liked-popup")[0].innerText = "Added to Your Library"
+        setTimeout(() => { document.getElementsByClassName("liked-popup")[0].style.display = "none"}, 2000)
+    }
   
     render(){
         // 
@@ -306,12 +313,13 @@ class Musicplayer extends React.Component {
         let likeButton;
         
         likeButton = !currentUser.liked_song_ids.includes(this.state.currentSongId) ?
-            <img src={likeURL} className="like-button lightup mostfaded" onClick={() => createLike({ user_id: currentUser.id, song_id: this.state.currentSongId })}/> :
+            <img src={likeURL} className="like-button mostfaded" onClick={this.handleCreateLike}/> :
             <img src={likeURL} className="like-button" onClick={() => deleteLike(this.state.currentSongId)}/>
         
 
         return (
             <>                    
+                <div className="liked-popup">Added to Your Library</div>
                 <div className="musicplayer-1">
                     <Link to={`/artist/${artist.id}`}><img className="player-album-art" src={album.photoUrl} alt="" /></Link>
                     {/* {albumArt} */}

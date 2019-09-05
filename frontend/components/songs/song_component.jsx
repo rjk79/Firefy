@@ -48,7 +48,7 @@ class SongComponent extends React.Component {
         return this.setState({popupShowing: false,})
     }
     render(){
-        debugger
+        // debugger
         // NEED TO PASS EVERYTHING            EXCEPT createPlaylisting
         const { song, artist, album, handlePickSong, createPlaylisting } = this.props
         
