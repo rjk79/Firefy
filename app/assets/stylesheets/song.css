@@ -10,9 +10,10 @@
     position: absolute;
     opacity: 1;
     z-index: 1;
+    overflow: hidden;
 }
     .song-playlist-show-popup > * { 
-        margin: 5px 25px;
+        padding: 5px 25px;
         font-weight: 300;
     }
 .songcomponent {
@@ -29,7 +30,7 @@
     background: rgba(0, 0, 0, .3)
 }
 .song-playlist-show-popup.hideable > p {
-    margin-left: 50px;
+    /* margin-left: 50px; */
 }
 .add-title {
     cursor: default;
@@ -41,6 +42,16 @@
     font-size: 16px;
     background: none;
     border: none;
-    padding: 0;
     cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.playlist-popup-item {
+    margin-left: 0;
+    width: 80%;
+    padding-left: 50px;
+}
+.darken:hover {
+    background: rgb(15, 15, 15);
 }

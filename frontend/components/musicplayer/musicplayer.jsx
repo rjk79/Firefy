@@ -319,7 +319,7 @@ class Musicplayer extends React.Component {
 
         return (
             <>                    
-                <div className="liked-popup">Added to Your Library</div>
+                <div className="liked-popup"></div>
                 <div className="musicplayer-1">
                     <Link to={`/artist/${artist.id}`}><img className="player-album-art" src={album.photoUrl} alt="" /></Link>
                     {/* {albumArt} */}

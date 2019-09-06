@@ -65,10 +65,13 @@ class SongComponent extends React.Component {
                 this.setState({popupShowing: false})
                 return createPlaylisting({playlist_id: playlist.id, song_id: song.id})
                 }
-            } className="lightup" key={idx}>{playlist.name}</p>
+            } className="lightup darken playlist-popup-item" key={idx}>{playlist.name}</p>
         )
         )
-        let deletePlaylisting = this.props.match.params.playlistId ? <button className="remove-button lightup" onClick={this.handleRemove}>Remove from this Playlist</button>: null
+        let deletePlaylisting = this.props.match.params.playlistId ? 
+            <button className="remove-button lightup darken" 
+                    onClick={this.handleRemove}>Remove from this Playlist</button>
+                    : null
 
         let popup = this.state.popupShowing ?
             <div className="song-playlist-show-popup hideable">
@@ -81,7 +84,7 @@ class SongComponent extends React.Component {
             let flashing;
             flashing = this.props.currSongId === song.id ? "flashing-true" : ""
             //  
-            // debugger
+            // 
             let artistId = artist ? artist.id : null
             let albumId = album ? album.id : null
             let artistName = artist ? artist.name : null
