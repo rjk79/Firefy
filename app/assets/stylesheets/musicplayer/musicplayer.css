@@ -303,5 +303,7 @@ input[type='range']::-webkit-slider-thumb {
     justify-content: center;
     align-items: center;
     background: #00c45a;
+    padding-left: 25%;
+    text-align: center;
 }
     

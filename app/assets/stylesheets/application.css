@@ -324,6 +324,10 @@ html, body, #root, .primary-app-div {
     display: flex;
     align-items: center;
 }
+    .app-name > a {
+        display: flex;
+        align-items: center;
+    }
 
 .nav-link > * {
     display: block;
