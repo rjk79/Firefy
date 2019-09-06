@@ -123,6 +123,11 @@
 # bk = Song.create!(title: "Kids See Ghosts", album_id: cj.id)
 # bl = Song.create!(title: "Papercut", album_id: ck.id)
 # bm = Song.create!(title: "Sunday Morning", album_id: cm.id)
+bn = Song.create!(title: "She Will Be Loved", album_id: cm.id)
+bo = Song.create!(title: "Get Out", album_id: ce.id)
+bp = Song.create!(title: "Sing", album_id: cd.id)
+bq = Song.create!(title: "Afraid", album_id: ca.id)
+
 
 # ba.audio_file.attach(io: File.open('app/assets/audio/sweater_weather.mp3'), filename: 'sweater_weather.mp3')
 # bb.audio_file.attach(io: File.open('app/assets/audio/death_of_a_bachelor.mp3'), filename: 'death_of_a_bachelor.mp3')
@@ -133,10 +138,14 @@
 # bg.audio_file.attach(io: File.open('app/assets/audio/beam_me_up.mp3'), filename: 'beam_me_up.mp3')
 # bh.audio_file.attach(io: File.open('app/assets/audio/static.mp3'), filename: 'static.mp3')
 # bi.audio_file.attach(io: File.open('app/assets/audio/say_well_make_it.mp3'), filename: 'say_well_make_it.mp3')
-# bj.audio_file.attach(io: File.open('app/assets/audio/painting.mp3'), filename: 'painting.mp3')
+bj.audio_file.attach(io: File.open('app/assets/audio/painting.mp3'), filename: 'painting.mp3')
 # bk.audio_file.attach(io: File.open('app/assets/audio/kidssee.mp3'), filename: 'kidssee.mp3')
 # bl.audio_file.attach(io: File.open('app/assets/audio/papercut.mp3'), filename: 'papercut.mp3')
-# bm.audio_file.attach(io: File.open('app/assets/audio/sunday_morning.mp3'), filename: 'sunday.mp3')
+# bm.audio_file.attach(io: File.open('app/assets/audio/sunday_morning.mp3'), filename: 'sunday_morning.mp3')
+bn.audio_file.attach(io: File.open('app/assets/audio/she_will_be_loved.mp3'), filename: 'she_will_be_loved.mp3')
+bo.audio_file.attach(io: File.open('app/assets/audio/get_out.mp3'), filename: 'get_out.mp3')
+bp.audio_file.attach(io: File.open('app/assets/audio/sing.mp3'), filename: 'sing.mp3')
+bq.audio_file.attach(io: File.open('app/assets/audio/afraid.mp3'), filename: 'afraid.mp3')
 
 
 
@@ -174,6 +183,12 @@
 # fi = Playlisting.create!(song_id: bg.id, playlist_id: eb.id)
 # fj = Playlisting.create!(song_id: bh.id, playlist_id: eb.id)
 # fg = Playlisting.create!(song_id: bi.id, playlist_id: ea.id)
+fh = Playlisting.create!(song_id: bn.id, playlist_id: ea.id)
+fi = Playlisting.create!(song_id: bo.id, playlist_id: ea.id)
+fj = Playlisting.create!(song_id: bp.id, playlist_id: ea.id)
+fk = Playlisting.create!(song_id: bq.id, playlist_id: ea.id)
+
+
 # # a-j users, ea-ek playlist
 # ga = Follow.create!(user_id: aa.id, playlist_id: ec.id)
 # gb = Follow.create!(user_id: aa.id, playlist_id: ed.id)
@@ -195,12 +210,12 @@
 # hg = Friendship.create!(user1_id: aa.id, user2_id: ag.id)
 # hh = Friendship.create!(user1_id: aa.id, user2_id: ah.id)
 
-ja = Like.create!(user_id: aa.id, song_id: ba.id)
-jb = Like.create!(user_id: aa.id, song_id: bb.id)
-jc = Like.create!(user_id: ab.id, song_id: bc.id)
-jd = Like.create!(user_id: aa.id, song_id: bc.id)
-je = Like.create!(user_id: aa.id, song_id: bd.id)
-jf = Like.create!(user_id: aa.id, song_id: be.id)
-jg = Like.create!(user_id: aa.id, song_id: bf.id)
+# ja = Like.create!(user_id: aa.id, song_id: ba.id)
+# jb = Like.create!(user_id: aa.id, song_id: bb.id)
+# jc = Like.create!(user_id: ab.id, song_id: bc.id)
+# jd = Like.create!(user_id: aa.id, song_id: bc.id)
+# je = Like.create!(user_id: aa.id, song_id: bd.id)
+# jf = Like.create!(user_id: aa.id, song_id: be.id)
+# jg = Like.create!(user_id: aa.id, song_id: bf.id)
 
 

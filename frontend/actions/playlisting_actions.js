@@ -9,11 +9,11 @@ const receivePlaylisting = playlisting => {
         playlisting
     }
 }
-
+ 
 const removePlaylisting = playlisting => {
     return {
         type: REMOVE_PLAYLISTING,
-        playlistingId: playlisting.id
+        playlisting,
     }
 }
 

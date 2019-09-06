@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
-import {createPlaylisting} from '../../actions/playlisting_actions'
+import {createPlaylisting, deletePlaylisting} from '../../actions/playlisting_actions'
 import { fetchAllPlaylists } from '../../actions/playlist_actions';
  
 const msp = state => {
@@ -16,7 +16,7 @@ const msp = state => {
 const mdp = dispatch => {
     return {
         createPlaylisting: playlisting => dispatch(createPlaylisting(playlisting)),
-        deletePlaylisting: (songId, playlistId) => dispatch(removePlaylisting(songId, playlistId)),
+        deletePlaylisting: (playlistId, songId) => dispatch(deletePlaylisting(playlistId, songId)),
         fetchAllPlaylists: ()=> dispatch(fetchAllPlaylists())
     }
 } 
@@ -29,6 +29,7 @@ class SongComponent extends React.Component {
             // duration: 0,
         }
         this.toggleOpenPlaylists = this.toggleOpenPlaylists.bind(this)
+        this.handleRemove = this.handleRemove.bind(this)
         // let audio = new Audio()
         // audio.src = this.props.song.audioUrl 
         // audio.onloadedmetadata = () => {
@@ -47,8 +48,14 @@ class SongComponent extends React.Component {
     handleClosePlaylists(){
         return this.setState({popupShowing: false,})
     }
+    handleRemove(){
+        this.setState({ popupShowing: false })
+
+        const {song, deletePlaylisting} = this.props
+        deletePlaylisting(this.props.match.params.playlistId, song.id)
+    }
     render(){
-        // debugger
+        
         // NEED TO PASS EVERYTHING            EXCEPT createPlaylisting
         const { song, artist, album, handlePickSong, createPlaylisting } = this.props
         
@@ -61,9 +68,12 @@ class SongComponent extends React.Component {
             } className="lightup" key={idx}>{playlist.name}</p>
         )
         )
-            
+        let deletePlaylisting = this.props.match.params.playlistId ? <button className="remove-button lightup" onClick={this.handleRemove}>Remove from this Playlist</button>: null
+
         let popup = this.state.popupShowing ?
             <div className="song-playlist-show-popup hideable">
+                    {deletePlaylisting}
+                    <div className="add-title">Add to Playlist:</div>
                     {playlists}
             </div>
             : null
@@ -92,7 +102,7 @@ class SongComponent extends React.Component {
                         </div>
 
 
-                        <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> + </button>
+                        <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> ... </button>
                         {/* <button className="songli-ell lightup" onClick={this.handleRemoveFromPlaylist}> - </button> */}
                             {popup}
                     </div>
@@ -102,4 +112,4 @@ class SongComponent extends React.Component {
     }
 }
 
-export default connect(msp, mdp)(SongComponent);
+export default connect(msp, mdp)(withRouter(SongComponent));

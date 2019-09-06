@@ -21,12 +21,13 @@ const playlistReducer = (state={}, action) => {
         //     playlist = newState[action.playlisting.playlist_id]
         //     playlist.song_ids.push(action.playlisting.song_id)
         //     return merge({}, state, { [playlist.id]: playlist }) 
-        // case REMOVE_PLAYLISTING:
-        //     newState = merge({}, state)
-        //     playlist = newState[action.playlisting.playlist_id]
-        //     let idx = playlist.song_ids.indexOf(action.playlisting.song_id)
-        //     playlist.song_ids.splice(idx, 1)
-        //     return newState
+        case REMOVE_PLAYLISTING:
+            newState = merge({}, state)
+            
+            let playlist = newState[action.playlisting.playlist_id]
+            let idx = playlist.song_ids.indexOf(action.playlisting.song_id)
+            playlist.song_ids.splice(idx, 1)
+            return newState
         default:
           return state;
     }
