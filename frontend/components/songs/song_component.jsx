@@ -3,21 +3,25 @@ import {Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {createPlaylisting, deletePlaylisting} from '../../actions/playlisting_actions'
 import { fetchAllPlaylists } from '../../actions/playlist_actions';
+import {createLike} from '../../actions/like_actions'
  
 const msp = state => {
     let currSongId;
+    let currentUserId = state.session.id
     
     if (state.musicplayer) {currSongId = state.musicplayer.currSongId || null}
     return {
         playlists: Object.values(state.entities.playlists),
-        currSongId
+        currSongId,
+        currentUserId,
     }
 }
 const mdp = dispatch => {
     return {
         createPlaylisting: playlisting => dispatch(createPlaylisting(playlisting)),
         deletePlaylisting: (playlistId, songId) => dispatch(deletePlaylisting(playlistId, songId)),
-        fetchAllPlaylists: ()=> dispatch(fetchAllPlaylists())
+        fetchAllPlaylists: ()=> dispatch(fetchAllPlaylists()),
+        createLike: like => dispatch(createLike(like)),
     }
 } 
 
@@ -32,7 +36,7 @@ class SongComponent extends React.Component {
         this.handleRemove = this.handleRemove.bind(this)
         // let audio = new Audio()
         // audio.src = this.props.song.audioUrl 
-        // audio.onloadedmetadata = () => {
+        // audio.onloadedmetadata = () => { 
         //     
         // }
     }
@@ -72,7 +76,7 @@ class SongComponent extends React.Component {
             <button className="remove-button lightup darken" 
                     onClick={this.handleRemove}>Remove from this Playlist</button>
                     : null
-
+        // let likeButton = <button onClick={this.props.createLike}>Add to Library</button>
         let popup = this.state.popupShowing ?
             <div className="song-playlist-show-popup hideable">
                     {deletePlaylisting}

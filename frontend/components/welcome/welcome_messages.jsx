@@ -11,7 +11,8 @@ const msp = state => {
 class WelcomeMessages extends React.Component {
     componentDidMount(){
         if (this.props.sessionId) {
-            this.props.history.push("/home")
+            
+            // this.props.history.push("/home")
         }
     }
     render(){      
