@@ -146,6 +146,7 @@ class Musicplayer extends React.Component {
         
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
             document.getElementsByClassName("time-slider")[0].disabled = false
+            document.getElementsByClassName("like-button")[0].style.pointerEvents = "auto"
             this.setState({currentSongId: this.props.currSongId})
             this.player.load()
             this.player.play()
