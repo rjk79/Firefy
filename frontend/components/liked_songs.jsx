@@ -13,9 +13,19 @@ const msp = (state, ownProps) => {
     liked_song_ids = state.entities.users[sessionId].liked_song_ids
     let songs = Object.values(state.entities.songs)
     let likedSongs = songs.filter(song => liked_song_ids.includes(song.id))
+    let albums = likedSongs.map(song => {
+        if (song) return state.entities.albums[song.album_id]
+    }
+    ).filter(album => typeof album !== 'undefined')
+    let artists = albums.map(album => {
+        if (album) return (state.entities.artists[album.artist_id])
+    }
+    ).filter(artist => typeof artist !== 'undefined')
     return {
         likedSongs,
         sessionId,
+        artists,
+        albums,
     }
 }
 
@@ -36,11 +46,11 @@ function LikedSongs (props) {
         props.receiveQueue(props.likedSongs, songId)
     }
 
-    let songLis = props.likedSongs.map(song => (
+    let songLis = props.likedSongs.map((song, idx) => (
         <SongComponent key={song.id}
             song={song}
-            album={{id: null, name: "" }}
-            artist={{id: null, name: "" }}
+            album={props.albums[idx]}
+            artist={props.artists[idx]}
             handlePickSong={handlePickSong}
         />
     ))

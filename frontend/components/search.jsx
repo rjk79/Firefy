@@ -6,25 +6,40 @@ import { receiveQueue } from '../actions/musicplayer_actions';
 import SongComponent from './songs/song_component';
 
 const msp = state => {
-
+ 
     let {songIds, albumIds, artistIds, playlistIds} = state.searches
     let songs
     let artists
     let albums
     let playlists
-    if (songIds) songs = songIds.map(id => state.entities.songs[id])
+    let songAlbums
+    let songArtists
+    if (songIds) {
+        songs = songIds.map(id => state.entities.songs[id])
+        songAlbums = songs.map(song => {
+            if (song) return state.entities.albums[song.album_id]
+        }
+        ).filter(album => typeof album !== 'undefined')
+        songArtists = songAlbums.map(album => {
+            if (album) return (state.entities.artists[album.artist_id])
+        }
+        ).filter(artist => typeof artist !== 'undefined')
+    }
     if (artistIds) artists = artistIds.map(id => state.entities.artists[id])
     if (albumIds) albums = albumIds.map(id => state.entities.albums[id])
     if (playlistIds) playlists = playlistIds.map(id => state.entities.playlists[id])
     
     let currSongId;
     if (state.musicplayer) { currSongId = state.musicplayer.currSongId || null }
+
     return {
         songs, 
         albums, 
         artists,
         playlists,
         currSongId,
+        songAlbums,
+        songArtists,
     }
 }
 const mdp = dispatch => {
@@ -78,7 +93,7 @@ class SearchComponent extends React.Component {
     }
     render(){
         
-        const { artists, albums, playlists, songs } = this.props
+        const { artists, albums, playlists, songs, songAlbums, songArtists } = this.props
         let artistLis;
         let albumLis;
         let songLis;
@@ -114,11 +129,11 @@ class SearchComponent extends React.Component {
                 </li>
         )})} 
         if (songs){
-            songLis = songs.map(song => (
+            songLis = songs.map((song, idx) => (
                 <SongComponent key={song.id} 
                                song={song}
-                               album={{id: null, name: ""}}
-                               artist={{id: null, name: ""}}
+                               album={songAlbums[idx]}
+                               artist={songArtists[idx]}
                                handlePickSong={this.handlePickSong}
                 />
             

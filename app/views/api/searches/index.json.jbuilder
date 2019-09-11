@@ -16,12 +16,27 @@ json.artists do
             end
         end
     end
-    
+    if @songs
+        @songs.each do |song|
+        artist = song.artist
+        json.set! artist.id do
+            json.partial! 'api/artists/artist', artist: artist
+        end
+    end
+    end
 end
 
 json.albums do
     if @albums
         @albums.each do |album| 
+            json.set! album.id do
+                json.partial! 'api/albums/album', album: album
+            end
+        end
+    end
+    if @songs
+        @songs.each do |song|
+            album = song.album
             json.set! album.id do
                 json.partial! 'api/albums/album', album: album
             end

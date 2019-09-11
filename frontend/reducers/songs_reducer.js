@@ -21,7 +21,7 @@ const songsReducer = (state = {}, action) => {
         case RECEIVE_ALL_SEARCHES:
             return merge({}, state, action.songs)
         case RECEIVE_USER_LIKES:
-            return merge({}, state, action.likes)
+            return merge({}, state, action.songs)
         default:
             return state;
     }

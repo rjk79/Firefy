@@ -1,6 +1,7 @@
 class Api::AlbumsController < ApplicationController
     #index, create, update, show, destroy
     def index
+        # .with_attached_photo
         @albums = Album.all
         render :index
     end

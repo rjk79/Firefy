@@ -20,7 +20,9 @@ const receiveAllUsers = users => {
 const receiveUserLikes = likes => {
     return {
         type: RECEIVE_USER_LIKES,
-        likes
+        songs: likes.songs,
+        artists: likes.artists,
+        albums: likes.albums,
     }
 }
 

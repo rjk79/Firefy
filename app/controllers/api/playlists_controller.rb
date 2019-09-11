@@ -1,7 +1,7 @@
 class Api::PlaylistsController < ApplicationController
     #index, create, update, show, destroy
     def index
-        @playlists = Playlist.all
+        @playlists = Playlist.with_attached_photo.all
         render :index
     end
   
@@ -25,7 +25,7 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def show
-        @playlist = Playlist.includes(playlistings: [song: [album: :artist]], playlistings: [song: :album]).find(params[:id])
+        @playlist = Playlist.includes(playlistings: [song: :artist], playlistings: [song: :album]).find(params[:id])
         render :show
     end
 

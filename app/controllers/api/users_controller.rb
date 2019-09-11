@@ -26,7 +26,7 @@ class Api::UsersController < ApplicationController
     user = User.find(params[:id])
     song_ids = user.likes.map{|like| like.song_id}
     
-    @songs = Song.find(song_ids) 
+    @songs = Song.includes(:album, :artist).find(song_ids) 
     render :likes
   end
 
