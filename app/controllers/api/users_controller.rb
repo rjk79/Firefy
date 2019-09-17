@@ -35,3 +35,6 @@ class Api::UsersController < ApplicationController
     params.require(:user).permit(:username, :password)
   end
 end
+
+# recommended songs based on song metadata, 
+# owned playlists + liked songs metadata, and pageviews
