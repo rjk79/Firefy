@@ -28,7 +28,7 @@ Follow playlists that you like so that you can easily access them all the time. 
 ### "Smart" Song Items
 ![songcomp](app/assets/images/songcomp_screenshot.png?raw=true)
 
-Once selected and playing, songs in playlists, album pages, and artist pages will indicate they're being played regardless of where they are. And they will allow you to go navigate through their lists without you having to go back to their page.  This means you can shuffle, go back, or go forward through your playlist even when you leave the playlist page.  This feature was quite a hurdle but by allowing components to manipulate their parent's state via the following code, I was able to accomplish this feature.
+All song items across all pages can be played, added to playlists, and used to view artist/album pages.  This means you have full control over your playlist playback even when you leave the playlist page.  This feature was rather tricky to implement but by allowing components to manipulate their parent's state via the following code, I was able to accomplish this feature.
 ```
 <div className="songcomponent">
     <img className="lightup" src={window.noteURL} onClick={()=>handlePickSong(song.id)} />
@@ -52,7 +52,7 @@ Once selected and playing, songs in playlists, album pages, and artist pages wil
 ### Dynamic and Interactive Media Player
 ![musicplayer](app/assets/images/musicplayer_screenshot.png?raw=true)
 
-The seek bar and volume allows you to easily traverse the duration of a song and manipulate the volume in a dynamic, responsive manner. It was quite challenging to create a sleek, fully-customized seek and volume bar. But using a series of event-listeners and "substitute" slider-input elements, I was able to successfully faithfully recreate them.  Partial code snippet for the time seek bar:
+The seek bar and volume bar allow you to easily traverse the duration of a song and manipulate the volume in a dynamic, responsive manner. It was quite challenging, but using a series of event-listeners, "substitute" slider-inputs and a queue slice of state, I was able to implement shuffle/loop/back/forward in a faithfully cloned media player.  Partial code snippet for the time seek bar:
 ```
 document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseenter', () => {
     document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
