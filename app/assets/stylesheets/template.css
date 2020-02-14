@@ -63,12 +63,12 @@
 .create-playlist-button {
    cursor: pointer;
    font-size: 14px;
-   padding: 2%;
+   padding: 2% 10px;
 }
-/* 
+
 .create-playlist-holder {
-   display: inline-block;
-} */
+   background: #070e0e;
+}
 
 .plusbutton {
    display: inline-block;
@@ -109,4 +109,17 @@
     top: 12px;
 
 }
- 
+
+.nav-links {
+   height: 295px;
+}
+
+.goback-button {
+   background: rgb(25, 25, 25);
+   border: none;
+   border-radius: 50%;
+   width: 32px;
+   height: 32px;
+   z-index: 1;
+   cursor: pointer;
+}

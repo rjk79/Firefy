@@ -11,6 +11,17 @@
     opacity: 1;
     z-index: 1;
     overflow: hidden;
+    max-height: 205px;
+    overflow-y: scroll;
+}
+.song-playlist-show-popup::-webkit-scrollbar {
+    background: transparent;
+}
+.song-playlist-show-popup::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+.song-playlist-show-popup::-webkit-scrollbar-track {
+    background: transparent;
 }
     .song-playlist-show-popup > * { 
         padding: 5px 25px;
@@ -29,9 +40,9 @@
 .songcomponent:hover {
     background: rgba(0, 0, 0, .3)
 }
-.song-playlist-show-popup.hideable > p {
+/* .song-playlist-show-popup.hideable > p { */
     /* margin-left: 50px; */
-}
+/* } */
 .add-title {
     cursor: default;
     text-transform: uppercase;

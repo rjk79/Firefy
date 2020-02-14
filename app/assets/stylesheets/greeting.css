@@ -28,10 +28,8 @@
  }
 
  .greeting-logout {
-     position: absolute;
-     top: 75%;
-     z-index: 1;
-     width: 20%;
+     position: relative;
+     width: 100%;
      height: 10%;
      background: rgb(4, 14, 13)
  }
@@ -47,13 +45,14 @@
 
 .greeting-popup {
     position: absolute;
-    bottom: 60%;
+    top: -25px;
     left: 0;
     height: 36px;
     width: 200px;
     background: rgb(0, 0, 0);
 }
 .greeting-hr {
+    margin: 5px auto;
     width: 80%;
     opacity: 0.5;
 }

@@ -12,26 +12,59 @@ import SearchComponent from './search'
 import LibraryComponent from './liked_songs'
 import QueueComponent from './queue'
 import {connect} from 'react-redux'
+import { logout } from "../actions/session_actions";
 
 const msp = state => {
     let sessionId
     if (state.session) sessionId = state.session.id
     
     return {
-        sessionId
+        sessionId,
+        currentUser: state.entities.users[state.session.id]
     }
 }
-
+const mdp = (dispatch) => {
+    return {
+        logout: () => dispatch(logout()),
+    }
+}
 
 class Template extends React.Component{
     constructor(props){
         super(props)
-  
+        this.state = {
+            popupShowing: false
+        }
+        this.handleClick = this.handleClick.bind(this)
+        this.handleClickOnName = this.handleClickOnName.bind(this)
+
     }
-  
-    
+    componentDidMount() {
+        this.setState({ popupShowing: false })
+    }
+    handleClickOnName() {
+        return this.setState({
+            popupShowing: !this.state.popupShowing
+        })
+    }  
+
+    handleClick() {
+        this.props.logout()
+        this.setState({
+            popupShowing: !this.state.popupShowing
+        })
+    }
     render(){
-        
+
+        let popup = this.state.popupShowing ?
+            <div className="greeting-popup" >
+                <Link to="/" className="small faded lightup" onClick={this.handleClick}>
+                    Log Out
+                </Link>
+            </div>
+            : null
+        const name = this.props.currentUser ? this.props.currentUser.username : ""
+
         return (
             <div className="template">
                 <div className="template-nav-display">
@@ -54,11 +87,18 @@ class Template extends React.Component{
                         </div>
                         
                         <FollowedPlaylistsContainer className="playlist-index-container" userId={this.props.sessionId}/>
+                        {/* onBlur={this.handleBlur} supposed to be in the tag below */}
+                        <div className="greeting-logout" >
+                            <hr className="greeting-hr" />
+                            <button className="medium greeting-name" onClick={this.handleClickOnName}>{name}</button>
+                            {popup}
+                        </div>
                     </div>
 
 
                     <div className="template-display">
                         <div className="spotlight-background"></div>
+                        {/* <button className="goback-button" onClick={this.props.history.goBack}><i className="fas fa-angle-left"></i></button>  */}
                         <Switch>
                             <ProtectedRoute  
                                             exact path="/playlist/:playlistId" 
@@ -89,4 +129,4 @@ class Template extends React.Component{
         )
     }
 }
-export default connect(msp)(Template)
+export default connect(msp, mdp)(Template)

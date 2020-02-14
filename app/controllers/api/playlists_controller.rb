@@ -4,11 +4,13 @@ class Api::PlaylistsController < ApplicationController
         @playlists = Playlist.with_attached_photo.all
         render :index
     end
-  
+   
     def create
         @playlist = Playlist.new(playlist_params) 
         @playlist.user_id = current_user.id
         if @playlist.save
+            @follow = Follow.new({ user_id: current_user.id, playlist_id: @playlist.id }) #user auto-follows
+            @follow.save
             render :show
         else
           render json: @playlist.errors.full_messages, status: 422 #unprocesssable entity

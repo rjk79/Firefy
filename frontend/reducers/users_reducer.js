@@ -4,7 +4,7 @@ import {RECEIVE_USER, RECEIVE_ALL_USERS} from '../actions/user_actions'
 import { REMOVE_FOLLOW, RECEIVE_FOLLOW } from "../actions/follow_actions";
 import { RECEIVE_FRIENDSHIP, REMOVE_FRIENDSHIP } from "../actions/friendship_actions";
 import { RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
-
+import { RECEIVE_CREATED_PLAYLIST} from '../actions/playlist_actions'
 export default (state = {}, action) => {
     Object.freeze(state)
     let newState;
@@ -19,10 +19,16 @@ export default (state = {}, action) => {
         case RECEIVE_CURRENT_USER:
             return merge({}, state, { [action.currentUser.id]: action.currentUser })
         case RECEIVE_FOLLOW:
-             newState = merge({}, state)
+            newState = merge({}, state)
             // find the user 
             user = newState[action.follow.user_id]
             user.follow_ids.push(action.follow.playlist_id)
+            return merge({}, state, { [user.id]: user }) 
+        case RECEIVE_CREATED_PLAYLIST:
+            newState = merge({}, state)
+            user = newState[action.playlist.user_id]
+            user.follow_ids.push(action.playlist.id)
+            
             return merge({}, state, { [user.id]: user }) 
         case REMOVE_FOLLOW:
             newState = merge({}, state)

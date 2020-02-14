@@ -2,6 +2,7 @@ import * as PlaylistAPIUtil from '../util/playlist_api_util'
 
 export const RECEIVE_ALL_PLAYLISTS = 'RECEIVE_ALL_PLAYLISTS'
 export const RECEIVE_PLAYLIST = 'RECEIVE_PLAYLIST'
+export const RECEIVE_CREATED_PLAYLIST = 'RECEIVE_CREATED_PLAYLIST' //for auto following
 export const REMOVE_PLAYLIST = 'REMOVE_PLAYLIST'
 
 const receiveAllPlaylists = playlists => {
@@ -14,6 +15,12 @@ const receiveAllPlaylists = playlists => {
 const receivePlaylist = playlist => {
     return {
         type: RECEIVE_PLAYLIST,
+        playlist
+    }
+}
+const receiveCreatedPlaylist = playlist => {
+    return {
+        type: RECEIVE_CREATED_PLAYLIST,
         playlist
     }
 }
@@ -37,7 +44,7 @@ export const fetchPlaylist = id => dispatch => {
 
 export const createPlaylist = playlist => dispatch => {
     return PlaylistAPIUtil.createPlaylist(playlist)
-        .then(playlist => dispatch(receivePlaylist(playlist)))
+        .then(playlist => dispatch(receiveCreatedPlaylist(playlist)))
 }
 
 export const updatePlaylist = (formData, playlistId) => dispatch => {

@@ -1,5 +1,5 @@
 import {merge} from 'lodash'
-import { RECEIVE_ALL_PLAYLISTS, RECEIVE_PLAYLIST, REMOVE_PLAYLIST } from '../actions/playlist_actions';
+import { RECEIVE_ALL_PLAYLISTS, RECEIVE_PLAYLIST, REMOVE_PLAYLIST, RECEIVE_CREATED_PLAYLIST } from '../actions/playlist_actions';
 import {RECEIVE_ALL_SEARCHES} from '../actions/search_actions'
 import { RECEIVE_PLAYLISTING, REMOVE_PLAYLISTING } from '../actions/playlisting_actions';
 
@@ -9,6 +9,7 @@ const playlistReducer = (state={}, action) => {
         case RECEIVE_ALL_PLAYLISTS:
             return action.playlists
         case RECEIVE_PLAYLIST:
+        case RECEIVE_CREATED_PLAYLIST: //fall thru => 'OR'
             return merge({}, state, {[action.playlist.id]: action.playlist})
         case REMOVE_PLAYLIST:
             let newState = merge({}, state)

@@ -145,6 +145,10 @@ class Musicplayer extends React.Component {
         //NEW SONG
         
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
+            const notActivated = ["shuffle-button", "back-button", "play-button", "forward-button", "loop-container", "time-slider-wrapper"]
+            for (let i = 0;i< notActivated.length;i++){
+                document.getElementsByClassName(notActivated[i])[0].classList.remove("noMouse")
+            }
             document.getElementsByClassName("time-slider")[0].disabled = false
             document.getElementsByClassName("like-button")[0].style.pointerEvents = "auto"
             this.setState({currentSongId: this.props.currSongId})
@@ -343,19 +347,19 @@ class Musicplayer extends React.Component {
                                     File not supported.
                                 </audio>
                             
-                            <div className="shuffle-button" onClick={this.handleToggleShuffle}>
+                            <div className="shuffle-button noMouse" onClick={this.handleToggleShuffle}>
                                 {shuffleImg}
                             </div>
-                            <div className="back-button" onClick={this.handleBack}>
+                            <div className="back-button noMouse" onClick={this.handleBack}>
                                     <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
-                            <div className="play-button" onClick={this.handleClickPlayPause}>   
+                            <div className="play-button noMouse" onClick={this.handleClickPlayPause}>   
                                 <img className={playpause} src={window.controls_spriteURL} alt="playImg" />                             
                             </div>
-                            <div className="forward-button">
+                            <div className="forward-button noMouse">
                             <img className="audio-button-img" onClick={this.handleForward} src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
-                            <div className="loop-container" onClick={this.handleToggleLoop}>
+                            <div className="loop-container noMouse" onClick={this.handleToggleLoop}>
                                 {loopImg}
                             </div>
                             {/* <div className="prog-bar-holder">
@@ -365,7 +369,7 @@ class Musicplayer extends React.Component {
                     <div className="musicplayer-2-bottom">
                         <p className="time-label">{this.formatTime(this.state.currTime)}</p>
                         {/* <p>current_play_time {this.player.currentTime}</p> */}
-                        <div className="time-slider-wrapper">
+                        <div className="time-slider-wrapper noMouse">
                             <div className="fake-thumb"></div>
                         <input className="time-slider mouse" 
                                min="0"

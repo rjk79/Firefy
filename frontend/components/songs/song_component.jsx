@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {createPlaylisting, deletePlaylisting} from '../../actions/playlisting_actions'
 import { fetchAllPlaylists } from '../../actions/playlist_actions';
 import {createLike} from '../../actions/like_actions'
+import {openMenu, closeMenu} from '../../actions/songmenu_actions'
  
 const msp = state => {
     let currSongId;
@@ -14,6 +15,7 @@ const msp = state => {
         playlists: Object.values(state.entities.playlists),
         currSongId,
         currentUserId,
+        songmenu: state.ui.songmenu,
     }
 }
 const mdp = dispatch => {
@@ -22,6 +24,8 @@ const mdp = dispatch => {
         deletePlaylisting: (playlistId, songId) => dispatch(deletePlaylisting(playlistId, songId)),
         fetchAllPlaylists: ()=> dispatch(fetchAllPlaylists()),
         createLike: like => dispatch(createLike(like)),
+        openMenu: menu => dispatch(openMenu(menu)),
+        closeMenu: () => dispatch(closeMenu())
     }
 } 
 
@@ -29,7 +33,7 @@ class SongComponent extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            popupShowing: false,
+            // popupShowing: false,
             // duration: 0,
         }
         this.toggleOpenPlaylists = this.toggleOpenPlaylists.bind(this)
@@ -43,17 +47,16 @@ class SongComponent extends React.Component {
     componentDidMount(){
     }
     toggleOpenPlaylists() {
-        this.props.fetchAllPlaylists()
+        if (this.props.songmenu === this.props.song.id){
+            this.props.closeMenu()
+        } else {
+            this.props.fetchAllPlaylists()
+            this.props.openMenu(this.props.song.id)
+        }
+    }
 
-        return this.setState({
-            popupShowing: !this.state.popupShowing,
-        })
-    }
-    handleClosePlaylists(){
-        return this.setState({popupShowing: false,})
-    }
     handleRemove(){
-        this.setState({ popupShowing: false })
+        this.props.closeMenu()
 
         const {song, deletePlaylisting} = this.props
         deletePlaylisting(this.props.match.params.playlistId, song.id)
@@ -66,7 +69,7 @@ class SongComponent extends React.Component {
         // 
         let playlists = this.props.playlists.map((playlist, idx) => (
             <p onClick={() => {
-                this.setState({popupShowing: false})
+                this.props.closeMenu()
                 return createPlaylisting({playlist_id: playlist.id, song_id: song.id})
                 }
             } className="lightup darken playlist-popup-item" key={idx}>{playlist.name}</p>
@@ -77,7 +80,7 @@ class SongComponent extends React.Component {
                     onClick={this.handleRemove}>Remove from this Playlist</button>
                     : null
         // let likeButton = <button onClick={this.props.createLike}>Add to Library</button>
-        let popup = this.state.popupShowing ?
+        let popup = this.props.songmenu === song.id ?
             <div className="song-playlist-show-popup hideable">
                     {deletePlaylisting}
                     <div className="add-title">Add to Playlist:</div>
