@@ -87,13 +87,13 @@
     margin-right: 10px;
 }
 
-.artist-show-album-photo:hover {
-    opacity: .5
+.artist-show-album-li:hover {
+    opacity: .5;
 }
-
+/* 
 .darkening:hover {
     background: rgb(17, 17, 17);
-}
+} */
 .artist-show-song {
     display: flex;
     align-items: center;
@@ -106,6 +106,8 @@
 }
 
 .artist-show-album-li {
+    transform: translate3d(0px,0px,0px);     /* prevent page jump ^ */
+
     display: flex;
     flex-direction: column;
     align-items: center;

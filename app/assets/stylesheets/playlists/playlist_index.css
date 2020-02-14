@@ -2,12 +2,14 @@
 .index-playlist-item {
     opacity: .7;
     font-size: 14px;
+    transform: translate3d(0px,0px,0px);     /* prevent page jump ^ */
 }
 .index-playlist-item-link {
     position: relative;
     display: inline-block;
     width: 100%;
     font-weight: 400;
+
 }
 .playlist-index-title {
     width: 100%;

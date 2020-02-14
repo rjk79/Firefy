@@ -21,7 +21,7 @@ class FollowedPlaylists extends React.Component {
         )
     })
     return (
-        <ul className="songlist">
+        <ul className="followedlist">
             {playlistLinks}
         </ul>
     )

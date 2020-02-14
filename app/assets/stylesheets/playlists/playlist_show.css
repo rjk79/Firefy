@@ -57,6 +57,7 @@
     margin: auto;
     padding: 10px;
     cursor: pointer;
+    transform: translate3d(0px,0px,0px);     /* prevent page jump ^ */
 }
 
 .playlist-artwork:hover {
@@ -167,7 +168,7 @@ img.playlist-artwork {
     position: absolute;
     top: 120px;
     left: 32%;
-    LETTER-SPACING: 1px;
+    letter-spacing: 1px;
     pointer-events: none;
     font-weight: 300;
     font-size: 18px;

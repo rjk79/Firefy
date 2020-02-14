@@ -95,7 +95,7 @@ class Template extends React.Component{
                         </div>
                     </div>
 
-
+ 
                     <div className="template-display">
                         <div className="spotlight-background"></div>
                         {/* <button className="goback-button" onClick={this.props.history.goBack}><i className="fas fa-angle-left"></i></button>  */}

@@ -124,10 +124,12 @@ html, body, #root, .primary-app-div {
     cursor: pointer;
 }
  .lightup {
-     opacity: .7;
-     transition-duration: .3s;
-     transition-property: opacity;
-     transition-timing-function: linear;
+    opacity: .7;
+    transition-duration: .3s;
+    transition-property: opacity;
+    transition-timing-function: linear;
+    transform: translate3d(0px,0px,0px);     prevent page jump ^
+
  }
 
  .lightup:hover {
@@ -336,6 +338,9 @@ html, body, #root, .primary-app-div {
     display: block;
     width: 100%;
 }
+.nav-link {
+    transform: translate3d(0px,0px,0px);     /* prevent page jump ^ */
+}
 
 .songli {
     border-bottom: 1px solid rgb(40, 40, 40);
@@ -371,20 +376,21 @@ html, body, #root, .primary-app-div {
 }
 
 
-.songlist {
+.followedlist {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    height: calc(88% - 295px);
+    height: calc(88% - (295px+300px));
     overflow-x: hidden;
+    margin-top: 5px;
 }
-.songlist::-webkit-scrollbar {
+.followedlist::-webkit-scrollbar {
     background: transparent;
 }
-.songlist::-webkit-scrollbar-thumb {
+.followedlist::-webkit-scrollbar-thumb {
     background: transparent;
 }
-.songlist::-webkit-scrollbar-track {
+.followedlist::-webkit-scrollbar-track {
     background: transparent;
 }
 

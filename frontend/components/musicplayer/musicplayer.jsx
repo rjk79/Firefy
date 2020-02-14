@@ -145,7 +145,7 @@ class Musicplayer extends React.Component {
         //NEW SONG
         
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
-            const notActivated = ["shuffle-button", "back-button", "play-button", "forward-button", "loop-container", "time-slider-wrapper"]
+            const notActivated = ["shuffle-button", "back-button", "play-button", "forward-button", "loop-container", "time-slider-wrapper", "queue-link"]
             for (let i = 0;i< notActivated.length;i++){
                 document.getElementsByClassName(notActivated[i])[0].classList.remove("noMouse")
             }
@@ -388,7 +388,7 @@ class Musicplayer extends React.Component {
                 </div>
 
                 <div className="musicplayer-3">
-                    <Link to="/queue" className="queue-link">
+                    <Link to="/queue" className="queue-link noMouse">
                     <img className="queue-img lightup" src={queueURL} alt="queue" /> 
                     </Link>
                     <img className="vol-img lightup" onClick={this.handleMute} src={checkedVolumeUrl} alt="vol"/> 

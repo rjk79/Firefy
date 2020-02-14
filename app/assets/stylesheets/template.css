@@ -67,7 +67,9 @@
 }
 
 .create-playlist-holder {
-   background: #070e0e;
+   background: rgb(7,15,15);
+   transform: translate3d(0px,0px,0px);     /* prevent page jump ^ */
+
 }
 
 .plusbutton {

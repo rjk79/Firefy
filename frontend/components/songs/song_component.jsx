@@ -11,8 +11,18 @@ const msp = state => {
     let currentUserId = state.session.id
     
     if (state.musicplayer) {currSongId = state.musicplayer.currSongId || null}
+    let playlists = Object.values(state.entities.playlists)
+    playlists.sort((a, b) => {
+        if (a.id < b.id) {
+            return 1 //b comes first
+        } else if (a.id > b.id) {
+            return -1 //a comes first
+        } else {
+            return 0
+        }
+    })
     return {
-        playlists: Object.values(state.entities.playlists),
+        playlists,
         currSongId,
         currentUserId,
         songmenu: state.ui.songmenu,
@@ -45,6 +55,9 @@ class SongComponent extends React.Component {
         // }
     }
     componentDidMount(){
+    }
+    componentWillUnmount(){
+        this.props.closeMenu()
     }
     toggleOpenPlaylists() {
         if (this.props.songmenu === this.props.song.id){

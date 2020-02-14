@@ -18,6 +18,7 @@ class ArtistShow extends React.Component {
             let artistId = this.props.match.params.artistId
             this.props.fetchArtist(artistId)
         } 
+        
     }
 
     handlePickSong(songId) {
@@ -32,8 +33,12 @@ class ArtistShow extends React.Component {
                 
                 <li key={album.id}>
                     <Link className="artist-show-album-li" to={`/album/${album.id}`}>
-                        <div><img className="artist-show-album-photo" src={album.photoUrl} alt="album_img" /></div>
-                        <div className="">{album.name}</div>
+                        {/* <div> */}
+                            <img className="artist-show-album-photo" src={album.photoUrl} alt="album_img" />
+                        {/* </div> */}
+                        {/* <div className=""> */}
+                            {album.name}
+                        {/* </div> */}
                     </Link>
                 </li>
             )
