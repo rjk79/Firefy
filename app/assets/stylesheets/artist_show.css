@@ -1,15 +1,15 @@
 
 .artist-show {
+    position: relative;
     padding: 10px 0px;
     background: rgb(25, 25, 25);
-    display: flex;
+    /* display: flex; causes scroll jump*/
     flex-direction: column;
     /* align-items: center; */
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
     /* text-align: center; */
-    position: relative;
 }
 .artist-show::-webkit-scrollbar {
     background: transparent;
@@ -27,12 +27,14 @@
 
 .artist-show-name {
     font-size: 72px;
-    position: relative;
+    position: absolute;
     top: 200px;
     z-index: 2;
     font-weight: 800;
     /* background: rgba(25, 25, 25, .5); */
     background: linear-gradient(45deg, transparent, rgb(15, 15, 15));
+    width: 100%;
+
 }
 /* .artist-show-shader {
     width: 100%;

@@ -73,8 +73,8 @@ class ArtistShow extends React.Component {
             <>
                 <div className="artist-show" ref={this.listRef}>
                     <h1 className="artist-show-name center">{artist.name}</h1>
-                    <div className="artist-show-shader">
-                    </div>
+                    {/* <div className="artist-show-shader">
+                    </div> */}
                         <img className="artist-jumbo" src={artist.jumboUrl} alt="artist_jumbo" />
                     <div className="artist-show-list-titles">Popular</div>
                     <ul className="artist-show-song-list">{songLis}</ul>
