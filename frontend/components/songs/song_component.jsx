@@ -5,7 +5,9 @@ import {createPlaylisting, deletePlaylisting} from '../../actions/playlisting_ac
 import { fetchAllPlaylists } from '../../actions/playlist_actions';
 import {createLike} from '../../actions/like_actions'
 import {openMenu, closeMenu} from '../../actions/songmenu_actions'
- 
+// import PlaylistMenu from './playlist_menu' 
+
+
 const msp = state => {
     let currSongId;
     let currentUserId = state.session.id
@@ -54,17 +56,22 @@ class SongComponent extends React.Component {
         //     
         // }
     }
+   
+    
     componentDidMount(){
     }
     componentWillUnmount(){
         this.props.closeMenu()
     }
-    toggleOpenPlaylists() {
+    toggleOpenPlaylists(e) {
+        
+        e.preventDefault()
         if (this.props.songmenu === this.props.song.id){
             this.props.closeMenu()
         } else {
             this.props.fetchAllPlaylists()
             this.props.openMenu(this.props.song.id)
+            
         }
     }
 
@@ -93,22 +100,21 @@ class SongComponent extends React.Component {
                     onClick={this.handleRemove}>Remove from this Playlist</button>
                     : null
         // let likeButton = <button onClick={this.props.createLike}>Add to Library</button>
-        let popup = this.props.songmenu === song.id ?
-            <div className="song-playlist-show-popup hideable">
-                    {deletePlaylisting}
-                    <div className="add-title">Add to Playlist:</div>
-                    {playlists}
-            </div>
-            : null
+        let popup = 
+            <div className={`song-playlist-show-popup ${this.props.songmenu === song.id ? "":"hide"}`} >
+            {deletePlaylisting}
+            <div className="add-title">Add to Playlist:</div>
+            {playlists}
+        </div> 
 
-            let flashing;
-            flashing = this.props.currSongId === song.id ? "flashing-true" : ""
-            //  
-            // 
-            let artistId = artist ? artist.id : null
-            let albumId = album ? album.id : null
-            let artistName = artist ? artist.name : null
-            let albumName = album ? album.name : null
+        let flashing;
+        flashing = this.props.currSongId === song.id ? "flashing-true" : ""
+        //  
+        // 
+        let artistId = artist ? artist.id : null
+        let albumId = album ? album.id : null
+        let artistName = artist ? artist.name : null
+        let albumName = album ? album.name : null
         return(
             <>
                 <div className="songcomponent">

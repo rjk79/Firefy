@@ -49,6 +49,9 @@
   cursor: pointer;
   padding: 1px;
   top: 0;
+  transform: translate3d(0px,0px,0px);     
+  /*prevent page jump ^*/
+
 }
 
 .playlist-artwork {

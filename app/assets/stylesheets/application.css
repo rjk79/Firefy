@@ -338,6 +338,12 @@ html, body, #root, .primary-app-div {
     display: block;
     width: 100%;
 }
+.hide {
+    /* display: none; */
+    height: 0px;
+    width: 0px;
+    box-shadow: none;
+}
 .nav-link {
     transform: translate3d(0px,0px,0px);     /* prevent page jump ^ */
 }

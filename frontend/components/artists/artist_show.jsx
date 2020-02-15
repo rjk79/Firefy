@@ -7,17 +7,27 @@ class ArtistShow extends React.Component {
     constructor(props){
         super(props)
         this.handlePickSong = this.handlePickSong.bind(this)
+
+        // this.listRef = React.createRef(); //list
+
     }
+    // getSnapshotBeforeUpdate(prevProps, prevState) {
+    //     const list = this.listRef.current;
+    //     return list.scrollHeight - list.scrollTop;
+    // }
     componentDidMount() {
         let artistId = this.props.match.params.artistId
         this.props.fetchArtist(artistId)
     }
 
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps){ //snapshot
         if (this.props.match.params.artistId != prevProps.match.params.artistId) {
             let artistId = this.props.match.params.artistId
             this.props.fetchArtist(artistId)
         } 
+
+        // const list = this.listRef.current;
+        // list.scrollTop = list.scrollHeight - snapshot;
         
     }
 
@@ -61,7 +71,7 @@ class ArtistShow extends React.Component {
         
         return (
             <>
-                <div className="artist-show">
+                <div className="artist-show" ref={this.listRef}>
                     <h1 className="artist-show-name center">{artist.name}</h1>
                     <div className="artist-show-shader">
                     </div>

@@ -8,11 +8,13 @@
     top: 40px;
     right: 0px;
     position: absolute;
-    opacity: 1;
     z-index: 1;
-    overflow: hidden;
+    overflow-x: hidden;
+
     max-height: 205px;
     overflow-y: scroll;
+
+    transform: translate3d(0px,0px,0px);     
 }
 .song-playlist-show-popup::-webkit-scrollbar {
     background: transparent;
