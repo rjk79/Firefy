@@ -128,7 +128,7 @@ html, body, #root, .primary-app-div {
     transition-duration: .3s;
     transition-property: opacity;
     transition-timing-function: linear;
-    transform: translate3d(0px,0px,0px);     prevent page jump ^
+    transform: translate3d(0px,0px,0px);     
 
  }
 
