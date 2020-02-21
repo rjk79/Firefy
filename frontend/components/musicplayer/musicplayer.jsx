@@ -322,9 +322,9 @@ class Musicplayer extends React.Component {
         const playpause = (this.state.isPlaying || (typeof song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
         
         let likeButton;
-        debugger
+        
         likeButton = !currentUser.liked_song_ids.includes(this.state.currentSongId) ?
-            <img src={likeURL} className={`like-button mostfaded ${this.state.currentSongId ? "":"hidden"}`} mostfaded onClick={this.handleCreateLike}/> :
+            <img src={likeURL} className={`like-button mostfaded ${this.state.currentSongId ? "":"hidden"}`} onClick={this.handleCreateLike}/> :
             <img src={likeURL} className={`like-button ${this.state.currentSongId ? "" : "hidden"}`} onClick={() => deleteLike(this.state.currentSongId)}/>
 
         return (
