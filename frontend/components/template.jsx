@@ -13,6 +13,7 @@ import LibraryComponent from './liked_songs'
 import QueueComponent from './queue'
 import {connect} from 'react-redux'
 import { logout } from "../actions/session_actions";
+import {resetQueue} from '../actions/musicplayer_actions'
 
 const msp = state => {
     let sessionId
@@ -26,6 +27,7 @@ const msp = state => {
 const mdp = (dispatch) => {
     return {
         logout: () => dispatch(logout()),
+        resetQueue: () => dispatch(resetQueue()),
     }
 }
 
@@ -49,6 +51,7 @@ class Template extends React.Component{
     }  
 
     handleClick() {
+        this.props.resetQueue()
         this.props.logout()
         this.setState({
             popupShowing: !this.state.popupShowing

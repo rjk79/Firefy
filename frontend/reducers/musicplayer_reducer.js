@@ -1,4 +1,4 @@
-import { RECEIVE_QUEUE, RECEIVE_CURRENT_SONG_ID } from '../actions/musicplayer_actions';
+import { RECEIVE_QUEUE, RECEIVE_CURRENT_SONG_ID, RESET_QUEUE } from '../actions/musicplayer_actions';
 import {merge} from 'lodash'
 
 //action.songs is an array of songs
@@ -11,6 +11,8 @@ const musicplayerReducer = (state = {}, action) => {
             let newState = merge({}, state)
             newState["currSongId"] = action.currSongId //makes or updates the value
             return newState
+        case RESET_QUEUE:
+            return {}
         // case ADD_TO_QUEUE:
         //     let newState = []
         //     state.forEach(song => newState.push(song))
