@@ -1,8 +1,10 @@
 npm install
-npm run webpack
 gem install bundler
 del Gemfile.lock
 bundle install
 
 master.key decodes credentials
 heroku stores
+
+npm run webpack 
+rails s

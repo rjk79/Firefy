@@ -145,9 +145,15 @@ class Musicplayer extends React.Component {
         //NEW SONG
         
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
-            const notActivated = ["shuffle-button", "back-button", "play-button", "forward-button", "loop-container", "time-slider-wrapper", "queue-link"]
+            const notActivated = ["shuffle-button", "back-button", "play-button", "forward-button", "loop-container", "time-slider-wrapper", "queue-link", "time-label"]
             for (let i = 0;i< notActivated.length;i++){
-                document.getElementsByClassName(notActivated[i])[0].classList.remove("noMouse")
+                let currClass = notActivated[i]
+                if (currClass !== "time-label"){
+                    document.getElementsByClassName(currClass)[0].classList.remove("hidden")
+                } else {
+                    document.getElementsByClassName(currClass)[0].classList.remove("hidden")
+                    document.getElementsByClassName(currClass)[1].classList.remove("hidden")
+                }
             }
             document.getElementsByClassName("time-slider")[0].disabled = false
             document.getElementsByClassName("like-button")[0].style.pointerEvents = "auto"
@@ -316,11 +322,10 @@ class Musicplayer extends React.Component {
         const playpause = (this.state.isPlaying || (typeof song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
         
         let likeButton;
-        
+        debugger
         likeButton = !currentUser.liked_song_ids.includes(this.state.currentSongId) ?
-            <img src={likeURL} className="like-button mostfaded" onClick={this.handleCreateLike}/> :
-            <img src={likeURL} className="like-button" onClick={() => deleteLike(this.state.currentSongId)}/>
-        
+            <img src={likeURL} className={`like-button mostfaded ${this.state.currentSongId ? "":"hidden"}`} mostfaded onClick={this.handleCreateLike}/> :
+            <img src={likeURL} className={`like-button ${this.state.currentSongId ? "" : "hidden"}`} onClick={() => deleteLike(this.state.currentSongId)}/>
 
         return (
             <>                    
@@ -347,19 +352,19 @@ class Musicplayer extends React.Component {
                                     File not supported.
                                 </audio>
                             
-                            <div className="shuffle-button noMouse" onClick={this.handleToggleShuffle}>
+                            <div className="shuffle-button hidden" onClick={this.handleToggleShuffle}>
                                 {shuffleImg}
                             </div>
-                            <div className="back-button noMouse" onClick={this.handleBack}>
+                            <div className="back-button hidden" onClick={this.handleBack}>
                                     <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
-                            <div className="play-button noMouse" onClick={this.handleClickPlayPause}>   
+                            <div className="play-button hidden" onClick={this.handleClickPlayPause}>   
                                 <img className={playpause} src={window.controls_spriteURL} alt="playImg" />                             
                             </div>
-                            <div className="forward-button noMouse">
+                            <div className="forward-button hidden">
                             <img className="audio-button-img" onClick={this.handleForward} src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
-                            <div className="loop-container noMouse" onClick={this.handleToggleLoop}>
+                            <div className="loop-container hidden" onClick={this.handleToggleLoop}>
                                 {loopImg}
                             </div>
                             {/* <div className="prog-bar-holder">
@@ -367,9 +372,9 @@ class Musicplayer extends React.Component {
                             </div> */}
                         </div>
                     <div className="musicplayer-2-bottom">
-                        <p className="time-label">{this.formatTime(this.state.currTime)}</p>
+                        <p className="time-label hidden">{this.formatTime(this.state.currTime)}</p>
                         {/* <p>current_play_time {this.player.currentTime}</p> */}
-                        <div className="time-slider-wrapper noMouse">
+                        <div className="time-slider-wrapper hidden">
                             <div className="fake-thumb"></div>
                         <input className="time-slider mouse" 
                                min="0"
@@ -383,12 +388,12 @@ class Musicplayer extends React.Component {
                         />
                         </div>
                         {/* <div className="seekbar-container"></div> */}
-                        <p className="time-label">{this.formatTime(this.state.duration)}</p>
+                        <p className="time-label hidden">{this.formatTime(this.state.duration)}</p>
                     </div>
                 </div>
 
                 <div className="musicplayer-3">
-                    <Link to="/queue" className="queue-link noMouse">
+                    <Link to="/queue" className="queue-link hidden">
                     <img className="queue-img lightup" src={queueURL} alt="queue" /> 
                     </Link>
                     <img className="vol-img lightup" onClick={this.handleMute} src={checkedVolumeUrl} alt="vol"/> 
