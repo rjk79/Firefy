@@ -59,12 +59,12 @@
     width: 240px;
     margin: auto;
     padding: 10px;
-    cursor: pointer;
     transform: translate3d(0px,0px,0px);     /* prevent page jump ^ */
 }
 
-.playlist-artwork:hover {
+.playlist-artwork.enabled:hover {
     opacity: .7;
+    cursor: pointer;
 }
 
 .playlist-songlist {
@@ -166,7 +166,7 @@ img.playlist-artwork {
 .playlist-artwork-holder {
     position: relative;
 }
-.playlist-artwork-holder:hover::after {
+.playlist-artwork-holder.enabled:hover::after {
     content: "UPLOAD";
     position: absolute;
     top: 120px;

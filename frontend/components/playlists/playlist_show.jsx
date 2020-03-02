@@ -17,6 +17,7 @@ class PlaylistShow extends React.Component {
         this.handleOpenPopup = this.handleOpenPopup.bind(this)
         this.handleChangePickArt = this.handleChangePickArt.bind(this)
         this.handleSubmitPickArt = this.handleSubmitPickArt.bind(this)
+        this.ownsPlaylist = this.ownsPlaylist.bind(this);
     }
     colorPicker (){
         let backColor1 = Math.floor(Math.random() * 255)
@@ -96,6 +97,11 @@ class PlaylistShow extends React.Component {
     handleOpenPopup(){
         this.setState({ popupShowing: !this.state.popupShowing })
     }
+    ownsPlaylist(){
+        const {currentUser, playlist} = this.props
+        debugger
+        return currentUser.id === playlist.user_id 
+    }
 
     render() {
        
@@ -109,9 +115,10 @@ class PlaylistShow extends React.Component {
         followButton = !currentUser.follow_ids.includes(parseInt(match.params.playlistId)) ? 
             <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUser.id, playlist_id: playlist.id })}>FOLLOW</button> :
             <button className="follow-button lightup" onClick={() => deleteFollow(playlist.id)}>UNFOLLOW</button>
-        friendButton = !currentUser.friend_ids.includes(owner.id) && currentUser.id !== owner.id?
-            <button className="addfriend-button lightup" onClick={this.handleAddFriend({ user1_id: currentUser.id, user2_id: owner.id })}>ADD FRIEND</button> :
-            <button className="addfriend-button lightup">FRIENDS &#x2714;</button>
+            if (!currentUser.friend_ids.includes(owner.id) && currentUser.id !== owner.id){ //not friends
+                friendButton = <button className="addfriend-button lightup" onClick={this.handleAddFriend({ user1_id: currentUser.id, user2_id: owner.id })}>ADD FRIEND</button> }
+            else if (currentUser.id !== playlist.user_id) {//not the owner
+                friendButton = <button className="addfriend-button lightup">FRIENDS &#x2714;</button>} 
 
         let popup = this.state.popupShowing ?
             <div className="playlist-show-popup" >
@@ -138,21 +145,22 @@ class PlaylistShow extends React.Component {
 
             <div className="playlist-show" >
               <div className="flex-col playlist-title-delete">
-                <div className="playlist-artwork-holder">
-                    <img className="playlist-artwork" src={photoUrl} alt="PlaylistArt"/>
+                    <div className={`playlist-artwork-holder ${ this.ownsPlaylist() ? "enabled":""}`}>
+                    <img className={`playlist-artwork ${this.ownsPlaylist() ? "enabled" : ""}`} src={photoUrl} alt="PlaylistArt"/>
                 </div>
+                {this.ownsPlaylist() ? 
                 <form className="change-art" onSubmit={this.handleSubmitPickArt}>
                     <input type="file" onChange={this.handleChangePickArt} className="change-art-choose" />
                     <input type="submit" value="Save Image" className="change-art-submit lightup" />
-                </form>
+                </form> : null }
                 
                 <h2 className="playlist-show-name">{playlist.name}</h2>
                 <p className="center playlist-owner faded">By: {owner.username}</p>
                 <p className="song-quantity faded">{songs.length} songs</p>
-                    <span className="playlist-show-ellipses" onClick={this.handleOpenPopup}>
-                        ...
-                        {popup}
-                    </span>
+                {this.ownsPlaylist() ? <span className="playlist-show-ellipses" onClick={this.handleOpenPopup}>
+                    ...
+                    {popup}
+                </span> :null}
                 {followButton}
                 {friendButton}
                     

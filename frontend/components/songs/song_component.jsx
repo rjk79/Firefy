@@ -57,12 +57,10 @@ class SongComponent extends React.Component {
         // }
     }
    
-    
-    componentDidMount(){
-    }
     componentWillUnmount(){
         this.props.closeMenu()
     }
+
     toggleOpenPlaylists(e) {
         
         e.preventDefault()
@@ -84,18 +82,24 @@ class SongComponent extends React.Component {
     render(){
         
         // NEED TO PASS EVERYTHING            EXCEPT createPlaylisting
-        const { song, artist, album, handlePickSong, createPlaylisting } = this.props
+        const { song, artist, album, handlePickSong, createPlaylisting, currentUserId, playlists } = this.props
         
         // 
-        let playlists = this.props.playlists.map((playlist, idx) => (
-            <p onClick={() => {
-                this.props.closeMenu()
-                return createPlaylisting({playlist_id: playlist.id, song_id: song.id})
-                }
-            } className="lightup darken playlist-popup-item" key={idx}>{playlist.name}</p>
+        let playlistLis = this.props.playlists.filter(playlist => currentUserId === playlist.user_id)
+            .map((playlist, idx) => {
+            
+                return (<p onClick={() => {
+                            this.props.closeMenu()
+                            return createPlaylisting({playlist_id: playlist.id, song_id: song.id})
+                    }
+                } className="lightup darken playlist-popup-item" key={idx}>{playlist.name}</p>) 
+        }
         )
-        )
-        let deletePlaylisting = this.props.match.params.playlistId ? 
+        
+        let deletePlaylisting = this.props.match.params.playlistId //looking at a playlist
+            && playlists.filter(playlist => playlist.user_id === currentUserId) //owned playlists
+                    .map(el => el.id)
+                    .includes(parseInt(this.props.match.params.playlistId))? 
             <button className="remove-button lightup darken" 
                     onClick={this.handleRemove}>Remove from this Playlist</button>
                     : null
@@ -104,7 +108,7 @@ class SongComponent extends React.Component {
             <div className={`song-playlist-show-popup ${this.props.songmenu === song.id ? "":"hide"}`} >
             {deletePlaylisting}
             <div className="add-title">Add to Playlist:</div>
-            {playlists}
+            {playlistLis}
         </div> 
 
         let flashing;
