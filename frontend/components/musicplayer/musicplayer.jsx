@@ -8,18 +8,18 @@ import {createLike, deleteLike} from '../../actions/like_actions'
 const msp = (state) => {
     let currentUser = state.entities.users[state.session.id]
 
-    let song 
+    let song
     if (state.musicplayer && state.musicplayer.queue && state.musicplayer.currSongId) {
     // let song = state.musicplayer.queue && state.musicplayer.queue[0] || {id: null, audioUrl: ""}
         song = state.entities.songs[state.musicplayer.currSongId]
     }
     else {
         song= { id: null, audioUrl: "" }
-    } 
-    
+    }
+
     let album = state.entities.albums[song.album_id] || {id: null}
     let artist = state.entities.artists[album.artist_id] || {}
-    
+
     let currSongId;
     if (state.musicplayer) { currSongId = state.musicplayer.currSongId || null }
     let queue;
@@ -34,7 +34,7 @@ const msp = (state) => {
         currentUser,
     }
 }
-  
+
 const mdp = dispatch => {
     return {
         fetchSong: id => dispatch(fetchSong(id)),
@@ -66,52 +66,52 @@ class Musicplayer extends React.Component {
         this.handleToggleLoop = this.handleToggleLoop.bind(this)
         this.handleToggleShuffle = this.handleToggleShuffle.bind(this)
         this.handleCreateLike = this.handleCreateLike.bind(this)
-    } 
+    }
     componentDidMount(){
-        
+
         // window.addEventListener('keypress', (e) => {
-        //     let key = e.which || e.keyCode; 
+        //     let key = e.which || e.keyCode;
         //     if (key === 32) {
         //         this.handleClickPlayPause()
         //     }
         // });
-        
+
             // stops the timer and itll stop updating state
-        
+
         // TIME
         document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseenter', () => {
             document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
             document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
-        })                                        
+        })
         document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseleave', () => {
             document.getElementsByClassName('time-slider-wrapper')[0].classList.remove("green-bar")
             document.getElementsByClassName('fake-thumb')[0].style.display = "none"
         })
         this.player.ontimeupdate = e => {
             document.getElementsByClassName('fake-thumb')[0].style.left = `${Math.floor(this.state.currTime * 100 /this.state.duration)}%`;
-        }      
+        }
         // VOLUME
         document.getElementsByClassName('volume-slider-wrapper')[0].addEventListener('mouseenter', () => {
             document.getElementsByClassName('volume-slider-wrapper')[0].classList.add("green-bar")
             document.getElementsByClassName('fake-volume-thumb')[0].style.display = "inherit"
-        })                                        
+        })
         document.getElementsByClassName('volume-slider-wrapper')[0].addEventListener('mouseleave', () => {
             document.getElementsByClassName('volume-slider-wrapper')[0].classList.remove("green-bar")
             document.getElementsByClassName('fake-volume-thumb')[0].style.display = "none"
         })
         this.player.onvolumechange = e => {
             document.getElementsByClassName('fake-volume-thumb')[0].style.left = `${Math.floor(this.state.volume * 100 / 1.0)}%`;
-        }      
+        }
 
-        
+
         this.player.onended = () => {
             const {queue, receiveCurrentSongId} = this.props
             clearTimeout(this.timer)
-            let currentIdx = this.props.queue.findIndex(song => song.id === this.state.currentSongId)        
+            let currentIdx = this.props.queue.findIndex(song => song.id === this.state.currentSongId)
             if (currentIdx !== this.props.queue.length - 1) {
                 if (!this.state.shuffling) {
-                    currentIdx++  
-                    this.setState({ currentSongId: this.props.queue[currentIdx].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId))       
+                    currentIdx++
+                    this.setState({ currentSongId: this.props.queue[currentIdx].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId))
                 }
                 else { //shuffling
                     currentIdx = Math.floor(Math.random() * this.props.queue.length)//not keeping track of what was already shuffled thru
@@ -120,7 +120,7 @@ class Musicplayer extends React.Component {
             }
             //if it is the last song
             else if (currentIdx === this.props.queue.length - 1 && this.state.looping) {
-                this.setState({ currentSongId: this.props.queue[0].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId)) 
+                this.setState({ currentSongId: this.props.queue[0].id }, () => this.props.receiveCurrentSongId(this.state.currentSongId))
             }
         };
 
@@ -130,7 +130,7 @@ class Musicplayer extends React.Component {
         //         duration: e.target.duration,
         //     })
         // }
-    } 
+    }
     componentWillUnmount(){
         let oldEl = document.getElementsByClassName('time-slider-wrapper')[0]
         let newEl = oldEl.cloneNode(true)
@@ -143,7 +143,7 @@ class Musicplayer extends React.Component {
     }
     componentDidUpdate(prevProps, prevState) {
         //NEW SONG
-        
+
         if ((this.props.song.id !== prevProps.song.id) && (this.props.song.audioUrl)) {
             const notActivated = ["shuffle-button", "back-button", "play-button", "forward-button", "loop-container", "time-slider-wrapper", "queue-link", "time-label"]
             for (let i = 0;i< notActivated.length;i++){
@@ -165,7 +165,7 @@ class Musicplayer extends React.Component {
             this.setState({queue: this.props.queue})
         }
         if (!isNaN(this.player.duration) && prevState.duration != this.state.duration) this.setState({ duration: this.player.duration })
-        
+
     }
     formatTime(secs) {
         let seconds = parseInt(secs)
@@ -173,7 +173,7 @@ class Musicplayer extends React.Component {
         let netSeconds = seconds % 60
         minutes = isNaN(minutes) ? "0" : minutes
         netSeconds = isNaN(netSeconds) ? "0" : netSeconds
-    
+
         if (netSeconds < 10) {
             return `${minutes}:0${netSeconds}`
         }
@@ -208,10 +208,10 @@ class Musicplayer extends React.Component {
                 this.player.load()
                 this.player.play()
                 this.resetTimer()
-                //will play the song again if you push the button but the song ended
+                // will play the song again if you push the button but the song ended
                 // this.handleClickPlay()
 
-            } 
+            }
             else {
                 this.player.play()
                 clearTimeout(this.timer)
@@ -221,17 +221,17 @@ class Musicplayer extends React.Component {
                     }
                     , 500)
             }}
-    } 
+    }
     handleToggleLoop(){
         this.setState({looping: !this.state.looping})
     }
     handleToggleShuffle(){
         this.setState({shuffling: !this.state.shuffling})
     }
-    
-     
+
+
     resetTimer() {
-        // 
+        //
         this.setState({ currTime: 0,
                         duration: this.player.duration })
 
@@ -245,46 +245,40 @@ class Musicplayer extends React.Component {
 
     // SLIDERS
     handleTimeChange(e){
-            
         this.setState({ currTime: e.target.value }, ()=> {
-            this.player.currentTime = this.state.currTime 
-        })  
-
-        if (this.state.currTime === this.state.duration) {
-
-         
-        }
+            this.player.currentTime = this.state.currTime
+        })
     }
 
     handleForward(){
-       
+
         if (this.player.currentSrc){
-            // 
+            //
             this.player.currentTime = this.state.duration - 1
             this.state.currTime = 0
             // let currentIdx = songqueue.find(song => {
-                // 
+                //
             //     return song.id === this.state.currentSongId})
             // if (currentIdx !== -1 && currentIdx !== songqueue.length - 1) {
             //     currentIdx ++
-            //     
+            //
             //     this.setState({currentSongId: this.songqueue[currentIdx].id})
             //     receiveCurrentSongId(this.songqueue[currentIdx].id)
             // }
-            // 
-            
+            //
+
         }
-        return 
+        return
     }
     handleBack(){
         const { queue, receiveCurrentSongId } = this.props
         if (this.state.currTime === 0) {
             let currentIdx = queue.findIndex(song => song.id === this.state.currentSongId)
-            
-            
+
+
             if (currentIdx !== 0) {
                 currentIdx --
-                this.setState({ currentSongId: queue[currentIdx].id }, 
+                this.setState({ currentSongId: queue[currentIdx].id },
                     () => receiveCurrentSongId(this.state.currentSongId))
             }
         }
@@ -294,7 +288,7 @@ class Musicplayer extends React.Component {
             this.player.play()
             this.resetTimer()
         }
-        return 
+        return
     }
     handleCreateLike(){
         this.props.createLike({ user_id: this.props.currentUser.id, song_id: this.state.currentSongId })
@@ -302,33 +296,33 @@ class Musicplayer extends React.Component {
         document.getElementsByClassName("liked-popup")[0].innerText = "Added to Your Library"
         setTimeout(() => { document.getElementsByClassName("liked-popup")[0].style.display = "none"}, 2000)
     }
-  
+
     render(){
-        // 
+        //
         const {song, album, artist, createLike, deleteLike, currentUser} = this.props
-        
+
         let checkedVolumeUrl;
         let loopImg;
         let shuffleImg
 
         if (this.player){
-            loopImg = this.state.looping ? <img className="loop-img" src={window.loopURL} alt="loop" /> 
+            loopImg = this.state.looping ? <img className="loop-img" src={window.loopURL} alt="loop" />
                                          : <img className="loop-img morefaded" src={window.loopURL} alt="loop" />
             shuffleImg = this.state.shuffling ? <img className="shuffle-img" src={shuffleURL} alt="shuffle" />
                                          : <img className="shuffle-img morefaded" src={shuffleURL} alt="shuffle" />
             checkedVolumeUrl = (this.player.muted || this.state.volume === 0) ? window.volume_muteURL : window.volumeURL
         }
 
-        const playpause = (this.state.isPlaying || (typeof song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img" 
-        
+        const playpause = (this.state.isPlaying || (typeof song.id === 'undefined')) ? "audio-button-img pause-button-img" :"audio-button-img play-button-img"
+
         let likeButton;
-        
+
         likeButton = !currentUser.liked_song_ids.includes(this.state.currentSongId) ?
             <img src={likeURL} className={`like-button mostfaded ${this.state.currentSongId ? "":"hidden"}`} onClick={this.handleCreateLike}/> :
             <img src={likeURL} className={`like-button ${this.state.currentSongId ? "" : "hidden"}`} onClick={() => deleteLike(this.state.currentSongId)}/>
 
         return (
-            <>                    
+            <>
                 <div className="liked-popup"></div>
                 <div className="musicplayer-1">
                     <Link to={`/artist/${artist.id}`}><img className="player-album-art" src={album.photoUrl} alt="" /></Link>
@@ -336,30 +330,30 @@ class Musicplayer extends React.Component {
                     <div className="player-song-artist">
                         <Link to={`/album/${album.id}`}><p className="player-song-title underlining">{song.title}</p></Link>
                         <Link to={`/artist/${artist.id}`}><p className="player-artist-name underlining">{artist.name}</p></Link>
-                    </div> 
+                    </div>
                     {likeButton}
                 </div>
 
                 <div className="musicplayer-2">
-                        
+
                     <div className="musicplayer-2-top faded">
-                            
-                                <audio  controls 
+
+                                <audio  controls
                                         ref={el => this.player = el}
-                                        >  
+                                        >
                                     <source src={song.audioUrl}
                                     />
                                     File not supported.
                                 </audio>
-                            
+
                             <div className="shuffle-button hidden" onClick={this.handleToggleShuffle}>
                                 {shuffleImg}
                             </div>
                             <div className="back-button hidden" onClick={this.handleBack}>
                                     <img className="audio-button-img" src={window.controls_spriteURL} alt="Controls Img" />
                             </div>
-                            <div className="play-button hidden" onClick={this.handleClickPlayPause}>   
-                                <img className={playpause} src={window.controls_spriteURL} alt="playImg" />                             
+                            <div className="play-button hidden" onClick={this.handleClickPlayPause}>
+                                <img className={playpause} src={window.controls_spriteURL} alt="playImg" />
                             </div>
                             <div className="forward-button hidden">
                             <img className="audio-button-img" onClick={this.handleForward} src={window.controls_spriteURL} alt="Controls Img" />
@@ -376,7 +370,7 @@ class Musicplayer extends React.Component {
                         {/* <p>current_play_time {this.player.currentTime}</p> */}
                         <div className="time-slider-wrapper hidden">
                             <div className="fake-thumb"></div>
-                        <input className="time-slider mouse" 
+                        <input className="time-slider mouse"
                                min="0"
                                max={this.state.duration || ""}
                                type="range"
@@ -394,12 +388,12 @@ class Musicplayer extends React.Component {
 
                 <div className="musicplayer-3">
                     <Link to="/queue" className="queue-link hidden">
-                    <img className="queue-img lightup" src={queueURL} alt="queue" /> 
+                    <img className="queue-img lightup" src={queueURL} alt="queue" />
                     </Link>
-                    <img className="vol-img lightup" onClick={this.handleMute} src={checkedVolumeUrl} alt="vol"/> 
+                    <img className="vol-img lightup" onClick={this.handleMute} src={checkedVolumeUrl} alt="vol"/>
                     <div className="volume-slider-wrapper">
                         <div className="fake-volume-thumb"></div>
-                    <input className="volume-slider" 
+                    <input className="volume-slider"
                             type="range"
                             min="0"
                             max="1"
@@ -411,7 +405,7 @@ class Musicplayer extends React.Component {
                     {/* Volume icon doesnt auto when manually drag bar and state.currTime doesnt reset upon loop trigger */}
                 </div>
             </>
-        ) 
+        )
     }
 }
 export default connect(msp, mdp)(Musicplayer)

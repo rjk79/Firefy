@@ -13,11 +13,11 @@
  *= require_tree .
  *= require_self
  */
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -31,8 +31,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -45,7 +45,7 @@ time, mark, audio, video {
 }
 /* Generics */
  * {
-     font-family: Helvetica, sans-serif; 
+     font-family: Helvetica, sans-serif;
      color: white;
      /* background: black; */
      font-size: 24px;
@@ -83,7 +83,7 @@ html, body, #root, .primary-app-div {
      height: 25px;
      width: 25px;
  }
- 
+
   a {
       text-decoration: none;
       color: white;
@@ -118,7 +118,7 @@ html, body, #root, .primary-app-div {
      text-align: center;
      font-size: 20px;
  }
- 
+
 /* HOVERS  HOVERS  HOVERS  HOVERS   */
 
 .underlining:hover {
@@ -130,7 +130,7 @@ html, body, #root, .primary-app-div {
     transition-duration: .3s;
     transition-property: opacity;
     transition-timing-function: linear;
-    transform: translate3d(0px,0px,0px);     
+    transform: translate3d(0px,0px,0px);
 
  }
 
@@ -140,8 +140,8 @@ html, body, #root, .primary-app-div {
      transition-timing-function: linear;
      opacity: 1.0;
  }
- 
-/* 
+
+/*
  li > .active {
      box-sizing: border-box;
      border-left: 4px solid rgb(0, 196, 90);
@@ -165,7 +165,7 @@ html, body, #root, .primary-app-div {
 
  /* Spacing */
  .list-padding {
-     padding: 10px 20px 10px 20px;
+    padding: 10px 20px 10px 20px;
  }
  .long-padding {
     padding: 10px 50px 10px 50px;
@@ -228,7 +228,7 @@ html, body, #root, .primary-app-div {
      margin-top: 10%;
      height: 56%;
  }
- 
+
  .session-form {
      margin: auto;
      display: flex;
@@ -290,7 +290,7 @@ html, body, #root, .primary-app-div {
  }
 
  /* Home Page */
- 
+
 .top-left-item {
     padding: 0px;
     font-size: 14px;
@@ -299,7 +299,7 @@ html, body, #root, .primary-app-div {
 .top-left-item a {
   position: relative;
   display: inline-block;
-  width: 100%; 
+  width: 100%;
   padding: 15px 20px 15px 20px;
 }
 
@@ -392,6 +392,17 @@ html, body, #root, .primary-app-div {
     overflow-x: hidden;
     margin-top: 5px;
 }
+
+.followedlist .index-playlist-item {
+    height: 100%;
+    width: 100%;
+}
+
+.followedlist .is-over {
+    border: 1px solid rgb(0, 196, 90);
+    border-radius: 8px;
+}
+
 .followedlist::-webkit-scrollbar {
     background: transparent;
 }

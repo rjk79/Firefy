@@ -2,9 +2,9 @@ import React from 'react'
 // import SongComponent from './songs/song_component'
 import { connect } from 'react-redux';
 import { receiveQueue } from '../actions/musicplayer_actions';
-import SongComponent from './songs/song_component'
+import SongComponent from './songs/song_container'
 const msp = state => {
-    
+
     let songs = state.musicplayer.queue ? Object.values(state.musicplayer.queue) : []
     let albums = songs.map(song => {
         if (song) return state.entities.albums[song.album_id]
@@ -35,17 +35,18 @@ class QueueComponent extends React.Component {
     handlePickSong(songId) {
         //TODO: reordering queue, duplicates will mess it up
         this.props.receiveQueue(Object.values(this.props.musicplayer.queue), songId)
-    } 
+    }
     render(){
-        
+
         const {musicplayer, artists, albums} = this.props
-        let songLis = musicplayer.queue && musicplayer.queue.length ? Object.values(musicplayer.queue).map((song, idx) => 
+        let songLis = musicplayer.queue && musicplayer.queue.length ? Object.values(musicplayer.queue).map((song, idx) =>
             <li className="queue-song" key={song.id}>
                 <SongComponent
                     song = {song}
                     artist = {artists[idx]}
                     album = {albums[idx]}
                     handlePickSong = {this.handlePickSong}
+                    index={idx}
                 />
             </li>
             )

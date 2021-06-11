@@ -1,12 +1,12 @@
 import {connect} from 'react-redux'
-import React, {useEffect} from 'react' 
+import React, {useEffect} from 'react'
 import { fetchAllSongs } from '../actions/song.actions';
 import { receiveQueue } from '../actions/musicplayer_actions'
-import SongComponent from './songs/song_component'
+import SongComponent from './songs/song_container'
 
 const msp = state => {
-    
-    let songs = Object.values(state.entities.songs) 
+
+    let songs = Object.values(state.entities.songs)
     return {
         songs,
     }
@@ -28,15 +28,16 @@ function SongIndex (props) {
     function handlePickSong (songId) {
         props.receiveQueue(props.songs, songId)
     }
-    let songLis = props.songs.map(song => (
+    let songLis = props.songs.map((song, idx) => (
         <SongComponent key={song.id}
             song={song}
             album={{ name: "" }}
             artist={{ name: "" }}
             handlePickSong={handlePickSong}
+            index={idx}
         />
     ))
-    
+
     return (
         <>
         <p className="song-index-title">Songs</p>

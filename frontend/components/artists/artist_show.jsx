@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import SongComponent from '../songs/song_component';
+import SongComponent from '../songs/song_container';
 // import CreatePlaylistingComponent from '../playlisting/create_playlisting_button'
 
 class ArtistShow extends React.Component {
@@ -24,23 +24,23 @@ class ArtistShow extends React.Component {
         if (this.props.match.params.artistId != prevProps.match.params.artistId) {
             let artistId = this.props.match.params.artistId
             this.props.fetchArtist(artistId)
-        } 
+        }
 
         // const list = this.listRef.current;
         // list.scrollTop = list.scrollHeight - snapshot;
-        
+
     }
 
     handlePickSong(songId) {
         this.props.receiveQueue(this.props.songs, songId)
     }
 
-    render() {        
+    render() {
         const { artist, albums, songs } = this.props
-        
+
         let albumLis = albums.map(album => {
             return (
-                
+
                 <li key={album.id}>
                     <Link className="artist-show-album-li" to={`/album/${album.id}`}>
                         {/* <div> */}
@@ -53,22 +53,23 @@ class ArtistShow extends React.Component {
                 </li>
             )
             }
-           
+
             )
-        
-       
-        
-        let songLis = songs.map(song => 
+
+
+
+        let songLis = songs.map((song, idx) =>
 
                 <SongComponent key={song.id}
-                               song={song} 
-                               artist={artist} 
+                               song={song}
+                               artist={artist}
                                album={albums.find(album => album.id === song.album_id)}
                                handlePickSong={this.handlePickSong}
+                               index={idx}
                 />
         )
-        
-        
+
+
         return (
             <>
                 <div className="artist-show" ref={this.listRef}>

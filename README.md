@@ -4,7 +4,7 @@
 [Live Demo](http://firefy-aa.herokuapp.com/#/)
 
 ## Overview
-Firefy is a clone of Spotify that allows you to listen to music whenever you want on an interactive, and social platform.  
+Firefy is a clone of Spotify that allows you to listen to music whenever you want on an interactive, and social platform.
 
 ![gif](app/assets/firefy.gif)
 
@@ -14,21 +14,22 @@ Firefy is a clone of Spotify that allows you to listen to music whenever you wan
 * React and Redux on the frontend to display and take in data
 * Amazon Web Services - S3 for photo and audio file storage and uploading
 * HTML5 Audio Elements for music playback
+* React DnD - for dragging and dropping songs into playlists
 
 
 ## Features:
-### Authenticate 
+### Authenticate
 Sign up or log in to start listening!
-### Create Playlists
+### Customize Playlists
 Share your music tastes with others. Create and edit your own playlists, upload your own artwork, then share them with others.
 
 ### Enjoy Continuous Song Play
 As you navigate Firefy, enjoy seamless music playback via an informative media player with smooth controls.
 
 ### Search
-Search for your favorite artists, albums, songs or playlists using a quick, backend-filtering search bar. 
+Search for your favorite artists, albums, songs or playlists using a quick, backend-filtering search bar.
 
-### Friend Others / Follow Playlists / Favorite Songs
+### Make Friends / Follow Playlists / Favorite Songs
 Follow playlists that you like so that you can easily access them all the time.  Friend other users to see what playlists they are following share your followed playlists.
 
 ## Notable Features
@@ -41,7 +42,7 @@ All song items across all pages can be played, added to playlists, and used to v
 <div className="songcomponent">
     <img className="lightup" src={window.noteURL} onClick={()=>handlePickSong(song.id)} />
     <div className="playlist-show-song-text">
-        <p className={`${flashing} song-component-title`} 
+        <p className={`${flashing} song-component-title`}
             onClick={() => handlePickSong(song.id)}>
             {song.title}
         </p>
@@ -57,7 +58,7 @@ All song items across all pages can be played, added to playlists, and used to v
 </div>
 ```
 
-### Dynamic and Interactive Media Player
+### Dynamic and Responsive Media Player
 ![musicplayer](app/assets/images/musicplayer_screenshot.png?raw=true)
 
 The seek bar and volume bar allow you to easily traverse the duration of a song and manipulate the volume in a dynamic, responsive manner. It was quite challenging, but using a series of event-listeners, "substitute" slider-inputs and a queue slice of state, I was able to implement shuffle/loop/back/forward in a faithfully cloned media player.  Partial code snippet for the time seek bar:
@@ -65,12 +66,12 @@ The seek bar and volume bar allow you to easily traverse the duration of a song 
 document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseenter', () => {
     document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
     document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
-})                                        
+})
 document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseleave', () => {
     document.getElementsByClassName('time-slider-wrapper')[0].classList.remove("green-bar")
     document.getElementsByClassName('fake-thumb')[0].style.display = "none"
 })
 this.player.ontimeupdate = e => {
     document.getElementsByClassName('fake-thumb')[0].style.left = `${Math.floor(this.state.currTime * 100 /this.state.duration)}%`;
-}  
-```    
+}
+```

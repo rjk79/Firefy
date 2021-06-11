@@ -1,45 +1,7 @@
 import React from 'react';
 import {Link, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux';
-import {createPlaylisting, deletePlaylisting} from '../../actions/playlisting_actions'
-import { fetchAllPlaylists } from '../../actions/playlist_actions';
-import {createLike} from '../../actions/like_actions'
-import {openMenu, closeMenu} from '../../actions/songmenu_actions'
-// import PlaylistMenu from './playlist_menu' 
 
-
-const msp = state => {
-    let currSongId;
-    let currentUserId = state.session.id
-    
-    if (state.musicplayer) {currSongId = state.musicplayer.currSongId || null}
-    let playlists = Object.values(state.entities.playlists)
-    playlists.sort((a, b) => {
-        if (a.id < b.id) {
-            return 1 //b comes first
-        } else if (a.id > b.id) {
-            return -1 //a comes first
-        } else {
-            return 0
-        }
-    })
-    return {
-        playlists,
-        currSongId,
-        currentUserId,
-        songmenu: state.ui.songmenu,
-    }
-}
-const mdp = dispatch => {
-    return {
-        createPlaylisting: playlisting => dispatch(createPlaylisting(playlisting)),
-        deletePlaylisting: (playlistId, songId) => dispatch(deletePlaylisting(playlistId, songId)),
-        fetchAllPlaylists: ()=> dispatch(fetchAllPlaylists()),
-        createLike: like => dispatch(createLike(like)),
-        openMenu: menu => dispatch(openMenu(menu)),
-        closeMenu: () => dispatch(closeMenu())
-    }
-} 
+// import PlaylistMenu from './playlist_menu'
 
 class SongComponent extends React.Component {
     constructor(props){
@@ -51,25 +13,25 @@ class SongComponent extends React.Component {
         this.toggleOpenPlaylists = this.toggleOpenPlaylists.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         // let audio = new Audio()
-        // audio.src = this.props.song.audioUrl 
-        // audio.onloadedmetadata = () => { 
-        //     
+        // audio.src = this.props.song.audioUrl
+        // audio.onloadedmetadata = () => {
+        //
         // }
     }
-   
+
     componentWillUnmount(){
         this.props.closeMenu()
     }
 
     toggleOpenPlaylists(e) {
-        
+
         e.preventDefault()
         if (this.props.songmenu === this.props.song.id){
             this.props.closeMenu()
         } else {
             this.props.fetchAllPlaylists()
             this.props.openMenu(this.props.song.id)
-            
+
         }
     }
 
@@ -80,41 +42,41 @@ class SongComponent extends React.Component {
         deletePlaylisting(this.props.match.params.playlistId, song.id)
     }
     render(){
-        
+
         // NEED TO PASS EVERYTHING            EXCEPT createPlaylisting
         const { song, artist, album, handlePickSong, createPlaylisting, currentUserId, playlists } = this.props
-        
-        // 
+
+        //
         let playlistLis = this.props.playlists.filter(playlist => currentUserId === playlist.user_id)
             .map((playlist, idx) => {
-            
+
                 return (<p onClick={() => {
                             this.props.closeMenu()
                             return createPlaylisting({playlist_id: playlist.id, song_id: song.id})
                     }
-                } className="lightup darken playlist-popup-item" key={idx}>{playlist.name}</p>) 
+                } className="lightup darken playlist-popup-item" key={idx}>{playlist.name}</p>)
         }
         )
-        
+
         let deletePlaylisting = this.props.match.params.playlistId //looking at a playlist
             && playlists.filter(playlist => playlist.user_id === currentUserId) //owned playlists
                     .map(el => el.id)
-                    .includes(parseInt(this.props.match.params.playlistId))? 
-            <button className="remove-button lightup darken" 
+                    .includes(parseInt(this.props.match.params.playlistId))?
+            <button className="remove-button lightup darken"
                     onClick={this.handleRemove}>Remove from this Playlist</button>
                     : null
         // let likeButton = <button onClick={this.props.createLike}>Add to Library</button>
-        let popup = 
-            <div className={`song-playlist-show-popup ${this.props.songmenu === song.id ? "":"hide"}`} >
+        let popup =
+            <div className={`song-playlist-show-popup ${this.props.songmenu === song.id ? "" : "not-open"}`} >
             {deletePlaylisting}
             <div className="add-title">Add to Playlist:</div>
             {playlistLis}
-        </div> 
+        </div>
 
         let flashing;
         flashing = this.props.currSongId === song.id ? "flashing-true" : ""
-        //  
-        // 
+        //
+        //
         let artistId = artist ? artist.id : null
         let albumId = album ? album.id : null
         let artistName = artist ? artist.name : null
@@ -124,7 +86,7 @@ class SongComponent extends React.Component {
                 <div className="songcomponent">
                     <img className="lightup" src={window.noteURL} onClick={()=>handlePickSong(song.id)} />
                     <div className="playlist-show-song-text">
-                        <p className={`${flashing} song-component-title`} 
+                        <p className={`${flashing} song-component-title`}
                            onClick={() => handlePickSong(song.id)}>
                            {song.title}
                         </p>
@@ -145,4 +107,4 @@ class SongComponent extends React.Component {
     }
 }
 
-export default connect(msp, mdp)(withRouter(SongComponent));
+export default withRouter(SongComponent);

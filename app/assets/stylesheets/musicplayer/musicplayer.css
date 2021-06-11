@@ -53,7 +53,7 @@
 
     height: 24px;
     width: 20px;
-    
+
 }
 
 
@@ -63,10 +63,10 @@
     position: relative;
 
     /* background: green; */
-    
+
     height: 24px;
     width: 20px;
-   
+
 }
 
 
@@ -86,7 +86,7 @@
 .pause-button-img {
     position: absolute;
     top: -3px;
-    right: -52px;  
+    right: -52px;
 }
 /* =========================================== */
 .play-button-img {
@@ -107,7 +107,7 @@
     position: relative;
     /* background: blue; */
     height: 45px;
-    width: 50px; 
+    width: 50px;
 }
 .pause-button img {
     position: absolute;
@@ -201,7 +201,7 @@ input[type='range']:hover {
     font-size: 14px;
     width: 40%;
 }  */
-/* 
+/*
 .fa-play-circle{
     font-size: 12px;
     height: 50px;
@@ -304,7 +304,6 @@ input[type='range']::-webkit-slider-thumb {
     justify-content: center;
     align-items: center;
     background: #00c45a;
-    padding-left: 25%;
+    /* padding-left: 25%; */
     text-align: center;
 }
-    

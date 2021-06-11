@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import SongComponent from '../songs/song_component';
+import SongComponent from '../songs/song_container';
 
 class AlbumShow extends React.Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class AlbumShow extends React.Component {
     render() {
         // if (!albums) return <> </>
         const {artist, album, songs} = this.props
-        let songLis = songs.map(song => {
+        let songLis = songs.map((song, idx) => {
             return (
 
               <SongComponent key={song.id}
@@ -33,12 +33,13 @@ class AlbumShow extends React.Component {
                         artist={artist}
                         album={album}
                         handlePickSong={this.handlePickSong}
+                        index={idx}
                 />
             )
         }
 
         )
- 
+
         return (
             <>
                 <div className="album-show">
@@ -49,7 +50,7 @@ class AlbumShow extends React.Component {
                     <p className="center album-show-song-count">Songs: {songs.length}</p>
                     <div className="album-show-list-titles">Songs</div>
                     <ul>{songLis}</ul>
-                    
+
                 </div>
             </>
         )

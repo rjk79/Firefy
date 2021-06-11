@@ -2,12 +2,12 @@ import { connect } from 'react-redux'
 import { fetchUserLikes } from '../actions/user_actions';
 import React, {useEffect} from 'react'
 import { receiveQueue } from '../actions/musicplayer_actions'
-import SongComponent from './songs/song_component'
+import SongComponent from './songs/song_container'
 
 // import { fetchAllSongs } from '../../actions/playlist_actions';
 
 const msp = (state, ownProps) => {
-   
+
     let sessionId = state.session.id
     let liked_song_ids
     liked_song_ids = state.entities.users[sessionId].liked_song_ids
@@ -52,6 +52,7 @@ function LikedSongs (props) {
             album={props.albums[idx]}
             artist={props.artists[idx]}
             handlePickSong={handlePickSong}
+            index={idx}
         />
     ))
 

@@ -2,8 +2,8 @@ import React from 'react'
 import {withRouter} from 'react-router-dom'
 // import { Draggable } from 'react-beautiful-dnd';
 import {Link} from 'react-router-dom'
-import SongComponent from '../songs/song_component'
- 
+import SongComponent from '../songs/song_container'
+
 class PlaylistShow extends React.Component {
     constructor(props){
         super(props)
@@ -27,17 +27,17 @@ class PlaylistShow extends React.Component {
     }
     componentDidMount() {
         this.colorPicker()
-        let playlistId = this.props.match.params.playlistId        
-        this.props.fetchPlaylist(playlistId)  
-        this.props.fetchUser(this.props.playlist.user_id)     
+        let playlistId = this.props.match.params.playlistId
+        this.props.fetchPlaylist(playlistId)
+        this.props.fetchUser(this.props.playlist.user_id)
         // User clicks on playlist art => Choose File
         // onChange Event of input:file => Submit
 
         document.getElementsByClassName("playlist-artwork")[0].addEventListener('click', e => {
             document.getElementsByClassName("change-art-choose")[0].click()
-        })  
+        })
         // document.getElementsByClassName("change-art-choose")[0].onchange => steals event listener?
-    } 
+    }
     componentDidUpdate(prevProps){
         //switching between playlists
         if (this.props.match.params.playlistId !== prevProps.match.params.playlistId) {
@@ -47,13 +47,13 @@ class PlaylistShow extends React.Component {
             this.setState({imageUrl: "", imageFile: null})
             this.colorPicker()
         }
-        if (this.props.playlist.user_id !== prevProps.playlist.user_id) {   
+        if (this.props.playlist.user_id !== prevProps.playlist.user_id) {
             this.props.fetchUser(this.props.playlist.user_id)
-        }    
+        }
         // document.getElementsByClassName("change-art-submit")[0].submit()
 
     }
-  
+
     deletePlaylist(e){
         e.preventDefault()
         this.props.deletePlaylist(this.props.playlist.id)
@@ -71,7 +71,7 @@ class PlaylistShow extends React.Component {
         } else {
             this.setState({imageUrl: "", imageFile: null})
         }
-        
+
     }
     handleSubmitPickArt(e) {
         const {playlist, updatePlaylist} = this.props
@@ -80,7 +80,7 @@ class PlaylistShow extends React.Component {
         formData.append('playlist[id]', playlist.id)
         formData.append('playlist[name]', playlist.name)
         formData.append('playlist[user_id]', playlist.user_id) //song ids already assoc
-        
+
         if (this.state.imageUrl) {
             formData.append('playlist[photo]', this.state.imageFile)
         }
@@ -89,7 +89,7 @@ class PlaylistShow extends React.Component {
 
     handlePickSong(songId){
         this.props.receiveQueue(this.props.songs, songId)
-    } 
+    }
 
     handleAddFriend(friendship){
         return () => this.props.createFriendship(friendship)
@@ -100,60 +100,60 @@ class PlaylistShow extends React.Component {
     ownsPlaylist(){
         const {currentUser, playlist} = this.props
         debugger
-        return currentUser.id === playlist.user_id 
+        return currentUser.id === playlist.user_id
     }
 
     render() {
-       
-         
+
+
         const { songs, albums, artists, currentUser, createFollow, playlist, match, deleteFollow, owner} = this.props
         let songLis;
         let followButton;
         let friendButton;
         // debugger
 
-        followButton = !currentUser.follow_ids.includes(parseInt(match.params.playlistId)) ? 
+        followButton = !currentUser.follow_ids.includes(parseInt(match.params.playlistId)) ?
             <button className="follow-button lightup" onClick={() => createFollow({ user_id: currentUser.id, playlist_id: playlist.id })}>FOLLOW</button> :
             <button className="follow-button lightup" onClick={() => deleteFollow(playlist.id)}>UNFOLLOW</button>
             if (!currentUser.friend_ids.includes(owner.id) && currentUser.id !== owner.id){ //not friends
                 friendButton = <button className="addfriend-button lightup" onClick={this.handleAddFriend({ user1_id: currentUser.id, user2_id: owner.id })}>ADD FRIEND</button> }
             else if (currentUser.id !== playlist.user_id) {//not the owner
-                friendButton = <button className="addfriend-button lightup">FRIENDS &#x2714;</button>} 
+                friendButton = <button className="addfriend-button lightup">FRIENDS &#x2714;</button>}
 
         let popup = this.state.popupShowing ?
             <div className="playlist-show-popup" >
                 <button className="playlist-delete-button lightup" onClick={this.deletePlaylist}>Delete</button>
             </div>
             : null
-        if (this.props.songs && artists.length && albums.length){         
+        if (this.props.songs && artists.length && albums.length){
 
             songLis = songs.map((song, idx) =>
                 <li key={idx} className="playlist-show-songli medium">
-                    <SongComponent 
-                                    song={song} 
-                                    artist={artists[idx]} 
-                                    album={albums[idx]} 
-                                    handlePickSong={this.handlePickSong}
+                    <SongComponent
+                        song={song}
+                        artist={artists[idx]}
+                        album={albums[idx]}
+                        handlePickSong={this.handlePickSong}
+                        index={idx}
                     />
                 </li>
-        ) } 
+        ) }
         // || <p className="its-empty-title">It's a bit empty here....</p> <p>Let's find some songs for your playlist</p>
         let photoUrl;
-        
+
         photoUrl = this.state.imageUrl || playlist.photoUrl || window.default_albumURL
         return (
-
             <div className="playlist-show" >
               <div className="flex-col playlist-title-delete">
                     <div className={`playlist-artwork-holder ${ this.ownsPlaylist() ? "enabled":""}`}>
                     <img className={`playlist-artwork ${this.ownsPlaylist() ? "enabled" : ""}`} src={photoUrl} alt="PlaylistArt"/>
                 </div>
-                {this.ownsPlaylist() ? 
+                {this.ownsPlaylist() ?
                 <form className="change-art" onSubmit={this.handleSubmitPickArt}>
                     <input type="file" onChange={this.handleChangePickArt} className="change-art-choose" />
                     <input type="submit" value="Save Image" className="change-art-submit lightup" />
                 </form> : null }
-                
+
                 <h2 className="playlist-show-name">{playlist.name}</h2>
                 <p className="center playlist-owner faded">By: {owner.username}</p>
                 <p className="song-quantity faded">{songs.length} songs</p>
@@ -163,7 +163,7 @@ class PlaylistShow extends React.Component {
                 </span> :null}
                 {followButton}
                 {friendButton}
-                    
+
               </div>
                 <ul className="playlist-songlist">
                     {songLis}

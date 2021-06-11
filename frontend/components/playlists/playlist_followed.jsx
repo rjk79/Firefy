@@ -1,31 +1,40 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
- 
-class FollowedPlaylists extends React.Component {
+import PlaylistFollowedItem from './playlist_followed_item';
+
+function FollowedPlaylists(props) {
 //add conditional using history.push
-    componentDidMount(){
-        this.props.fetchAllPlaylists()
-        this.props.fetchUser(this.props.userId)
+    const [didMount, setDidMount] = useState(false);
+
+    useEffect(() => {
+        setDidMount(true)
+    }, [])
+
+    useEffect(() => {
+        handleDidMount()
+    }, [didMount])
+
+    function handleDidMount(){
+        props.fetchAllPlaylists()
+        props.fetchUser(props.userId)
     }
-    render() {
-        
-    
-    
-    let playlistLinks = this.props.followedPlaylists.map(playlist => {
+
+    let playlistLinks = props.followedPlaylists.map(playlist => {
         return (
-            <li key={playlist.id} className="index-playlist-item lightup">
-                <NavLink className="list-padding index-playlist-item-link " to={`/playlist/${playlist.id}`}>
-                    {playlist.name}
+            <li key={playlist.id}
+                className={`index-playlist-item lightup `}
+            >
+                <NavLink className="index-playlist-item-link" to={`/playlist/${playlist.id}`}>
+                    <PlaylistFollowedItem playlist={playlist} />
                 </NavLink>
             </li>
         )
     })
     return (
-        <ul className="followedlist">
+        <ul className={`followedlist`} >
             {playlistLinks}
         </ul>
     )
-            }
-    }
+}
 
-export default FollowedPlaylists
+export default FollowedPlaylists;

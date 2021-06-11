@@ -3,17 +3,12 @@ import { connect } from 'react-redux';
 import { fetchAllSearches, deleteAllSearches } from '../actions/search_actions';
 import {Link} from 'react-router-dom'
 import { receiveQueue } from '../actions/musicplayer_actions';
-import SongComponent from './songs/song_component';
+import SongComponent from './songs/song_container';
 
 const msp = state => {
- 
+
     let {songIds, albumIds, artistIds, playlistIds} = state.searches
-    let songs
-    let artists
-    let albums
-    let playlists
-    let songAlbums
-    let songArtists
+    let songs, artists, albums, playlists, songAlbums, songArtists;
     if (songIds) {
         songs = songIds.map(id => state.entities.songs[id])
         songAlbums = songs.map(song => {
@@ -28,18 +23,12 @@ const msp = state => {
     if (artistIds) artists = artistIds.map(id => state.entities.artists[id])
     if (albumIds) albums = albumIds.map(id => state.entities.albums[id])
     if (playlistIds) playlists = playlistIds.map(id => state.entities.playlists[id])
-    
+
     let currSongId;
     if (state.musicplayer) { currSongId = state.musicplayer.currSongId || null }
 
     return {
-        songs, 
-        albums, 
-        artists,
-        playlists,
-        currSongId,
-        songAlbums,
-        songArtists,
+        songs, albums, artists, playlists, currSongId, songAlbums, songArtists,
     }
 }
 const mdp = dispatch => {
@@ -86,19 +75,19 @@ class SearchComponent extends React.Component {
     }
 
     handleChange(field) {
-        
+
         return e => this.setState({
             [field]: e.target.value
         })
     }
     render(){
-        
+
         const { artists, albums, playlists, songs, songAlbums, songArtists } = this.props
         let artistLis;
         let albumLis;
         let songLis;
         let playlistLis;
-        // 
+        //
         if (artists){
             artistLis = artists.map(artist => (
                 <li key={artist.id} className="artist-index-item search-item">
@@ -119,7 +108,7 @@ class SearchComponent extends React.Component {
         ))}
         if (playlists){
             playlistLis = playlists.map(playlist => {
-                let playlistUrl = playlist.photoUrl || window.default_albumURL     
+                let playlistUrl = playlist.photoUrl || window.default_albumURL
                 return (
                 <li key={playlist.id} className="search-songplaylistname lightup">
                     <Link to={`/playlist/${playlist.id}`} className="search-item-link">
@@ -127,48 +116,51 @@ class SearchComponent extends React.Component {
                         {playlist.name}
                     </Link>
                 </li>
-        )})} 
+        )})}
         if (songs){
             songLis = songs.map((song, idx) => (
-                <SongComponent key={song.id} 
+                <SongComponent key={song.id}
                                song={song}
                                album={songAlbums[idx]}
                                artist={songArtists[idx]}
                                handlePickSong={this.handlePickSong}
+                               index={idx}
                 />
-            
-        ))}
-        let finishedSongs;
-        let finishedAlbums;
-        let finishedArtists;
-        let finishedPlaylists;
-                
-        finishedSongs = songs && songs.length ? <div><p className="search-title">Songs</p>
-                                    <div className="search-category-songsplaylists">
-                                    {songLis}</div></div> : null
-        finishedAlbums = albums && albums.length ? < div><p className="search-title"> Albums </p> 
-                                    <div className="search-category">
-                                    {albumLis}</div></div > : null
-        finishedArtists = artists && artists.length ? <div><p className="search-title">Artists</p>
-                                        <div className="search-category">
-                                        {artistLis}</div></div> : null
-        finishedPlaylists = playlists && playlists.length ? < div > <p className="search-title">Playlists</p> 
-                                                <div className="search-category">
-                                                {playlistLis}</div></div > : null
 
-                
-        // let search = this.state.query === "" ? 
+        ))}
+        let finishedSongs, finishedAlbums, finishedArtists, finishedPlaylists;
+
+        finishedSongs = songs && songs.length ? <div><p className="search-title">Songs</p>
+            <div className="search-category-songsplaylists">
+            {songLis}</div></div> : null
+        finishedAlbums = albums && albums.length ? < div><p className="search-title"> Albums </p>
+            <div className="search-category">
+            {albumLis}</div></div > : null
+        finishedArtists = artists && artists.length ? <div><p className="search-title">Artists</p>
+            <div className="search-category">
+            {artistLis}</div></div> : null
+        finishedPlaylists = playlists && playlists.length ? (
+            < div >
+                <p className="search-title">Playlists</p>
+                <div className="search-category">
+                    {playlistLis}
+                 </div>
+            </div>
+        ) : null
+
+
+        // let search = this.state.query === "" ?
         let tooltip = !songs && !artists && !albums && !playlists ? <><p className="search-searchfirefy">Search Firefy</p><p className="search-findyour">Find your favorite songs, artists, albums, podcasts, playlists.</p></> : null
         return (
             <div className="search-area">
-                <input 
-                    type="text" 
-                    value={this.state.query} 
-                    onChange={this.handleChange("query")} 
-                    placeholder="Start Typing..." 
+                <input
+                    type="text"
+                    value={this.state.query}
+                    onChange={this.handleChange("query")}
+                    placeholder="Start Typing..."
                     className="search-input"
                 />
-                {finishedSongs}                
+                {finishedSongs}
                 {finishedArtists}
                 {finishedAlbums}
                 {finishedPlaylists}
