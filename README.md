@@ -1,8 +1,6 @@
 ![logo](app/assets/images/firefy-logo2.png?raw=true)
 # Firefy
 
-[Live Demo](http://firefy-aa.herokuapp.com/#/)
-
 ## Overview
 Firefy is a clone of Spotify that allows you to listen to music whenever you want on an interactive, and social platform.  
 
