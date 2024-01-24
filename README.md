@@ -34,41 +34,9 @@ Follow playlists that you like so that you can easily access them all the time. 
 ### Universal Song Items
 ![songcomp](app/assets/images/songcomp_screenshot.png?raw=true)
 
-All song items across all pages can be played, added to playlists, and used to view artist/album pages.  This means you have full control over your playlist playback even when you leave the playlist page.  This feature was rather tricky to implement but by allowing components to manipulate their parent's state via the following code, I was able to accomplish this feature.
-```
-<div className="songcomponent">
-    <img className="lightup" src={window.noteURL} onClick={()=>handlePickSong(song.id)} />
-    <div className="playlist-show-song-text">
-        <p className={`${flashing} song-component-title`} 
-            onClick={() => handlePickSong(song.id)}>
-            {song.title}
-        </p>
-        <div className={`songli-artist-album faded`}>
-            <Link to={`/artist/${artist.id}`} className="artist-album-li underlining">{artist.name}</Link>
-            {artist.name && album.name ? "  -  " : ""}
-            <Link to={`/album/${album.id}`} className="artist-album-li underlining">{album.name}</Link>
-        </div>
-        <button className="songli-ell lightup" onClick={this.toggleOpenPlaylists}> + </button>
-        {/* <button className="songli-ell lightup" onClick={this.handleRemoveFromPlaylist}> - </button> */}
-            {popup}
-    </div>
-</div>
-```
+All song items across all pages can be played, added to playlists, and used to view artist/album pages.  This means you have full control over your playlist playback even when you leave the playlist page.  This feature was rather tricky to implement but by allowing components to manipulate their parent's state, I was able to accomplish this feature.
 
 ### Dynamic and Interactive Media Player
 ![musicplayer](app/assets/images/musicplayer_screenshot.png?raw=true)
 
-The seek bar and volume bar allow you to easily traverse the duration of a song and manipulate the volume in a dynamic, responsive manner. It was quite challenging, but using a series of event-listeners, "substitute" slider-inputs and a queue slice of state, I was able to implement shuffle/loop/back/forward in a faithfully cloned media player.  Partial code snippet for the time seek bar:
-```
-document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseenter', () => {
-    document.getElementsByClassName('time-slider-wrapper')[0].classList.add("green-bar")
-    document.getElementsByClassName('fake-thumb')[0].style.display = "inherit"
-})                                        
-document.getElementsByClassName('time-slider-wrapper')[0].addEventListener('mouseleave', () => {
-    document.getElementsByClassName('time-slider-wrapper')[0].classList.remove("green-bar")
-    document.getElementsByClassName('fake-thumb')[0].style.display = "none"
-})
-this.player.ontimeupdate = e => {
-    document.getElementsByClassName('fake-thumb')[0].style.left = `${Math.floor(this.state.currTime * 100 /this.state.duration)}%`;
-}  
-```    
+The seek bar and volume bar allow you to easily traverse the duration of a song and manipulate the volume in a dynamic, responsive manner. It was quite challenging, but using a series of event-listeners, "substitute" slider-inputs and a queue slice of state, I was able to implement shuffle/loop/back/forward in a faithfully cloned media player.    
